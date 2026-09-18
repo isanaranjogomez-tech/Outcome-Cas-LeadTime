@@ -44,7 +44,8 @@ assets/school/          4 photographs — opening sequence
 assets/survey/          3 Microsoft Forms result screenshots
 assets/platform/        6 LeadTime AI interface screenshots
 assets/action/          2 Course of Action photographs
-assets/video/           the student testimonial recording
+assets/team/            5 team portraits
+assets/video/           the student perspective clip + the testimonial recording
 ASSET-MANIFEST.md       what every asset is and where it is used
 ```
 
@@ -56,7 +57,7 @@ ASSET-MANIFEST.md       what every asset is and where it is used
 | II | We noticed | How the issue was identified |
 | III | We investigated | Research method |
 | IV | We found | Evidence — the five survey findings |
-| V | We asked why | Six perspectives |
+| V | We asked why | Six perspectives, closing on the student perspective recording |
 | VI | We decided to act | Rationale and stated limits |
 | VII | How we worked | Team collaboration |
 | VIII | We built LeadTime AI | The digital outcome |
@@ -86,7 +87,9 @@ deliberately left as labelled placeholders rather than filled with estimates:
 2. **Evaluation** (Act XI, "What is still to be measured") — post-action survey, user
    feedback, what worked, what needs improvement, next steps.
 3. **Testimonial transcript** (Act X) — no quotation is drawn from the recording
-   because no transcript has been verified.
+   because no transcript has been verified. (The *student perspective* clip at the
+   end of Act V is different: its statement was supplied verbatim and is transcribed
+   on screen.)
 
 ## Before submitting — worth reviewing
 
@@ -97,7 +100,25 @@ deliberately left as labelled placeholders rather than filled with estimates:
   used full-bleed behind a heavy scrim and film grain, which carries it, but a
   higher-resolution version would sharpen the opening. Replace
   `assets/school/01-exterior-cas.jpg` and nothing else needs changing.
+- **Confirm the team portraits.** The original filenames were lost on upload, so the
+  name-to-face mapping in `assets/team/` is a best guess. Check the five rows in
+  Act VII; to fix one, swap the two files in that folder — the markup needs no change.
 - **Fill the placeholders above** as the data arrives.
+
+## The two videos behave differently, on purpose
+
+The **student perspective** clip (end of Act V) starts by itself when its section is
+meaningfully on screen — one play, start to finish. Scroll decides only *when* it
+starts; it never drives the timeline, and the section is never pinned. It starts muted
+if the browser requires that, and a discreet "Sound on" control appears when it does;
+a "Replay" control appears once it ends. If playback is refused, the file cannot load,
+or the browser cannot decode it, the section un-arms itself: the transcribed statement
+stays visible and normal controls return, so a viewer never faces a blank frame.
+
+The **testimonial** recording (Act X) is unchanged — nothing preloaded, nothing
+autoplayed, played only when the viewer asks for it.
+
+Under `prefers-reduced-motion: reduce`, neither video autoplays.
 
 ## Accessibility and motion
 

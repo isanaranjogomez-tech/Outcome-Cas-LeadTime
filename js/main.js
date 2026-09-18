@@ -157,44 +157,11 @@
     update();
   }
 
-  /* --- Animated statistics ------------------------------------------------ */
-
-  function initCounters() {
-    var stats = document.querySelectorAll('[data-count]');
-    if (!stats.length) return;
-
-    function settle(el) {
-      el.firstChild.nodeValue = el.getAttribute('data-count');
-    }
-
-    if (reduced || !('IntersectionObserver' in window)) {
-      stats.forEach(settle);
-      return;
-    }
-
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var el = entry.target;
-        io.unobserve(el);
-
-        var target = parseFloat(el.getAttribute('data-count'));
-        var start = null;
-        var duration = 1150;
-
-        function step(now) {
-          if (start === null) start = now;
-          var t = clamp((now - start) / duration, 0, 1);
-          var eased = 1 - Math.pow(1 - t, 3);
-          el.firstChild.nodeValue = String(Math.round(target * eased));
-          if (t < 1) requestAnimationFrame(step); else settle(el);
-        }
-        requestAnimationFrame(step);
-      });
-    }, { threshold: 0.5 });
-
-    stats.forEach(function (el) { el.firstChild.nodeValue = '0'; io.observe(el); });
-  }
+  /* --- Headline statistics ----------------------------------------------
+     These are the most consequential facts on the page, so they are never
+     counted up: a number that briefly reads as a different, equally
+     plausible figure is a real hazard on an assessed document. They are
+     wiped into view at their true value and nothing else.                 */
 
   /* --- Magnitude bars grow on entry --------------------------------------- */
 
@@ -321,6 +288,119 @@
     });
   }
 
+  /* --- Student perspective film ------------------------------------------
+     Plays once, automatically, when its section is meaningfully on screen.
+     Scroll decides only WHEN playback starts; it never drives the timeline,
+     and the section is never pinned or scroll-locked.                     */
+
+  function initPerspectiveFilm() {
+    var film = document.querySelector('[data-film]');
+    if (!film) return;
+
+    var video = film.querySelector('video');
+    var soundBtn = film.querySelector('[data-film-sound]');
+    var replayBtn = film.querySelector('[data-film-replay]');
+    if (!video) return;
+
+    // Reduced motion: never autoplay. Native controls stay, and the
+    // transcribed statement is already visible.
+    if (reduced || !('IntersectionObserver' in window)) return;
+
+    film.classList.add('is-armed');
+    video.removeAttribute('controls');
+
+    // Browsers allow sound only after the viewer has interacted with the
+    // page, so track that and fall back to a muted start when they have not.
+    var interacted = false;
+    ['pointerdown', 'keydown', 'touchstart'].forEach(function (evt) {
+      window.addEventListener(evt, function () { interacted = true; },
+        { once: true, passive: true });
+    });
+
+    var soundWanted = false;
+    var finished = false;
+    var watchdog;
+
+    function play(onFail) {
+      var pr = video.play();
+      if (pr && typeof pr.catch === 'function') pr.catch(onFail || function () {});
+    }
+
+    // Anything that stops playback from ever beginning — autoplay refused,
+    // the file unreachable, a codec the browser cannot decode — must still
+    // leave the viewer with the statement and a way to play it, never a
+    // blank frame.
+    function release() {
+      clearTimeout(watchdog);
+      film.classList.remove('is-armed');
+      video.setAttribute('controls', '');
+    }
+
+    function attempt() {
+      if (finished) return;
+      video.muted = !(interacted || soundWanted);
+      play(function () {
+        // Sound was refused — retry silently, which browsers do allow.
+        video.muted = true;
+        play(release);
+      });
+
+      clearTimeout(watchdog);
+      watchdog = setTimeout(function () {
+        // readyState 0 means not even metadata arrived: the media failed
+        // rather than merely buffering.
+        if (video.readyState === 0) release();
+      }, 3000);
+    }
+
+    video.addEventListener('error', release, true);
+
+    video.addEventListener('playing', function () {
+      clearTimeout(watchdog);
+      film.classList.add('is-live');
+      if (soundBtn) soundBtn.hidden = !video.muted;
+    });
+
+    video.addEventListener('ended', function () {
+      finished = true;
+      film.classList.remove('is-live');
+      film.classList.add('is-done');
+      if (soundBtn) soundBtn.hidden = true;
+      if (replayBtn) replayBtn.hidden = false;
+    });
+
+    if (soundBtn) {
+      soundBtn.addEventListener('click', function () {
+        soundWanted = true;
+        video.muted = false;
+        soundBtn.hidden = true;
+      });
+    }
+
+    if (replayBtn) {
+      replayBtn.addEventListener('click', function () {
+        finished = false;
+        soundWanted = true;
+        replayBtn.hidden = true;
+        film.classList.remove('is-done');
+        video.currentTime = 0;
+        video.muted = false;
+        play(function () {
+          video.muted = true;
+          play();
+          if (soundBtn) soundBtn.hidden = false;
+        });
+      });
+    }
+
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) attempt();
+        else if (!video.paused) video.pause();  // courtesy pause off screen
+      });
+    }, { threshold: 0.55 }).observe(film);
+  }
+
   /* --- Evidence index overlay --------------------------------------------- */
 
   function initIndex() {
@@ -427,12 +507,12 @@
     initReveal();
     initCinema();
     initChrome();
-    initCounters();
     initBars();
     initChartHover();
     initShowcase();
     initParallax();
     initPlayer();
+    initPerspectiveFilm();
     initIndex();
     initLightbox();
 

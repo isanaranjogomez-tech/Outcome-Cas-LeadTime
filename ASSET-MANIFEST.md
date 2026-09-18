@@ -54,3 +54,14 @@ Build begins only on the explicit instruction: `YA — START BUILDING THE WEBSIT
 
 - `assets/video/testimonial.mp4` — Student testimonial / feedback video (15 MB, compressed).
   **Build instruction from user:** integrate directly into the site as a fully custom premium section, NOT a generic embed. Place it AFTER the implementation / Course of Action act, as student voice / feedback / evaluation evidence. Large, cinematic, refined presentation; seamless transitions; strong typography; responsive; consistent with the site visual language. No invented quotes or transcript — nothing is confirmed about its spoken content, so the surrounding copy must stay factual and non-interpretive.
+
+## Batch 5 — received
+
+- `assets/team/*.jpg` — five team portraits, used in Act VII "How we worked".
+  Sources range from 1080x1440 down to 120x120, so they are displayed in a small
+  4:5 crop that keeps every one of them sharp.
+  **Name-to-face mapping is unverified** — the original filenames were not preserved
+  on upload. To correct one, swap the two files in `assets/team/`; nothing else changes.
+- `assets/video/student-perspective.mp4` — 1920x1080, 5.4s, H.264/AAC. Student
+  perspective recording closing Act V. Autoplays once on scroll into view.
+  Verified statement transcribed on the page; no other quotation drawn from it.

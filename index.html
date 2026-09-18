@@ -21,6 +21,10 @@
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/sections.css">
+<noscript><style>
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+  [data-stat] { clip-path: none !important; }
+</style></noscript>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a1226'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' fill='%23b79553' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
 </head>
 
@@ -212,7 +216,7 @@
     <article class="finding">
       <div data-reveal>
         <p class="finding__index">Finding 01</p>
-        <span class="stat"><span data-count="66">66</span><sup>%</sup></span>
+        <span class="stat" data-stat><span>66</span><sup>%</sup></span>
         <p class="finding__claim">reported feeling stressed because of homework or summative assignments always or frequently.</p>
         <p class="finding__q"><b>Question 1.</b> How often do you feel stressed because of homework or summative assignments? 33 of 50 respondents answered “Always” or “Frequently”.</p>
       </div>
@@ -252,7 +256,7 @@
     <article class="finding">
       <div data-reveal>
         <p class="finding__index">Finding 02</p>
-        <span class="stat"><span data-count="70">70</span><sup>%</sup></span>
+        <span class="stat" data-stat><span>70</span><sup>%</sup></span>
         <p class="finding__claim">reported that academic stress affects their mood during the school week always or frequently.</p>
         <p class="finding__q"><b>Question 2.</b> Do you consider that academic stress affects your mood during the school week? 35 of 50 respondents answered “Always” or “Frequently”. Nobody selected “Never”.</p>
       </div>
@@ -291,7 +295,7 @@
     <article class="finding">
       <div data-reveal>
         <p class="finding__index">Finding 03</p>
-        <span class="stat stat--words">0 <span style="font-size:0.42em;letter-spacing:-0.01em">of 50</span></span>
+        <span class="stat stat--words" data-stat>0 <span style="font-size:0.42em;letter-spacing:-0.01em">of 50</span></span>
         <p class="finding__claim">respondents said academic stress does not affect them.</p>
         <p class="finding__q"><b>Question 3.</b> How does academic stress affect you? Every respondent selected an effect; the option “It doesn’t affect me” was chosen by nobody.</p>
       </div>
@@ -335,7 +339,7 @@
     <article class="finding">
       <div data-reveal>
         <p class="finding__index">Finding 04</p>
-        <span class="stat"><span data-count="74">74</span><sup>%</sup></span>
+        <span class="stat" data-stat><span>74</span><sup>%</sup></span>
         <p class="finding__claim">said academic stress affects their relationships at school, at least sometimes.</p>
         <p class="finding__q"><b>Question 4.</b> Do you think academic stress affects your relationships at school? 37 of 50 answered “Yes, a lot” or “Sometimes”.</p>
       </div>
@@ -369,7 +373,7 @@
     <article class="finding">
       <div data-reveal>
         <p class="finding__index">Finding 05</p>
-        <span class="stat stat--words">0 <span style="font-size:0.42em;letter-spacing:-0.01em">teachers</span></span>
+        <span class="stat stat--words" data-stat>0 <span style="font-size:0.42em;letter-spacing:-0.01em">teachers</span></span>
         <p class="finding__claim">Of 50 respondents, none said they usually talk to a teacher about academic stress.</p>
         <p class="finding__q"><b>Question 5.</b> When you feel academic stress, who do you usually talk to? Half turn to friends. Almost a third tell nobody. The teacher option was selected zero times.</p>
       </div>
@@ -531,6 +535,46 @@
 </section>
 
 <!-- ==========================================================================
+     STUDENT PERSPECTIVE · primary evidence closing Act V
+     Plays automatically once its section is reached. Scroll never drives the
+     timeline; it only decides when playback starts.
+     ========================================================================== -->
+
+<section class="perspective-film" id="student-perspective" aria-labelledby="film-h">
+  <div class="column">
+    <p class="film__label" data-reveal>Student perspective / Primary evidence</p>
+    <h3 class="film__lead" id="film-h" data-reveal data-stagger="1">The pressure was not only about difficulty.</h3>
+  </div>
+
+  <figure class="film" data-film data-reveal>
+    <video muted playsinline preload="metadata" controls
+           aria-label="Student perspective recording. The statement made in it is transcribed beneath the video.">
+      <source src="assets/video/student-perspective.mp4" type="video/mp4">
+    </video>
+
+    <figcaption class="film__caption">
+      <p>“And here is what nobody talks about: it’s not that the content of the exams is impossible, it’s the volume. We are studying for math, biology, chemistry, among other subjects, for the same deadline.”</p>
+    </figcaption>
+
+    <div class="film__controls">
+      <button class="film__btn" type="button" data-film-sound hidden>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M7 2 3.5 5H1v6h2.5L7 14V2Zm2.7 2.3a5 5 0 0 1 0 7.4l1 1.1a6.5 6.5 0 0 0 0-9.6l-1 1.1Zm-1.6 1.8a2.7 2.7 0 0 1 0 3.8l1 1.1a4.2 4.2 0 0 0 0-6l-1 1.1Z"/></svg>
+        Sound on
+      </button>
+      <button class="film__btn" type="button" data-film-replay hidden>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1v2.5A4.5 4.5 0 1 0 12.5 8H15A7 7 0 1 1 8 1Z"/><path d="M8 0 5 2.5 8 5V0Z"/></svg>
+        Replay
+      </button>
+    </div>
+  </figure>
+
+  <div class="film__after">
+    <p class="film__note" data-reveal>Statement transcribed verbatim from the recording. Presented unedited, as one student perspective — not as the sole cause of academic stress.</p>
+    <p class="film__turn" data-reveal data-stagger="1">The challenge was not only the difficulty of individual subjects, but the volume of academic responsibilities converging around the same deadlines.</p>
+  </div>
+</section>
+
+<!-- ==========================================================================
      ACT VI · WE DECIDED TO ACT
      ========================================================================== -->
 
@@ -579,24 +623,52 @@
     </div>
 
     <ol class="roster" style="margin-top:clamp(2.5rem,6vh,4rem)" data-reveal data-stagger="1">
-      <li><span class="roster__n">01</span><span class="roster__name">Jeronimo Lopez</span><span class="roster__role">Group Leader</span></li>
-      <li><span class="roster__n">02</span><span class="roster__name">Sophia Leguizamo</span><span class="roster__role">Project Communicator</span></li>
-      <li><span class="roster__n">03</span><span class="roster__name">Isabella Naranjo</span><span class="roster__role">AI Developer</span></li>
-      <li><span class="roster__n">04</span><span class="roster__name">Santiago Lugo</span><span class="roster__role">Printing Collaborator</span></li>
-      <li><span class="roster__n">05</span><span class="roster__name">Santiago Cortes</span><span class="roster__role">Poster Designer</span></li>
+      <li>
+        <span class="roster__n">01</span>
+        <figure class="roster__portrait"><img src="assets/team/jeronimo-lopez.jpg" alt="Portrait of Jeronimo Lopez in school uniform." loading="lazy" decoding="async" width="108" height="135"></figure>
+        <span class="roster__who"><span class="roster__name">Jeronimo Lopez</span></span>
+        <span class="roster__role">Group Leader</span>
+      </li>
+      <li>
+        <span class="roster__n">02</span>
+        <figure class="roster__portrait"><img src="assets/team/sophia-leguizamo.jpg" alt="Portrait of Sophia Leguizamo in school uniform." loading="lazy" decoding="async" width="108" height="135"></figure>
+        <span class="roster__who"><span class="roster__name">Sophia Leguizamo</span></span>
+        <span class="roster__role">Project Communicator</span>
+      </li>
+      <li>
+        <span class="roster__n">03</span>
+        <figure class="roster__portrait"><img src="assets/team/isabella-naranjo.jpg" alt="Portrait of Isabella Naranjo in school uniform." loading="lazy" decoding="async" width="108" height="135"></figure>
+        <span class="roster__who">
+          <span class="roster__name">Isabella Naranjo</span>
+          <span class="roster__note">Designed and developed the complete LeadTime AI web platform used as the project’s digital outcome.</span>
+        </span>
+        <span class="roster__role">LeadTime AI Web Platform Developer</span>
+      </li>
+      <li>
+        <span class="roster__n">04</span>
+        <figure class="roster__portrait"><img src="assets/team/santiago-lugo.jpg" alt="Portrait of Santiago Lugo in school uniform." loading="lazy" decoding="async" width="108" height="135"></figure>
+        <span class="roster__who"><span class="roster__name">Santiago Lugo</span></span>
+        <span class="roster__role">Printing Collaborator</span>
+      </li>
+      <li>
+        <span class="roster__n">05</span>
+        <figure class="roster__portrait"><img src="assets/team/santiago-cortes.jpg" alt="Portrait of Santiago Cortes in school uniform." loading="lazy" decoding="async" width="108" height="135"></figure>
+        <span class="roster__who"><span class="roster__name">Santiago Cortes</span></span>
+        <span class="roster__role">Poster Designer</span>
+      </li>
     </ol>
 
     <div style="margin-top:clamp(3rem,7vh,5rem)">
       <p class="eyebrow" style="margin-bottom:1.4rem" data-reveal>The process, phase by phase</p>
       <ol class="rail" data-reveal data-stagger="1">
-        <li><span class="rail__n">01 · Whole team</span><span class="rail__t">Research</span><span class="rail__d">Identifying the issue from our own experience, then designing and distributing the survey.</span></li>
-        <li><span class="rail__n">02 · Group Leader</span><span class="rail__t">Planning</span><span class="rail__d">Setting the scope, dividing responsibilities and holding the schedule together.</span></li>
-        <li><span class="rail__n">03 · AI Developer</span><span class="rail__t">Development</span><span class="rail__d">Building LeadTime AI: the dashboard, the task system and the AI breakdown tool.</span></li>
-        <li><span class="rail__n">04 · Project Communicator</span><span class="rail__t">Communication</span><span class="rail__d">Explaining the project to students and presenting it in the school.</span></li>
-        <li><span class="rail__n">05 · Poster Designer &amp; Printing Collaborator</span><span class="rail__t">Implementation</span><span class="rail__d">Producing the printed material and staffing the promotion table where students met the platform.</span></li>
-        <li data-state="pending"><span class="rail__n">06 · Whole team</span><span class="rail__t">Evaluation</span><span class="rail__d">Gathering response, judging what worked and recording what we would change.</span></li>
+        <li><span class="rail__n">01 · Group Leader</span><span class="rail__t">Leadership</span><span class="rail__d">Setting the scope, dividing responsibilities and holding the schedule together.</span></li>
+        <li><span class="rail__n">02 · Project Communicator</span><span class="rail__t">Communication</span><span class="rail__d">Explaining the project to students and presenting it in the school.</span></li>
+        <li><span class="rail__n">03 · LeadTime AI Web Platform Developer</span><span class="rail__t">Platform development</span><span class="rail__d">Designing and building the platform: dashboard, task system and AI breakdown tool.</span></li>
+        <li><span class="rail__n">04 · Printing Collaborator</span><span class="rail__t">Printing</span><span class="rail__d">Producing the printed material taken into the school.</span></li>
+        <li><span class="rail__n">05 · Poster Designer</span><span class="rail__t">Poster design</span><span class="rail__d">Designing the poster and printed material used at the promotion point.</span></li>
+        <li><span class="rail__n">06 · Whole team</span><span class="rail__t">Shared outcome</span><span class="rail__d">Research, the survey, the school-based implementation and the evaluation still in progress.</span></li>
       </ol>
-      <p class="note" style="margin-top:1.2rem" data-reveal>Phases are mapped to the team’s assigned roles. Research and evaluation were carried by the whole team.</p>
+      <p class="note" style="margin-top:1.2rem" data-reveal>Phases follow the team’s assigned roles. The research and the shared outcome were carried by the whole team.</p>
     </div>
   </div>
 </section>
@@ -618,9 +690,17 @@
       <div class="prose prose--dark" style="margin-top:1.6rem" data-reveal data-stagger="1">
         <p>LeadTime AI is not a prototype or a mock-up. It is a live web application, running under the school’s name, that a Grade&nbsp;9 student can log into and use on an ordinary Tuesday. It does one thing: it takes the academic load that was previously carried in someone’s head and puts it on a screen, in order, with the heavy days marked.</p>
       </div>
-      <p style="margin-top:1.8rem" data-reveal data-stagger="2">
-        <a class="link" href="https://cas-leadtime-xkw5.onrender.com/dashboard" target="_blank" rel="noopener noreferrer">Explore the platform <span class="link__arrow" aria-hidden="true">↗</span></a>
-      </p>
+    </div>
+
+    <div class="outcome" style="margin-top:clamp(2.25rem,5vh,3.25rem)" data-reveal data-stagger="2">
+      <div>
+        <p class="outcome__label">The functioning digital outcome</p>
+        <p class="outcome__name">LeadTime AI</p>
+        <p class="outcome__desc">Built by the team and running live. Open it and use it exactly as a Grade&nbsp;9 student at Colegio Colombo Americano would.</p>
+      </div>
+      <a class="outcome__cta" href="https://cas-leadtime-xkw5.onrender.com/dashboard" target="_blank" rel="noopener noreferrer">
+        Explore the live outcome <span aria-hidden="true">↗</span>
+      </a>
     </div>
 
     <div class="showcase" style="margin-top:clamp(3rem,8vh,6rem)">

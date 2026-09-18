@@ -409,8 +409,17 @@ button {
 [data-reveal].is-in { opacity: 1; transform: none; }
 [data-reveal="mask"] { transform: translate3d(0, 0.5em, 0); }
 
+/* Headline statistics are wiped into view at their true value — never
+   counted up from a number that could be misread as the finding. */
+[data-stat] {
+  clip-path: inset(0 0 108% 0);
+  transition: clip-path var(--dur-slow) var(--ease-out) 120ms;
+}
+[data-reveal].is-in [data-stat] { clip-path: inset(0 0 -12% 0); }
+
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  [data-stat] { clip-path: none !important; transition: none !important; }
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
