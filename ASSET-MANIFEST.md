@@ -24,7 +24,7 @@ Build begins only on the explicit instruction: `YA — START BUILDING THE WEBSIT
 - [ ] Course of Action photographs (team presenting/promoting at school, laptop, printed materials, students interacting)
 - [ ] Initial survey evidence screenshots (Microsoft Forms, 50 Grade 9 responses)
 - [ ] Testimonial / evaluation video (optional)
-- [ ] Any verified external references (WHO / UNICEF / Colombian sources) — **nothing to be invented**
+- [ ] Five campaign posters from the Canva design "Poster Global" — for `assets/action/poster-01…05.png`
 
 ## Academic constraints held in memory
 

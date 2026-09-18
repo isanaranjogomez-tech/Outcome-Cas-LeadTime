@@ -53,7 +53,7 @@ ASSET-MANIFEST.md       what every asset is and where it is used
 
 | Part | Section | Assessment evidence |
 |---|---|---|
-| I | Topic and local issue | Global topic, local issue, local context; WHO and UNICEF Colombia |
+| I | Topic and local issue | Global topic, local issue, local context |
 | II | The team | Team collaboration — pinned scroll sequence |
 | III | What we observed | How the issue was identified |
 | IV | Survey results | Initial survey, 50 Grade 9 students |
