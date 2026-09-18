@@ -622,41 +622,98 @@
       <p class="lede">Five students, five defined responsibilities, one outcome that none of us could have produced alone.</p>
     </div>
 
-    <ol class="roster" style="margin-top:clamp(2.5rem,6vh,4rem)" data-reveal data-stagger="1">
-      <li>
-        <span class="roster__n">01</span>
-        <figure class="roster__portrait"><img src="assets/team/jeronimo-lopez.jpg" alt="Portrait of Jeronimo Lopez in school uniform." loading="lazy" decoding="async" width="108" height="135"></figure>
-        <span class="roster__who"><span class="roster__name">Jeronimo Lopez</span></span>
-        <span class="roster__role">Group Leader</span>
-      </li>
-      <li>
-        <span class="roster__n">02</span>
-        <figure class="roster__portrait"><img src="assets/team/sophia-leguizamo.jpg" alt="Portrait of Sophia Leguizamo in school uniform." loading="lazy" decoding="async" width="108" height="135"></figure>
-        <span class="roster__who"><span class="roster__name">Sophia Leguizamo</span></span>
-        <span class="roster__role">Project Communicator</span>
-      </li>
-      <li>
-        <span class="roster__n">03</span>
-        <figure class="roster__portrait"><img src="assets/team/isabella-naranjo.jpg" alt="Portrait of Isabella Naranjo in school uniform." loading="lazy" decoding="async" width="108" height="135"></figure>
-        <span class="roster__who">
-          <span class="roster__name">Isabella Naranjo</span>
-          <span class="roster__note">Designed and developed the complete LeadTime AI web platform used as the project’s digital outcome.</span>
-        </span>
-        <span class="roster__role">LeadTime AI Web Platform Developer</span>
-      </li>
-      <li>
-        <span class="roster__n">04</span>
-        <figure class="roster__portrait"><img src="assets/team/santiago-lugo.jpg" alt="Portrait of Santiago Lugo in school uniform." loading="lazy" decoding="async" width="108" height="135"></figure>
-        <span class="roster__who"><span class="roster__name">Santiago Lugo</span></span>
-        <span class="roster__role">Printing Collaborator</span>
-      </li>
-      <li>
-        <span class="roster__n">05</span>
-        <figure class="roster__portrait"><img src="assets/team/santiago-cortes.jpg" alt="Portrait of Santiago Cortes in school uniform." loading="lazy" decoding="async" width="108" height="135"></figure>
-        <span class="roster__who"><span class="roster__name">Santiago Cortes</span></span>
-        <span class="roster__role">Poster Designer</span>
-      </li>
-    </ol>
+    <div class="crew" data-crew style="margin-top:clamp(2rem,5vh,3.25rem)">
+      <div class="crew__sticky">
+        <ol class="crew__progress" aria-hidden="true">
+        <li data-dot="0">01</li>
+        <li data-dot="1">02</li>
+        <li data-dot="2">03</li>
+        <li data-dot="3">04</li>
+        <li data-dot="4">05</li>
+        <li data-dot="5">—</li>
+        </ol>
+
+        <div class="crew__stage">
+        <article class="crew__member" data-member="0">
+          <figure class="crew__portrait">
+            <img src="assets/team/jeronimo-lopez.jpg" alt="Portrait of Jeronimo Lopez in school uniform." loading="lazy" decoding="async">
+          </figure>
+          <div class="crew__text">
+            <p class="crew__num"><span>Step</span> 01</p>
+            <h3 class="crew__name">Jeronimo Lopez</h3>
+            <p class="crew__role">Group Leader</p>
+          </div>
+        </article>
+
+        <article class="crew__member" data-member="1">
+          <figure class="crew__portrait">
+            <img src="assets/team/sophia-leguizamo.jpg" alt="Portrait of Sophia Leguizamo in school uniform." loading="lazy" decoding="async">
+          </figure>
+          <div class="crew__text">
+            <p class="crew__num"><span>Step</span> 02</p>
+            <h3 class="crew__name">Sophia Leguizamo</h3>
+            <p class="crew__role">Project Communicator</p>
+          </div>
+        </article>
+
+        <article class="crew__member" data-member="2">
+          <figure class="crew__portrait">
+            <img src="assets/team/isabella-naranjo.jpg" alt="Portrait of Isabella Naranjo in school uniform." loading="lazy" decoding="async">
+          </figure>
+          <div class="crew__text">
+            <p class="crew__num"><span>Step</span> 03</p>
+            <h3 class="crew__name">Isabella Naranjo</h3>
+            <p class="crew__role">LeadTime AI Web Platform Developer</p>
+          <p class="crew__note">Designed and developed the complete LeadTime AI web platform used as the project’s digital outcome.</p>
+          </div>
+        </article>
+
+        <article class="crew__member" data-member="3">
+          <figure class="crew__portrait">
+            <img src="assets/team/santiago-lugo.jpg" alt="Portrait of Santiago Lugo in school uniform." loading="lazy" decoding="async">
+          </figure>
+          <div class="crew__text">
+            <p class="crew__num"><span>Step</span> 04</p>
+            <h3 class="crew__name">Santiago Lugo</h3>
+            <p class="crew__role">Printing Collaborator</p>
+          </div>
+        </article>
+
+        <article class="crew__member" data-member="4">
+          <figure class="crew__portrait">
+            <img src="assets/team/santiago-cortes.jpg" alt="Portrait of Santiago Cortes in school uniform." loading="lazy" decoding="async">
+          </figure>
+          <div class="crew__text">
+            <p class="crew__num"><span>Step</span> 05</p>
+            <h3 class="crew__name">Santiago Cortes</h3>
+            <p class="crew__role">Poster Designer</p>
+          </div>
+        </article>
+
+          <article class="crew__member crew__member--all" data-member="5">
+            <div class="crew__faces" aria-hidden="true">
+            <img src="assets/team/jeronimo-lopez.jpg" alt="" loading="lazy" decoding="async">
+            <img src="assets/team/sophia-leguizamo.jpg" alt="" loading="lazy" decoding="async">
+            <img src="assets/team/isabella-naranjo.jpg" alt="" loading="lazy" decoding="async">
+            <img src="assets/team/santiago-lugo.jpg" alt="" loading="lazy" decoding="async">
+            <img src="assets/team/santiago-cortes.jpg" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="crew__text">
+              <p class="crew__num"><span>Together</span></p>
+              <h3 class="crew__name">One outcome</h3>
+              <ol class="chain">
+            <li>Leadership</li>
+            <li>Communication</li>
+            <li>Platform development</li>
+            <li>Printing</li>
+            <li>Poster design</li>
+            <li>Shared outcome</li>
+              </ol>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
 
     <div style="margin-top:clamp(3rem,7vh,5rem)">
       <p class="eyebrow" style="margin-bottom:1.4rem" data-reveal>The process, phase by phase</p>

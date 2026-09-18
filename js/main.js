@@ -215,6 +215,87 @@
     });
   }
 
+  /* --- Team sequence -------------------------------------------------------
+     Pinned on wide screens: scroll selects which member is active, and the
+     five resolve into the shared-outcome frame. On phones, and for anyone
+     who has asked for reduced motion, the same markup flows as a list and
+     each member simply reveals as it arrives. Nothing is scroll-locked.  */
+
+  function initCrew() {
+    var crew = document.querySelector('[data-crew]');
+    if (!crew) return;
+
+    var members = Array.prototype.slice.call(crew.querySelectorAll('.crew__member'));
+    var dots = Array.prototype.slice.call(crew.querySelectorAll('[data-dot]'));
+    if (!members.length) return;
+
+    var flowQuery = window.matchMedia('(max-width: 900px)');
+    var mode = null;
+    var pinnedUpdate = null;
+    var flowObserver = null;
+
+    function setActive(i) {
+      members.forEach(function (m, n) { m.classList.toggle('is-active', n === i); });
+      dots.forEach(function (d, n) { d.classList.toggle('is-on', n === i); });
+    }
+
+    function usePinned() {
+      if (mode === 'pinned') return;
+      mode = 'pinned';
+      crew.classList.remove('is-flow');
+      if (flowObserver) { flowObserver.disconnect(); flowObserver = null; }
+
+      pinnedUpdate = function () {
+        var rect = crew.getBoundingClientRect();
+        var travel = crew.offsetHeight - window.innerHeight;
+        if (travel <= 0) return;
+        var p = clamp(-rect.top / travel, 0, 1);
+        setActive(clamp(Math.round(p * (members.length - 1)), 0, members.length - 1));
+      };
+      scrollTasks.push(pinnedUpdate);
+      resizeTasks.push(pinnedUpdate);
+      pinnedUpdate();
+    }
+
+    function useFlow() {
+      if (mode === 'flow') return;
+      mode = 'flow';
+      crew.classList.add('is-flow');
+
+      // Retire the pinned handler rather than leaving it running.
+      var i = scrollTasks.indexOf(pinnedUpdate);
+      if (i > -1) scrollTasks.splice(i, 1);
+      i = resizeTasks.indexOf(pinnedUpdate);
+      if (i > -1) resizeTasks.splice(i, 1);
+      pinnedUpdate = null;
+
+      dots.forEach(function (d) { d.classList.remove('is-on'); });
+
+      if (reduced || !('IntersectionObserver' in window)) {
+        members.forEach(function (m) { m.classList.add('is-active'); });
+        return;
+      }
+      members.forEach(function (m) { m.classList.remove('is-active'); });
+      flowObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-active');
+          flowObserver.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.2 });
+      members.forEach(function (m) { flowObserver.observe(m); });
+    }
+
+    function decide() {
+      if (reduced || flowQuery.matches) useFlow(); else usePinned();
+    }
+
+    decide();
+    if (typeof flowQuery.addEventListener === 'function') {
+      flowQuery.addEventListener('change', decide);
+    }
+  }
+
   /* --- Product showcase: which step is on screen -------------------------- */
 
   function initShowcase() {
@@ -508,6 +589,7 @@
     initCinema();
     initChrome();
     initBars();
+    initCrew();
     initChartHover();
     initShowcase();
     initParallax();

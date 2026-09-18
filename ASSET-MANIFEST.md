@@ -60,8 +60,21 @@ Build begins only on the explicit instruction: `YA — START BUILDING THE WEBSIT
 - `assets/team/*.jpg` — five team portraits, used in Act VII "How we worked".
   Sources range from 1080x1440 down to 120x120, so they are displayed in a small
   4:5 crop that keeps every one of them sharp.
-  **Name-to-face mapping is unverified** — the original filenames were not preserved
-  on upload. To correct one, swap the two files in `assets/team/`; nothing else changes.
+  **Name-to-face mapping is UNVERIFIED.** The original filenames were stripped by the
+  upload pipeline (the images arrived numbered; only the two videos kept their names),
+  and the JPEGs carry no EXIF filename, so the mapping could not be restored from any
+  source. It has NOT been guessed at a second time — the files sit where they were
+  first placed. To correct one, swap the two files in `assets/team/`; the markup
+  references each person by their own filename, so nothing else changes.
+
+  | Current filename | Source size |
+  |---|---|
+  | `jeronimo-lopez.jpg` | 1080 x 1440 |
+  | `santiago-cortes.jpg` | 885 x 1185 |
+  | `sophia-leguizamo.jpg` | 431 x 569 |
+  | `santiago-lugo.jpg` | 428 x 594 |
+  | `isabella-naranjo.jpg` | 120 x 120 |
+
 - `assets/video/student-perspective.mp4` — 1920x1080, 5.4s, H.264/AAC. Student
   perspective recording closing Act V. Autoplays once on scroll into view.
   Verified statement transcribed on the page; no other quotation drawn from it.

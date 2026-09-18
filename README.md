@@ -59,7 +59,7 @@ ASSET-MANIFEST.md       what every asset is and where it is used
 | IV | We found | Evidence — the five survey findings |
 | V | We asked why | Six perspectives, closing on the student perspective recording |
 | VI | We decided to act | Rationale and stated limits |
-| VII | How we worked | Team collaboration |
+| VII | How we worked | Team collaboration — pinned scroll sequence |
 | VIII | We built LeadTime AI | The digital outcome |
 | IX | We took it into the school | Implementation |
 | X | Student voice | Primary evidence — testimonial |
@@ -100,9 +100,10 @@ deliberately left as labelled placeholders rather than filled with estimates:
   used full-bleed behind a heavy scrim and film grain, which carries it, but a
   higher-resolution version would sharpen the opening. Replace
   `assets/school/01-exterior-cas.jpg` and nothing else needs changing.
-- **Confirm the team portraits.** The original filenames were lost on upload, so the
-  name-to-face mapping in `assets/team/` is a best guess. Check the five rows in
-  Act VII; to fix one, swap the two files in that folder — the markup needs no change.
+- **Confirm the team portraits.** The original filenames were stripped on upload and
+  could not be recovered, so the name-to-face mapping in `assets/team/` is unverified.
+  Check the five members in Act VII; to fix one, swap the two files in that folder —
+  each is named after the person the page shows it for, so the markup needs no change.
 - **Fill the placeholders above** as the data arrives.
 
 ## The two videos behave differently, on purpose
