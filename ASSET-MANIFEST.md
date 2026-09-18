@@ -41,3 +41,11 @@ Build begins only on the explicit instruction: `YA — START BUILDING THE WEBSIT
 - `assets/survey/01-forms-q1-q2.png` — Survey evidence: Forms header (50 Respuestas) + Q1 and Q2 with pie charts.
 - `assets/survey/02-forms-q3-q4-q5.png` — Survey evidence: Q3, Q4, Q5 with pie charts.
 - `assets/survey/03-forms-q6-q7-open.png` — Survey evidence: Q6 and Q7 open responses.
+
+## Batch 3 — received
+
+- `assets/platform/02-tasks-add-deber.jpg` — Task management: "Anadir un deber" form (titulo, materia, tipo, entrega, horas estimadas, notas) + "Tus pendientes" list (9 activos) with Examen/Tarea tags and "Organizar mi semana".
+- `assets/platform/03-desglosador-input.jpg` — Desglosador IA: pasted instructions panel + generated "Plan de Accion Intensivo" header, esfuerzo 4/5, start of cronograma.
+- `assets/platform/04-plan-days-1-2.jpg` — Generated plan, Dia 1 and Dia 2 in full.
+- `assets/platform/05-plan-days-3-5.jpg` — Generated plan, Dia 3, Dia 4 and start of Dia 5.
+- `assets/platform/06-plan-day5-technique.jpg` — Generated plan, Dia 5 complete + "Anadir al panel" + recommended technique block.
