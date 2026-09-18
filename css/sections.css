@@ -1810,78 +1810,87 @@
 .week:not(.is-loaded) .week__chip[data-seed] { opacity: 0.5; transform: none; }
 
 /* ==========================================================================
-   Part V · text-led immersive story
-   No platform imagery here — the later showcase keeps that reveal.
+   Part V · academic pressure as physical accumulation
+   Type, framed words and one pinned composition. No platform imagery here —
+   the showcase in Part VI keeps that reveal.
+
+   The static rules below are the real document: with JavaScript off, on a
+   phone, or under reduced motion, Part V reads as a plain vertical sequence
+   with every word present. The pinned composition is added on top of that,
+   and only then, by `.js .s05.is-pinned`.
    ========================================================================== */
 
 .s05 { position: relative; }
+
 .s05__pin {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-  padding: clamp(4.5rem, 10vh, 7rem) var(--gutter) clamp(3rem, 7vh, 5rem);
+  display: flex;
+  flex-direction: column;
+  width: min(100%, var(--column));
+  margin-inline: auto;
+  padding: clamp(1.5rem, 4vh, 2.5rem) var(--gutter) clamp(3rem, 8vh, 5rem);
 }
-.s05__pin > * { grid-area: 1 / 1; width: min(100%, var(--shell)); }
+.s05__intro  { order: 1; }
+.s05__blocks { order: 2; }
+.s05__type   { order: 3; }
+.s05__frames { order: 4; }
+.s05__outro  { order: 5; }
 
-/* --- the accumulating words ---------------------------------------------- */
+.s05__stage,
+.s05__meter { display: none; }
 
-.s05__blocks { position: relative; height: 100%; pointer-events: none; }
+.s05__intro,
+.s05__blocks,
+.s05__type,
+.s05__frames { margin-bottom: clamp(2.6rem, 8vh, 4.2rem); }
+.s05__grp { margin-bottom: clamp(2.4rem, 7vh, 3.8rem); }
+.s05__grp:last-child { margin-bottom: 0; }
+
+/* --- The responsibilities ------------------------------------------------ */
+
+.s05__blocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
 .s05__block {
-  position: absolute;
-  top: 50%;
-  left: 50%;
   font-family: var(--font-sans);
-  font-size: clamp(0.66rem, 1.05vw, 0.82rem);
+  font-size: clamp(0.68rem, 1.25vw, 1rem);
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--ink-on-dark-2);
   border: 1px solid var(--rule-dark);
-  padding: 0.85rem 1.35rem;
+  padding: 1.1rem 1.85rem;
   white-space: nowrap;
-  opacity: var(--bo, 0);
-  transform: translate(-50%, -50%)
-             translate3d(var(--bx, 0px), var(--by, 0px), 0)
-             scale(var(--bs, 0.92));
-  transition: opacity 640ms var(--ease-out), transform 780ms var(--ease-out);
-}
-.s05__block[data-lead] {
-  color: var(--ink-on-dark);
-  border-color: rgba(183, 149, 83, 0.55);
 }
 
-/* --- editorial type ------------------------------------------------------- */
+/* --- Editorial type ------------------------------------------------------ */
 
-.s05__type { position: relative; height: 100%; display: grid; place-items: center; }
-.s05__type > * {
-  grid-area: 1 / 1;
-  opacity: 0;
-  transform: translate3d(0, 16px, 0);
-  transition: opacity 640ms var(--ease-out), transform 640ms var(--ease-out);
-  pointer-events: none;
-  text-align: center;
+.s05__eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 1.3rem;
 }
-.s05__type > *.is-on { opacity: 1; transform: none; pointer-events: auto; }
-
 .s05__line {
   font-family: var(--font-display);
-  font-size: clamp(2.1rem, 7vw, 6.4rem);
-  line-height: 0.98;
+  font-size: clamp(2.1rem, 7vw, 6.2rem);
+  line-height: 0.99;
   letter-spacing: -0.032em;
   color: var(--ink-on-dark);
   margin: 0;
   max-width: 18ch;
-  justify-self: center;
 }
 .s05__line span { display: block; }
+.s05__line--peak { font-size: clamp(2.5rem, 9vw, 8rem); letter-spacing: -0.04em; }
 .s05__dim { color: var(--ink-on-dark-3); }
 
 .s05__figure {
   font-family: var(--font-display);
-  font-size: clamp(4rem, 15vw, 13rem);
+  font-size: clamp(4rem, 15vw, 12.5rem);
   line-height: 0.86;
   letter-spacing: -0.045em;
   color: var(--ink-on-dark);
@@ -1902,39 +1911,32 @@
   line-height: 1.6;
   color: var(--ink-on-dark-2);
   max-width: 48ch;
-  margin: 0 auto;
-}
-
-/* --- the three design decisions ------------------------------------------ */
-
-.s05__frames { position: relative; height: 100%; display: grid; place-items: center; }
-.s05__frame {
-  grid-area: 1 / 1;
   margin: 0;
-  width: min(100%, 46rem);
-  border: 1px solid var(--rule-dark);
-  padding: clamp(2rem, 5vw, 3.6rem);
-  text-align: left;
-  background: rgba(7, 13, 27, 0.55);
-  opacity: 0;
-  transform: translate3d(0, 22px, 0) scale(0.94);
-  transition: opacity 620ms var(--ease-out), transform 720ms var(--ease-out);
-  pointer-events: none;
 }
-.s05__frame.is-on { opacity: 1; transform: none; pointer-events: auto; }
-.s05__frame.is-past { opacity: 0.16; transform: translate3d(0, -26px, 0) scale(0.9); }
+.s05__note--close { margin-top: 1.7rem; }
+
+/* --- The three decisions -------------------------------------------------- */
+
+.s05__frames { display: grid; gap: 1rem; }
+.s05__frame {
+  margin: 0;
+  border: 1px solid var(--rule-dark);
+  background: rgba(7, 13, 27, 0.55);
+  padding: clamp(1.6rem, 4.5vw, 3.4rem);
+}
 .s05__frameNum {
+  font-family: var(--font-sans);
   font-size: var(--step--1);
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 1.3rem;
+  margin: 0 0 1.2rem;
 }
 .s05__frameTitle {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4.6vw, 3.6rem);
-  line-height: 1.02;
+  font-size: clamp(1.9rem, 5.2vw, 4.2rem);
+  line-height: 1.01;
   letter-spacing: -0.028em;
   color: var(--ink-on-dark);
   margin: 0 0 1rem;
@@ -1944,49 +1946,383 @@
   color: var(--ink-on-dark-3);
   margin: 0;
 }
+.s05__arrow { color: var(--gold); margin-right: 0.55em; }
 
-/* --- Mobile and reduced motion: a plain vertical editorial sequence ------- */
+/* ==========================================================================
+   Part V · the pinned composition (enhancement only)
+   ========================================================================== */
 
-.s05.is-flat { height: auto !important; }
-.s05.is-flat .s05__pin {
-  position: static;
-  height: auto;
-  display: block;
-  overflow: visible;
-  padding-block: clamp(2.5rem, 6vh, 4rem);
-}
-.s05.is-flat .s05__pin > * { width: 100%; }
-.s05.is-flat .s05__blocks { height: auto; display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 2rem 0; }
-.s05.is-flat .s05__block {
-  position: static;
-  transform: none;
-  opacity: 1;
-}
-.s05.is-flat .s05__type { display: block; height: auto; }
-.s05.is-flat .s05__type > * {
-  opacity: 1;
-  transform: none;
-  text-align: left;
-  margin-bottom: clamp(2.2rem, 6vh, 3.4rem);
-}
-.s05.is-flat .s05__line { max-width: 14ch; }
-.s05.is-flat .s05__note { margin-inline: 0; }
-.s05.is-flat .s05__frames { display: grid; gap: 1rem; height: auto; }
-.s05.is-flat .s05__frame {
-  grid-area: auto;
-  opacity: 1;
-  transform: none;
+.js .s05.is-pinned .s05__pin {
+  position: sticky;
+  top: 0;
+  height: 100svh;
   width: 100%;
+  max-width: none;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: clamp(4.5rem, 10vh, 7rem) var(--gutter) clamp(4rem, 9vh, 6rem);
 }
-.s05.is-flat .s05__frame.is-past { opacity: 1; transform: none; }
+.js .s05.is-pinned .s05__layer {
+  grid-area: 1 / 1;
+  width: min(100%, var(--column));
+  height: 100%;
+  margin: 0;
+}
+.js .s05.is-pinned .s05__intro,
+.js .s05.is-pinned .s05__type,
+.js .s05.is-pinned .s05__outro,
+.js .s05.is-pinned .s05__frames {
+  display: grid;
+  place-items: center;
+  gap: 0;
+  z-index: 2;
+}
+.js .s05.is-pinned .s05__blocks { display: block; position: relative; z-index: 1; pointer-events: none; }
 
-/* Stage-one eyebrow */
-.s05__eyebrow {
+/* One state visible at a time. The outgoing group is fully gone (300ms)
+   before the incoming one begins (300ms delay), so two headings can never
+   be legible on screen together. */
+.js .s05.is-pinned .s05__grp {
+  grid-area: 1 / 1;
+  margin: 0;
+  width: 100%;
+  max-width: min(100%, 60rem);
+  text-align: center;
+  justify-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 22px, 0);
+  transition: opacity 300ms var(--ease-out),
+              transform 640ms var(--ease-out),
+              visibility 0s linear 300ms;
+}
+.js .s05.is-pinned .s05__grp.is-on {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 560ms var(--ease-out) 300ms,
+              transform 860ms var(--ease-out) 260ms,
+              visibility 0s;
+}
+.js .s05.is-pinned .s05__line { max-width: 18ch; margin-inline: auto; }
+.js .s05.is-pinned .s05__note { margin-inline: auto; }
+.js .s05.is-pinned[data-stage="order"] .s05__type { transform: translateY(-9%); }
+
+/* Framed words: designed resting positions, entry from outside the frame,
+   a nudge outward each time another one lands. */
+.js .s05.is-pinned .s05__block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: var(--bo, 0);
+  transform: translate(-50%, -50%)
+             translate3d(var(--bx, 0px), var(--by, 0px), 0)
+             rotate(var(--br, 0deg))
+             scale(var(--bs, 0.9));
+  background: rgba(9, 16, 34, 0.94);
+  box-shadow: 0 20px 48px -30px rgba(0, 0, 0, 0.95);
+  transition: opacity 620ms var(--ease-out),
+              transform 860ms var(--ease-out),
+              color 500ms var(--ease-out),
+              border-color 500ms var(--ease-out);
+  will-change: transform, opacity;
+}
+.js .s05.is-pinned .s05__block[data-lead] {
+  color: var(--ink-on-dark);
+  border-color: rgba(183, 149, 83, 0.6);
+}
+
+/* Decisions: exactly one dominant frame. A spent frame recedes as an empty
+   sheet — its heading is removed, so no label is ever doubled. */
+.js .s05.is-pinned .s05__frame {
+  grid-area: 1 / 1;
+  width: min(100%, 56rem);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 34px, 0) scale(0.92);
+  transition: opacity 300ms var(--ease-out),
+              transform 720ms var(--ease-out),
+              visibility 0s linear 300ms;
+}
+.js .s05.is-pinned .s05__frame.is-on {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  z-index: 3;
+  transition: opacity 560ms var(--ease-out) 300ms,
+              transform 880ms var(--ease-out) 240ms,
+              visibility 0s;
+}
+.js .s05.is-pinned .s05__frame.is-past {
+  opacity: var(--fo, 0.26);
+  visibility: visible;
+  z-index: 1;
+  border-color: var(--rule-dark-soft);
+  background: rgba(7, 13, 27, 0.4);
+  transform: translate3d(0, calc(var(--fk, 1) * -30%), 0)
+             scale(calc(1 - var(--fk, 1) * 0.085));
+  transition: opacity 520ms var(--ease-out),
+              transform 880ms var(--ease-out),
+              visibility 0s;
+}
+/* Frame content exists on exactly one frame at a time: hidden by default,
+   revealed only once the outgoing frame has finished clearing. A spent frame
+   is therefore an empty receding sheet — never a second "Decision 0n". */
+.js .s05.is-pinned .s05__frame > * {
+  opacity: 0;
+  transition: opacity 150ms var(--ease-out);
+}
+.js .s05.is-pinned .s05__frame.is-on > * {
+  opacity: 1;
+  transition: opacity 320ms var(--ease-out) 300ms;
+}
+
+/* Persistent chrome */
+.js .s05.is-pinned .s05__stage {
+  display: block;
+  position: absolute;
+  bottom: calc(clamp(1.7rem, 4.5vh, 2.8rem) + 1.1rem);
+  left: var(--gutter);
+  z-index: 4;
+  margin: 0;
+  font-family: var(--font-sans);
   font-size: var(--step--1);
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--gold);
-  margin: 0 0 1.4rem;
+  color: var(--ink-on-dark-3);
 }
-.s05.is-flat .s05__eyebrow { margin-bottom: 0.9rem; }
+.js .s05.is-pinned .s05__meter {
+  display: block;
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: clamp(1.7rem, 4.5vh, 2.8rem);
+  height: 1px;
+  background: var(--rule-dark-soft);
+  z-index: 4;
+}
+.js .s05.is-pinned .s05__meter span {
+  display: block;
+  height: 100%;
+  width: var(--mp, 0%);
+  background: var(--gold);
+  transition: width 200ms linear;
+}
+
+/* ==========================================================================
+   Part V · supporting evidence — a curated evidence archive
+   Static first, pinned only as an enhancement, exactly as above.
+   ========================================================================== */
+
+.arch { position: relative; }
+.arch__pin {
+  width: min(100%, var(--column));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.arch__kicker,
+.arch__count,
+.arch__rail { display: none; }
+
+.arch__stack { display: grid; gap: clamp(1rem, 2.5vh, 1.5rem); }
+
+.arch__sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 19rem);
+  gap: clamp(1.2rem, 3vw, 2.8rem);
+  align-items: start;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  padding: clamp(1.5rem, 3.6vw, 2.8rem);
+}
+@media (max-width: 880px) {
+  .arch__sheet { grid-template-columns: 1fr; }
+}
+
+.arch__pos {
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  font-variant-numeric: lining-nums tabular-nums;
+  margin: 0 0 0.75rem;
+}
+.arch__meta {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--gold);
+}
+.arch__t {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1.12;
+  letter-spacing: -0.018em;
+  margin: 0 0 0.9rem;
+}
+.arch__b { color: var(--ink-2); max-width: 54ch; }
+.arch__ev {
+  font-size: var(--step--1);
+  line-height: 1.6;
+  color: var(--ink-3);
+  border-left: 1px solid var(--rule);
+  padding-left: 1.2rem;
+}
+.arch__ev p { margin: 0; }
+.arch__evH {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  font-size: 0.92em;
+  margin: 0 0 0.5rem !important;
+}
+@media (max-width: 880px) {
+  .arch__ev { border-left: 0; border-top: 1px solid var(--rule); padding: 1rem 0 0; }
+}
+.verbatim--tight { margin-top: 1.1rem; padding: 1rem 1.15rem; }
+.verbatim--tight li { font-size: var(--step-0); }
+.verbatim--tight ul { margin-bottom: 0.8rem; }
+
+/* --- The pinned archive (enhancement only) -------------------------------- */
+
+.js .arch.is-pinned .arch__pin {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  width: min(100%, 1420px);
+  display: grid;
+  grid-template-columns: clamp(3.4rem, 6vw, 6rem) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.2rem, 3.5vw, 3rem);
+  padding: clamp(4.2rem, 9vh, 6rem) var(--gutter) clamp(3.4rem, 7vh, 4.6rem);
+  overflow: hidden;
+}
+
+.js .arch.is-pinned .arch__kicker,
+.js .arch.is-pinned .arch__count {
+  display: block;
+  position: absolute;
+  bottom: clamp(1.5rem, 3.6vh, 2.3rem);
+  margin: 0;
+  z-index: 5;
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.js .arch.is-pinned .arch__kicker { left: var(--gutter); }
+.js .arch.is-pinned .arch__count {
+  right: var(--gutter);
+  color: var(--ink);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.js .arch.is-pinned .arch__count i { font-style: normal; color: var(--ink-3); }
+
+.js .arch.is-pinned .arch__rail {
+  display: grid;
+  gap: clamp(0.45rem, 1.5vh, 0.95rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 2.1vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--ink-3);
+}
+.js .arch.is-pinned .arch__rail li {
+  opacity: 0.32;
+  padding-left: 0.85rem;
+  border-left: 1px solid transparent;
+  transform-origin: left center;
+  transition: opacity 420ms var(--ease-out),
+              color 420ms var(--ease-out),
+              transform 560ms var(--ease-out),
+              border-color 420ms var(--ease-out);
+}
+.js .arch.is-pinned .arch__rail li.is-on {
+  opacity: 1;
+  color: var(--ink);
+  border-left-color: var(--gold);
+  transform: scale(1.16);
+}
+
+.js .arch.is-pinned .arch__stack {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  gap: 0;
+}
+.js .arch.is-pinned .arch__sheet {
+  grid-area: 1 / 1;
+  width: min(100%, 66rem);
+  transform-origin: 50% 0%;
+  box-shadow: 0 30px 70px -44px rgba(14, 23, 48, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 5%, 0) scale(0.97);
+  transition: opacity 300ms var(--ease-out),
+              transform 740ms var(--ease-out),
+              visibility 0s linear 300ms;
+}
+.js .arch.is-pinned .arch__pos { display: none; }
+
+.js .arch.is-pinned .arch__sheet.is-on {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  z-index: 10;
+  transition: opacity 520ms var(--ease-out) 300ms,
+              transform 800ms var(--ease-out) 240ms,
+              visibility 0s;
+}
+/* A spent sheet recedes as blank stock: its content is removed, so the
+   stack reads as paper edges and never as a second heading. */
+.js .arch.is-pinned .arch__sheet.is-past,
+.js .arch.is-pinned .arch__sheet.is-next {
+  visibility: visible;
+  opacity: var(--so, 0.4);
+  z-index: var(--sz, 1);
+  transition: opacity 520ms var(--ease-out),
+              transform 800ms var(--ease-out),
+              visibility 0s;
+}
+.js .arch.is-pinned .arch__sheet.is-past {
+  transform: translate3d(0, calc(var(--sk, 1) * -5.5%), 0)
+             scale(calc(1 - var(--sk, 1) * 0.042))
+             rotate(var(--sr, -0.9deg));
+}
+.js .arch.is-pinned .arch__sheet.is-next {
+  transform: translate3d(0, 4.5%, 0) scale(0.962) rotate(0.8deg);
+}
+/* Same guarantee for the archive: only the active plate is ever printed. */
+.js .arch.is-pinned .arch__sheet > * {
+  opacity: 0;
+  transition: opacity 150ms var(--ease-out);
+}
+.js .arch.is-pinned .arch__sheet.is-on > * {
+  opacity: 1;
+  transition: opacity 320ms var(--ease-out) 300ms;
+}
+
+/* Short viewports: tighten the plate so a full sheet still fits the pin. */
+@media (min-width: 901px) and (max-height: 820px) {
+  .js .arch.is-pinned .arch__sheet { padding: clamp(1.2rem, 2.6vw, 1.9rem); }
+  .js .arch.is-pinned .arch__t { font-size: var(--step-1); }
+  .js .arch.is-pinned .arch__b p { margin-bottom: 0.7rem; }
+  .js .arch.is-pinned .verbatim--tight { margin-top: 0.8rem; padding: 0.8rem 0.95rem; }
+  .js .arch.is-pinned .verbatim--tight li { font-size: var(--step--1); }
+}

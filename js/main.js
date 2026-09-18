@@ -572,83 +572,265 @@
     });
   }
 
-  /* --- Part V · text-led story ---------------------------------------------
-     Ten states over one pinned composition. Words accumulate and crowd, the
-     evidence clears the screen, the same words reorganise into a grid, three
-     decisions take the floor in turn, and the section resolves. No platform
-     imagery here — the showcase later keeps that reveal.                   */
+  /* --- PART V · accumulation ----------------------------------------------
+     Fifteen explicit states across seven stages, selected from a weighted
+     cumulative threshold table. Exactly one text group, at most one dominant
+     frame and one deterministic set of word positions are live at any scroll
+     offset, so headings can never double up or ghost over each other.     */
 
   function initS05() {
     var root = document.querySelector('[data-s05]');
     if (!root) return;
 
+    var pin    = root.querySelector('.s05__pin');
     var blocks = Array.prototype.slice.call(root.querySelectorAll('[data-block]'));
-    var typed = Array.prototype.slice.call(root.querySelectorAll('[data-line]'));
-    var STATES = 11;
+    var groups = Array.prototype.slice.call(root.querySelectorAll('[data-state]'));
+    var frames = Array.prototype.slice.call(root.querySelectorAll('[data-frame]'));
+    var label  = root.querySelector('[data-s05-stage]');
+    var meter  = root.querySelector('[data-s05-meter]');
 
-    // Scattered while the work piles up; a single aligned row once the
-    // section turns from the problem to the response.
-    var SCATTER = [[-31,-17],[29,-21],[-27,17],[31,13]];
-    var GRID    = [[-33,26],[-11,26],[11,26],[33,26]];
+    /* Scroll length granted to each state, in screens. The quiet opening,
+       the evidence and the closing statement are given room; the six word
+       arrivals are quick, so accumulation feels like accumulation.        */
+    var WEIGHT = [1.15, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 1.2, 1.35, 0.95, 0.95, 1.05, 1.05, 1.05, 1.3];
+    var UNIT_VH = 78;
+    var STATES = WEIGHT.length;
+
+    var STAGE = ['The pressure',
+                 'What accumulates', 'What accumulates', 'What accumulates',
+                 'What accumulates', 'What accumulates', 'What accumulates',
+                 'Everything at once',
+                 'The evidence',
+                 'What the evidence showed', 'What the evidence showed',
+                 'The decision', 'The decision', 'The decision',
+                 'The connection'];
+    var KEY = ['empty', 'enter', 'enter', 'enter', 'enter', 'enter', 'enter',
+               'peak', 'evidence', 'order', 'order', 'decide', 'decide', 'decide', 'close'];
+
+    /* Designed resting places, the edge each word travels in from, and a
+       hairline tilt. Percentages of the pinned frame, never random.       */
+    var REST = [[-24, -21], [6, -27], [-31, -4], [2, 4], [24, -12], [15, 20]];
+    var FROM = [[-96, -21], [84, -27], [-104, -4], [92, 4], [96, -12], [15, 96]];
+    var TILT = [-1.4, 1.1, 1.6, -1.2, 1.3, -1.6];
+    /* Reorganised: three columns on a shared left edge, two rows. */
+    var COL_L = [-32, -5, 22];
+    var ROW_Y = [17, 30];
+
+    var edge = [0];
+    var total = 0;
+    var i;
+    for (i = 0; i < STATES; i++) total += WEIGHT[i];
+    var run = 0;
+    for (i = 0; i < STATES; i++) { run += WEIGHT[i]; edge.push(run / total); }
 
     var flowQuery = window.matchMedia('(max-width: 900px)');
     var task = null;
+    var last = -1;
 
-    function place(el, x, y, s, o) {
-      el.style.setProperty('--bx', x + 'px');
-      el.style.setProperty('--by', y + 'px');
-      el.style.setProperty('--bs', s);
-      el.style.setProperty('--bo', o);
+    function stateAt(p) {
+      for (var s = STATES - 1; s > 0; s--) if (p >= edge[s]) return s;
+      return 0;
+    }
+
+    function place(el, x, y, rot, scale, opacity) {
+      el.style.setProperty('--bx', x.toFixed(1) + 'px');
+      el.style.setProperty('--by', y.toFixed(1) + 'px');
+      el.style.setProperty('--br', rot.toFixed(2) + 'deg');
+      el.style.setProperty('--bs', scale.toFixed(3));
+      el.style.setProperty('--bo', opacity.toFixed(2));
+    }
+
+    /* Each word that lands nudges the ones already there a little further
+       out, so the frame reads as filling up rather than as a fixed layout. */
+    function settled(i, age, w, h) {
+      var rx = REST[i][0];
+      var ry = REST[i][1];
+      var len = Math.sqrt(rx * rx + ry * ry) || 1;
+      var push = Math.min(age, 5) * 1.35;
+      return [(rx + rx / len * push) / 100 * w, (ry + ry / len * push) / 100 * h];
     }
 
     function apply(n) {
-      var w = root.clientWidth || 1200;
-      var pin = root.querySelector('.s05__pin');
-      var h = (pin && pin.clientHeight) || 700;
+      var w = (pin && pin.clientWidth) || root.clientWidth || 1200;
+      var h = (pin && pin.clientHeight) || window.innerHeight || 700;
+      var bw = Math.min(w, 1000);      // the words pile inside this box, so a
+      var bh = Math.min(h, 780);       // wide screen does not thin them out
 
       blocks.forEach(function (el, i) {
-        var entry = i + 1;                     // one responsibility per state
+        var entry = i + 1;               // one arrival per state, states 1–6
         var lead = (n === entry);
         el.toggleAttribute('data-lead', lead);
+        el.style.zIndex = String(entry);   // the newest object sits on top
 
-        if (n < entry) { place(el, 0, 0, '0.9', '0'); return; }
-
-        if (n <= 4) {                          // accumulating
+        if (n === 0 || n < entry) {
+          place(el, FROM[i][0] / 100 * bw, FROM[i][1] / 100 * bh, TILT[i] * 0.4, 0.9, 0);
+          return;
+        }
+        if (n <= 6) {                     // stage 02 · arriving and crowding
           var age = n - entry;
-          place(el, SCATTER[i][0] / 100 * w, SCATTER[i][1] / 100 * h,
-                (lead ? 1.07 : Math.max(0.93, 1 - age * 0.035)).toFixed(3),
-                (lead ? 1 : Math.max(0.4, 0.82 - age * 0.14)).toFixed(2));
-        } else if (n === 5) {                  // secondary to the big statement
-          place(el, SCATTER[i][0] / 100 * w, SCATTER[i][1] / 100 * h, '0.95', '0.42');
-        } else if (n === 6) {                  // the evidence clears the screen
-          place(el, SCATTER[i][0] / 100 * w, SCATTER[i][1] / 100 * h, '0.9', '0.05');
-        } else if (n <= 9) {                   // back, aligned into order
-          place(el, GRID[i][0] / 100 * w, GRID[i][1] / 100 * h, '1',
-                n === 7 ? '0.62' : '0.3');
+          var q = settled(i, age, bw, bh);
+          place(el, q[0], q[1], TILT[i],
+                lead ? 1.12 : Math.max(0.93, 1 - age * 0.02),
+                lead ? 1 : Math.max(0.62, 0.9 - age * 0.056));
+        } else if (n === 7) {             // stage 03 · behind the big phrase
+          var r = settled(i, 5 - i, bw, bh);
+          place(el, r[0], r[1], TILT[i], 0.96, 0.24);
+        } else if (n === 8) {             // stage 04 · the evidence clears it
+          var c = settled(i, 5 - i, bw, bh);
+          place(el, c[0], c[1], TILT[i], 0.94, 0);
         } else {
-          place(el, GRID[i][0] / 100 * w, GRID[i][1] / 100 * h, '1', '0');
+          var gx = COL_L[i % 3] / 100 * w + el.offsetWidth / 2;
+          var gy = ROW_Y[i < 3 ? 0 : 1] / 100 * h;
+          if (n <= 10) {                  // stage 05 · the same words, ordered
+            place(el, gx, gy, 0, 1, n === 9 ? 0.52 : 0.32);
+          } else {                        // stages 06–07 · the words stand down
+            place(el, gx, gy, 0, 1, 0);
+          }
         }
       });
 
-      typed.forEach(function (el) { el.classList.toggle('is-on', +el.dataset.line === n); });
+      groups.forEach(function (el) {
+        el.classList.toggle('is-on', parseInt(el.getAttribute('data-state'), 10) === n);
+      });
+
+      var active = (n >= 11 && n <= 13) ? n - 11 : -1;
+      frames.forEach(function (el, i) {
+        el.classList.remove('is-on', 'is-past');
+        el.style.removeProperty('--fk');
+        el.style.removeProperty('--fo');
+        if (active < 0) return;
+        if (i === active) { el.classList.add('is-on'); return; }
+        if (i < active) {
+          el.classList.add('is-past');
+          el.style.setProperty('--fk', String(active - i));
+          el.style.setProperty('--fo', active - i === 1 ? '0.26' : '0.11');
+        }
+      });
+
+      root.setAttribute('data-stage', KEY[n]);
+      if (label) label.textContent = STAGE[n];
     }
 
     function flat() {
-      root.classList.add('is-flat');
-      if (task) { var i = scrollTasks.indexOf(task); if (i > -1) scrollTasks.splice(i, 1); task = null; }
+      root.classList.remove('is-pinned');
+      root.style.removeProperty('height');
+      root.removeAttribute('data-stage');
+      if (task) {
+        var a = scrollTasks.indexOf(task); if (a > -1) scrollTasks.splice(a, 1);
+        var b = resizeTasks.indexOf(task); if (b > -1) resizeTasks.splice(b, 1);
+        task = null;
+      }
+      last = -1;
       blocks.forEach(function (el) { el.removeAttribute('style'); el.removeAttribute('data-lead'); });
-      typed.forEach(function (el) { el.classList.add('is-on'); });
+      groups.forEach(function (el) { el.classList.remove('is-on'); });
+      frames.forEach(function (el) { el.classList.remove('is-on', 'is-past'); el.removeAttribute('style'); });
+      if (meter) meter.style.removeProperty('--mp');
     }
 
     function pinned() {
-      root.classList.remove('is-flat');
+      root.classList.add('is-pinned');
+      root.style.height = (total * UNIT_VH).toFixed(2) + 'vh';
       if (task) return;
       task = function () {
         var rect = root.getBoundingClientRect();
         var travel = root.offsetHeight - window.innerHeight;
         if (travel <= 0) return;
         var p = clamp(-rect.top / travel, 0, 1);
-        apply(clamp(Math.round(p * (STATES - 1)), 0, STATES - 1));
+        if (meter) meter.style.setProperty('--mp', (p * 100).toFixed(1) + '%');
+        var n = stateAt(p);
+        if (n === last) return;
+        last = n;
+        apply(n);
+      };
+      scrollTasks.push(task);
+      resizeTasks.push(function () { last = -1; });
+      resizeTasks.push(task);
+      task();
+    }
+
+    function decide() { if (reduced || flowQuery.matches) flat(); else pinned(); }
+    decide();
+    if (typeof flowQuery.addEventListener === 'function') flowQuery.addEventListener('change', decide);
+  }
+
+  /* --- PART V · supporting evidence ---------------------------------------
+     A curated archive. One editorial plate is active at a time; spent plates
+     recede as blank stock and the next one waits underneath, so the reader
+     sees a physical file rather than a second copy of the same heading.  */
+
+  function initArchive() {
+    var root = document.querySelector('[data-arch]');
+    if (!root) return;
+
+    var sheets = Array.prototype.slice.call(root.querySelectorAll('[data-sheet]'));
+    var rail   = Array.prototype.slice.call(root.querySelectorAll('[data-rail]'));
+    var count  = root.querySelector('[data-arch-count]');
+    if (!sheets.length) return;
+
+    var N = sheets.length;
+    var UNIT_VH = 96;
+    var flowQuery = window.matchMedia('(max-width: 900px)');
+    var task = null;
+    var last = -1;
+
+    function apply(n) {
+      sheets.forEach(function (el, i) {
+        el.classList.remove('is-on', 'is-past', 'is-next');
+        el.style.removeProperty('--sk');
+        el.style.removeProperty('--so');
+        el.style.removeProperty('--sz');
+        el.style.removeProperty('--sr');
+
+        if (i === n) { el.classList.add('is-on'); return; }
+
+        if (i < n) {
+          var k = n - i;
+          if (k > 2) return;                      // deeper plates stay filed
+          el.classList.add('is-past');
+          el.style.setProperty('--sk', String(k));
+          el.style.setProperty('--so', k === 1 ? '0.6' : '0.3');
+          el.style.setProperty('--sz', String(5 - k));
+          el.style.setProperty('--sr', (k === 1 ? -0.9 : 1.1) + 'deg');
+        } else if (i === n + 1) {
+          el.classList.add('is-next');
+          el.style.setProperty('--so', '0.44');
+          el.style.setProperty('--sz', '2');
+        }
+      });
+
+      rail.forEach(function (el, i) { el.classList.toggle('is-on', i === n); });
+      if (count) count.textContent = ('0' + (n + 1)).slice(-2);
+    }
+
+    function flat() {
+      root.classList.remove('is-pinned');
+      root.style.removeProperty('height');
+      if (task) {
+        var a = scrollTasks.indexOf(task); if (a > -1) scrollTasks.splice(a, 1);
+        var b = resizeTasks.indexOf(task); if (b > -1) resizeTasks.splice(b, 1);
+        task = null;
+      }
+      last = -1;
+      sheets.forEach(function (el) {
+        el.classList.remove('is-on', 'is-past', 'is-next');
+        el.removeAttribute('style');
+      });
+      rail.forEach(function (el) { el.classList.remove('is-on'); });
+    }
+
+    function pinned() {
+      root.classList.add('is-pinned');
+      root.style.height = (N * UNIT_VH) + 'vh';
+      if (task) return;
+      task = function () {
+        var rect = root.getBoundingClientRect();
+        var travel = root.offsetHeight - window.innerHeight;
+        if (travel <= 0) return;
+        var p = clamp(-rect.top / travel, 0, 1);
+        var n = clamp(Math.floor(p * N), 0, N - 1);
+        if (n === last) return;
+        last = n;
+        apply(n);
       };
       scrollTasks.push(task);
       resizeTasks.push(task);
@@ -869,6 +1051,7 @@
     initCards();
     initStages();
     initS05();
+    initArchive();
     initExhibit();
     initCursor();
     initChartHover();
