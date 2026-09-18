@@ -51,20 +51,16 @@ ASSET-MANIFEST.md       what every asset is and where it is used
 
 ## The narrative
 
-| Act | Section | Assessment evidence |
-|-----|---------|---------------------|
-| I | We enter the school | Local context |
-| II | We noticed | How the issue was identified |
-| III | We investigated | Research method |
-| IV | We found | Evidence — the five survey findings |
-| V | We asked why | Six perspectives, closing on the student perspective recording |
-| VI | We decided to act | Rationale and stated limits |
-| VII | How we worked | Team collaboration — pinned scroll sequence |
-| VIII | We built LeadTime AI | The digital outcome |
-| IX | We took it into the school | Implementation |
-| X | Student voice | Primary evidence — testimonial |
-| XI | Evaluation | Impact, limitations, next steps |
-| XII | Reflection | Personal learning |
+| Part | Section | Assessment evidence |
+|---|---|---|
+| I | Topic and local issue | Global topic, local issue, local context; WHO and UNICEF Colombia |
+| II | The team | Team collaboration — pinned scroll sequence |
+| III | What we observed | How the issue was identified |
+| IV | Survey results | Initial survey, 50 Grade 9 students |
+| V | Connection to the course of action | Perspectives, student perspective recording, the decision |
+| VI | Evidence of the action | LeadTime AI, course of action photographs, student response |
+| VII | Evaluation of the action | Post-action survey, 50 responses |
+| VIII | Reflection | Personal learning |
 | — | Evidence register | Sources |
 
 The **Index** button in the top bar opens a direct route to any of these, each tagged
@@ -82,14 +78,14 @@ mental health condition.
 Where something has not been measured yet, the page says so. Three areas are
 deliberately left as labelled placeholders rather than filled with estimates:
 
-1. **External references** (Act V, perspective 06) — no national or international
-   statistic is shown until a source has been read and verified.
-2. **Evaluation** (Act XI, "What is still to be measured") — post-action survey, user
-   feedback, what worked, what needs improvement, next steps.
-3. **Testimonial transcript** (Act X) — no quotation is drawn from the recording
-   because no transcript has been verified. (The *student perspective* clip at the
-   end of Act V is different: its statement was supplied verbatim and is transcribed
-   on screen.)
+1. **The post-action survey screenshot** is not yet in the repository. Drop the
+   original Microsoft Forms screenshot at `assets/survey/04-post-action-survey.png`
+   and add a fourth figure to the screenshot row in the evidence register, copying
+   the markup of the three already there. An HTML comment marks the spot. Deliberately
+   no external link for this survey — the screenshot is the source evidence.
+2. **The testimonial recording** (Part VI) carries no quotation, because no transcript
+   of it has been verified. The *student perspective* clip in Part V is different: its
+   statement is shown on screen, lightly edited for grammatical clarity.
 
 ## Before submitting — worth reviewing
 
@@ -100,11 +96,6 @@ deliberately left as labelled placeholders rather than filled with estimates:
   used full-bleed behind a heavy scrim and film grain, which carries it, but a
   higher-resolution version would sharpen the opening. Replace
   `assets/school/01-exterior-cas.jpg` and nothing else needs changing.
-- **Replace Sophia Leguizamo's portrait if you can.** Her source is 120 x 120 and is
-  shown at 300px wide in Act VII, which is a 2.5x enlargement and visibly the softest
-  image on the page. Drop a larger original in at `assets/team/sophia-leguizamo.jpg`
-  and nothing else needs changing. (The other four are 428px wide or more and are
-  never enlarged.)
 - **Fill the placeholders above** as the data arrives.
 
 ## The two videos behave differently, on purpose

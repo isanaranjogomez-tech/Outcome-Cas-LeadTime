@@ -56,8 +56,10 @@
   position: relative;
   height: 100%;
   display: grid;
-  align-items: end;
-  padding: 0 var(--gutter) clamp(3.5rem, 9vh, 6.5rem);
+  /* Centred, not bottom-anchored: the title reads better and sits balanced
+     over the photograph instead of crowding the lower-left corner. */
+  align-items: center;
+  padding: clamp(3.5rem, 9vh, 6rem) var(--gutter) clamp(5rem, 11vh, 7.5rem);
   color: var(--ink-on-dark);
 }
 .cinema__copy {
