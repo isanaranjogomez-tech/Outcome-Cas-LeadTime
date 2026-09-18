@@ -561,23 +561,151 @@
 </section>
 
 <!-- ==========================================================================
-     PART V · CONNECTION TO THE COURSE OF ACTION
+     CHAPTER CARD · from evidence to action
      ========================================================================== -->
 
-<section class="band" id="connection" aria-labelledby="connection-h">
+<section class="card" data-card aria-hidden="true">
+  <div class="card__pin">
+    <div class="card__inner">
+      <p class="card__eyebrow">Chapter</p>
+      <p class="card__line"><span>From evidence</span></p>
+      <p class="card__line card__line--b"><span>to action</span></p>
+      <div class="card__rule"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     PART V · CONNECTION TO THE COURSE OF ACTION
+     A pinned product story: the visual object stays central while the
+     reasoning changes around it. Every screenshot is the real interface.
+     ========================================================================== -->
+
+<section class="band--dark" id="connection" aria-labelledby="connection-h" style="padding-top:var(--band)">
   <div class="column">
     <div class="chapter" data-reveal>
       <p class="chapter__act">Part V</p>
       <h2 class="title" id="connection-h">Connection to the course of action</h2>
       <p class="chapter__tag">Observed → measured → understood → decided</p>
     </div>
+  </div>
 
-    <div class="measure" data-reveal>
-      <p class="lede">Before choosing an action we read the same evidence from each of these positions.</p>
+  <div class="stage" data-stage style="height:calc(7 * 92vh)">
+    <div class="stage__pin column">
+
+      <div class="scene" data-scene="0">
+        <p class="scene__kicker">The problem</p>
+        <p class="scene__line">Overlapping deadlines.</p>
+        <p class="scene__sub">33 of 50 students reported feeling stressed always or frequently because of homework or summative assignments.</p>
+      </div>
+
+      <div class="scene" data-scene="1">
+        <p class="scene__kicker">The problem</p>
+        <p class="scene__line">Work does not arrive evenly.</p>
+        <p class="scene__sub">It clusters. A student rarely sees the collision until the days themselves arrive.</p>
+      </div>
+
+      <div class="scene" data-scene="2">
+        <p class="scene__kicker">The design decision</p>
+        <p class="scene__line">So we did not create another study guide.</p>
+        <p class="scene__sub">We created a system to organise the workload.</p>
+      </div>
+
+      <div class="scene" data-scene="3">
+        <p class="scene__kicker">Feature 01</p>
+        <p class="scene__line">Too many deadlines.</p>
+        <p class="scene__sub">The week becomes a single strip, with the heavy days raised before they arrive.</p>
+        <p class="scene__meta">Academic calendar</p>
+      </div>
+
+      <div class="scene" data-scene="4">
+        <p class="scene__kicker">Feature 02</p>
+        <p class="scene__line">High-volume tasks.</p>
+        <p class="scene__sub">Long or unclear instructions go in; a structured response comes back.</p>
+        <p class="scene__meta">AI task breakdown</p>
+      </div>
+
+      <div class="scene" data-scene="5">
+        <p class="scene__kicker">Feature 03</p>
+        <p class="scene__line">Unclear study planning.</p>
+        <p class="scene__sub">The output is a schedule: each day themed, each item timed.</p>
+        <p class="scene__meta">AI-generated work plan</p>
+      </div>
+
+      <div class="scene" data-scene="6">
+        <p class="scene__kicker">The response</p>
+        <p class="scene__line" style="max-width:20ch;font-size:clamp(1.5rem,3.2vw,2.6rem)">Research identified the pressure.<br>Students showed us where it appeared.<br>LeadTime AI turned that evidence into an action.</p>
+        <p style="margin-top:1.8rem">
+          <a class="outcome__cta" href="https://cas-leadtime-xkw5.onrender.com/dashboard" target="_blank" rel="noopener noreferrer" data-cursor="Open">
+            Explore the live outcome <span aria-hidden="true">↗</span>
+          </a>
+        </p>
+      </div>
+
+      <div class="object">
+        <div class="object__layer" data-for="0,1,2">
+          <div style="width:100%">
+            <div class="week" data-week>
+              <div class="week__head"><span>An ordinary week</span><span>Generic labels</span></div>
+              <div class="week__grid">
+            <div class="week__col"><span class="week__day">Mon</span>
+              <span class="week__chip" data-seed>Homework</span>
+            </div>
+            <div class="week__col"><span class="week__day">Tue</span>
+              <span class="week__chip" data-seed>Homework</span>
+              <span class="week__chip">Summative</span>
+            </div>
+            <div class="week__col"><span class="week__day">Wed</span>
+              <span class="week__chip" data-seed data-heavy>Summative</span>
+              <span class="week__chip">Project</span>
+              <span class="week__chip" data-heavy>Deadline</span>
+            </div>
+            <div class="week__col"><span class="week__day">Thu</span>
+              <span class="week__chip" data-seed>Homework</span>
+              <span class="week__chip">Deadline</span>
+            </div>
+            <div class="week__col"><span class="week__day">Fri</span>
+              <span class="week__chip" data-seed data-heavy>Summative</span>
+              <span class="week__chip">Project</span>
+            </div>
+              </div>
+            </div>
+            <p class="object__cap">Abstract illustration · not survey data</p>
+          </div>
+        </div>
+
+        <div class="object__layer" data-for="3,6">
+          <div style="width:100%">
+            <div class="object__shot"><img src="assets/platform/01-dashboard-week.jpg" alt="The LeadTime AI weekly dashboard, showing each day's exams and submissions with estimated hours and high-load alerts." loading="lazy" decoding="async"></div>
+            <p class="object__cap">LeadTime AI · academic calendar</p>
+          </div>
+        </div>
+
+        <div class="object__layer" data-for="4">
+          <div style="width:100%">
+            <div class="object__shot"><img src="assets/platform/03-desglosador-input.jpg" alt="The LeadTime AI breakdown tool with pasted instructions on the left and a generated plan beginning on the right." loading="lazy" decoding="async"></div>
+            <p class="object__cap">LeadTime AI · AI task breakdown</p>
+          </div>
+        </div>
+
+        <div class="object__layer" data-for="5">
+          <div style="width:100%">
+            <div class="object__shot"><img src="assets/platform/04-plan-days-1-2.jpg" alt="The generated work plan, with each day themed and each task carrying a time estimate." loading="lazy" decoding="async"></div>
+            <p class="object__cap">LeadTime AI · generated work plan</p>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
+</section>
 
-    <div style="margin-top:clamp(2.5rem,6vh,4rem)">
+<!-- Supporting copy: the perspectives that informed the decision ---------- -->
 
+<section class="band" aria-labelledby="persp-h">
+  <div class="column">
+    <p class="eyebrow" style="margin-bottom:1.1rem" data-reveal>Part V · supporting evidence</p>
+    <h3 class="subtitle" id="persp-h" style="max-width:26ch;margin-bottom:clamp(2rem,5vh,3rem)" data-reveal data-stagger="1">The perspectives behind the decision.</h3>
       <article class="persp" data-reveal>
         <p class="persp__n">01</p>
         <div>
@@ -644,7 +772,6 @@
         </div>
         <aside class="persp__evidence"><strong>Grounded in</strong>Q1 and Q7 — stress attributed specifically to homework, summatives and pending assignments.</aside>
       </article>
-    </div>
   </div>
 </section>
 
@@ -828,10 +955,84 @@
     <div class="chapter" data-reveal>
       <p class="chapter__act">Part VI · Implementation</p>
       <h2 class="title" id="school-h">We took it into the school</h2>
-      <p class="chapter__tag">B. Course of action photographs</p>
+      <p class="chapter__tag">Campaign · photographs · student response</p>
     </div>
     <div class="measure" data-reveal>
       <p class="lede">A platform nobody has been shown is not an intervention.</p>
+    </div>
+  </div>
+
+
+  <!-- Chapter card · from idea to campaign -->
+  <div class="card card--light" data-card aria-hidden="true">
+    <div class="card__pin">
+      <div class="card__inner">
+        <p class="card__eyebrow">Chapter</p>
+        <p class="card__line"><span>From idea</span></p>
+        <p class="card__line card__line--b"><span>to campaign</span></p>
+        <div class="card__rule"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column" style="padding-top:clamp(3rem,8vh,5rem)">
+    <p class="eyebrow" style="margin-bottom:1.1rem" data-reveal>Course of action · Campaign materials</p>
+    <h3 class="display" style="margin-bottom:1.2rem" data-reveal data-stagger="1">The campaign</h3>
+    <p class="lede" style="max-width:40ch;margin-bottom:1rem" data-reveal data-stagger="2">Before students used the platform, they had to discover it.</p>
+    <p class="prose prose--dark" style="max-width:52ch;margin-bottom:0.9rem" data-reveal data-stagger="3">Posters created and used by the team as part of the Course of Action.</p>
+    <p class="note" style="max-width:62ch" data-reveal data-stagger="4">9 GRADERS AI was the working name used in the campaign materials during the development stage; the final platform was released as LeadTime AI.</p>
+  </div>
+
+  <div class="exhibit" data-exhibit style="height:calc(6 * 88vh)">
+    <div class="exhibit__pin">
+      <div class="exhibit__bar">
+        <h4 class="exhibit__title">Campaign materials</h4>
+        <span class="exhibit__count" data-exhibit-count>01 / 05</span>
+      </div>
+      <div class="exhibit__stage">
+        <button class="exhibit__item" type="button" data-ex="0"
+                data-zoom="assets/action/poster-01.png"
+                data-zoom-label="Campaign poster 1"
+                data-zoom-alt="Campaign poster headed “When school gets heavy”, setting out the problem, the team’s survey insights of 66% and 70%, and the proposed solution." data-cursor="View">
+          <img src="assets/action/poster-01.png" alt="Campaign poster headed “When school gets heavy”, setting out the problem, the team’s survey insights of 66% and 70%, and the proposed solution." loading="lazy" decoding="async">
+        </button>
+        <button class="exhibit__item" type="button" data-ex="1"
+                data-zoom="assets/action/poster-02.png"
+                data-zoom-label="Campaign poster 2"
+                data-zoom-alt="Campaign poster headed “Plan better. Stress less.”, showing the planning tool on a phone with three steps and a QR code." data-cursor="View">
+          <img src="assets/action/poster-02.png" alt="Campaign poster headed “Plan better. Stress less.”, showing the planning tool on a phone with three steps and a QR code." loading="lazy" decoding="async">
+        </button>
+        <button class="exhibit__item" type="button" data-ex="2"
+                data-zoom="assets/action/poster-03.png"
+                data-zoom-label="Campaign poster 3"
+                data-zoom-alt="Campaign poster headed “Good planning today, peace of mind tomorrow”, listing four reasons planning helps." data-cursor="View">
+          <img src="assets/action/poster-03.png" alt="Campaign poster headed “Good planning today, peace of mind tomorrow”, listing four reasons planning helps." loading="lazy" decoding="async">
+        </button>
+        <button class="exhibit__item" type="button" data-ex="3"
+                data-zoom="assets/action/poster-04.png"
+                data-zoom-label="Campaign poster 4"
+                data-zoom-alt="Campaign poster headed “Small steps. Big change.”, inviting students to join the movement." data-cursor="View">
+          <img src="assets/action/poster-04.png" alt="Campaign poster headed “Small steps. Big change.”, inviting students to join the movement." loading="lazy" decoding="async">
+        </button>
+        <button class="exhibit__item" type="button" data-ex="4"
+                data-zoom="assets/action/poster-05.png"
+                data-zoom-label="Campaign poster 5"
+                data-zoom-alt="Campaign poster headed “Your well-being is worth planning for”, with three reminders and a QR code." data-cursor="View">
+          <img src="assets/action/poster-05.png" alt="Campaign poster headed “Your well-being is worth planning for”, with three reminders and a QR code." loading="lazy" decoding="async">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chapter card · from campaign to interaction -->
+  <div class="card" data-card aria-hidden="true">
+    <div class="card__pin">
+      <div class="card__inner">
+        <p class="card__eyebrow">Chapter</p>
+        <p class="card__line"><span>From campaign</span></p>
+        <p class="card__line card__line--b"><span>to interaction</span></p>
+        <div class="card__rule"></div>
+      </div>
     </div>
   </div>
 
@@ -859,59 +1060,6 @@
     </figcaption>
   </figure>
 
-
-  <div class="column" style="padding-top:clamp(3.5rem,9vh,6.5rem)">
-    <p class="eyebrow" style="margin-bottom:1.1rem" data-reveal>Campaign materials</p>
-    <p class="lede" style="max-width:44ch;margin-bottom:1.1rem" data-reveal data-stagger="1">Posters created and used by the team as part of the Course of Action.</p>
-    <p class="note" style="max-width:62ch;margin-bottom:clamp(1.8rem,4vh,2.8rem)" data-reveal data-stagger="2">9 GRADERS AI was the working name used in the campaign materials during the development stage; the final platform was released as LeadTime AI.</p>
-    <div class="posters" data-reveal data-stagger="3">
-        <figure>
-          <button class="poster__btn" type="button"
-                  data-zoom="assets/action/poster-01.png"
-                  data-zoom-label="Campaign poster 1"
-                  data-zoom-alt="Campaign poster headed “When school gets heavy”, setting out the problem, the team’s survey insights of 66% and 70%, and the proposed solution.">
-            <img src="assets/action/poster-01.png" alt="Campaign poster headed “When school gets heavy”, setting out the problem, the team’s survey insights of 66% and 70%, and the proposed solution." loading="lazy" decoding="async">
-          </button>
-          <figcaption>Campaign poster 1</figcaption>
-        </figure>
-        <figure>
-          <button class="poster__btn" type="button"
-                  data-zoom="assets/action/poster-02.png"
-                  data-zoom-label="Campaign poster 2"
-                  data-zoom-alt="Campaign poster headed “Plan better. Stress less.”, showing the planning tool on a phone with three steps and a QR code.">
-            <img src="assets/action/poster-02.png" alt="Campaign poster headed “Plan better. Stress less.”, showing the planning tool on a phone with three steps and a QR code." loading="lazy" decoding="async">
-          </button>
-          <figcaption>Campaign poster 2</figcaption>
-        </figure>
-        <figure>
-          <button class="poster__btn" type="button"
-                  data-zoom="assets/action/poster-03.png"
-                  data-zoom-label="Campaign poster 3"
-                  data-zoom-alt="Campaign poster headed “Good planning today, peace of mind tomorrow”, listing four reasons planning helps.">
-            <img src="assets/action/poster-03.png" alt="Campaign poster headed “Good planning today, peace of mind tomorrow”, listing four reasons planning helps." loading="lazy" decoding="async">
-          </button>
-          <figcaption>Campaign poster 3</figcaption>
-        </figure>
-        <figure>
-          <button class="poster__btn" type="button"
-                  data-zoom="assets/action/poster-04.png"
-                  data-zoom-label="Campaign poster 4"
-                  data-zoom-alt="Campaign poster headed “Small steps. Big change.”, inviting students to join the movement.">
-            <img src="assets/action/poster-04.png" alt="Campaign poster headed “Small steps. Big change.”, inviting students to join the movement." loading="lazy" decoding="async">
-          </button>
-          <figcaption>Campaign poster 4</figcaption>
-        </figure>
-        <figure>
-          <button class="poster__btn" type="button"
-                  data-zoom="assets/action/poster-05.png"
-                  data-zoom-label="Campaign poster 5"
-                  data-zoom-alt="Campaign poster headed “Your well-being is worth planning for”, with three reminders and a QR code.">
-            <img src="assets/action/poster-05.png" alt="Campaign poster headed “Your well-being is worth planning for”, with three reminders and a QR code." loading="lazy" decoding="async">
-          </button>
-          <figcaption>Campaign poster 5</figcaption>
-        </figure>
-    </div>
-  </div>
 
   <div class="column" style="padding-top:clamp(3.5rem,9vh,6.5rem);padding-bottom:var(--band)">
     <p class="eyebrow" style="margin-bottom:1.4rem" data-reveal>From research to real-world action</p>
@@ -988,14 +1136,25 @@
       <p class="lede">After the platform was introduced, we asked the year group one question about it.</p>
     </div>
 
-    <article class="finding" style="margin-top:clamp(1.5rem,4vh,2.5rem)">
-      <div data-reveal>
-        <p class="finding__index">Post-action finding</p>
-        <span class="stat" data-stat><span>66</span><sup>%</sup></span>
-        <p class="finding__claim">rated LeadTime AI as extremely or somewhat helpful for time management and task organisation.</p>
-        <p class="finding__q"><b>33 of 50 responses.</b> The question measured perceived usefulness, not measured performance.</p>
-      </div>
+    <div class="stage stage--light" data-stage style="height:calc(2 * 95vh);margin-top:clamp(1rem,3vh,2rem)">
+      <div class="stage__pin">
 
+        <div class="scene" data-scene="0">
+          <p class="scene__kicker">Post-action finding</p>
+          <span class="stat" data-stat style="font-size:clamp(5rem,17vw,15rem)"><span>66</span><sup>%</sup></span>
+          <p class="finding__claim" style="max-width:34ch">rated LeadTime AI as extremely or somewhat helpful for time management and task organisation.</p>
+          <p class="finding__q"><b>33 of 50 responses.</b> The question measured perceived usefulness, not measured performance.</p>
+        </div>
+
+        <div class="scene" data-scene="1">
+          <p class="scene__kicker">The breakdown</p>
+          <span class="stat" data-stat><span>66</span><sup>%</sup></span>
+          <p class="finding__claim" style="max-width:30ch">positive — and the full distribution behind it.</p>
+          <p class="finding__q"><b>33 of 50 responses.</b> Perceived usefulness, not measured performance.</p>
+        </div>
+
+        <div class="object">
+          <div class="object__layer" data-for="1">
       <div class="chart" data-chart data-reveal data-stagger="1" role="group" aria-label="Post-action survey response distribution, 50 respondents">
         <p class="chart__title">Post-action · “Has CAS LeadTime AI improved your time management and helped you organize your tasks more effectively?”</p>
         <div class="stack" aria-hidden="true">
@@ -1025,7 +1184,11 @@
           </table>
         </details>
       </div>
-    </article>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
     <div class="measure" style="border-top:1px solid var(--rule);padding-top:2rem" data-reveal>
       <p class="lede">Critical evaluation</p>

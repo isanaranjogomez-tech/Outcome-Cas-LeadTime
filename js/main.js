@@ -486,6 +486,190 @@
     }, { threshold: 0.55 }).observe(film);
   }
 
+  /* --- Chapter cards -------------------------------------------------------
+     Two lines rise out of a mask when the card is reached. Nothing else on
+     the screen moves.                                                      */
+
+  function initCards() {
+    var cards = Array.prototype.slice.call(document.querySelectorAll('[data-card]'));
+    if (!cards.length) return;
+
+    if (reduced || !('IntersectionObserver' in window)) {
+      cards.forEach(function (c) { c.classList.add('is-flat'); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var on = entry.isIntersecting;
+        var el = entry.target;
+        el.style.setProperty('--ce', on ? 1 : 0);
+        el.style.setProperty('--cr', on ? 1 : 0);
+        el.querySelectorAll('.card__line span').forEach(function (sp) {
+          sp.style.setProperty('--cy', on ? '0%' : '105%');
+        });
+      });
+    }, { threshold: 0.25 });
+    cards.forEach(function (c) { io.observe(c); });
+  }
+
+  /* --- Pinned scene stages -------------------------------------------------
+     Scroll selects which scene is active; the visual object beside it swaps
+     layers. Scroll never scrubs an animation and the section is released as
+     soon as its last scene has been read.                                  */
+
+  function initStages() {
+    var stages = Array.prototype.slice.call(document.querySelectorAll('[data-stage]'));
+    if (!stages.length) return;
+
+    var flowQuery = window.matchMedia('(max-width: 900px)');
+
+    stages.forEach(function (stage) {
+      var scenes = Array.prototype.slice.call(stage.querySelectorAll('[data-scene]'));
+      var layers = Array.prototype.slice.call(stage.querySelectorAll('[data-for]'));
+      var week = stage.querySelector('[data-week]');
+      if (!scenes.length) return;
+
+      var task = null;
+
+      function apply(n) {
+        scenes.forEach(function (s) { s.classList.toggle('is-on', +s.dataset.scene === n); });
+        layers.forEach(function (l) {
+          l.classList.toggle('is-on', l.dataset.for.split(',').indexOf(String(n)) > -1);
+        });
+        if (week) {
+          week.classList.toggle('is-loaded', n >= 1);
+          week.classList.toggle('is-sorted', n >= 2);
+        }
+      }
+
+      function flat() {
+        stage.classList.add('is-flat');
+        if (task) { var i = scrollTasks.indexOf(task); if (i > -1) scrollTasks.splice(i, 1); task = null; }
+        scenes.forEach(function (s) { s.classList.add('is-on'); });
+        layers.forEach(function (l) { l.classList.add('is-on'); });
+        if (week) week.classList.add('is-loaded', 'is-sorted');
+      }
+
+      function pinned() {
+        stage.classList.remove('is-flat');
+        if (task) return;
+        task = function () {
+          var rect = stage.getBoundingClientRect();
+          var travel = stage.offsetHeight - window.innerHeight;
+          if (travel <= 0) return;
+          var p = clamp(-rect.top / travel, 0, 1);
+          apply(clamp(Math.round(p * (scenes.length - 1)), 0, scenes.length - 1));
+        };
+        scrollTasks.push(task);
+        resizeTasks.push(task);
+        task();
+      }
+
+      function decide() { if (reduced || flowQuery.matches) flat(); else pinned(); }
+      decide();
+      if (typeof flowQuery.addEventListener === 'function') flowQuery.addEventListener('change', decide);
+    });
+  }
+
+  /* --- Campaign exhibition -------------------------------------------------
+     A stack of printed pieces that separates, then shows one poster at a
+     time. On phones the same markup becomes a swipeable rail.             */
+
+  function initExhibit() {
+    var ex = document.querySelector('[data-exhibit]');
+    if (!ex) return;
+
+    var items = Array.prototype.slice.call(ex.querySelectorAll('.exhibit__item'));
+    var count = ex.querySelector('[data-exhibit-count]');
+    if (!items.length) return;
+
+    var flowQuery = window.matchMedia('(max-width: 900px)');
+    var task = null;
+
+    function set(el, o) {
+      for (var k in o) el.style.setProperty(k, o[k]);
+    }
+
+    function apply(state) {
+      var w = items[0].offsetWidth || 260;
+      items.forEach(function (it, i) {
+        if (state === 0) {                       // the stack, as printed pieces
+          set(it, { '--ex': (i * 7 - 14) + 'px', '--ey': (i * -5 + 10) + 'px',
+                    '--er': ((i - 2) * 1.7) + 'deg', '--es': '0.95', '--eo': '1', '--ez': String(i + 1) });
+          it.classList.remove('is-front');
+        } else {
+          var d = i - (state - 1);
+          set(it, { '--ex': (d * w * 1.06).toFixed(1) + 'px', '--ey': '0px', '--er': '0deg',
+                    '--es': d === 0 ? '1' : '0.86',
+                    '--eo': Math.abs(d) > 2 ? '0' : (d === 0 ? '1' : '0.4'),
+                    '--ez': String(10 - Math.abs(d)) });
+          it.classList.toggle('is-front', d === 0);
+        }
+      });
+      if (count) count.textContent = state === 0 ? 'The stack' :
+        ('0' + state) + ' / 05';
+    }
+
+    function flat() {
+      ex.classList.add('is-flat');
+      if (task) { var i = scrollTasks.indexOf(task); if (i > -1) scrollTasks.splice(i, 1); task = null; }
+      items.forEach(function (it) { it.removeAttribute('style'); it.classList.remove('is-front'); });
+      if (count) count.textContent = '01 – 05';
+    }
+
+    function pinned() {
+      ex.classList.remove('is-flat');
+      if (task) return;
+      task = function () {
+        var rect = ex.getBoundingClientRect();
+        var travel = ex.offsetHeight - window.innerHeight;
+        if (travel <= 0) return;
+        var p = clamp(-rect.top / travel, 0, 1);
+        apply(clamp(Math.round(p * 5), 0, 5));
+      };
+      scrollTasks.push(task);
+      resizeTasks.push(task);
+      task();
+    }
+
+    function decide() { if (reduced || flowQuery.matches) flat(); else pinned(); }
+    decide();
+    if (typeof flowQuery.addEventListener === 'function') flowQuery.addEventListener('change', decide);
+  }
+
+  /* --- Contextual cursor label (fine pointers only) ------------------------ */
+
+  function initCursor() {
+    if (reduced || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var targets = document.querySelectorAll('[data-cursor]');
+    if (!targets.length) return;
+
+    var lab = document.createElement('div');
+    lab.className = 'cursorlab';
+    lab.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(lab);
+
+    var x = 0, y = 0, queued = false;
+    function draw() {
+      queued = false;
+      lab.style.setProperty('--cx', x + 'px');
+      lab.style.setProperty('--cyy', y + 'px');
+    }
+    document.addEventListener('pointermove', function (e) {
+      x = e.clientX; y = e.clientY;
+      if (!queued) { queued = true; requestAnimationFrame(draw); }
+    }, { passive: true });
+
+    targets.forEach(function (t) {
+      t.addEventListener('pointerenter', function () {
+        lab.textContent = t.getAttribute('data-cursor');
+        lab.classList.add('is-on');
+      });
+      t.addEventListener('pointerleave', function () { lab.classList.remove('is-on'); });
+    });
+  }
+
   /* --- Evidence index overlay --------------------------------------------- */
 
   function initIndex() {
@@ -594,6 +778,10 @@
     initChrome();
     initBars();
     initCrew();
+    initCards();
+    initStages();
+    initExhibit();
+    initCursor();
     initChartHover();
     initShowcase();
     initParallax();
