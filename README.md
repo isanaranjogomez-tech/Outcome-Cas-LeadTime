@@ -100,10 +100,11 @@ deliberately left as labelled placeholders rather than filled with estimates:
   used full-bleed behind a heavy scrim and film grain, which carries it, but a
   higher-resolution version would sharpen the opening. Replace
   `assets/school/01-exterior-cas.jpg` and nothing else needs changing.
-- **Confirm the team portraits.** The original filenames were stripped on upload and
-  could not be recovered, so the name-to-face mapping in `assets/team/` is unverified.
-  Check the five members in Act VII; to fix one, swap the two files in that folder —
-  each is named after the person the page shows it for, so the markup needs no change.
+- **Replace Sophia Leguizamo's portrait if you can.** Her source is 120 x 120 and is
+  shown at 300px wide in Act VII, which is a 2.5x enlargement and visibly the softest
+  image on the page. Drop a larger original in at `assets/team/sophia-leguizamo.jpg`
+  and nothing else needs changing. (The other four are 428px wide or more and are
+  never enlarged.)
 - **Fill the placeholders above** as the data arrives.
 
 ## The two videos behave differently, on purpose
