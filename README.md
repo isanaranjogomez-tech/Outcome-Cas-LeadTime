@@ -7,9 +7,9 @@ The digital outcome for a **Cambridge IGCSE Global Perspectives Component 3 Team
 - **Local context:** Grade 9, Colegio Colombo Americano
 - **Digital outcome built by the team:** [LeadTime AI](https://cas-leadtime-xkw5.onrender.com/dashboard)
 
-**Team** — Jeronimo Lopez (Group Leader) · Sophia Leguizamo (Project Communicator) ·
-Isabella Naranjo (AI Developer) · Santiago Lugo (Printing Collaborator) ·
-Santiago Cortes (Poster Designer)
+**Team** — Jerónimo López (Group Leader) · Isabella Naranjo (LeadTime AI Web Developer) ·
+Sophia Leguizamo (Project Communicator) · Santiago Lugo (Printing Collaborator) ·
+Santiago Cortés (Poster Designer)
 
 ---
 

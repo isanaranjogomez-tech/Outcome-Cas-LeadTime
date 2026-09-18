@@ -32,7 +32,7 @@ Build begins only on the explicit instruction: `YA — START BUILDING THE WEBSIT
 - Problem-identification sequence: personal experience → conversations with classmates → survey (50 students) → analysis → action. Never "the survey came first."
 - Verified survey findings only (66% / 70% / tired-overwhelmed-anxious / 74% / 50-18-32-0).
 - LeadTime AI = academic organisation tool. Never framed as treating or curing mental illness.
-- Team: Jeronimo Lopez (Group Leader), Sophia Leguizamo (Project Communicator), Isabella Naranjo (AI Developer), Santiago Lugo (Printing Collaborator), Santiago Cortes (Poster Designer).
+- Team: Jerónimo López (Group Leader), Sophia Leguizamo (Project Communicator), Isabella Naranjo (AI Developer), Santiago Lugo (Printing Collaborator), Santiago Cortés (Poster Designer).
 
 ## Batch 2 — received
 
