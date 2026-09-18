@@ -1979,3 +1979,14 @@
   width: 100%;
 }
 .s05.is-flat .s05__frame.is-past { opacity: 1; transform: none; }
+
+/* Stage-one eyebrow */
+.s05__eyebrow {
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 1.4rem;
+}
+.s05.is-flat .s05__eyebrow { margin-bottom: 0.9rem; }

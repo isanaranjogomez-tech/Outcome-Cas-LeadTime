@@ -584,12 +584,12 @@
 
     var blocks = Array.prototype.slice.call(root.querySelectorAll('[data-block]'));
     var typed = Array.prototype.slice.call(root.querySelectorAll('[data-line]'));
-    var frames = Array.prototype.slice.call(root.querySelectorAll('[data-frame]'));
-    var STATES = 10;
+    var STATES = 11;
 
-    // Crowded scatter, then the aligned grid the same words resolve into.
-    var SCATTER = [[-26,-17],[21,-24],[-34,11],[30,7],[-9,25],[9,-5]];
-    var GRID    = [[-28,-11],[0,-11],[28,-11],[-28,11],[0,11],[28,11]];
+    // Scattered while the work piles up; a single aligned row once the
+    // section turns from the problem to the response.
+    var SCATTER = [[-31,-17],[29,-21],[-27,17],[31,13]];
+    var GRID    = [[-33,26],[-11,26],[11,26],[33,26]];
 
     var flowQuery = window.matchMedia('(max-width: 900px)');
     var task = null;
@@ -603,36 +603,34 @@
 
     function apply(n) {
       var w = root.clientWidth || 1200;
-      var h = root.querySelector('.s05__pin').clientHeight || 700;
+      var pin = root.querySelector('.s05__pin');
+      var h = (pin && pin.clientHeight) || 700;
 
       blocks.forEach(function (el, i) {
-        var entry = 1 + Math.floor(i / 2);          // two words arrive per state
-        var lead = (n >= 1 && n <= 3) && (i === n * 2 - 1 || i === n * 2 - 2);
-        el.toggleAttribute('data-lead', lead && n <= 3);
+        var entry = i + 1;                     // one responsibility per state
+        var lead = (n === entry);
+        el.toggleAttribute('data-lead', lead);
 
-        if (n < entry) { place(el, 0, 0, 0.9, 0); return; }
+        if (n < entry) { place(el, 0, 0, '0.9', '0'); return; }
 
-        if (n <= 3) {                                // accumulating, crowding
+        if (n <= 4) {                          // accumulating
           var age = n - entry;
           place(el, SCATTER[i][0] / 100 * w, SCATTER[i][1] / 100 * h,
-                (lead ? 1.08 : Math.max(0.92, 1 - age * 0.05)).toFixed(3),
-                (lead ? 1 : Math.max(0.35, 0.8 - age * 0.16)).toFixed(2));
-        } else if (n === 4) {                        // the evidence clears it
-          place(el, SCATTER[i][0] / 100 * w, SCATTER[i][1] / 100 * h, '0.9', '0.07');
-        } else if (n <= 8) {                         // reorganised into a grid
+                (lead ? 1.07 : Math.max(0.93, 1 - age * 0.035)).toFixed(3),
+                (lead ? 1 : Math.max(0.4, 0.82 - age * 0.14)).toFixed(2));
+        } else if (n === 5) {                  // secondary to the big statement
+          place(el, SCATTER[i][0] / 100 * w, SCATTER[i][1] / 100 * h, '0.95', '0.42');
+        } else if (n === 6) {                  // the evidence clears the screen
+          place(el, SCATTER[i][0] / 100 * w, SCATTER[i][1] / 100 * h, '0.9', '0.05');
+        } else if (n <= 9) {                   // back, aligned into order
           place(el, GRID[i][0] / 100 * w, GRID[i][1] / 100 * h, '1',
-                n === 5 ? '0.6' : '0.16');
+                n === 7 ? '0.62' : '0.3');
         } else {
           place(el, GRID[i][0] / 100 * w, GRID[i][1] / 100 * h, '1', '0');
         }
       });
 
       typed.forEach(function (el) { el.classList.toggle('is-on', +el.dataset.line === n); });
-      frames.forEach(function (el) {
-        var f = +el.dataset.frame;
-        el.classList.toggle('is-on', f === n);
-        el.classList.toggle('is-past', n > f && n <= 8);
-      });
     }
 
     function flat() {
@@ -640,7 +638,6 @@
       if (task) { var i = scrollTasks.indexOf(task); if (i > -1) scrollTasks.splice(i, 1); task = null; }
       blocks.forEach(function (el) { el.removeAttribute('style'); el.removeAttribute('data-lead'); });
       typed.forEach(function (el) { el.classList.add('is-on'); });
-      frames.forEach(function (el) { el.classList.add('is-on'); el.classList.remove('is-past'); });
     }
 
     function pinned() {
