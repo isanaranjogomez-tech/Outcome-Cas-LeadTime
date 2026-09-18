@@ -572,6 +572,97 @@
     });
   }
 
+  /* --- Part V · text-led story ---------------------------------------------
+     Ten states over one pinned composition. Words accumulate and crowd, the
+     evidence clears the screen, the same words reorganise into a grid, three
+     decisions take the floor in turn, and the section resolves. No platform
+     imagery here — the showcase later keeps that reveal.                   */
+
+  function initS05() {
+    var root = document.querySelector('[data-s05]');
+    if (!root) return;
+
+    var blocks = Array.prototype.slice.call(root.querySelectorAll('[data-block]'));
+    var typed = Array.prototype.slice.call(root.querySelectorAll('[data-line]'));
+    var frames = Array.prototype.slice.call(root.querySelectorAll('[data-frame]'));
+    var STATES = 10;
+
+    // Crowded scatter, then the aligned grid the same words resolve into.
+    var SCATTER = [[-26,-17],[21,-24],[-34,11],[30,7],[-9,25],[9,-5]];
+    var GRID    = [[-28,-11],[0,-11],[28,-11],[-28,11],[0,11],[28,11]];
+
+    var flowQuery = window.matchMedia('(max-width: 900px)');
+    var task = null;
+
+    function place(el, x, y, s, o) {
+      el.style.setProperty('--bx', x + 'px');
+      el.style.setProperty('--by', y + 'px');
+      el.style.setProperty('--bs', s);
+      el.style.setProperty('--bo', o);
+    }
+
+    function apply(n) {
+      var w = root.clientWidth || 1200;
+      var h = root.querySelector('.s05__pin').clientHeight || 700;
+
+      blocks.forEach(function (el, i) {
+        var entry = 1 + Math.floor(i / 2);          // two words arrive per state
+        var lead = (n >= 1 && n <= 3) && (i === n * 2 - 1 || i === n * 2 - 2);
+        el.toggleAttribute('data-lead', lead && n <= 3);
+
+        if (n < entry) { place(el, 0, 0, 0.9, 0); return; }
+
+        if (n <= 3) {                                // accumulating, crowding
+          var age = n - entry;
+          place(el, SCATTER[i][0] / 100 * w, SCATTER[i][1] / 100 * h,
+                (lead ? 1.08 : Math.max(0.92, 1 - age * 0.05)).toFixed(3),
+                (lead ? 1 : Math.max(0.35, 0.8 - age * 0.16)).toFixed(2));
+        } else if (n === 4) {                        // the evidence clears it
+          place(el, SCATTER[i][0] / 100 * w, SCATTER[i][1] / 100 * h, '0.9', '0.07');
+        } else if (n <= 8) {                         // reorganised into a grid
+          place(el, GRID[i][0] / 100 * w, GRID[i][1] / 100 * h, '1',
+                n === 5 ? '0.6' : '0.16');
+        } else {
+          place(el, GRID[i][0] / 100 * w, GRID[i][1] / 100 * h, '1', '0');
+        }
+      });
+
+      typed.forEach(function (el) { el.classList.toggle('is-on', +el.dataset.line === n); });
+      frames.forEach(function (el) {
+        var f = +el.dataset.frame;
+        el.classList.toggle('is-on', f === n);
+        el.classList.toggle('is-past', n > f && n <= 8);
+      });
+    }
+
+    function flat() {
+      root.classList.add('is-flat');
+      if (task) { var i = scrollTasks.indexOf(task); if (i > -1) scrollTasks.splice(i, 1); task = null; }
+      blocks.forEach(function (el) { el.removeAttribute('style'); el.removeAttribute('data-lead'); });
+      typed.forEach(function (el) { el.classList.add('is-on'); });
+      frames.forEach(function (el) { el.classList.add('is-on'); el.classList.remove('is-past'); });
+    }
+
+    function pinned() {
+      root.classList.remove('is-flat');
+      if (task) return;
+      task = function () {
+        var rect = root.getBoundingClientRect();
+        var travel = root.offsetHeight - window.innerHeight;
+        if (travel <= 0) return;
+        var p = clamp(-rect.top / travel, 0, 1);
+        apply(clamp(Math.round(p * (STATES - 1)), 0, STATES - 1));
+      };
+      scrollTasks.push(task);
+      resizeTasks.push(task);
+      task();
+    }
+
+    function decide() { if (reduced || flowQuery.matches) flat(); else pinned(); }
+    decide();
+    if (typeof flowQuery.addEventListener === 'function') flowQuery.addEventListener('change', decide);
+  }
+
   /* --- Campaign exhibition -------------------------------------------------
      A stack of printed pieces that separates, then shows one poster at a
      time. On phones the same markup becomes a swipeable rail.             */
@@ -780,6 +871,7 @@
     initCrew();
     initCards();
     initStages();
+    initS05();
     initExhibit();
     initCursor();
     initChartHover();

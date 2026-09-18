@@ -590,110 +590,59 @@
     </div>
   </div>
 
-  <div class="stage" data-stage style="height:calc(7 * 92vh)">
-    <div class="stage__pin column">
+  <div class="s05" data-s05 style="height:calc(10 * 86vh)">
+    <div class="s05__pin">
 
-      <div class="scene" data-scene="0">
-        <p class="scene__kicker">The problem</p>
-        <p class="scene__line">Overlapping deadlines.</p>
-        <p class="scene__sub">33 of 50 students reported feeling stressed always or frequently because of homework or summative assignments.</p>
+      <!-- the accumulating words -->
+      <div class="s05__blocks" aria-hidden="true">
+        <span class="s05__block" data-block="0">Homework</span>
+        <span class="s05__block" data-block="1">Summative</span>
+        <span class="s05__block" data-block="2">Project</span>
+        <span class="s05__block" data-block="3">Deadline</span>
+        <span class="s05__block" data-block="4">Study</span>
+        <span class="s05__block" data-block="5">Submission</span>
       </div>
 
-      <div class="scene" data-scene="1">
-        <p class="scene__kicker">The problem</p>
-        <p class="scene__line">Work does not arrive evenly.</p>
-        <p class="scene__sub">It clusters. A student rarely sees the collision until the days themselves arrive.</p>
-      </div>
+      <!-- editorial type, one statement at a time -->
+      <div class="s05__type">
+        <p class="s05__line" data-line="0"><span>The pressure</span><span>was not one task.</span></p>
+        <p class="s05__line" data-line="1"><span>It was everything</span><span>at once.</span></p>
 
-      <div class="scene" data-scene="2">
-        <p class="scene__kicker">The design decision</p>
-        <p class="scene__line">So we did not create another study guide.</p>
-        <p class="scene__sub">We created a system to organise the workload.</p>
-      </div>
-
-      <div class="scene" data-scene="3">
-        <p class="scene__kicker">Feature 01</p>
-        <p class="scene__line">Too many deadlines.</p>
-        <p class="scene__sub">The week becomes a single strip, with the heavy days raised before they arrive.</p>
-        <p class="scene__meta">Academic calendar</p>
-      </div>
-
-      <div class="scene" data-scene="4">
-        <p class="scene__kicker">Feature 02</p>
-        <p class="scene__line">High-volume tasks.</p>
-        <p class="scene__sub">Long or unclear instructions go in; a structured response comes back.</p>
-        <p class="scene__meta">AI task breakdown</p>
-      </div>
-
-      <div class="scene" data-scene="5">
-        <p class="scene__kicker">Feature 03</p>
-        <p class="scene__line">Unclear study planning.</p>
-        <p class="scene__sub">The output is a schedule: each day themed, each item timed.</p>
-        <p class="scene__meta">AI-generated work plan</p>
-      </div>
-
-      <div class="scene" data-scene="6">
-        <p class="scene__kicker">The response</p>
-        <p class="scene__line" style="max-width:20ch;font-size:clamp(1.5rem,3.2vw,2.6rem)">Research identified the pressure.<br>Students showed us where it appeared.<br>LeadTime AI turned that evidence into an action.</p>
-        <p style="margin-top:1.8rem">
-          <a class="outcome__cta" href="https://cas-leadtime-xkw5.onrender.com/dashboard" target="_blank" rel="noopener noreferrer" data-cursor="Open">
-            Explore the live outcome <span aria-hidden="true">↗</span>
-          </a>
-        </p>
-      </div>
-
-      <div class="object">
-        <div class="object__layer" data-for="0,1,2">
-          <div style="width:100%">
-            <div class="week" data-week>
-              <div class="week__head"><span>An ordinary week</span><span>Generic labels</span></div>
-              <div class="week__grid">
-            <div class="week__col"><span class="week__day">Mon</span>
-              <span class="week__chip" data-seed>Homework</span>
-            </div>
-            <div class="week__col"><span class="week__day">Tue</span>
-              <span class="week__chip" data-seed>Homework</span>
-              <span class="week__chip">Summative</span>
-            </div>
-            <div class="week__col"><span class="week__day">Wed</span>
-              <span class="week__chip" data-seed data-heavy>Summative</span>
-              <span class="week__chip">Project</span>
-              <span class="week__chip" data-heavy>Deadline</span>
-            </div>
-            <div class="week__col"><span class="week__day">Thu</span>
-              <span class="week__chip" data-seed>Homework</span>
-              <span class="week__chip">Deadline</span>
-            </div>
-            <div class="week__col"><span class="week__day">Fri</span>
-              <span class="week__chip" data-seed data-heavy>Summative</span>
-              <span class="week__chip">Project</span>
-            </div>
-              </div>
-            </div>
-            <p class="object__cap">Abstract illustration · not survey data</p>
-          </div>
+        <div class="s05__evidence" data-line="4">
+          <p class="s05__figure">33 <em>of 50</em></p>
+          <p class="s05__note">students reported feeling stressed always or frequently because of homework or summative assignments.</p>
         </div>
 
-        <div class="object__layer" data-for="3,6">
-          <div style="width:100%">
-            <div class="object__shot"><img src="assets/platform/01-dashboard-week.jpg" alt="The LeadTime AI weekly dashboard, showing each day's exams and submissions with estimated hours and high-load alerts." loading="lazy" decoding="async"></div>
-            <p class="object__cap">LeadTime AI · academic calendar</p>
-          </div>
-        </div>
+        <p class="s05__line" data-line="5"><span>From overload</span><span class="s05__dim">to organisation.</span></p>
 
-        <div class="object__layer" data-for="4">
-          <div style="width:100%">
-            <div class="object__shot"><img src="assets/platform/03-desglosador-input.jpg" alt="The LeadTime AI breakdown tool with pasted instructions on the left and a generated plan beginning on the right." loading="lazy" decoding="async"></div>
-            <p class="object__cap">LeadTime AI · AI task breakdown</p>
-          </div>
+        <div class="s05__close" data-line="9">
+          <p class="s05__line is-bare"><span>This became</span><span>LeadTime AI.</span></p>
+          <p class="s05__note" style="margin-top:1.4rem">A digital response designed around the academic organisation problems identified by Grade&nbsp;9 students.</p>
+          <p style="margin-top:1.8rem">
+            <a class="outcome__cta" href="https://cas-leadtime-xkw5.onrender.com/dashboard" target="_blank" rel="noopener noreferrer" data-cursor="Open">
+              Explore the live outcome <span aria-hidden="true">↗</span>
+            </a>
+          </p>
         </div>
+      </div>
 
-        <div class="object__layer" data-for="5">
-          <div style="width:100%">
-            <div class="object__shot"><img src="assets/platform/04-plan-days-1-2.jpg" alt="The generated work plan, with each day themed and each task carrying a time estimate." loading="lazy" decoding="async"></div>
-            <p class="object__cap">LeadTime AI · generated work plan</p>
-          </div>
-        </div>
+      <!-- three design decisions, one dominant at a time -->
+      <div class="s05__frames">
+        <figure class="s05__frame" data-frame="6">
+          <figcaption class="s05__frameNum">Frame 01</figcaption>
+          <p class="s05__frameTitle">Too many deadlines</p>
+          <p class="s05__frameAns">→ organise them</p>
+        </figure>
+        <figure class="s05__frame" data-frame="7">
+          <figcaption class="s05__frameNum">Frame 02</figcaption>
+          <p class="s05__frameTitle">High-volume tasks</p>
+          <p class="s05__frameAns">→ break them down</p>
+        </figure>
+        <figure class="s05__frame" data-frame="8">
+          <figcaption class="s05__frameNum">Frame 03</figcaption>
+          <p class="s05__frameTitle">Unclear study planning</p>
+          <p class="s05__frameAns">→ create a plan</p>
+        </figure>
       </div>
 
     </div>
