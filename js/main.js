@@ -527,16 +527,36 @@
     stages.forEach(function (stage) {
       var scenes = Array.prototype.slice.call(stage.querySelectorAll('[data-scene]'));
       var layers = Array.prototype.slice.call(stage.querySelectorAll('[data-for]'));
+      var ticks  = Array.prototype.slice.call(stage.querySelectorAll('[data-track]'));
       var week = stage.querySelector('[data-week]');
       if (!scenes.length) return;
 
+      /* A scene may name the part of the chart it is talking about, so the
+         distribution lights up with the reading instead of sitting inert. */
+      var chart = stage.querySelector('[data-chart]');
+      var marks = chart
+        ? Array.prototype.slice.call(chart.querySelectorAll('[data-seg], [data-row]'))
+        : [];
+
       var task = null;
+
+      function light(list) {
+        if (!chart) return;
+        chart.classList.toggle('is-focus', list.length > 0);
+        marks.forEach(function (m) {
+          var key = m.dataset.seg || m.dataset.row;
+          m.classList.toggle('is-lit', list.indexOf(key) > -1);
+        });
+      }
 
       function apply(n) {
         scenes.forEach(function (s) { s.classList.toggle('is-on', +s.dataset.scene === n); });
         layers.forEach(function (l) {
           l.classList.toggle('is-on', l.dataset.for.split(',').indexOf(String(n)) > -1);
         });
+        ticks.forEach(function (t) { t.classList.toggle('is-on', +t.dataset.track === n); });
+        var lit = (scenes[n] && scenes[n].getAttribute('data-lit')) || '';
+        light(lit ? lit.split(',') : []);
         if (week) {
           week.classList.toggle('is-loaded', n >= 1);
           week.classList.toggle('is-sorted', n >= 2);
@@ -548,6 +568,8 @@
         if (task) { var i = scrollTasks.indexOf(task); if (i > -1) scrollTasks.splice(i, 1); task = null; }
         scenes.forEach(function (s) { s.classList.add('is-on'); });
         layers.forEach(function (l) { l.classList.add('is-on'); });
+        ticks.forEach(function (t) { t.classList.remove('is-on'); });
+        light([]);                       // flat: the whole distribution reads
         if (week) week.classList.add('is-loaded', 'is-sorted');
       }
 
@@ -559,7 +581,7 @@
           var travel = stage.offsetHeight - window.innerHeight;
           if (travel <= 0) return;
           var p = clamp(-rect.top / travel, 0, 1);
-          apply(clamp(Math.round(p * (scenes.length - 1)), 0, scenes.length - 1));
+          apply(clamp(Math.floor(p * scenes.length), 0, scenes.length - 1));
         };
         scrollTasks.push(task);
         resizeTasks.push(task);

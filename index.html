@@ -1150,54 +1150,73 @@
       <p class="lede">After the platform was introduced, we asked the year group one question about it.</p>
     </div>
 
-    <div class="stage stage--light" data-stage style="height:calc(2 * 95vh);margin-top:clamp(1rem,3vh,2rem)">
+    <!-- Four short readings of one result, against a chart that never moves. -->
+    <div class="stage stage--light stage--eval" data-stage
+         style="height:calc(4 * 92vh);margin-top:clamp(1.5rem,4vh,2.6rem)">
       <div class="stage__pin">
 
-        <div class="scene" data-scene="0">
+        <div class="scene" data-scene="0" data-lit="p1,p2">
           <p class="scene__kicker">Post-action finding</p>
-          <span class="stat" data-stat style="font-size:clamp(5rem,17vw,15rem)"><span>66</span><sup>%</sup></span>
-          <p class="finding__claim" style="max-width:34ch">rated LeadTime AI as extremely or somewhat helpful for time management and task organisation.</p>
-          <p class="finding__q"><b>33 of 50 responses.</b> The question measured perceived usefulness, not measured performance.</p>
+          <span class="stat" data-stat><span>66</span><sup>%</sup></span>
+          <p class="finding__claim">rated LeadTime AI as extremely or somewhat helpful for time management and task organisation.</p>
         </div>
 
         <div class="scene" data-scene="1">
-          <p class="scene__kicker">The breakdown</p>
-          <span class="stat" data-stat><span>66</span><sup>%</sup></span>
-          <p class="finding__claim" style="max-width:30ch">positive — and the full distribution behind it.</p>
-          <p class="finding__q"><b>33 of 50 responses.</b> Perceived usefulness, not measured performance.</p>
+          <p class="scene__kicker">The sample</p>
+          <span class="stat" data-stat>33<em> of 50</em></span>
+          <p class="finding__claim">responses to the post-action survey question, from the same Grade&nbsp;9 year group.</p>
         </div>
 
-        <div class="object">
-          <div class="object__layer" data-for="1">
-      <div class="chart" data-chart data-reveal data-stagger="1" role="group" aria-label="Post-action survey response distribution, 50 respondents">
-        <p class="chart__title">Post-action · “Has CAS LeadTime AI improved your time management and helped you organize your tasks more effectively?”</p>
-        <div class="stack" aria-hidden="true">
-          <span class="stack__seg" data-seg="p1" style="--c:var(--d1);--n:20"></span>
-          <span class="stack__seg" data-seg="p2" style="--c:var(--d2);--n:13"></span>
-          <span class="stack__seg" data-seg="p3" style="--c:var(--d3);--n:6"></span>
-          <span class="stack__seg" data-seg="p4" style="--c:var(--d4);--n:8"></span>
-          <span class="stack__seg" data-seg="p5" style="--c:var(--d5);--n:3"></span>
+        <div class="scene" data-scene="2">
+          <p class="scene__kicker">What it measures</p>
+          <p class="scene__line">Perceived usefulness, not measured performance.</p>
+          <p class="finding__q" style="margin-top:1.3rem">Students rated how helpful they found the platform for organising academic work. The question does not demonstrate a reduction in stress or an improvement in mental health.</p>
         </div>
-        <ul class="key">
-          <li data-row="p1"><i style="--c:var(--d1)"></i><span>Extremely helpful</span><b>20</b><em>40%</em></li>
-          <li data-row="p2"><i style="--c:var(--d2)"></i><span>Somewhat helpful</span><b>13</b><em>26%</em></li>
-          <li data-row="p3"><i style="--c:var(--d3)"></i><span>Neutral</span><b>6</b><em>12%</em></li>
-          <li data-row="p4"><i style="--c:var(--d4)"></i><span>Not very helpful</span><b>8</b><em>16%</em></li>
-          <li data-row="p5"><i style="--c:var(--d5)"></i><span>Not helpful at all</span><b>3</b><em>6%</em></li>
-        </ul>
-        <details class="datatable"><summary>Response data</summary>
-          <table><caption>Post-action survey — perceived usefulness of LeadTime AI. n = 50</caption>
-            <thead><tr><th scope="col">Response</th><th scope="col">Count</th><th scope="col">Share</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Extremely helpful</th><td>20</td><td>40%</td></tr>
-              <tr><th scope="row">Somewhat helpful</th><td>13</td><td>26%</td></tr>
-              <tr><th scope="row">Neutral</th><td>6</td><td>12%</td></tr>
-              <tr><th scope="row">Not very helpful</th><td>8</td><td>16%</td></tr>
-              <tr><th scope="row">Not helpful at all</th><td>3</td><td>6%</td></tr>
-            </tbody>
-          </table>
-        </details>
-      </div>
+
+        <div class="scene" data-scene="3" data-lit="p4,p5">
+          <p class="scene__kicker">Not for everyone</p>
+          <span class="stat" data-stat><span>22</span><sup>%</sup></span>
+          <p class="finding__claim">rated it not very helpful or not helpful at all — the solution did not work equally well for every student.</p>
+        </div>
+
+        <ol class="eval__track" aria-hidden="true">
+          <li data-track="0"><i></i><span>Finding</span></li>
+          <li data-track="1"><i></i><span>Sample</span></li>
+          <li data-track="2"><i></i><span>Measure</span></li>
+          <li data-track="3"><i></i><span>Limits</span></li>
+        </ol>
+
+        <div class="object">
+          <div class="object__layer" data-for="0,1,2,3">
+            <div class="chart" data-chart data-eval-chart role="group" aria-label="Post-action survey response distribution, 50 respondents">
+              <p class="chart__title">Post-action · “Has CAS LeadTime AI improved your time management and helped you organize your tasks more effectively?”</p>
+              <div class="stack" aria-hidden="true">
+                <span class="stack__seg" data-seg="p1" style="--c:var(--d1);--n:20"></span>
+                <span class="stack__seg" data-seg="p2" style="--c:var(--d2);--n:13"></span>
+                <span class="stack__seg" data-seg="p3" style="--c:var(--d3);--n:6"></span>
+                <span class="stack__seg" data-seg="p4" style="--c:var(--d4);--n:8"></span>
+                <span class="stack__seg" data-seg="p5" style="--c:var(--d5);--n:3"></span>
+              </div>
+              <ul class="key">
+                <li data-row="p1"><i style="--c:var(--d1)"></i><span>Extremely helpful</span><b>20</b><em>40%</em></li>
+                <li data-row="p2"><i style="--c:var(--d2)"></i><span>Somewhat helpful</span><b>13</b><em>26%</em></li>
+                <li data-row="p3"><i style="--c:var(--d3)"></i><span>Neutral</span><b>6</b><em>12%</em></li>
+                <li data-row="p4"><i style="--c:var(--d4)"></i><span>Not very helpful</span><b>8</b><em>16%</em></li>
+                <li data-row="p5"><i style="--c:var(--d5)"></i><span>Not helpful at all</span><b>3</b><em>6%</em></li>
+              </ul>
+              <details class="datatable"><summary>Response data</summary>
+                <table><caption>Post-action survey — perceived usefulness of LeadTime AI. n = 50</caption>
+                  <thead><tr><th scope="col">Response</th><th scope="col">Count</th><th scope="col">Share</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Extremely helpful</th><td>20</td><td>40%</td></tr>
+                    <tr><th scope="row">Somewhat helpful</th><td>13</td><td>26%</td></tr>
+                    <tr><th scope="row">Neutral</th><td>6</td><td>12%</td></tr>
+                    <tr><th scope="row">Not very helpful</th><td>8</td><td>16%</td></tr>
+                    <tr><th scope="row">Not helpful at all</th><td>3</td><td>6%</td></tr>
+                  </tbody>
+                </table>
+              </details>
+            </div>
           </div>
         </div>
 
