@@ -10,7 +10,7 @@ Build begins only on the explicit instruction: `YA — START BUILDING THE WEBSIT
 
 | File | Type | Description | Intended use |
 |---|---|---|---|
-| `assets/school/01-exterior-cas.jpg` | School exterior | CAS main building: angled glass canopy, golden facade, school crest, Colombian flags, lawn and gardens. Clear blue sky. | **ACT I opening hero.** Full-bleed, slow zoom. "It started here." |
+| `assets/school/01-exterior-cas.jpg` | School exterior (1600 x 1199) | CAS main building: angled glass canopy, golden facade, school crest, Colombian flags, lawn and gardens. Clear blue sky. | **ACT I opening hero.** Full-bleed, slow zoom. "It started here." |
 | `assets/school/02-library-wide.jpg` | School interior | Library, elevated wide view: blue resin floor with yellow/orange colour fields, pale-wood shelving, curved central shelf unit, tall glass wall with angled timber bracing. | ACT I interior transition, frame 1. |
 | `assets/school/03-library-tables.jpg` | School interior | Library, second angle: round and rectangular study tables, light-blue chairs, full book walls, TV screen, daylight through glazing. | ACT I interior transition, frame 2 — study/workload atmosphere. |
 | `assets/school/04-reading-room.jpg` | School interior | Warmer reading room: blue carpet, backlit book wall, timber-slat ceiling with circular star-light feature, round tables. | ACT I final interior frame before ACT II ("We noticed"). Most intimate of the four. |
