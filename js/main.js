@@ -102,7 +102,11 @@
         // the layer underneath is always solid, so the crossfade never lets
         // the background bleed through and never lingers as a double exposure.
         frames[i].style.setProperty('--o', clamp((d + 0.78) / 0.36, 0, 1).toFixed(3));
-        frames[i].firstElementChild.style.setProperty('--s', (1.1 - 0.07 * clamp(d, -1, 1)).toFixed(4));
+        // Fixed modest zoom, drift carried by translation: a large scale on a
+        // raster photograph is the one thing here that visibly costs detail.
+        var img = frames[i].firstElementChild;
+        img.style.setProperty('--s', '1.03');
+        img.style.setProperty('--ty', (clamp(d, -1, 1) * -12).toFixed(2) + 'px');
 
         // The line lingers as the room changes, clears while the new frame
         // settles, then arrives on a still image. Two captions never overlap.
