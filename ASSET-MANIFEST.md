@@ -49,3 +49,8 @@ Build begins only on the explicit instruction: `YA — START BUILDING THE WEBSIT
 - `assets/platform/04-plan-days-1-2.jpg` — Generated plan, Dia 1 and Dia 2 in full.
 - `assets/platform/05-plan-days-3-5.jpg` — Generated plan, Dia 3, Dia 4 and start of Dia 5.
 - `assets/platform/06-plan-day5-technique.jpg` — Generated plan, Dia 5 complete + "Anadir al panel" + recommended technique block.
+
+## Batch 4 — received
+
+- `assets/video/testimonial.mp4` — Student testimonial / feedback video (15 MB, compressed).
+  **Build instruction from user:** integrate directly into the site as a fully custom premium section, NOT a generic embed. Place it AFTER the implementation / Course of Action act, as student voice / feedback / evaluation evidence. Large, cinematic, refined presentation; seamless transitions; strong typography; responsive; consistent with the site visual language. No invented quotes or transcript — nothing is confirmed about its spoken content, so the surrounding copy must stay factual and non-interpretive.
