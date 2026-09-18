@@ -70,12 +70,8 @@ Build begins only on the explicit instruction: `YA — START BUILDING THE WEBSIT
   | `jeronimo-lopez.jpg` | 885 x 1185 |
   | `isabella-naranjo.jpg` | 431 x 569 |
   | `santiago-lugo.jpg` | 428 x 594 |
-  | `sophia-leguizamo.jpg` | 120 x 120 |
+  | `sophia-leguizamo.jpg` | 1202 x 1648 |
 
-  Note: Sophia Leguizamo's source is 120 x 120 and is displayed at 300px wide in the
-  pinned sequence — a 2.5x enlargement, and visibly the softest image on the page.
-  Replacing that one file with a larger original is the only fix; nothing else
-  needs changing.
 
 - `assets/video/student-perspective.mp4` — 1920x1080, 5.4s, H.264/AAC. Student
   perspective recording closing Act V. Autoplays once on scroll into view.
