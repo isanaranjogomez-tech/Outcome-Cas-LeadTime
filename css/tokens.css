@@ -1,0 +1,83 @@
+/* ==========================================================================
+   Design tokens
+   Academic performance regarding mental health in 9th grade
+   IGCSE Global Perspectives — Component 3 Team Project
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* --- Surfaces ---------------------------------------------------------- */
+  --paper:        #f7f5f1;  /* page plane, warm off-white                     */
+  --paper-raised: #fcfbf9;  /* chart / panel surface                          */
+  --paper-warm:   #f1eee8;  /* alternate band                                 */
+  --navy-deep:    #0a1226;  /* full-bleed dark sections                       */
+  --navy-deeper:  #070d1b;
+
+  /* --- Ink --------------------------------------------------------------- */
+  --ink:      #0e1730;      /* primary                                        */
+  --ink-2:    #38425c;      /* secondary                                      */
+  --ink-3:    #6b7386;      /* muted: labels, axes, metadata                  */
+  --ink-on-dark:    #f4f2ee;
+  --ink-on-dark-2:  #b6bcca;
+  --ink-on-dark-3:  #7c8496;
+
+  /* --- Rules ------------------------------------------------------------- */
+  --rule:        rgba(14, 23, 48, 0.14);
+  --rule-soft:   rgba(14, 23, 48, 0.075);
+  --rule-strong: rgba(14, 23, 48, 0.30);
+  --rule-dark:       rgba(244, 242, 238, 0.16);
+  --rule-dark-soft:  rgba(244, 242, 238, 0.08);
+
+  /* --- Accents (used sparingly) ------------------------------------------ */
+  --accent:      #3e5f94;   /* refined desaturated blue                       */
+  --accent-deep: #1e3355;
+  --gold:        #b79553;   /* school identity hairline, never a fill         */
+
+  /* --- Data ink ----------------------------------------------------------
+     Single-hue ordinal ramp, validated light→dark against surface #fcfbf9
+     (monotone lightness, ≥0.06 ΔL steps, light end 2.19:1, hue spread 7°).
+     Every chart on this page uses one hue: magnitude is carried by length,
+     order by lightness. No categorical palette is required.                 */
+  --d1: #16233f;
+  --d2: #27406b;
+  --d3: #3e5f94;
+  --d4: #6e8cb8;
+  --d5: #98aecd;
+  --d-zero: rgba(14, 23, 48, 0.16);
+
+  /* --- Type -------------------------------------------------------------- */
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia,
+                  "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+
+  --step--1: clamp(0.78rem, 0.75rem + 0.14vw, 0.86rem);
+  --step-0:  clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1:  clamp(1.18rem, 1.1rem + 0.42vw, 1.45rem);
+  --step-2:  clamp(1.45rem, 1.28rem + 0.85vw, 2.05rem);
+  --step-3:  clamp(1.85rem, 1.5rem + 1.7vw, 3rem);
+  --step-4:  clamp(2.3rem, 1.65rem + 3.1vw, 4.4rem);
+  --step-5:  clamp(2.8rem, 1.6rem + 5.8vw, 6.6rem);
+  --step-6:  clamp(3.4rem, 1.2rem + 10vw, 10rem);
+
+  --tracking-eyebrow: 0.18em;
+  --measure: 66ch;
+  --measure-tight: 52ch;
+
+  /* --- Layout ------------------------------------------------------------ */
+  --gutter: clamp(1.25rem, 4vw, 4.5rem);
+  --shell: 1560px;
+  --column: 1180px;
+  --band: clamp(5rem, 11vh, 10rem);
+
+  /* --- Motion ------------------------------------------------------------ */
+  --ease-out: cubic-bezier(0.16, 0.84, 0.28, 1);
+  --ease-soft: cubic-bezier(0.32, 0.72, 0.24, 1);
+  --dur-slow: 1150ms;
+  --dur: 720ms;
+  --dur-fast: 340ms;
+
+  /* --- Film grain (masks upscaling in the archival photography) ---------- */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}

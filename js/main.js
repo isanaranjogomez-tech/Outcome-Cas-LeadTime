@@ -1,0 +1,451 @@
+/* ==========================================================================
+   Academic performance regarding mental health in 9th grade
+   Scroll narrative, motion and interaction layer.
+
+   Every effect here is enhancement only: with JavaScript disabled or motion
+   reduced, the document remains a complete, readable, ordered case study.
+   ========================================================================== */
+
+(function () {
+  'use strict';
+
+  var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var reduced = motionQuery.matches;
+
+  var clamp = function (v, min, max) { return v < min ? min : v > max ? max : v; };
+
+  /* --- Scroll dispatcher -------------------------------------------------
+     One rAF-throttled listener drives every scroll-linked effect, so the
+     page never stacks competing handlers on the scroll event.             */
+
+  var scrollTasks = [];
+  var resizeTasks = [];
+  var ticking = false;
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      for (var i = 0; i < scrollTasks.length; i++) scrollTasks[i]();
+      ticking = false;
+    });
+  }
+
+  function onResize() {
+    for (var i = 0; i < resizeTasks.length; i++) resizeTasks[i]();
+    onScroll();
+  }
+
+  /* --- Reveal on enter ---------------------------------------------------- */
+
+  function initReveal() {
+    var items = document.querySelectorAll('[data-reveal]');
+    if (!items.length) return;
+
+    if (reduced || !('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+
+    items.forEach(function (el, i) {
+      var group = el.getAttribute('data-stagger');
+      if (group) el.style.setProperty('--reveal-delay', (parseInt(group, 10) * 90) + 'ms');
+      io.observe(el);
+    });
+  }
+
+  /* --- ACT I · cinematic entrance ----------------------------------------
+     Four still photographs are crossfaded and slowly de-zoomed against a
+     continuous scroll index, so the sequence reads as one move from the
+     building's exterior into its interior. No video is involved.          */
+
+  function initCinema() {
+    var cinema = document.querySelector('[data-cinema]');
+    if (!cinema) return;
+
+    var frames = Array.prototype.slice.call(cinema.querySelectorAll('.cinema__frame'));
+    var copies = Array.prototype.slice.call(cinema.querySelectorAll('.cinema__copy'));
+    var cue = cinema.querySelector('.scrollcue');
+    var last = frames.length - 1;
+
+    if (reduced || !frames.length) {
+      cinema.classList.add('is-static');
+      frames.forEach(function (f) { f.style.setProperty('--o', 1); });
+      copies.forEach(function (c) { c.style.setProperty('--o', 1); c.style.setProperty('--y', 0); });
+      return;
+    }
+
+    cinema.style.setProperty('--frames', frames.length);
+
+    function update() {
+      var rect = cinema.getBoundingClientRect();
+      var travel = cinema.offsetHeight - window.innerHeight;
+      if (travel <= 0) return;
+
+      // Eased mapping: the opening frame holds while the title is being read,
+      // then the sequence moves through the interiors at a steadier pace.
+      var p = clamp(-rect.top / travel, 0, 1);
+      var index = last * Math.pow(p, 1.3);
+
+      for (var i = 0; i <= last; i++) {
+        var d = index - i;
+        // Each frame holds, then fades IN over the one before it across the
+        // last third of the preceding segment and stays opaque afterwards:
+        // the layer underneath is always solid, so the crossfade never lets
+        // the background bleed through and never lingers as a double exposure.
+        frames[i].style.setProperty('--o', clamp((d + 0.78) / 0.36, 0, 1).toFixed(3));
+        frames[i].firstElementChild.style.setProperty('--s', (1.1 - 0.07 * clamp(d, -1, 1)).toFixed(4));
+
+        // The line lingers as the room changes, clears while the new frame
+        // settles, then arrives on a still image. Two captions never overlap.
+        var co = 1 - clamp((Math.abs(d) - 0.18) / 0.22, 0, 1);
+        copies[i].style.setProperty('--o', co.toFixed(3));
+        copies[i].style.setProperty('--y', clamp(d, -1, 1).toFixed(3));
+        // Frame 0 carries the page's <h1>; it is never hidden from assistive
+        // technology, whatever the scroll position.
+        if (i > 0) copies[i].setAttribute('aria-hidden', co < 0.12 ? 'true' : 'false');
+      }
+
+      if (cue) cue.style.setProperty('--cue', clamp(1 - p * 8, 0, 1).toFixed(3));
+    }
+
+    scrollTasks.push(update);
+    resizeTasks.push(update);
+    update();
+  }
+
+  /* --- Scroll progress + masthead ----------------------------------------- */
+
+  function initChrome() {
+    var fill = document.querySelector('[data-progress]');
+    var masthead = document.querySelector('[data-masthead]');
+    var lightSentinel = document.querySelector('[data-chrome-light]');
+    var darkBands = Array.prototype.slice.call(
+      document.querySelectorAll('.band--dark, .pivot, .colophon'));
+
+    function update() {
+      if (fill) {
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        fill.style.setProperty('--p', max > 0 ? clamp(window.scrollY / max, 0, 1).toFixed(4) : 0);
+      }
+      if (!masthead) return;
+
+      if (lightSentinel) {
+        masthead.classList.toggle('is-solid', lightSentinel.getBoundingClientRect().bottom <= 64);
+      }
+      // Invert the bar over dark bands so it never cuts a white strip across
+      // a full-bleed photograph or a navy chapter.
+      var probe = 34;
+      var onDark = false;
+      for (var i = 0; i < darkBands.length; i++) {
+        var r = darkBands[i].getBoundingClientRect();
+        if (r.top <= probe && r.bottom >= probe) { onDark = true; break; }
+      }
+      masthead.classList.toggle('is-dark', onDark);
+    }
+
+    scrollTasks.push(update);
+    resizeTasks.push(update);
+    update();
+  }
+
+  /* --- Animated statistics ------------------------------------------------ */
+
+  function initCounters() {
+    var stats = document.querySelectorAll('[data-count]');
+    if (!stats.length) return;
+
+    function settle(el) {
+      el.firstChild.nodeValue = el.getAttribute('data-count');
+    }
+
+    if (reduced || !('IntersectionObserver' in window)) {
+      stats.forEach(settle);
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        io.unobserve(el);
+
+        var target = parseFloat(el.getAttribute('data-count'));
+        var start = null;
+        var duration = 1150;
+
+        function step(now) {
+          if (start === null) start = now;
+          var t = clamp((now - start) / duration, 0, 1);
+          var eased = 1 - Math.pow(1 - t, 3);
+          el.firstChild.nodeValue = String(Math.round(target * eased));
+          if (t < 1) requestAnimationFrame(step); else settle(el);
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.5 });
+
+    stats.forEach(function (el) { el.firstChild.nodeValue = '0'; io.observe(el); });
+  }
+
+  /* --- Magnitude bars grow on entry --------------------------------------- */
+
+  function initBars() {
+    var fills = document.querySelectorAll('.bars__fill');
+    if (!fills.length) return;
+
+    if (reduced || !('IntersectionObserver' in window)) {
+      fills.forEach(function (el) { el.style.setProperty('--grow', 1); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        io.unobserve(entry.target);
+        entry.target.style.setProperty('--grow', 1);
+      });
+    }, { threshold: 0.35 });
+
+    fills.forEach(function (el, i) {
+      el.style.setProperty('--grow', 0);
+      el.style.setProperty('--reveal-delay', ((i % 5) * 80) + 'ms');
+      io.observe(el);
+    });
+  }
+
+  /* --- Chart hover linking -----------------------------------------------
+     All values are permanently visible in each chart's key, so hovering
+     emphasises a segment and its row rather than summoning a tooltip.    */
+
+  function initChartHover() {
+    document.querySelectorAll('[data-chart]').forEach(function (chart) {
+      var segs = chart.querySelectorAll('[data-seg]');
+      var rows = chart.querySelectorAll('[data-row]');
+      if (!segs.length) return;
+
+      function set(name) {
+        chart.classList.toggle('is-hovering', !!name);
+        segs.forEach(function (s) { s.classList.toggle('is-hot', s.dataset.seg === name); });
+        rows.forEach(function (r) { r.classList.toggle('is-hot', r.dataset.row === name); });
+      }
+
+      segs.forEach(function (s) {
+        s.addEventListener('mouseenter', function () { set(s.dataset.seg); });
+      });
+      rows.forEach(function (r) {
+        r.addEventListener('mouseenter', function () { set(r.dataset.row); });
+      });
+      chart.addEventListener('mouseleave', function () { set(null); });
+    });
+  }
+
+  /* --- Product showcase: which step is on screen -------------------------- */
+
+  function initShowcase() {
+    var shots = document.querySelectorAll('[data-step-shot]');
+    var steps = document.querySelectorAll('[data-step]');
+    if (!shots.length || !steps.length || !('IntersectionObserver' in window)) {
+      steps.forEach(function (s) { s.classList.add('is-current'); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var id = entry.target.getAttribute('data-step-shot');
+        steps.forEach(function (s) {
+          s.classList.toggle('is-current', s.getAttribute('data-step') === id);
+        });
+      });
+    }, { rootMargin: '-35% 0px -45% 0px' });
+
+    shots.forEach(function (s) { io.observe(s); });
+  }
+
+  /* --- Parallax on full-bleed evidence photography ------------------------ */
+
+  function initParallax() {
+    var media = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+    if (!media.length || reduced) return;
+
+    function update() {
+      for (var i = 0; i < media.length; i++) {
+        var el = media[i];
+        var rect = el.getBoundingClientRect();
+        if (rect.bottom < -200 || rect.top > window.innerHeight + 200) continue;
+        var centre = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+        el.style.setProperty('--py', (clamp(centre, -1, 1) * -34).toFixed(2) + 'px');
+      }
+    }
+
+    scrollTasks.push(update);
+    resizeTasks.push(update);
+    update();
+  }
+
+  /* --- Testimonial player -------------------------------------------------
+     The recording is never autoplayed and is not preloaded; the designed
+     plate stands in for a poster frame until the viewer chooses to play.  */
+
+  function initPlayer() {
+    var player = document.querySelector('[data-player]');
+    if (!player) return;
+
+    var video = player.querySelector('video');
+    var button = player.querySelector('[data-play]');
+    if (!video || !button) return;
+
+    button.addEventListener('click', function () {
+      player.classList.add('is-playing');
+      video.setAttribute('controls', '');
+      video.preload = 'auto';
+      var played = video.play();
+      if (played && typeof played.catch === 'function') {
+        played.catch(function () { video.focus(); });
+      } else {
+        video.focus();
+      }
+    });
+
+    video.addEventListener('ended', function () {
+      player.classList.remove('is-playing');
+    });
+  }
+
+  /* --- Evidence index overlay --------------------------------------------- */
+
+  function initIndex() {
+    var panel = document.querySelector('[data-index]');
+    var openers = document.querySelectorAll('[data-index-open]');
+    if (!panel || !openers.length) return;
+
+    var closers = panel.querySelectorAll('[data-index-close]');
+    var links = panel.querySelectorAll('a[href^="#"]');
+    var lastFocus = null;
+
+    function open() {
+      lastFocus = document.activeElement;
+      panel.classList.add('is-open');
+      panel.removeAttribute('aria-hidden');
+      document.body.classList.add('is-locked');
+      openers.forEach(function (o) { o.setAttribute('aria-expanded', 'true'); });
+      var first = panel.querySelector('a, button');
+      if (first) first.focus();
+    }
+
+    function close() {
+      panel.classList.remove('is-open');
+      panel.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('is-locked');
+      openers.forEach(function (o) { o.setAttribute('aria-expanded', 'false'); });
+      if (lastFocus) lastFocus.focus();
+    }
+
+    openers.forEach(function (o) { o.addEventListener('click', open); });
+    closers.forEach(function (c) { c.addEventListener('click', close); });
+    links.forEach(function (l) { l.addEventListener('click', close); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && panel.classList.contains('is-open')) close();
+    });
+  }
+
+  /* --- Lightbox for evidence screenshots ---------------------------------- */
+
+  function initLightbox() {
+    var box = document.querySelector('[data-lightbox]');
+    if (!box) return;
+
+    var stage = box.querySelector('[data-lightbox-stage]');
+    var label = box.querySelector('[data-lightbox-label]');
+    var prev = box.querySelector('[data-lightbox-prev]');
+    var next = box.querySelector('[data-lightbox-next]');
+    var close = box.querySelector('[data-lightbox-close]');
+    var triggers = Array.prototype.slice.call(document.querySelectorAll('[data-zoom]'));
+    if (!triggers.length) return;
+
+    var current = 0;
+    var lastFocus = null;
+
+    function render(i) {
+      current = (i + triggers.length) % triggers.length;
+      var t = triggers[current];
+      stage.innerHTML = '';
+      var img = document.createElement('img');
+      img.src = t.getAttribute('data-zoom');
+      img.alt = t.getAttribute('data-zoom-alt') || '';
+      stage.appendChild(img);
+      label.textContent = (current + 1) + ' / ' + triggers.length + ' · ' +
+        (t.getAttribute('data-zoom-label') || '');
+    }
+
+    function open(i) {
+      lastFocus = document.activeElement;
+      render(i);
+      box.classList.add('is-open');
+      box.removeAttribute('aria-hidden');
+      document.body.classList.add('is-locked');
+      close.focus();
+    }
+
+    function hide() {
+      box.classList.remove('is-open');
+      box.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('is-locked');
+      stage.innerHTML = '';
+      if (lastFocus) lastFocus.focus();
+    }
+
+    triggers.forEach(function (t, i) {
+      t.addEventListener('click', function (e) { e.preventDefault(); open(i); });
+    });
+    close.addEventListener('click', hide);
+    prev.addEventListener('click', function () { render(current - 1); });
+    next.addEventListener('click', function () { render(current + 1); });
+
+    document.addEventListener('keydown', function (e) {
+      if (!box.classList.contains('is-open')) return;
+      if (e.key === 'Escape') hide();
+      if (e.key === 'ArrowLeft') render(current - 1);
+      if (e.key === 'ArrowRight') render(current + 1);
+    });
+  }
+
+  /* --- Boot --------------------------------------------------------------- */
+
+  function boot() {
+    document.documentElement.classList.add('js');
+    initReveal();
+    initCinema();
+    initChrome();
+    initCounters();
+    initBars();
+    initChartHover();
+    initShowcase();
+    initParallax();
+    initPlayer();
+    initIndex();
+    initLightbox();
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+    if (typeof motionQuery.addEventListener === 'function') {
+      motionQuery.addEventListener('change', function () { window.location.reload(); });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
