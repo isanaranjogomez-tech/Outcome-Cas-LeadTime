@@ -24,7 +24,6 @@ Build begins only on the explicit instruction: `YA — START BUILDING THE WEBSIT
 - [ ] Course of Action photographs (team presenting/promoting at school, laptop, printed materials, students interacting)
 - [ ] Initial survey evidence screenshots (Microsoft Forms, 50 Grade 9 responses)
 - [ ] Testimonial / evaluation video (optional)
-- [ ] Five campaign posters from the Canva design "Poster Global" — for `assets/action/poster-01…05.png`
 
 ## Academic constraints held in memory
 
@@ -76,3 +75,11 @@ Build begins only on the explicit instruction: `YA — START BUILDING THE WEBSIT
 - `assets/video/student-perspective.mp4` — 1920x1080, 5.4s, H.264/AAC. Student
   perspective recording closing Act V. Autoplays once on scroll into view.
   Verified statement transcribed on the page; no other quotation drawn from it.
+
+## Batch 6 — received
+
+- `assets/action/poster-01.png` … `poster-05.png` — the five campaign posters from the
+  team's Canva design "Poster Global", supplied as a 5-page PDF and rasterised at
+  1588 x 2246 (2x the 794 x 1123 Canva page). Original portrait ratio, no cropping,
+  no retouching. Shown as CAMPAIGN MATERIALS in Part VI and listed in the evidence
+  register.
