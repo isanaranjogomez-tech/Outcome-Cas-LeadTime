@@ -33,3 +33,11 @@ Build begins only on the explicit instruction: `YA — START BUILDING THE WEBSIT
 - Verified survey findings only (66% / 70% / tired-overwhelmed-anxious / 74% / 50-18-32-0).
 - LeadTime AI = academic organisation tool. Never framed as treating or curing mental illness.
 - Team: Jeronimo Lopez (Group Leader), Sophia Leguizamo (Project Communicator), Isabella Naranjo (AI Developer), Santiago Lugo (Printing Collaborator), Santiago Cortes (Poster Designer).
+
+## Batch 2 — received
+
+- `assets/action/01-promotion-flyers-laptop.jpg` — Course of Action: team members holding printed flyers ("Plan better. Stress less.") beside an open laptop at an outdoor table; students gathered.
+- `assets/action/02-students-engaging-table.jpg` — Course of Action: students interacting at the promotion table, laptop open, printed materials with QR code, wall poster ("When school gets heavy", 66%/70%).
+- `assets/survey/01-forms-q1-q2.png` — Survey evidence: Forms header (50 Respuestas) + Q1 and Q2 with pie charts.
+- `assets/survey/02-forms-q3-q4-q5.png` — Survey evidence: Q3, Q4, Q5 with pie charts.
+- `assets/survey/03-forms-q6-q7-open.png` — Survey evidence: Q6 and Q7 open responses.
