@@ -1,0 +1,7 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Rendered videos: regenerate them with `npm run render`, don't commit them.
+out

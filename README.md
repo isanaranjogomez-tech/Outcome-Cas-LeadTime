@@ -47,7 +47,11 @@ assets/action/          2 Course of Action photographs
 assets/team/            5 team portraits
 assets/video/           the student perspective clip + the testimonial recording
 ASSET-MANIFEST.md       what every asset is and where it is used
+video/                  Remotion project — videos rendered from the command line
 ```
+
+The site itself still has no build step; `video/` is a separate, optional
+project. See [video/README.md](video/README.md).
 
 ## The narrative
 

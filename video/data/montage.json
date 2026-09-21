@@ -1,0 +1,39 @@
+{
+  "theme": "dark",
+  "transition": "fade",
+  "transitionInSeconds": 0.5,
+  "scenes": [
+    {
+      "type": "card",
+      "eyebrow": "Part V",
+      "title": "Connection to the course of action",
+      "subtitle": "Why the team chose to build LeadTime AI.",
+      "durationInSeconds": 4
+    },
+    {
+      "type": "clip",
+      "src": "media/video/student-perspective.mp4",
+      "startAtSeconds": 0,
+      "durationInSeconds": 8,
+      "caption": "Student perspective — Grade 9",
+      "muted": false,
+      "volume": 1
+    },
+    {
+      "type": "card",
+      "eyebrow": "Part VII",
+      "title": "What the outcome achieved",
+      "subtitle": "Recorded in the testimonial below.",
+      "durationInSeconds": 3.5
+    },
+    {
+      "type": "clip",
+      "src": "media/video/testimonial.mp4",
+      "startAtSeconds": 0,
+      "durationInSeconds": 8,
+      "caption": "Testimonial recording",
+      "muted": false,
+      "volume": 1
+    }
+  ]
+}
