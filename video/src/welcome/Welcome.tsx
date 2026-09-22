@@ -174,6 +174,9 @@ export const Welcome: React.FC<WelcomeProps> = ({
   let cursor = 0;
   const openingWhoosh = sfxVolume * 0.5;
 
+  const totalFrames = welcomeDurationInFrames({ fps, segments } as WelcomeProps);
+  const fadeFrames = Math.round(fps * 0.9);
+
   return (
     <AbsoluteFill style={{ backgroundColor: muncas.navyDeep }}>
       {segments.map((segment, i) => {
@@ -198,7 +201,20 @@ export const Welcome: React.FC<WelcomeProps> = ({
       <Audio src={staticFile("sfx/whoosh.wav")} volume={openingWhoosh} />
 
       {musicVolume > 0 ? (
-        <Audio src={staticFile("sfx/music-bed.ogg")} volume={musicVolume} loop />
+        <Audio
+          src={staticFile("sfx/music-bed.ogg")}
+          loop
+          // The bed carries the close and then eases out, rather than
+          // stopping dead on the last frame.
+          volume={(f) =>
+            interpolate(
+              f,
+              [totalFrames - fadeFrames, totalFrames],
+              [musicVolume, 0],
+              { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+            )
+          }
+        />
       ) : null}
     </AbsoluteFill>
   );
