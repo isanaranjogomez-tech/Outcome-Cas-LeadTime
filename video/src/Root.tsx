@@ -20,6 +20,9 @@ import muncasEdit from "../data/muncas-emojis.json";
 import { Letras, letrasDurationInFrames } from "./letras/Letras";
 import { letrasSchema, type LetrasProps } from "./letras/schema";
 import letrasEdit from "../data/muncas-letras.json";
+import { Welcome, welcomeDurationInFrames } from "./welcome/Welcome";
+import { welcomeSchema, type WelcomeProps } from "./welcome/schema";
+import welcomeEdit from "../data/muncas-welcome.json";
 
 const FPS = 30;
 const WIDTH = 1920;
@@ -132,6 +135,27 @@ export const RemotionRoot: React.FC = () => {
           const parsed = letrasSchema.parse(props);
           return {
             durationInFrames: letrasDurationInFrames(parsed),
+            fps: parsed.fps,
+            width: parsed.width,
+            height: parsed.height,
+            props: parsed,
+          };
+        }}
+      />
+
+      <Composition
+        id="MuncasWelcome"
+        component={Welcome}
+        schema={welcomeSchema}
+        fps={welcomeEdit.fps}
+        width={welcomeEdit.width}
+        height={welcomeEdit.height}
+        durationInFrames={Math.round(welcomeEdit.totalInSeconds * welcomeEdit.fps)}
+        defaultProps={welcomeSchema.parse(welcomeEdit) as WelcomeProps}
+        calculateMetadata={({ props }) => {
+          const parsed = welcomeSchema.parse(props);
+          return {
+            durationInFrames: welcomeDurationInFrames(parsed),
             fps: parsed.fps,
             width: parsed.width,
             height: parsed.height,
