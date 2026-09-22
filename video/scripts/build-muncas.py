@@ -68,7 +68,7 @@ SHOT_PLAN = {
         "emojis": [],
     },
     "banco": {
-        "label": "BANCO LATINOAMERICANO",
+        "label": "GAC BANDO LATINOAMERICANO",
         "emojis": [
             {"char": "💣", "word": "bomba",  "anim": "impact"},
             {"char": "🔥", "word": "fuego",  "anim": "pop"},

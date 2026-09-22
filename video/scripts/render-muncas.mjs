@@ -18,15 +18,16 @@ import { join, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const outDir = join(root, "out");
-const raw = join(outDir, "muncas-emojis.raw.mp4");
-const final = join(outDir, "muncas-emojis.mp4");
+const raw = join(outDir, "MUNCAS_EMOJIS_FINAL_CORREGIDO.raw.mp4");
+const final = join(outDir, "MUNCAS_EMOJIS_FINAL_CORREGIDO.mp4");
 
 const TARGET_LUFS = -14;
 const TARGET_TRUE_PEAK = -1;
 const TARGET_LRA = 9;
 
 const args = process.argv.slice(2);
-const crf = args.includes("--quality") ? "16" : "18";
+// crf 22 keeps the whole reel inside a single encode at a shareable size.
+const crf = args.includes("--quality") ? "16" : "22";
 
 const run = (cmd, argv, opts = {}) =>
   spawnSync(cmd, argv, { cwd: root, encoding: "utf8", ...opts });
