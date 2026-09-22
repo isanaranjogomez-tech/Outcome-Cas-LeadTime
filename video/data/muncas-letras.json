@@ -12,7 +12,7 @@
     "left": "DIRECTOR",
     "right": "SGA"
   },
-  "totalInSeconds": 28.51,
+  "totalInSeconds": 29.31,
   "musicVolume": 0.15,
   "sfxVolume": 0.34,
   "segments": [
@@ -582,7 +582,7 @@
       "id": "winner",
       "srcIn": 29.14,
       "srcOut": 29.2,
-      "durationInSeconds": 1.75,
+      "durationInSeconds": 2.55,
       "timelineStart": 26.76,
       "kind": "hold",
       "score": [

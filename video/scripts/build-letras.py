@@ -81,7 +81,7 @@ EDIT = [
 
     # The close is the last frame of the game itself, held.
     dict(id="winner",   src=(29.14, 29.20), kind="hold",  score=(2, 4),
-         still="freeze/letras-winner.jpg", hold=1.75, winner=True),
+         still="freeze/letras-winner.jpg", hold=2.55, winner=True),
 ]
 
 LEAD = 0.0  # the table already carries hand-set in/out points

@@ -94,12 +94,14 @@ export const WinnerCard: React.FC<{ name: string; score: [number, number] }> = (
           style={{
             fontFamily: captionFont,
             fontWeight: 800,
-            fontSize: 42,
-            letterSpacing: "0.1em",
+            fontSize: 52,
+            letterSpacing: "0.045em",
             color: muncas.white,
             backgroundColor: muncas.red,
-            padding: "12px 28px",
-            borderRadius: 14,
+            padding: "16px 32px",
+            borderRadius: 16,
+            whiteSpace: "nowrap",
+            textShadow: "0 4px 14px rgba(6,18,41,0.45)",
             opacity: pop,
           }}
         >
