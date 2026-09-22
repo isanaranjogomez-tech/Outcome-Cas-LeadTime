@@ -95,7 +95,7 @@ const SegmentView: React.FC<{
   // Ticking under the long thinking beats — the silence becomes the joke.
   // Sparser ticking, and only under the creeping zooms — elsewhere the real
   // room tone is funnier than a sound effect.
-  const ticks = segment.kind === "creep" ? [0.18, 0.92] : [];
+  const ticks = segment.kind === "creep" && !segment.quiet ? [0.18, 0.92] : [];
 
   return (
     <AbsoluteFill style={{ backgroundColor: muncas.navyDeep }}>

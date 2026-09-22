@@ -30,6 +30,8 @@ export const letrasSegmentSchema = z.object({
   whoosh: z.boolean().optional(),
   /** A held still instead of the video — used for the closing frame. */
   still: z.string().optional(),
+  /** Suppresses the ticking, where the room tone is doing the work. */
+  quiet: z.boolean().optional(),
 });
 
 export const letrasSchema = z.object({

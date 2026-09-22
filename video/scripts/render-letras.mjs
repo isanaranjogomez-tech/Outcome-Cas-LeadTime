@@ -18,8 +18,8 @@ import { join, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const outDir = join(root, "out");
-const raw = join(outDir, "MUNCAS_LETRAS_FINAL_V2.raw.mp4");
-const final = join(outDir, "MUNCAS_LETRAS_FINAL_V2.mp4");
+const raw = join(outDir, "MUNCAS_LETRAS_FINAL_V3.raw.mp4");
+const final = join(outDir, "MUNCAS_LETRAS_FINAL_V3.mp4");
 
 const TARGET_LUFS = -14;
 const TARGET_TRUE_PEAK = -1;

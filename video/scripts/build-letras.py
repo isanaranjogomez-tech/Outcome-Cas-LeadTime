@@ -48,7 +48,7 @@ EDIT = [
          point=dict(side="left", at=0.30)),
 
     dict(id="letter-c", src=(6.30, 8.06),   kind="push",  letter="C", score=(1, 0)),
-    dict(id="answer-c", src=(8.06, 9.44),   kind="punch", score=(1, 0),
+    dict(id="answer-c", src=(8.06, 9.46),   kind="punch", score=(1, 0),
          point=dict(side="right", at=0.62), banner=dict(text="EMPATE", at=0.95)),
 
     dict(id="letter-f", src=(9.38, 10.96),  kind="push",  letter="F", score=(1, 1)),
@@ -58,24 +58,23 @@ EDIT = [
 
     dict(id="letter-u", src=(12.10, 13.38), kind="push",  letter="U", score=(1, 2)),
     # Two seconds of them actually trying to remember.
-    dict(id="think-u",  src=(13.42, 15.45), kind="creep", score=(1, 2),
+    dict(id="think-u",  src=(13.38, 15.45), kind="creep", score=(1, 2),
          banner=dict(text="PROCESANDO…", at=0.75)),
-    dict(id="answer-u", src=(15.45, 16.66), kind="punch", score=(1, 2),
+    dict(id="answer-u", src=(15.45, 16.68), kind="punch", score=(1, 2),
          point=dict(side="left", at=0.24), banner=dict(text="2 — 2  EMPATE", at=0.62)),
 
     dict(id="letter-m", src=(16.60, 18.52), kind="push",  letter="M", score=(2, 2),
          whoosh=True),
     # The long one. Four and a half seconds of silence, kept where it happened.
-    dict(id="think-m1", src=(18.56, 20.40), kind="hold",  score=(2, 2),
-         banner=dict(text="…", at=0.95)),
-    dict(id="think-m2", src=(20.70, 22.20), kind="punch", score=(2, 2)),
-    dict(id="think-m3", src=(23.70, 24.95), kind="creep", score=(2, 2),
-         banner=dict(text="PROCESANDO…", at=0.12)),
+    dict(id="think-m1", src=(18.56, 20.45), kind="hold",  score=(2, 2), quiet=True),
+    dict(id="think-m2", src=(20.75, 23.10), kind="punch", score=(2, 2), quiet=True),
+    dict(id="think-m3", src=(23.72, 24.95), kind="creep", score=(2, 2), quiet=True,
+         banner=dict(text="PROCESANDO…", at=0.30)),
     dict(id="answer-m", src=(24.95, 26.06), kind="punch", score=(2, 2),
          point=dict(side="right", at=0.20)),
 
     dict(id="letter-g", src=(26.20, 27.86), kind="push",  letter="G", score=(2, 3),
-         tension=True, whoosh=True),
+         whoosh=True),
     dict(id="answer-g", src=(27.90, 29.20), kind="punch", score=(2, 3),
          point=dict(side="right", at=0.34)),
 
@@ -180,6 +179,8 @@ def main():
             seg["winner"] = True
         if spec.get("whoosh"):
             seg["whoosh"] = True
+        if spec.get("quiet"):
+            seg["quiet"] = True
         if "still" in spec:
             seg["still"] = spec["still"]
 
