@@ -12,7 +12,7 @@
     "left": "DIRECTOR",
     "right": "SGA"
   },
-  "totalInSeconds": 24.74,
+  "totalInSeconds": 28.51,
   "musicVolume": 0.15,
   "sfxVolume": 0.34,
   "segments": [
@@ -76,13 +76,14 @@
           "end": 3.478,
           "accent": "red"
         }
-      ]
+      ],
+      "whoosh": true
     },
     {
       "id": "letter-s",
-      "srcIn": 3.86,
-      "srcOut": 5.24,
-      "durationInSeconds": 1.38,
+      "srcIn": 3.82,
+      "srcOut": 5.22,
+      "durationInSeconds": 1.4,
       "timelineStart": 3.56,
       "kind": "push",
       "score": [
@@ -92,38 +93,38 @@
       "captions": [
         {
           "word": "La",
-          "start": 0.056,
-          "end": 0.21,
+          "start": 0.096,
+          "end": 0.25,
           "accent": "white"
         },
         {
           "word": "letra",
-          "start": 0.21,
-          "end": 0.623,
+          "start": 0.25,
+          "end": 0.663,
           "accent": "blue"
         },
         {
           "word": "es",
-          "start": 0.623,
-          "end": 0.917,
+          "start": 0.663,
+          "end": 0.957,
           "accent": "white"
         },
         {
           "word": "S",
-          "start": 0.917,
-          "end": 1.186,
+          "start": 0.957,
+          "end": 1.226,
           "accent": "red"
         }
       ],
       "letter": "S",
-      "letterAt": 0.917
+      "letterAt": 0.957
     },
     {
       "id": "answer-s",
-      "srcIn": 5.16,
-      "srcOut": 6.12,
-      "durationInSeconds": 0.96,
-      "timelineStart": 4.94,
+      "srcIn": 5.22,
+      "srcOut": 6.16,
+      "durationInSeconds": 0.94,
+      "timelineStart": 4.96,
       "kind": "punch",
       "score": [
         0,
@@ -132,27 +133,27 @@
       "captions": [
         {
           "word": "Security",
-          "start": 0.097,
-          "end": 0.404,
+          "start": 0.037,
+          "end": 0.344,
           "accent": "blue"
         },
         {
           "word": "Council",
-          "start": 0.404,
-          "end": 0.803,
+          "start": 0.344,
+          "end": 0.743,
           "accent": "blue"
         }
       ],
       "point": {
         "side": "left",
-        "at": 0.34
+        "at": 0.3
       }
     },
     {
       "id": "letter-c",
       "srcIn": 6.3,
-      "srcOut": 8.05,
-      "durationInSeconds": 1.75,
+      "srcOut": 8.06,
+      "durationInSeconds": 1.76,
       "timelineStart": 5.9,
       "kind": "push",
       "score": [
@@ -190,10 +191,10 @@
     },
     {
       "id": "answer-c",
-      "srcIn": 8.24,
-      "srcOut": 9.28,
-      "durationInSeconds": 1.04,
-      "timelineStart": 7.65,
+      "srcIn": 8.06,
+      "srcOut": 9.44,
+      "durationInSeconds": 1.38,
+      "timelineStart": 7.66,
       "kind": "punch",
       "score": [
         1,
@@ -202,44 +203,44 @@
       "captions": [
         {
           "word": "Corte",
-          "start": 0.08,
-          "end": 0.306,
+          "start": 0.26,
+          "end": 0.486,
           "accent": "blue"
         },
         {
           "word": "del",
-          "start": 0.306,
-          "end": 0.396,
+          "start": 0.486,
+          "end": 0.576,
           "accent": "white"
         },
         {
           "word": "Distrito",
-          "start": 0.396,
-          "end": 0.744,
+          "start": 0.576,
+          "end": 0.924,
           "accent": "blue"
         },
         {
           "word": "Sur",
-          "start": 0.744,
-          "end": 0.899,
+          "start": 0.924,
+          "end": 1.079,
           "accent": "blue"
         }
       ],
       "point": {
         "side": "right",
-        "at": 0.46
+        "at": 0.62
       },
       "banner": {
         "text": "EMPATE",
-        "at": 0.72
+        "at": 0.95
       }
     },
     {
       "id": "letter-f",
-      "srcIn": 9.34,
-      "srcOut": 10.92,
+      "srcIn": 9.38,
+      "srcOut": 10.96,
       "durationInSeconds": 1.58,
-      "timelineStart": 8.69,
+      "timelineStart": 9.04,
       "kind": "push",
       "score": [
         1,
@@ -248,38 +249,38 @@
       "captions": [
         {
           "word": "La",
-          "start": 0.066,
-          "end": 0.229,
+          "start": 0.026,
+          "end": 0.189,
           "accent": "white"
         },
         {
           "word": "letra",
-          "start": 0.229,
-          "end": 0.589,
+          "start": 0.189,
+          "end": 0.549,
           "accent": "blue"
         },
         {
           "word": "es",
-          "start": 0.589,
-          "end": 0.928,
+          "start": 0.549,
+          "end": 0.888,
           "accent": "white"
         },
         {
           "word": "F",
-          "start": 0.928,
-          "end": 1.212,
+          "start": 0.888,
+          "end": 1.172,
           "accent": "red"
         }
       ],
       "letter": "F",
-      "letterAt": 0.928
+      "letterAt": 0.888
     },
     {
       "id": "answer-f",
-      "srcIn": 10.84,
-      "srcOut": 11.78,
-      "durationInSeconds": 0.94,
-      "timelineStart": 10.27,
+      "srcIn": 10.96,
+      "srcOut": 12.0,
+      "durationInSeconds": 1.04,
+      "timelineStart": 10.62,
       "kind": "punch",
       "score": [
         1,
@@ -288,26 +289,26 @@
       "captions": [
         {
           "word": "FIFA",
-          "start": 0.113,
-          "end": 0.723,
+          "start": 0.0,
+          "end": 0.603,
           "accent": "blue"
         }
       ],
       "point": {
         "side": "right",
-        "at": 0.3
+        "at": 0.34
       },
       "banner": {
         "text": "POR MILISEGUNDOS",
-        "at": 0.52
+        "at": 0.6
       }
     },
     {
       "id": "letter-u",
       "srcIn": 12.1,
-      "srcOut": 13.52,
-      "durationInSeconds": 1.42,
-      "timelineStart": 11.21,
+      "srcOut": 13.38,
+      "durationInSeconds": 1.28,
+      "timelineStart": 11.66,
       "kind": "push",
       "score": [
         1,
@@ -344,10 +345,10 @@
     },
     {
       "id": "think-u",
-      "srcIn": 13.52,
-      "srcOut": 14.92,
-      "durationInSeconds": 1.4,
-      "timelineStart": 12.63,
+      "srcIn": 13.42,
+      "srcOut": 15.45,
+      "durationInSeconds": 2.03,
+      "timelineStart": 12.94,
       "kind": "creep",
       "score": [
         1,
@@ -356,15 +357,15 @@
       "captions": [],
       "banner": {
         "text": "PROCESANDO…",
-        "at": 0.24
+        "at": 0.75
       }
     },
     {
       "id": "answer-u",
-      "srcIn": 15.42,
-      "srcOut": 16.34,
-      "durationInSeconds": 0.92,
-      "timelineStart": 14.03,
+      "srcIn": 15.45,
+      "srcOut": 16.66,
+      "durationInSeconds": 1.21,
+      "timelineStart": 14.97,
       "kind": "punch",
       "score": [
         1,
@@ -373,26 +374,26 @@
       "captions": [
         {
           "word": "UNODC",
-          "start": 0.114,
-          "end": 0.784,
+          "start": 0.084,
+          "end": 0.754,
           "accent": "blue"
         }
       ],
       "point": {
         "side": "left",
-        "at": 0.26
+        "at": 0.24
       },
       "banner": {
         "text": "2 — 2  EMPATE",
-        "at": 0.54
+        "at": 0.62
       }
     },
     {
       "id": "letter-m",
-      "srcIn": 16.58,
-      "srcOut": 18.58,
-      "durationInSeconds": 2.0,
-      "timelineStart": 14.95,
+      "srcIn": 16.6,
+      "srcOut": 18.52,
+      "durationInSeconds": 1.92,
+      "timelineStart": 16.18,
       "kind": "push",
       "score": [
         2,
@@ -401,39 +402,40 @@
       "captions": [
         {
           "word": "La",
-          "start": 0.087,
-          "end": 0.476,
+          "start": 0.067,
+          "end": 0.456,
           "accent": "white"
         },
         {
           "word": "letra",
-          "start": 0.476,
-          "end": 0.868,
+          "start": 0.456,
+          "end": 0.848,
           "accent": "blue"
         },
         {
           "word": "es",
-          "start": 0.868,
-          "end": 1.26,
+          "start": 0.848,
+          "end": 1.24,
           "accent": "white"
         },
         {
           "word": "M",
-          "start": 1.26,
-          "end": 1.535,
+          "start": 1.24,
+          "end": 1.515,
           "accent": "red"
         }
       ],
       "letter": "M",
-      "letterAt": 1.26
+      "letterAt": 1.24,
+      "whoosh": true
     },
     {
       "id": "think-m1",
-      "srcIn": 18.62,
-      "srcOut": 19.48,
-      "durationInSeconds": 0.86,
-      "timelineStart": 16.95,
-      "kind": "creep",
+      "srcIn": 18.56,
+      "srcOut": 20.4,
+      "durationInSeconds": 1.84,
+      "timelineStart": 18.1,
+      "kind": "hold",
       "score": [
         2,
         2
@@ -441,33 +443,16 @@
       "captions": [],
       "banner": {
         "text": "…",
-        "at": 0.1
+        "at": 0.95
       }
     },
     {
       "id": "think-m2",
-      "srcIn": 20.8,
-      "srcOut": 21.58,
-      "durationInSeconds": 0.78,
-      "timelineStart": 17.81,
+      "srcIn": 20.7,
+      "srcOut": 22.2,
+      "durationInSeconds": 1.5,
+      "timelineStart": 19.94,
       "kind": "punch",
-      "score": [
-        2,
-        2
-      ],
-      "captions": [],
-      "banner": {
-        "text": "PROCESANDO…",
-        "at": 0.06
-      }
-    },
-    {
-      "id": "think-m3",
-      "srcIn": 23.95,
-      "srcOut": 24.78,
-      "durationInSeconds": 0.83,
-      "timelineStart": 18.59,
-      "kind": "creep",
       "score": [
         2,
         2
@@ -475,11 +460,28 @@
       "captions": []
     },
     {
+      "id": "think-m3",
+      "srcIn": 23.7,
+      "srcOut": 24.95,
+      "durationInSeconds": 1.25,
+      "timelineStart": 21.44,
+      "kind": "creep",
+      "score": [
+        2,
+        2
+      ],
+      "captions": [],
+      "banner": {
+        "text": "PROCESANDO…",
+        "at": 0.12
+      }
+    },
+    {
       "id": "answer-m",
-      "srcIn": 24.96,
-      "srcOut": 25.92,
-      "durationInSeconds": 0.96,
-      "timelineStart": 19.42,
+      "srcIn": 24.95,
+      "srcOut": 26.06,
+      "durationInSeconds": 1.11,
+      "timelineStart": 22.69,
       "kind": "punch",
       "score": [
         2,
@@ -488,34 +490,34 @@
       "captions": [
         {
           "word": "Mesa",
-          "start": 0.139,
-          "end": 0.385,
+          "start": 0.149,
+          "end": 0.395,
           "accent": "blue"
         },
         {
           "word": "de",
-          "start": 0.385,
-          "end": 0.441,
+          "start": 0.395,
+          "end": 0.451,
           "accent": "white"
         },
         {
           "word": "Diálogo",
-          "start": 0.441,
-          "end": 0.755,
+          "start": 0.451,
+          "end": 0.765,
           "accent": "blue"
         }
       ],
       "point": {
         "side": "right",
-        "at": 0.22
+        "at": 0.2
       }
     },
     {
       "id": "letter-g",
       "srcIn": 26.2,
-      "srcOut": 28.0,
-      "durationInSeconds": 1.8,
-      "timelineStart": 20.38,
+      "srcOut": 27.86,
+      "durationInSeconds": 1.66,
+      "timelineStart": 23.8,
       "kind": "push",
       "score": [
         2,
@@ -549,14 +551,15 @@
       ],
       "letter": "G",
       "letterAt": 1.095,
-      "tension": true
+      "tension": true,
+      "whoosh": true
     },
     {
       "id": "answer-g",
-      "srcIn": 28.02,
-      "srcOut": 28.98,
-      "durationInSeconds": 0.96,
-      "timelineStart": 22.18,
+      "srcIn": 27.9,
+      "srcOut": 29.2,
+      "durationInSeconds": 1.3,
+      "timelineStart": 25.46,
       "kind": "punch",
       "score": [
         2,
@@ -565,29 +568,30 @@
       "captions": [
         {
           "word": "GAC",
-          "start": 0.119,
-          "end": 0.775,
+          "start": 0.239,
+          "end": 0.895,
           "accent": "blue"
         }
       ],
       "point": {
         "side": "right",
-        "at": 0.24
+        "at": 0.34
       }
     },
     {
       "id": "winner",
-      "srcIn": 21.0,
-      "srcOut": 22.6,
-      "durationInSeconds": 1.6,
-      "timelineStart": 23.14,
-      "kind": "punch",
+      "srcIn": 29.14,
+      "srcOut": 29.2,
+      "durationInSeconds": 1.75,
+      "timelineStart": 26.76,
+      "kind": "hold",
       "score": [
         2,
         4
       ],
       "captions": [],
-      "winner": true
+      "winner": true,
+      "still": "freeze/letras-winner.jpg"
     }
   ]
 }

@@ -18,15 +18,17 @@ import { join, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const outDir = join(root, "out");
-const raw = join(outDir, "muncas-letras.raw.mp4");
-const final = join(outDir, "muncas-letras.mp4");
+const raw = join(outDir, "MUNCAS_LETRAS_FINAL_V2.raw.mp4");
+const final = join(outDir, "MUNCAS_LETRAS_FINAL_V2.mp4");
 
 const TARGET_LUFS = -14;
 const TARGET_TRUE_PEAK = -1;
 const TARGET_LRA = 9;
 
 const args = process.argv.slice(2);
-const crf = args.includes("--quality") ? "16" : "18";
+// crf 20 renders straight to a deliverable size, so the file is encoded once
+// rather than being re-compressed again for sharing.
+const crf = args.includes("--quality") ? "16" : "20";
 
 const run = (cmd, argv, opts = {}) =>
   spawnSync(cmd, argv, { cwd: root, encoding: "utf8", ...opts });
@@ -83,7 +85,8 @@ const norm = ffmpeg([
     `:measured_I=${m.input_i}:measured_TP=${m.input_tp}` +
     `:measured_LRA=${m.input_lra}:measured_thresh=${m.input_thresh}` +
     `:offset=${m.target_offset}:linear=true`,
-  "-c:v", "copy", "-c:a", "aac", "-b:a", "256k", "-movflags", "+faststart",
+  "-c:v", "copy", "-c:a", "aac", "-b:a", "256k", "-ar", "48000",
+  "-movflags", "+faststart",
   final,
 ]);
 

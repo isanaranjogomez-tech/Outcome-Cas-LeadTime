@@ -40,44 +40,48 @@ BLUE = {"security", "council", "corte", "distrito", "sur", "fifa", "unodc",
 
 # The edit. `kind` drives the camera move; everything else is what goes on top.
 EDIT = [
-    dict(id="intro",   src=(0.10, 3.66),  kind="push",  score=(0, 0)),
+    dict(id="intro",    src=(0.10, 3.66),   kind="push",  score=(0, 0), whoosh=True),
 
-    dict(id="letter-s", src=(3.86, 5.24),  kind="push",  letter="S", score=(0, 0)),
-    dict(id="answer-s", src=(5.16, 6.12),  kind="punch", score=(0, 0),
-         point=dict(side="left", at=0.34)),
+    dict(id="letter-s", src=(3.82, 5.22),   kind="push",  letter="S", score=(0, 0)),
+    # The answers now hold on their faces for a beat afterwards.
+    dict(id="answer-s", src=(5.22, 6.16),   kind="punch", score=(0, 0),
+         point=dict(side="left", at=0.30)),
 
-    dict(id="letter-c", src=(6.30, 8.05),  kind="push",  letter="C", score=(1, 0)),
-    dict(id="answer-c", src=(8.24, 9.28),  kind="punch", score=(1, 0),
-         point=dict(side="right", at=0.46), banner=dict(text="EMPATE", at=0.72)),
+    dict(id="letter-c", src=(6.30, 8.06),   kind="push",  letter="C", score=(1, 0)),
+    dict(id="answer-c", src=(8.06, 9.44),   kind="punch", score=(1, 0),
+         point=dict(side="right", at=0.62), banner=dict(text="EMPATE", at=0.95)),
 
-    dict(id="letter-f", src=(9.34, 10.92), kind="push",  letter="F", score=(1, 1)),
-    dict(id="answer-f", src=(10.84, 11.78), kind="punch", score=(1, 1),
-         point=dict(side="right", at=0.30),
-         banner=dict(text="POR MILISEGUNDOS", at=0.52)),
+    dict(id="letter-f", src=(9.38, 10.96),  kind="push",  letter="F", score=(1, 1)),
+    dict(id="answer-f", src=(10.96, 12.00), kind="punch", score=(1, 1),
+         point=dict(side="right", at=0.34),
+         banner=dict(text="POR MILISEGUNDOS", at=0.60)),
 
-    dict(id="letter-u", src=(12.10, 13.52), kind="push",  letter="U", score=(1, 2)),
-    dict(id="think-u",  src=(13.52, 14.92), kind="creep", score=(1, 2),
-         banner=dict(text="PROCESANDO…", at=0.24)),
-    dict(id="answer-u", src=(15.42, 16.34), kind="punch", score=(1, 2),
-         point=dict(side="left", at=0.26), banner=dict(text="2 — 2  EMPATE", at=0.54)),
+    dict(id="letter-u", src=(12.10, 13.38), kind="push",  letter="U", score=(1, 2)),
+    # Two seconds of them actually trying to remember.
+    dict(id="think-u",  src=(13.42, 15.45), kind="creep", score=(1, 2),
+         banner=dict(text="PROCESANDO…", at=0.75)),
+    dict(id="answer-u", src=(15.45, 16.66), kind="punch", score=(1, 2),
+         point=dict(side="left", at=0.24), banner=dict(text="2 — 2  EMPATE", at=0.62)),
 
-    dict(id="letter-m", src=(16.58, 18.58), kind="push",  letter="M", score=(2, 2)),
-    # The long think: three jump cuts out of seven seconds of silence.
-    dict(id="think-m1", src=(18.62, 19.48), kind="creep", score=(2, 2),
-         banner=dict(text="…", at=0.10)),
-    dict(id="think-m2", src=(20.80, 21.58), kind="punch", score=(2, 2),
-         banner=dict(text="PROCESANDO…", at=0.06)),
-    dict(id="think-m3", src=(23.95, 24.78), kind="creep", score=(2, 2)),
-    dict(id="answer-m", src=(24.96, 25.92), kind="punch", score=(2, 2),
-         point=dict(side="right", at=0.22)),
+    dict(id="letter-m", src=(16.60, 18.52), kind="push",  letter="M", score=(2, 2),
+         whoosh=True),
+    # The long one. Four and a half seconds of silence, kept where it happened.
+    dict(id="think-m1", src=(18.56, 20.40), kind="hold",  score=(2, 2),
+         banner=dict(text="…", at=0.95)),
+    dict(id="think-m2", src=(20.70, 22.20), kind="punch", score=(2, 2)),
+    dict(id="think-m3", src=(23.70, 24.95), kind="creep", score=(2, 2),
+         banner=dict(text="PROCESANDO…", at=0.12)),
+    dict(id="answer-m", src=(24.95, 26.06), kind="punch", score=(2, 2),
+         point=dict(side="right", at=0.20)),
 
-    dict(id="letter-g", src=(26.20, 28.00), kind="push",  letter="G", score=(2, 3),
-         tension=True),
-    dict(id="answer-g", src=(28.02, 28.98), kind="punch", score=(2, 3),
-         point=dict(side="right", at=0.24)),
+    dict(id="letter-g", src=(26.20, 27.86), kind="push",  letter="G", score=(2, 3),
+         tension=True, whoosh=True),
+    dict(id="answer-g", src=(27.90, 29.20), kind="punch", score=(2, 3),
+         point=dict(side="right", at=0.34)),
 
-    # The close reuses a beat from the M silence.
-    dict(id="winner",  src=(21.00, 22.60), kind="punch", score=(2, 4), winner=True),
+    # The close is the last frame of the game itself, held.
+    dict(id="winner",   src=(29.14, 29.20), kind="hold",  score=(2, 4),
+         still="freeze/letras-winner.jpg", hold=1.75, winner=True),
 ]
 
 LEAD = 0.0  # the table already carries hand-set in/out points
@@ -141,7 +145,7 @@ def main():
     timeline = 0.0
     for spec in EDIT:
         src_in, src_out = spec["src"]
-        duration = src_out - src_in
+        duration = spec.get("hold", src_out - src_in)
 
         captions = [
             {"word": w["word"],
@@ -174,6 +178,10 @@ def main():
             seg["tension"] = True
         if spec.get("winner"):
             seg["winner"] = True
+        if spec.get("whoosh"):
+            seg["whoosh"] = True
+        if "still" in spec:
+            seg["still"] = spec["still"]
 
         segments.append(seg)
         timeline += duration

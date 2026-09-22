@@ -2,6 +2,7 @@ import React from "react";
 import {
   AbsoluteFill,
   Audio,
+  Img,
   OffthreadVideo,
   Sequence,
   interpolate,
@@ -20,40 +21,47 @@ import { WinnerCard } from "./WinnerCard";
 import type { LetrasProps, LetrasSegment } from "./schema";
 
 /**
- * Three camera behaviours, one per segment kind:
- *   push  — a steady drift, for the rounds being announced
- *   creep — a slower, longer zoom, for the awkward thinking pauses
- *   punch — snaps in on the answer, then eases back
+ * Four camera behaviours. The plain ones matter as much as the moves: a zoom
+ * only reads as a zoom if the shot before it sat still.
+ *   hold  — no move at all
+ *   push  — a barely-there drift, for the rounds being announced
+ *   creep — a slow close-in, for the thinking pauses
+ *   punch — snaps in on the answer, then holds
  */
 const useCamera = (segment: LetrasSegment, totalFrames: number) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const cut = interpolate(frame, [0, 6], [0.06, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  if (segment.kind === "hold") {
+    return 1.01;
+  }
 
   if (segment.kind === "creep") {
-    return 1.06 + interpolate(frame, [0, totalFrames], [0, 0.16], {
-      extrapolateRight: "clamp",
-    }) + cut;
+    return (
+      1.03 +
+      interpolate(frame, [0, totalFrames], [0, 0.13], { extrapolateRight: "clamp" })
+    );
   }
 
   if (segment.kind === "punch") {
-    const at = (segment.point?.at ?? 0.1) * fps;
+    const at = (segment.point?.at ?? 0.12) * fps;
     const hit = spring({
       frame: frame - at,
       fps,
-      config: { damping: 200, mass: 0.5 },
-      durationInFrames: Math.round(fps * 0.35),
+      config: { damping: 200, mass: 0.6 },
+      durationInFrames: Math.round(fps * 0.45),
     });
-    return 1.04 + hit * 0.12 + cut;
+    // Only the punch keeps a touch of push on the cut itself.
+    const cut = interpolate(frame, [0, 6], [0.03, 0], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    });
+    return 1.02 + hit * 0.11 + cut;
   }
 
-  return (
-    interpolate(frame, [0, totalFrames], [1.02, 1.06], { extrapolateRight: "clamp" }) + cut
-  );
+  return interpolate(frame, [0, totalFrames], [1.015, 1.035], {
+    extrapolateRight: "clamp",
+  });
 };
 
 const SegmentView: React.FC<{
@@ -66,6 +74,16 @@ const SegmentView: React.FC<{
   const frames = Math.round(segment.durationInSeconds * fps);
   const zoom = useCamera(segment, frames);
 
+  const plate: React.CSSProperties = {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    transform: `scale(${zoom})`,
+    transformOrigin: "50% 36%",
+    // Light touch: the source is already well exposed.
+    filter: "contrast(1.03) saturate(1.05)",
+  };
+
   const cutVolume = sfxVolume * 0.4;
   const letterVolume = sfxVolume * 0.85;
   const dingVolume = sfxVolume * 0.95;
@@ -75,24 +93,23 @@ const SegmentView: React.FC<{
   const tensionVolume = sfxVolume * 0.6;
 
   // Ticking under the long thinking beats — the silence becomes the joke.
-  const ticks = segment.kind === "creep" ? [0.05, 0.42, 0.79] : [];
+  // Sparser ticking, and only under the creeping zooms — elsewhere the real
+  // room tone is funnier than a sound effect.
+  const ticks = segment.kind === "creep" ? [0.18, 0.92] : [];
 
   return (
     <AbsoluteFill style={{ backgroundColor: muncas.navyDeep }}>
       <AbsoluteFill style={{ overflow: "hidden" }}>
-        <OffthreadVideo
-          src={staticFile(source)}
-          trimBefore={Math.round(segment.srcIn * fps)}
-          trimAfter={Math.round(segment.srcOut * fps)}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            transform: `scale(${zoom})`,
-            transformOrigin: "50% 36%",
-            filter: "contrast(1.05) saturate(1.08)",
-          }}
-        />
+        {segment.still ? (
+          <Img src={staticFile(segment.still)} style={plate} />
+        ) : (
+          <OffthreadVideo
+            src={staticFile(source)}
+            trimBefore={Math.round(segment.srcIn * fps)}
+            trimAfter={Math.round(segment.srcOut * fps)}
+            style={plate}
+          />
+        )}
       </AbsoluteFill>
 
       <AbsoluteFill
@@ -130,13 +147,20 @@ const SegmentView: React.FC<{
         />
       ) : null}
 
-      {/* --- sound ------------------------------------------------------- */}
-      <Audio src={staticFile("sfx/whoosh.wav")} volume={cutVolume} />
-
+      {/* --- sound -------------------------------------------------------
+          Whooshes are rationed: the open, and the two letters that carry
+          weight. Every other cut is just a cut. */}
       {segment.letter && segment.letterAt !== undefined ? (
         <Sequence from={Math.round(segment.letterAt * fps)}>
-          <Audio src={staticFile("sfx/whoosh-down.wav")} volume={letterVolume} />
+          <Audio
+            src={staticFile(segment.whoosh ? "sfx/whoosh-down.wav" : "sfx/pop.wav")}
+            volume={letterVolume}
+          />
         </Sequence>
+      ) : null}
+
+      {segment.whoosh && !segment.letter ? (
+        <Audio src={staticFile("sfx/whoosh.wav")} volume={cutVolume} />
       ) : null}
 
       {segment.tension ? (

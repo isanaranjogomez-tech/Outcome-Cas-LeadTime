@@ -4,7 +4,7 @@ import { captionFont, layout, muncas } from "./theme";
 import type { Caption } from "./schema";
 
 const MAX_WORDS = 3;
-const MAX_SPAN = 1.7;
+const MAX_SPAN = 1.9;
 /** Long words earn their own line rather than being crammed three to a card. */
 const MAX_CHARS = 21;
 
@@ -51,10 +51,10 @@ const Word: React.FC<{ caption: Caption; frame: number; fps: number }> = ({
   const enter = spring({
     frame: age,
     fps,
-    config: { damping: 14, mass: 0.34, stiffness: 190 },
+    config: { damping: 17, mass: 0.36, stiffness: 165 },
   });
-  const scale = interpolate(enter, [0, 1], [0.62, 1]);
-  const lift = interpolate(enter, [0, 1], [16, 0]);
+  const scale = interpolate(enter, [0, 1], [0.82, 1]);
+  const lift = interpolate(enter, [0, 1], [9, 0]);
   const opacity = interpolate(age, [0, fps * 0.07], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -62,7 +62,7 @@ const Word: React.FC<{ caption: Caption; frame: number; fps: number }> = ({
 
   // The word being spoken sits a touch forward.
   const spoken = frame >= caption.start * fps && frame < caption.end * fps;
-  const emphasis = spoken ? 1.045 : 1;
+  const emphasis = spoken ? 1.03 : 1;
 
   const text = caption.word.toUpperCase();
   const shared: React.CSSProperties = {
@@ -122,8 +122,10 @@ export const Captions: React.FC<{
   const { fps } = useVideoConfig();
   const chunks = useMemo(() => chunkWords(captions), [captions]);
 
+  // A chunk lingers well past the last word of it, so nobody is reading
+  // against the clock.
   const active = chunks.find(
-    (c) => frame >= (c.start - 0.08) * fps && frame < (c.end + 0.16) * fps,
+    (c) => frame >= (c.start - 0.12) * fps && frame < (c.end + 0.5) * fps,
   );
   if (!active) return null;
 

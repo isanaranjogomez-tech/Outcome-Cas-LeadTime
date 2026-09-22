@@ -16,7 +16,7 @@ export const letrasSegmentSchema = z.object({
   durationInSeconds: z.number(),
   timelineStart: z.number(),
   /** How the camera behaves: a slow push, a creeping zoom, or a punch-in. */
-  kind: z.enum(["push", "creep", "punch"]),
+  kind: z.enum(["hold", "push", "creep", "punch"]),
   /** Score at the start of this segment. */
   score: z.tuple([z.number(), z.number()]),
   captions: z.array(captionSchema),
@@ -26,6 +26,10 @@ export const letrasSegmentSchema = z.object({
   banner: bannerSchema.optional(),
   tension: z.boolean().optional(),
   winner: z.boolean().optional(),
+  /** Reserved for the few beats that earn a whoosh. */
+  whoosh: z.boolean().optional(),
+  /** A held still instead of the video — used for the closing frame. */
+  still: z.string().optional(),
 });
 
 export const letrasSchema = z.object({
