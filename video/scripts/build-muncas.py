@@ -35,7 +35,6 @@ SHOTS = [
     ("camara",  14.182, 20.272),
     ("council", 20.272, 27.813),
     ("who",     27.813, 32.518),
-    ("edicion", 32.518, 38.475),
     ("muncas",  38.475, 43.780),
 ]
 
@@ -52,8 +51,6 @@ BURSTS = [
     ("council", 20.631, 27.333, "United Nations Security Council is represented by an Earth globe, "
                                 "by a Wi-Fi signal and by a robot"),
     ("who",    28.238, 32.203, "WHO 1 is represented by a virus, the hospital and a cruise"),
-    ("edicion", 32.950, 35.690, "Edición y producción lo representa una claqueta"),
-    ("edicion", 35.860, 38.157, "una paleta de pinturas y un computador"),
     ("muncas", 39.322, 40.781, "A MUNCAS lo representa"),
     ("muncas", 41.051, 41.885, "cerebro"),
     ("muncas", 42.094, 43.365, "rayo y alarma"),
@@ -61,7 +58,7 @@ BURSTS = [
 
 # Per shot: the label chip, and which spoken word each emoji is pinned to.
 # `word` is matched against the transcript (accent- and case-insensitive);
-# `row` is the order the three emojis settle into at the end of the answer.
+# Emoji appear in the order they are spoken and stay where they land.
 SHOT_PLAN = {
     "intro": {
         "label": None,
@@ -74,8 +71,6 @@ SHOT_PLAN = {
             {"char": "🔥", "word": "fuego",  "anim": "pop"},
             {"char": "🏆", "word": "trofeo", "anim": "bounce"},
         ],
-        "row": ["🏆", "🔥", "💣"],
-        "rowShake": True,
         "freeze": 0.22,
     },
     "fifa": {
@@ -85,7 +80,6 @@ SHOT_PLAN = {
             {"char": "🥅", "word": "arch",    "anim": "scale"},
             {"char": "💵", "word": "dollars", "anim": "cash"},
         ],
-        "row": ["⚽️", "🥅", "💵"],
         "freeze": 0.20,
     },
     "camara": {
@@ -95,7 +89,6 @@ SHOT_PLAN = {
             {"char": "🇨🇴", "word": "Colombia", "anim": "wave"},
             {"char": "🌱", "word": "planta",   "anim": "grow"},
         ],
-        "row": ["🐄", "🇨🇴", "🌱"],
         "freeze": 0.20,
     },
     "council": {
@@ -105,7 +98,6 @@ SHOT_PLAN = {
             {"char": "🛜", "word": "Wi-Fi",  "anim": "waves"},
             {"char": "🤖", "word": "robot",  "anim": "glitch"},
         ],
-        "row": ["🌎", "🤖", "🛜"],
         "freeze": 0.22,
     },
     "who": {
@@ -115,18 +107,7 @@ SHOT_PLAN = {
             {"char": "🏥", "word": "hospital", "anim": "pop"},
             {"char": "🛳️", "word": "cruise",   "anim": "sail"},
         ],
-        "row": ["🦠", "🏥", "🛳️"],
         "freeze": 0.20,
-    },
-    "edicion": {
-        "label": "EDICIÓN & PRODUCCIÓN",
-        "emojis": [
-            {"char": "🎬", "word": "claqueta",   "anim": "clap"},
-            {"char": "🎨", "word": "paleta",     "anim": "splash"},
-            {"char": "💻", "word": "computador", "anim": "shine"},
-        ],
-        "row": ["🎬", "🎨", "💻"],
-        "freeze": 0.22,
     },
     "muncas": {
         "label": "MUNCAS",
@@ -135,8 +116,6 @@ SHOT_PLAN = {
             {"char": "⚡️", "word": "rayo",    "anim": "impact"},
             {"char": "🚨", "word": "alarma",  "anim": "siren"},
         ],
-        "row": ["🧠", "🚨", "⚡️"],
-        "rowPunch": True,
         "freeze": 0.42,
     },
 }
@@ -324,9 +303,6 @@ def main():
             "timelineStart": round(timeline, 3),
             "captions": captions,
             "emojis": emojis,
-            "row": plan.get("row", []),
-            "rowShake": plan.get("rowShake", False),
-            "rowPunch": plan.get("rowPunch", False),
             "colour": colour[name],
         })
         timeline += (src_out - src_in) + freeze

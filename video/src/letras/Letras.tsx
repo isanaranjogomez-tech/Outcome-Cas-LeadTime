@@ -72,6 +72,9 @@ const SegmentView: React.FC<{
 }> = ({ segment, source, players, sfxVolume }) => {
   const { fps } = useVideoConfig();
   const frames = Math.round(segment.durationInSeconds * fps);
+  // The out point follows the sequence length rather than being rounded on
+  // its own, so the clip can never come up a frame short of its slot.
+  const trimBefore = Math.round(segment.srcIn * fps);
   const zoom = useCamera(segment, frames);
 
   const plate: React.CSSProperties = {
@@ -91,6 +94,8 @@ const SegmentView: React.FC<{
   const bannerVolume = sfxVolume * 0.7;
   const tickVolume = sfxVolume * 0.55;
   const tensionVolume = sfxVolume * 0.6;
+  const winnerShineVolume = sfxVolume * 0.8;
+  const winnerCashVolume = sfxVolume * 0.6;
 
   // Ticking under the long thinking beats — the silence becomes the joke.
   // Sparser ticking, and only under the creeping zooms — elsewhere the real
@@ -111,8 +116,8 @@ const SegmentView: React.FC<{
         ) : (
           <OffthreadVideo
             src={staticFile(source)}
-            trimBefore={Math.round(segment.srcIn * fps)}
-            trimAfter={Math.round(segment.srcOut * fps)}
+            trimBefore={trimBefore}
+            trimAfter={trimBefore + frames}
             style={plate}
             volume={
               fadeInFrames
@@ -203,8 +208,8 @@ const SegmentView: React.FC<{
 
       {segment.winner ? (
         <>
-          <Audio src={staticFile("sfx/shine.wav")} volume={sfxVolume * 0.8} />
-          <Audio src={staticFile("sfx/cash.wav")} volume={sfxVolume * 0.6} />
+          <Audio src={staticFile("sfx/shine.wav")} volume={winnerShineVolume} />
+          <Audio src={staticFile("sfx/cash.wav")} volume={winnerCashVolume} />
         </>
       ) : null}
     </AbsoluteFill>

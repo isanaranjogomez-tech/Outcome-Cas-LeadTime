@@ -60,6 +60,9 @@ export const SegmentView: React.FC<{
   sfxVolume: number;
 }> = ({ segment, source, fps, sfxVolume }) => {
   const videoFrames = Math.round(segment.durationInSeconds * fps);
+  // The out point follows the sequence length rather than being rounded on
+  // its own, so the clip can never come up a frame short of its slot.
+  const trimBefore = Math.round(segment.srcIn * fps);
   const freezeFrames = Math.round(segment.freezeInSeconds * fps);
   const totalFrames = videoFrames + freezeFrames;
 
@@ -85,8 +88,8 @@ export const SegmentView: React.FC<{
         <Sequence durationInFrames={videoFrames}>
           <OffthreadVideo
             src={staticFile(source)}
-            trimBefore={Math.round(segment.srcIn * fps)}
-            trimAfter={Math.round(segment.srcOut * fps)}
+            trimBefore={trimBefore}
+            trimAfter={trimBefore + videoFrames}
             style={plate}
           />
         </Sequence>

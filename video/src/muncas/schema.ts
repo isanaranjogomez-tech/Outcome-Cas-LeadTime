@@ -27,9 +27,6 @@ export const segmentSchema = z.object({
   timelineStart: z.number(),
   captions: z.array(captionSchema),
   emojis: z.array(emojiBeatSchema),
-  row: z.array(z.string()),
-  rowShake: z.boolean(),
-  rowPunch: z.boolean(),
   colour: z.object({
     exposure: z.number(),
     gain: z.tuple([z.number(), z.number(), z.number()]),

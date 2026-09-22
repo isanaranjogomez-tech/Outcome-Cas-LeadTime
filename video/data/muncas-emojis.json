@@ -9,7 +9,7 @@
     "count": "3",
     "line3": "EMOJIS"
   },
-  "totalInSeconds": 42.835,
+  "totalInSeconds": 36.888,
   "musicVolume": 0.15,
   "sfxVolume": 0.34,
   "segments": [
@@ -60,9 +60,6 @@
         }
       ],
       "emojis": [],
-      "row": [],
-      "rowShake": false,
-      "rowPunch": false,
       "colour": {
         "exposure": 1.0379,
         "gain": [
@@ -176,13 +173,6 @@
           "at": 3.597
         }
       ],
-      "row": [
-        "🏆",
-        "🔥",
-        "💣"
-      ],
-      "rowShake": true,
-      "rowPunch": false,
       "colour": {
         "exposure": 0.9971,
         "gain": [
@@ -326,13 +316,6 @@
           "at": 5.341
         }
       ],
-      "row": [
-        "⚽️",
-        "🥅",
-        "💵"
-      ],
-      "rowShake": false,
-      "rowPunch": false,
       "colour": {
         "exposure": 1.0029,
         "gain": [
@@ -464,13 +447,6 @@
           "at": 5.002
         }
       ],
-      "row": [
-        "🐄",
-        "🇨🇴",
-        "🌱"
-      ],
-      "rowShake": false,
-      "rowPunch": false,
       "colour": {
         "exposure": 1.0834,
         "gain": [
@@ -620,13 +596,6 @@
           "at": 6.391
         }
       ],
-      "row": [
-        "🌎",
-        "🤖",
-        "🛜"
-      ],
-      "rowShake": false,
-      "rowPunch": false,
       "colour": {
         "exposure": 0.9371,
         "gain": [
@@ -740,13 +709,6 @@
           "at": 3.676
         }
       ],
-      "row": [
-        "🦠",
-        "🏥",
-        "🛳️"
-      ],
-      "rowShake": false,
-      "rowPunch": false,
       "colour": {
         "exposure": 0.9766,
         "gain": [
@@ -762,145 +724,13 @@
       }
     },
     {
-      "id": "edicion",
-      "label": "EDICIÓN & PRODUCCIÓN",
-      "srcIn": 32.73,
-      "srcOut": 38.457,
-      "durationInSeconds": 5.727,
-      "freezeInSeconds": 0.22,
-      "timelineStart": 31.905,
-      "captions": [
-        {
-          "word": "Edición",
-          "start": 0.22,
-          "end": 0.493,
-          "accent": "white"
-        },
-        {
-          "word": "y",
-          "start": 0.493,
-          "end": 0.578,
-          "accent": "white"
-        },
-        {
-          "word": "producción",
-          "start": 0.578,
-          "end": 1.073,
-          "accent": "white"
-        },
-        {
-          "word": "lo",
-          "start": 1.073,
-          "end": 1.146,
-          "accent": "white"
-        },
-        {
-          "word": "representa",
-          "start": 1.146,
-          "end": 1.751,
-          "accent": "white"
-        },
-        {
-          "word": "una",
-          "start": 1.751,
-          "end": 1.97,
-          "accent": "white"
-        },
-        {
-          "word": "claqueta",
-          "start": 1.97,
-          "end": 2.96,
-          "accent": "blue"
-        },
-        {
-          "word": "una",
-          "start": 3.13,
-          "end": 3.31,
-          "accent": "white"
-        },
-        {
-          "word": "paleta",
-          "start": 3.31,
-          "end": 3.617,
-          "accent": "blue"
-        },
-        {
-          "word": "de",
-          "start": 3.617,
-          "end": 3.702,
-          "accent": "white"
-        },
-        {
-          "word": "pinturas",
-          "start": 3.702,
-          "end": 4.259,
-          "accent": "white"
-        },
-        {
-          "word": "y",
-          "start": 4.259,
-          "end": 4.339,
-          "accent": "white"
-        },
-        {
-          "word": "un",
-          "start": 4.339,
-          "end": 4.666,
-          "accent": "white"
-        },
-        {
-          "word": "computador",
-          "start": 4.666,
-          "end": 5.427,
-          "accent": "blue"
-        }
-      ],
-      "emojis": [
-        {
-          "char": "🎬",
-          "anim": "clap",
-          "at": 1.97
-        },
-        {
-          "char": "🎨",
-          "anim": "splash",
-          "at": 3.31
-        },
-        {
-          "char": "💻",
-          "anim": "shine",
-          "at": 4.666
-        }
-      ],
-      "row": [
-        "🎬",
-        "🎨",
-        "💻"
-      ],
-      "rowShake": false,
-      "rowPunch": false,
-      "colour": {
-        "exposure": 1.0395,
-        "gain": [
-          1.0174,
-          0.9936,
-          1.0121
-        ],
-        "measuredRgb": [
-          0.4989,
-          0.4791,
-          0.4338
-        ]
-      }
-    },
-    {
       "id": "muncas",
       "label": "MUNCAS",
       "srcIn": 39.102,
       "srcOut": 43.665,
       "durationInSeconds": 4.563,
       "freezeInSeconds": 0.42,
-      "timelineStart": 37.852,
+      "timelineStart": 31.905,
       "captions": [
         {
           "word": "A",
@@ -968,13 +798,6 @@
           "at": 3.407
         }
       ],
-      "row": [
-        "🧠",
-        "🚨",
-        "⚡️"
-      ],
-      "rowShake": false,
-      "rowPunch": true,
       "colour": {
         "exposure": 0.9125,
         "gain": [
