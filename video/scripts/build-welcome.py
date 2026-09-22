@@ -25,8 +25,11 @@ TARGET_LUFS = -16.0
 # land (seconds from the trim point), and the one edit gesture for that clip.
 CLIPS = [
     # 1 — the hook: he jumps, both arms up, and shouts straight away.
-    dict(id="hook",   file="20c5663a-IMG_2278.mov", trim=(0.06, 1.08),
-         welcome=0.09, muncas=0.54, move="punch"),
+    # Starts at the head of the file: there is no count, only 0.16s of silence
+    # before WELCOME, and the phrase runs to 0.81. The tail carries his own
+    # reaction to it.
+    dict(id="hook",   file="20c5663a-IMG_2278.mov", trim=(0.00, 1.22),
+         welcome=0.16, muncas=0.58, move="punch"),
     # 2 — a change of face and pace: open hand, calmer.
     dict(id="hand",   file="e7b1252f-IMG_2280.mov", trim=(0.33, 1.58),
          welcome=0.07, muncas=0.40, move="drift"),
