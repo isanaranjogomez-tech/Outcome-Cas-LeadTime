@@ -110,7 +110,7 @@ export const SegmentView: React.FC<{
 
       {segment.label ? <Chip label={segment.label} /> : null}
       <EmojiRow segment={segment} />
-      <Captions segment={segment} />
+      <Captions captions={segment.captions} />
 
       {/* --- sound ------------------------------------------------------- */}
       <Audio src={staticFile("sfx/whoosh.wav")} volume={cutVolume} />

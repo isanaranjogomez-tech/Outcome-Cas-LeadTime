@@ -41,7 +41,9 @@
     "lint": "eslint src && tsc",
     "render:muncas": "node scripts/render-muncas.mjs",
     "build:muncas": "python3 scripts/build-muncas.py",
-    "build:sfx": "python3 scripts/build-sfx.py"
+    "build:sfx": "python3 scripts/build-sfx.py",
+    "render:letras": "node scripts/render-letras.mjs",
+    "build:letras": "python3 scripts/build-letras.py"
   },
   "sideEffects": [
     "*.css"

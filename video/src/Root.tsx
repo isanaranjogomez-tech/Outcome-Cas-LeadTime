@@ -17,6 +17,9 @@ import montageExample from "../data/montage.json";
 import { Muncas, muncasDurationInFrames } from "./muncas/Muncas";
 import { muncasSchema, type MuncasProps } from "./muncas/schema";
 import muncasEdit from "../data/muncas-emojis.json";
+import { Letras, letrasDurationInFrames } from "./letras/Letras";
+import { letrasSchema, type LetrasProps } from "./letras/schema";
+import letrasEdit from "../data/muncas-letras.json";
 
 const FPS = 30;
 const WIDTH = 1920;
@@ -108,6 +111,27 @@ export const RemotionRoot: React.FC = () => {
           const parsed = muncasSchema.parse(props);
           return {
             durationInFrames: muncasDurationInFrames(parsed),
+            fps: parsed.fps,
+            width: parsed.width,
+            height: parsed.height,
+            props: parsed,
+          };
+        }}
+      />
+
+      <Composition
+        id="MuncasLetras"
+        component={Letras}
+        schema={letrasSchema}
+        fps={letrasEdit.fps}
+        width={letrasEdit.width}
+        height={letrasEdit.height}
+        durationInFrames={Math.round(letrasEdit.totalInSeconds * letrasEdit.fps)}
+        defaultProps={letrasSchema.parse(letrasEdit) as LetrasProps}
+        calculateMetadata={({ props }) => {
+          const parsed = letrasSchema.parse(props);
+          return {
+            durationInFrames: letrasDurationInFrames(parsed),
             fps: parsed.fps,
             width: parsed.width,
             height: parsed.height,

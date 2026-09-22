@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { captionFont, layout, muncas } from "./theme";
-import type { Caption, Segment } from "./schema";
+import type { Caption } from "./schema";
 
 const MAX_WORDS = 3;
 const MAX_SPAN = 1.7;
@@ -113,10 +113,14 @@ const Word: React.FC<{ caption: Caption; frame: number; fps: number }> = ({
   );
 };
 
-export const Captions: React.FC<{ segment: Segment }> = ({ segment }) => {
+export const Captions: React.FC<{
+  captions: Caption[];
+  /** Distance from the top of the frame, 0–1. */
+  top?: number;
+}> = ({ captions, top }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const chunks = useMemo(() => chunkWords(segment.captions), [segment.captions]);
+  const chunks = useMemo(() => chunkWords(captions), [captions]);
 
   const active = chunks.find(
     (c) => frame >= (c.start - 0.08) * fps && frame < (c.end + 0.16) * fps,
@@ -127,7 +131,7 @@ export const Captions: React.FC<{ segment: Segment }> = ({ segment }) => {
     <div
       style={{
         position: "absolute",
-        top: `${layout.captionTop * 100}%`,
+        top: `${(top ?? layout.captionTop) * 100}%`,
         left: layout.safeX,
         right: layout.safeX,
         display: "flex",

@@ -1,0 +1,593 @@
+{
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "source": "source/muncas-letras.mp4",
+  "title": {
+    "line1": "ADIVINA EL COMITÉ",
+    "line2": "SEGÚN LA LETRA",
+    "kicker": "MUNCAS EDITION"
+  },
+  "players": {
+    "left": "DIRECTOR",
+    "right": "SGA"
+  },
+  "totalInSeconds": 24.74,
+  "musicVolume": 0.15,
+  "sfxVolume": 0.34,
+  "segments": [
+    {
+      "id": "intro",
+      "srcIn": 0.1,
+      "srcOut": 3.66,
+      "durationInSeconds": 3.56,
+      "timelineStart": 0.0,
+      "kind": "push",
+      "score": [
+        0,
+        0
+      ],
+      "captions": [
+        {
+          "word": "Adivina",
+          "start": 0.076,
+          "end": 0.747,
+          "accent": "white"
+        },
+        {
+          "word": "el",
+          "start": 0.747,
+          "end": 0.839,
+          "accent": "white"
+        },
+        {
+          "word": "comité",
+          "start": 0.839,
+          "end": 1.361,
+          "accent": "blue"
+        },
+        {
+          "word": "según",
+          "start": 1.361,
+          "end": 1.827,
+          "accent": "white"
+        },
+        {
+          "word": "la",
+          "start": 1.827,
+          "end": 1.962,
+          "accent": "white"
+        },
+        {
+          "word": "letra",
+          "start": 1.962,
+          "end": 2.348,
+          "accent": "blue"
+        },
+        {
+          "word": "con",
+          "start": 2.348,
+          "end": 2.636,
+          "accent": "white"
+        },
+        {
+          "word": "MUNCAS",
+          "start": 2.636,
+          "end": 3.478,
+          "accent": "red"
+        }
+      ]
+    },
+    {
+      "id": "letter-s",
+      "srcIn": 3.86,
+      "srcOut": 5.24,
+      "durationInSeconds": 1.38,
+      "timelineStart": 3.56,
+      "kind": "push",
+      "score": [
+        0,
+        0
+      ],
+      "captions": [
+        {
+          "word": "La",
+          "start": 0.056,
+          "end": 0.21,
+          "accent": "white"
+        },
+        {
+          "word": "letra",
+          "start": 0.21,
+          "end": 0.623,
+          "accent": "blue"
+        },
+        {
+          "word": "es",
+          "start": 0.623,
+          "end": 0.917,
+          "accent": "white"
+        },
+        {
+          "word": "S",
+          "start": 0.917,
+          "end": 1.186,
+          "accent": "red"
+        }
+      ],
+      "letter": "S",
+      "letterAt": 0.917
+    },
+    {
+      "id": "answer-s",
+      "srcIn": 5.16,
+      "srcOut": 6.12,
+      "durationInSeconds": 0.96,
+      "timelineStart": 4.94,
+      "kind": "punch",
+      "score": [
+        0,
+        0
+      ],
+      "captions": [
+        {
+          "word": "Security",
+          "start": 0.097,
+          "end": 0.404,
+          "accent": "blue"
+        },
+        {
+          "word": "Council",
+          "start": 0.404,
+          "end": 0.803,
+          "accent": "blue"
+        }
+      ],
+      "point": {
+        "side": "left",
+        "at": 0.34
+      }
+    },
+    {
+      "id": "letter-c",
+      "srcIn": 6.3,
+      "srcOut": 8.05,
+      "durationInSeconds": 1.75,
+      "timelineStart": 5.9,
+      "kind": "push",
+      "score": [
+        1,
+        0
+      ],
+      "captions": [
+        {
+          "word": "La",
+          "start": 0.092,
+          "end": 0.248,
+          "accent": "white"
+        },
+        {
+          "word": "letra",
+          "start": 0.248,
+          "end": 0.586,
+          "accent": "blue"
+        },
+        {
+          "word": "es",
+          "start": 0.586,
+          "end": 0.965,
+          "accent": "white"
+        },
+        {
+          "word": "C",
+          "start": 0.965,
+          "end": 1.256,
+          "accent": "red"
+        }
+      ],
+      "letter": "C",
+      "letterAt": 0.965
+    },
+    {
+      "id": "answer-c",
+      "srcIn": 8.24,
+      "srcOut": 9.28,
+      "durationInSeconds": 1.04,
+      "timelineStart": 7.65,
+      "kind": "punch",
+      "score": [
+        1,
+        0
+      ],
+      "captions": [
+        {
+          "word": "Corte",
+          "start": 0.08,
+          "end": 0.306,
+          "accent": "blue"
+        },
+        {
+          "word": "del",
+          "start": 0.306,
+          "end": 0.396,
+          "accent": "white"
+        },
+        {
+          "word": "Distrito",
+          "start": 0.396,
+          "end": 0.744,
+          "accent": "blue"
+        },
+        {
+          "word": "Sur",
+          "start": 0.744,
+          "end": 0.899,
+          "accent": "blue"
+        }
+      ],
+      "point": {
+        "side": "right",
+        "at": 0.46
+      },
+      "banner": {
+        "text": "EMPATE",
+        "at": 0.72
+      }
+    },
+    {
+      "id": "letter-f",
+      "srcIn": 9.34,
+      "srcOut": 10.92,
+      "durationInSeconds": 1.58,
+      "timelineStart": 8.69,
+      "kind": "push",
+      "score": [
+        1,
+        1
+      ],
+      "captions": [
+        {
+          "word": "La",
+          "start": 0.066,
+          "end": 0.229,
+          "accent": "white"
+        },
+        {
+          "word": "letra",
+          "start": 0.229,
+          "end": 0.589,
+          "accent": "blue"
+        },
+        {
+          "word": "es",
+          "start": 0.589,
+          "end": 0.928,
+          "accent": "white"
+        },
+        {
+          "word": "F",
+          "start": 0.928,
+          "end": 1.212,
+          "accent": "red"
+        }
+      ],
+      "letter": "F",
+      "letterAt": 0.928
+    },
+    {
+      "id": "answer-f",
+      "srcIn": 10.84,
+      "srcOut": 11.78,
+      "durationInSeconds": 0.94,
+      "timelineStart": 10.27,
+      "kind": "punch",
+      "score": [
+        1,
+        1
+      ],
+      "captions": [
+        {
+          "word": "FIFA",
+          "start": 0.113,
+          "end": 0.723,
+          "accent": "blue"
+        }
+      ],
+      "point": {
+        "side": "right",
+        "at": 0.3
+      },
+      "banner": {
+        "text": "POR MILISEGUNDOS",
+        "at": 0.52
+      }
+    },
+    {
+      "id": "letter-u",
+      "srcIn": 12.1,
+      "srcOut": 13.52,
+      "durationInSeconds": 1.42,
+      "timelineStart": 11.21,
+      "kind": "push",
+      "score": [
+        1,
+        2
+      ],
+      "captions": [
+        {
+          "word": "La",
+          "start": 0.073,
+          "end": 0.232,
+          "accent": "white"
+        },
+        {
+          "word": "letra",
+          "start": 0.232,
+          "end": 0.642,
+          "accent": "blue"
+        },
+        {
+          "word": "es",
+          "start": 0.642,
+          "end": 0.934,
+          "accent": "white"
+        },
+        {
+          "word": "U",
+          "start": 0.934,
+          "end": 1.22,
+          "accent": "red"
+        }
+      ],
+      "letter": "U",
+      "letterAt": 0.934
+    },
+    {
+      "id": "think-u",
+      "srcIn": 13.52,
+      "srcOut": 14.92,
+      "durationInSeconds": 1.4,
+      "timelineStart": 12.63,
+      "kind": "creep",
+      "score": [
+        1,
+        2
+      ],
+      "captions": [],
+      "banner": {
+        "text": "PROCESANDO…",
+        "at": 0.24
+      }
+    },
+    {
+      "id": "answer-u",
+      "srcIn": 15.42,
+      "srcOut": 16.34,
+      "durationInSeconds": 0.92,
+      "timelineStart": 14.03,
+      "kind": "punch",
+      "score": [
+        1,
+        2
+      ],
+      "captions": [
+        {
+          "word": "UNODC",
+          "start": 0.114,
+          "end": 0.784,
+          "accent": "blue"
+        }
+      ],
+      "point": {
+        "side": "left",
+        "at": 0.26
+      },
+      "banner": {
+        "text": "2 — 2  EMPATE",
+        "at": 0.54
+      }
+    },
+    {
+      "id": "letter-m",
+      "srcIn": 16.58,
+      "srcOut": 18.58,
+      "durationInSeconds": 2.0,
+      "timelineStart": 14.95,
+      "kind": "push",
+      "score": [
+        2,
+        2
+      ],
+      "captions": [
+        {
+          "word": "La",
+          "start": 0.087,
+          "end": 0.476,
+          "accent": "white"
+        },
+        {
+          "word": "letra",
+          "start": 0.476,
+          "end": 0.868,
+          "accent": "blue"
+        },
+        {
+          "word": "es",
+          "start": 0.868,
+          "end": 1.26,
+          "accent": "white"
+        },
+        {
+          "word": "M",
+          "start": 1.26,
+          "end": 1.535,
+          "accent": "red"
+        }
+      ],
+      "letter": "M",
+      "letterAt": 1.26
+    },
+    {
+      "id": "think-m1",
+      "srcIn": 18.62,
+      "srcOut": 19.48,
+      "durationInSeconds": 0.86,
+      "timelineStart": 16.95,
+      "kind": "creep",
+      "score": [
+        2,
+        2
+      ],
+      "captions": [],
+      "banner": {
+        "text": "…",
+        "at": 0.1
+      }
+    },
+    {
+      "id": "think-m2",
+      "srcIn": 20.8,
+      "srcOut": 21.58,
+      "durationInSeconds": 0.78,
+      "timelineStart": 17.81,
+      "kind": "punch",
+      "score": [
+        2,
+        2
+      ],
+      "captions": [],
+      "banner": {
+        "text": "PROCESANDO…",
+        "at": 0.06
+      }
+    },
+    {
+      "id": "think-m3",
+      "srcIn": 23.95,
+      "srcOut": 24.78,
+      "durationInSeconds": 0.83,
+      "timelineStart": 18.59,
+      "kind": "creep",
+      "score": [
+        2,
+        2
+      ],
+      "captions": []
+    },
+    {
+      "id": "answer-m",
+      "srcIn": 24.96,
+      "srcOut": 25.92,
+      "durationInSeconds": 0.96,
+      "timelineStart": 19.42,
+      "kind": "punch",
+      "score": [
+        2,
+        2
+      ],
+      "captions": [
+        {
+          "word": "Mesa",
+          "start": 0.139,
+          "end": 0.385,
+          "accent": "blue"
+        },
+        {
+          "word": "de",
+          "start": 0.385,
+          "end": 0.441,
+          "accent": "white"
+        },
+        {
+          "word": "Diálogo",
+          "start": 0.441,
+          "end": 0.755,
+          "accent": "blue"
+        }
+      ],
+      "point": {
+        "side": "right",
+        "at": 0.22
+      }
+    },
+    {
+      "id": "letter-g",
+      "srcIn": 26.2,
+      "srcOut": 28.0,
+      "durationInSeconds": 1.8,
+      "timelineStart": 20.38,
+      "kind": "push",
+      "score": [
+        2,
+        3
+      ],
+      "captions": [
+        {
+          "word": "La",
+          "start": 0.102,
+          "end": 0.388,
+          "accent": "white"
+        },
+        {
+          "word": "letra",
+          "start": 0.388,
+          "end": 0.761,
+          "accent": "blue"
+        },
+        {
+          "word": "es",
+          "start": 0.761,
+          "end": 1.095,
+          "accent": "white"
+        },
+        {
+          "word": "G",
+          "start": 1.095,
+          "end": 1.32,
+          "accent": "red"
+        }
+      ],
+      "letter": "G",
+      "letterAt": 1.095,
+      "tension": true
+    },
+    {
+      "id": "answer-g",
+      "srcIn": 28.02,
+      "srcOut": 28.98,
+      "durationInSeconds": 0.96,
+      "timelineStart": 22.18,
+      "kind": "punch",
+      "score": [
+        2,
+        3
+      ],
+      "captions": [
+        {
+          "word": "GAC",
+          "start": 0.119,
+          "end": 0.775,
+          "accent": "blue"
+        }
+      ],
+      "point": {
+        "side": "right",
+        "at": 0.24
+      }
+    },
+    {
+      "id": "winner",
+      "srcIn": 21.0,
+      "srcOut": 22.6,
+      "durationInSeconds": 1.6,
+      "timelineStart": 23.14,
+      "kind": "punch",
+      "score": [
+        2,
+        4
+      ],
+      "captions": [],
+      "winner": true
+    }
+  ]
+}

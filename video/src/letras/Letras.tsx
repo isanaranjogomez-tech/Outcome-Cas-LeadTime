@@ -1,0 +1,218 @@
+import React from "react";
+import {
+  AbsoluteFill,
+  Audio,
+  OffthreadVideo,
+  Sequence,
+  interpolate,
+  spring,
+  staticFile,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
+import { Captions } from "../muncas/Captions";
+import { muncas } from "../muncas/theme";
+import { Banner } from "./Banner";
+import { BigLetter } from "./BigLetter";
+import { IntroLetras } from "./IntroLetras";
+import { Scoreboard } from "./Scoreboard";
+import { WinnerCard } from "./WinnerCard";
+import type { LetrasProps, LetrasSegment } from "./schema";
+
+/**
+ * Three camera behaviours, one per segment kind:
+ *   push  — a steady drift, for the rounds being announced
+ *   creep — a slower, longer zoom, for the awkward thinking pauses
+ *   punch — snaps in on the answer, then eases back
+ */
+const useCamera = (segment: LetrasSegment, totalFrames: number) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+
+  const cut = interpolate(frame, [0, 6], [0.06, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
+  if (segment.kind === "creep") {
+    return 1.06 + interpolate(frame, [0, totalFrames], [0, 0.16], {
+      extrapolateRight: "clamp",
+    }) + cut;
+  }
+
+  if (segment.kind === "punch") {
+    const at = (segment.point?.at ?? 0.1) * fps;
+    const hit = spring({
+      frame: frame - at,
+      fps,
+      config: { damping: 200, mass: 0.5 },
+      durationInFrames: Math.round(fps * 0.35),
+    });
+    return 1.04 + hit * 0.12 + cut;
+  }
+
+  return (
+    interpolate(frame, [0, totalFrames], [1.02, 1.06], { extrapolateRight: "clamp" }) + cut
+  );
+};
+
+const SegmentView: React.FC<{
+  segment: LetrasSegment;
+  source: string;
+  players: LetrasProps["players"];
+  sfxVolume: number;
+}> = ({ segment, source, players, sfxVolume }) => {
+  const { fps } = useVideoConfig();
+  const frames = Math.round(segment.durationInSeconds * fps);
+  const zoom = useCamera(segment, frames);
+
+  const cutVolume = sfxVolume * 0.4;
+  const letterVolume = sfxVolume * 0.85;
+  const dingVolume = sfxVolume * 0.95;
+  const impactVolume = sfxVolume * 0.6;
+  const bannerVolume = sfxVolume * 0.7;
+  const tickVolume = sfxVolume * 0.55;
+  const tensionVolume = sfxVolume * 0.6;
+
+  // Ticking under the long thinking beats — the silence becomes the joke.
+  const ticks = segment.kind === "creep" ? [0.05, 0.42, 0.79] : [];
+
+  return (
+    <AbsoluteFill style={{ backgroundColor: muncas.navyDeep }}>
+      <AbsoluteFill style={{ overflow: "hidden" }}>
+        <OffthreadVideo
+          src={staticFile(source)}
+          trimBefore={Math.round(segment.srcIn * fps)}
+          trimAfter={Math.round(segment.srcOut * fps)}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            transform: `scale(${zoom})`,
+            transformOrigin: "50% 36%",
+            filter: "contrast(1.05) saturate(1.08)",
+          }}
+        />
+      </AbsoluteFill>
+
+      <AbsoluteFill
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(6,18,41,0.52) 0%, rgba(6,18,41,0) 22%," +
+            " rgba(6,18,41,0) 60%, rgba(6,18,41,0.55) 100%)",
+          pointerEvents: "none",
+        }}
+      />
+
+      {segment.id === "intro" ? null : (
+        <Scoreboard
+          left={players.left}
+          right={players.right}
+          score={segment.score}
+          point={segment.point}
+        />
+      )}
+
+      <Captions captions={segment.captions} />
+
+      {segment.letter && segment.letterAt !== undefined ? (
+        <BigLetter letter={segment.letter} at={segment.letterAt} />
+      ) : null}
+
+      {segment.banner ? (
+        <Banner text={segment.banner.text} at={segment.banner.at} />
+      ) : null}
+
+      {segment.winner ? (
+        <WinnerCard
+          name="SECRETARIO GENERAL ADJUNTO"
+          score={[segment.score[0], segment.score[1]]}
+        />
+      ) : null}
+
+      {/* --- sound ------------------------------------------------------- */}
+      <Audio src={staticFile("sfx/whoosh.wav")} volume={cutVolume} />
+
+      {segment.letter && segment.letterAt !== undefined ? (
+        <Sequence from={Math.round(segment.letterAt * fps)}>
+          <Audio src={staticFile("sfx/whoosh-down.wav")} volume={letterVolume} />
+        </Sequence>
+      ) : null}
+
+      {segment.tension ? (
+        <Audio src={staticFile("sfx/tension.wav")} volume={tensionVolume} />
+      ) : null}
+
+      {segment.point ? (
+        <Sequence from={Math.round(segment.point.at * fps)}>
+          <Audio src={staticFile("sfx/ding.wav")} volume={dingVolume} />
+          <Audio src={staticFile("sfx/impact.wav")} volume={impactVolume} />
+        </Sequence>
+      ) : null}
+
+      {segment.banner ? (
+        <Sequence from={Math.round(segment.banner.at * fps)}>
+          <Audio src={staticFile("sfx/pop.wav")} volume={bannerVolume} />
+        </Sequence>
+      ) : null}
+
+      {ticks.map((at, i) => (
+        <Sequence key={i} from={Math.round(at * fps)}>
+          <Audio src={staticFile("sfx/tick.wav")} volume={tickVolume} />
+        </Sequence>
+      ))}
+
+      {segment.winner ? (
+        <>
+          <Audio src={staticFile("sfx/shine.wav")} volume={sfxVolume * 0.8} />
+          <Audio src={staticFile("sfx/cash.wav")} volume={sfxVolume * 0.6} />
+        </>
+      ) : null}
+    </AbsoluteFill>
+  );
+};
+
+/**
+ * "Adivina el comité según la letra" — the MUNCAS game-show round.
+ * Six letters, two players, one scoreboard that never leaves the screen.
+ */
+export const Letras: React.FC<LetrasProps> = ({
+  fps,
+  source,
+  title,
+  players,
+  segments,
+  musicVolume,
+  sfxVolume,
+}) => {
+  let cursor = 0;
+
+  return (
+    <AbsoluteFill style={{ backgroundColor: muncas.navyDeep }}>
+      {segments.map((segment) => {
+        const frames = Math.round(segment.durationInSeconds * fps);
+        const from = cursor;
+        cursor += frames;
+
+        return (
+          <Sequence key={segment.id} from={from} durationInFrames={frames}>
+            <SegmentView
+              segment={segment}
+              source={source}
+              players={players}
+              sfxVolume={sfxVolume}
+            />
+            {segment.id === "intro" ? <IntroLetras {...title} /> : null}
+          </Sequence>
+        );
+      })}
+
+      {musicVolume > 0 ? (
+        <Audio src={staticFile("sfx/music-bed.ogg")} volume={musicVolume} loop />
+      ) : null}
+    </AbsoluteFill>
+  );
+};
+
+export const letrasDurationInFrames = ({ fps, segments }: LetrasProps) =>
+  segments.reduce((acc, s) => acc + Math.round(s.durationInSeconds * fps), 0);

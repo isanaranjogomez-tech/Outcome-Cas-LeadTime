@@ -220,6 +220,38 @@ def music(bars=24, bpm=124):
     return out
 
 
+def ding():
+    """Two stacked partials, bell-like — the point sound."""
+    x = t(0.55)
+    tone = (np.sin(2 * np.pi * 1568 * x) * 0.6
+            + np.sin(2 * np.pi * 2349 * x) * 0.32
+            + np.sin(2 * np.pi * 3136 * x) * 0.14)
+    return tone * env(len(x), 0.0015, 0.13, curve=2.8)
+
+
+def tick():
+    x = t(0.05)
+    body = np.sin(2 * np.pi * 1400 * x) * 0.5
+    n = highpass(rng.normal(0, 1, len(x)), 4000)
+    return (body + n) * env(len(x), 0.0004, 0.008)
+
+
+def tension():
+    """A slow rise — used once, before the deciding letter."""
+    x = t(0.9)
+    f = np.linspace(140, 520, len(x))
+    tone = np.sin(2 * np.pi * np.cumsum(f) / SR) * 0.5
+    n = lowpass(rng.normal(0, 1, len(x)), np.linspace(300, 2600, len(x))) * 0.5
+    shape = (np.arange(len(x)) / len(x)) ** 2
+    return (tone + n) * shape
+
+
+def buzzer():
+    x = t(0.38)
+    tone = np.tanh(2.5 * np.sin(2 * np.pi * 180 * x)) * 0.7
+    return tone * env(len(x), 0.004, 0.14, curve=2.2)
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     print("Writing sound effects:")
@@ -235,6 +267,10 @@ def main():
     write("clap", clap())
     write("shine", shine(), peak=0.5)
     write("splash", splash(), peak=0.6)
+    write("ding", ding(), peak=0.62)
+    write("tick", tick(), peak=0.5)
+    write("tension", tension(), peak=0.5)
+    write("buzzer", buzzer(), peak=0.5)
     print("Writing music bed:")
     write("music-bed", music(), peak=0.85)
     # Ogg/Opus rather than AAC: Chrome Headless Shell, which Remotion renders
