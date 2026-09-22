@@ -1,0 +1,993 @@
+{
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "source": "source/muncas-emojis.mp4",
+  "title": {
+    "line1": "DESCRIBE TU COMITÉ",
+    "line2": "EN",
+    "count": "3",
+    "line3": "EMOJIS"
+  },
+  "totalInSeconds": 42.835,
+  "musicVolume": 0.15,
+  "sfxVolume": 0.34,
+  "segments": [
+    {
+      "id": "intro",
+      "label": null,
+      "srcIn": 0.341,
+      "srcOut": 3.137,
+      "durationInSeconds": 2.796,
+      "freezeInSeconds": 0.0,
+      "timelineStart": 0.0,
+      "captions": [
+        {
+          "word": "Describe",
+          "start": 0.22,
+          "end": 1.048,
+          "accent": "white"
+        },
+        {
+          "word": "tu",
+          "start": 1.048,
+          "end": 1.176,
+          "accent": "white"
+        },
+        {
+          "word": "comité",
+          "start": 1.176,
+          "end": 1.574,
+          "accent": "white"
+        },
+        {
+          "word": "en",
+          "start": 1.574,
+          "end": 1.754,
+          "accent": "white"
+        },
+        {
+          "word": "tres",
+          "start": 1.754,
+          "end": 2.103,
+          "accent": "blue"
+        },
+        {
+          "word": "emojis",
+          "start": 2.103,
+          "end": 2.77,
+          "accent": "red"
+        }
+      ],
+      "emojis": [],
+      "row": [],
+      "rowShake": false,
+      "rowPunch": false,
+      "colour": {
+        "exposure": 1.0379,
+        "gain": [
+          1.0385,
+          0.9863,
+          1.0225
+        ],
+        "measuredRgb": [
+          0.4697,
+          0.4901,
+          0.4289
+        ]
+      }
+    },
+    {
+      "id": "banco",
+      "label": "BANCO LATINOAMERICANO",
+      "srcIn": 3.305,
+      "srcOut": 7.708,
+      "durationInSeconds": 4.403,
+      "freezeInSeconds": 0.22,
+      "timelineStart": 2.796,
+      "captions": [
+        {
+          "word": "A",
+          "start": 0.22,
+          "end": 0.355,
+          "accent": "white"
+        },
+        {
+          "word": "nuestra",
+          "start": 0.355,
+          "end": 0.785,
+          "accent": "white"
+        },
+        {
+          "word": "comisión",
+          "start": 0.785,
+          "end": 1.204,
+          "accent": "white"
+        },
+        {
+          "word": "nos",
+          "start": 1.204,
+          "end": 1.407,
+          "accent": "white"
+        },
+        {
+          "word": "representa",
+          "start": 1.407,
+          "end": 2.19,
+          "accent": "white"
+        },
+        {
+          "word": "una",
+          "start": 2.19,
+          "end": 2.348,
+          "accent": "white"
+        },
+        {
+          "word": "bomba,",
+          "start": 2.348,
+          "end": 2.85,
+          "accent": "red"
+        },
+        {
+          "word": "un",
+          "start": 2.85,
+          "end": 2.956,
+          "accent": "white"
+        },
+        {
+          "word": "fuego",
+          "start": 2.956,
+          "end": 3.188,
+          "accent": "red"
+        },
+        {
+          "word": "y",
+          "start": 3.188,
+          "end": 3.424,
+          "accent": "white"
+        },
+        {
+          "word": "un",
+          "start": 3.424,
+          "end": 3.597,
+          "accent": "white"
+        },
+        {
+          "word": "trofeo",
+          "start": 3.597,
+          "end": 4.348,
+          "accent": "red"
+        }
+      ],
+      "emojis": [
+        {
+          "char": "💣",
+          "anim": "impact",
+          "at": 2.348
+        },
+        {
+          "char": "🔥",
+          "anim": "pop",
+          "at": 2.956
+        },
+        {
+          "char": "🏆",
+          "anim": "bounce",
+          "at": 3.597
+        }
+      ],
+      "row": [
+        "🏆",
+        "🔥",
+        "💣"
+      ],
+      "rowShake": true,
+      "rowPunch": false,
+      "colour": {
+        "exposure": 0.9971,
+        "gain": [
+          0.9859,
+          1.0066,
+          0.9765
+        ],
+        "measuredRgb": [
+          0.5713,
+          0.5027,
+          0.5015
+        ]
+      }
+    },
+    {
+      "id": "fifa",
+      "label": "FIFA",
+      "srcIn": 8.035,
+      "srcOut": 14.182,
+      "durationInSeconds": 6.147,
+      "freezeInSeconds": 0.2,
+      "timelineStart": 7.419,
+      "captions": [
+        {
+          "word": "The",
+          "start": 0.22,
+          "end": 0.382,
+          "accent": "white"
+        },
+        {
+          "word": "FIFA",
+          "start": 0.382,
+          "end": 0.602,
+          "accent": "white"
+        },
+        {
+          "word": "committee",
+          "start": 0.602,
+          "end": 1.186,
+          "accent": "white"
+        },
+        {
+          "word": "is",
+          "start": 1.186,
+          "end": 1.323,
+          "accent": "white"
+        },
+        {
+          "word": "represented",
+          "start": 1.323,
+          "end": 2.056,
+          "accent": "white"
+        },
+        {
+          "word": "by",
+          "start": 2.056,
+          "end": 2.223,
+          "accent": "white"
+        },
+        {
+          "word": "a",
+          "start": 2.46,
+          "end": 2.712,
+          "accent": "white"
+        },
+        {
+          "word": "soccer",
+          "start": 2.712,
+          "end": 3.143,
+          "accent": "white"
+        },
+        {
+          "word": "ball,",
+          "start": 3.143,
+          "end": 3.605,
+          "accent": "blue"
+        },
+        {
+          "word": "a",
+          "start": 3.605,
+          "end": 3.756,
+          "accent": "white"
+        },
+        {
+          "word": "soccer",
+          "start": 3.756,
+          "end": 4.115,
+          "accent": "white"
+        },
+        {
+          "word": "arch",
+          "start": 4.115,
+          "end": 4.444,
+          "accent": "blue"
+        },
+        {
+          "word": "and",
+          "start": 4.643,
+          "end": 4.811,
+          "accent": "white"
+        },
+        {
+          "word": "a",
+          "start": 4.811,
+          "end": 4.979,
+          "accent": "white"
+        },
+        {
+          "word": "stack",
+          "start": 4.979,
+          "end": 5.287,
+          "accent": "white"
+        },
+        {
+          "word": "of",
+          "start": 5.287,
+          "end": 5.341,
+          "accent": "white"
+        },
+        {
+          "word": "dollars",
+          "start": 5.341,
+          "end": 6.147,
+          "accent": "red"
+        }
+      ],
+      "emojis": [
+        {
+          "char": "⚽️",
+          "anim": "roll",
+          "at": 3.143
+        },
+        {
+          "char": "🥅",
+          "anim": "scale",
+          "at": 4.115
+        },
+        {
+          "char": "💵",
+          "anim": "cash",
+          "at": 5.341
+        }
+      ],
+      "row": [
+        "⚽️",
+        "🥅",
+        "💵"
+      ],
+      "rowShake": false,
+      "rowPunch": false,
+      "colour": {
+        "exposure": 1.0029,
+        "gain": [
+          1.0094,
+          0.9951,
+          1.0214
+        ],
+        "measuredRgb": [
+          0.5396,
+          0.5093,
+          0.4538
+        ]
+      }
+    },
+    {
+      "id": "camara",
+      "label": "CÁMARA DE REPRESENTANTES",
+      "srcIn": 14.46,
+      "srcOut": 20.272,
+      "durationInSeconds": 5.812,
+      "freezeInSeconds": 0.2,
+      "timelineStart": 13.766,
+      "captions": [
+        {
+          "word": "A",
+          "start": 0.22,
+          "end": 0.374,
+          "accent": "white"
+        },
+        {
+          "word": "Cámara",
+          "start": 0.374,
+          "end": 0.572,
+          "accent": "white"
+        },
+        {
+          "word": "de",
+          "start": 0.572,
+          "end": 0.635,
+          "accent": "white"
+        },
+        {
+          "word": "Representantes",
+          "start": 0.635,
+          "end": 1.531,
+          "accent": "white"
+        },
+        {
+          "word": "lo",
+          "start": 1.531,
+          "end": 1.684,
+          "accent": "white"
+        },
+        {
+          "word": "representa",
+          "start": 1.684,
+          "end": 2.607,
+          "accent": "white"
+        },
+        {
+          "word": "una",
+          "start": 2.792,
+          "end": 2.975,
+          "accent": "white"
+        },
+        {
+          "word": "vaca,",
+          "start": 2.975,
+          "end": 3.124,
+          "accent": "blue"
+        },
+        {
+          "word": "una",
+          "start": 3.124,
+          "end": 3.342,
+          "accent": "white"
+        },
+        {
+          "word": "bandera",
+          "start": 3.342,
+          "end": 3.932,
+          "accent": "white"
+        },
+        {
+          "word": "de",
+          "start": 3.932,
+          "end": 4.013,
+          "accent": "white"
+        },
+        {
+          "word": "Colombia",
+          "start": 4.013,
+          "end": 4.571,
+          "accent": "blue"
+        },
+        {
+          "word": "y",
+          "start": 4.571,
+          "end": 4.872,
+          "accent": "white"
+        },
+        {
+          "word": "una",
+          "start": 4.872,
+          "end": 5.002,
+          "accent": "white"
+        },
+        {
+          "word": "planta",
+          "start": 5.002,
+          "end": 5.535,
+          "accent": "blue"
+        }
+      ],
+      "emojis": [
+        {
+          "char": "🐄",
+          "anim": "bounce",
+          "at": 2.975
+        },
+        {
+          "char": "🇨🇴",
+          "anim": "wave",
+          "at": 4.013
+        },
+        {
+          "char": "🌱",
+          "anim": "grow",
+          "at": 5.002
+        }
+      ],
+      "row": [
+        "🐄",
+        "🇨🇴",
+        "🌱"
+      ],
+      "rowShake": false,
+      "rowPunch": false,
+      "colour": {
+        "exposure": 1.0834,
+        "gain": [
+          1.0001,
+          1.0,
+          1.0001
+        ],
+        "measuredRgb": [
+          0.4742,
+          0.444,
+          0.3937
+        ]
+      }
+    },
+    {
+      "id": "council",
+      "label": "SECURITY COUNCIL",
+      "srcIn": 20.411,
+      "srcOut": 27.633,
+      "durationInSeconds": 7.222,
+      "freezeInSeconds": 0.22,
+      "timelineStart": 19.778,
+      "captions": [
+        {
+          "word": "United",
+          "start": 0.22,
+          "end": 0.515,
+          "accent": "white"
+        },
+        {
+          "word": "Nations",
+          "start": 0.515,
+          "end": 0.858,
+          "accent": "white"
+        },
+        {
+          "word": "Security",
+          "start": 0.858,
+          "end": 1.698,
+          "accent": "white"
+        },
+        {
+          "word": "Council",
+          "start": 1.698,
+          "end": 2.385,
+          "accent": "white"
+        },
+        {
+          "word": "is",
+          "start": 2.385,
+          "end": 2.561,
+          "accent": "white"
+        },
+        {
+          "word": "represented",
+          "start": 2.561,
+          "end": 3.53,
+          "accent": "white"
+        },
+        {
+          "word": "by",
+          "start": 3.53,
+          "end": 3.701,
+          "accent": "white"
+        },
+        {
+          "word": "an",
+          "start": 3.701,
+          "end": 3.929,
+          "accent": "white"
+        },
+        {
+          "word": "Earth",
+          "start": 3.929,
+          "end": 4.135,
+          "accent": "white"
+        },
+        {
+          "word": "globe,",
+          "start": 4.135,
+          "end": 4.893,
+          "accent": "blue"
+        },
+        {
+          "word": "by",
+          "start": 4.893,
+          "end": 4.979,
+          "accent": "white"
+        },
+        {
+          "word": "a",
+          "start": 4.979,
+          "end": 5.092,
+          "accent": "white"
+        },
+        {
+          "word": "Wi-Fi",
+          "start": 5.092,
+          "end": 5.61,
+          "accent": "blue"
+        },
+        {
+          "word": "signal",
+          "start": 5.61,
+          "end": 5.928,
+          "accent": "white"
+        },
+        {
+          "word": "and",
+          "start": 5.928,
+          "end": 6.134,
+          "accent": "white"
+        },
+        {
+          "word": "by",
+          "start": 6.134,
+          "end": 6.267,
+          "accent": "white"
+        },
+        {
+          "word": "a",
+          "start": 6.267,
+          "end": 6.391,
+          "accent": "white"
+        },
+        {
+          "word": "robot",
+          "start": 6.391,
+          "end": 6.922,
+          "accent": "red"
+        }
+      ],
+      "emojis": [
+        {
+          "char": "🌎",
+          "anim": "spin",
+          "at": 4.135
+        },
+        {
+          "char": "🛜",
+          "anim": "waves",
+          "at": 5.092
+        },
+        {
+          "char": "🤖",
+          "anim": "glitch",
+          "at": 6.391
+        }
+      ],
+      "row": [
+        "🌎",
+        "🤖",
+        "🛜"
+      ],
+      "rowShake": false,
+      "rowPunch": false,
+      "colour": {
+        "exposure": 0.9371,
+        "gain": [
+          0.9956,
+          0.9976,
+          1.0367
+        ],
+        "measuredRgb": [
+          0.6381,
+          0.5725,
+          0.4957
+        ]
+      }
+    },
+    {
+      "id": "who",
+      "label": "WHO I",
+      "srcIn": 28.018,
+      "srcOut": 32.503,
+      "durationInSeconds": 4.485,
+      "freezeInSeconds": 0.2,
+      "timelineStart": 27.22,
+      "captions": [
+        {
+          "word": "WHO",
+          "start": 0.22,
+          "end": 0.459,
+          "accent": "white"
+        },
+        {
+          "word": "1",
+          "start": 0.459,
+          "end": 0.549,
+          "accent": "white"
+        },
+        {
+          "word": "is",
+          "start": 0.549,
+          "end": 0.616,
+          "accent": "white"
+        },
+        {
+          "word": "represented",
+          "start": 0.616,
+          "end": 1.425,
+          "accent": "white"
+        },
+        {
+          "word": "by",
+          "start": 1.425,
+          "end": 1.588,
+          "accent": "white"
+        },
+        {
+          "word": "a",
+          "start": 1.588,
+          "end": 1.724,
+          "accent": "white"
+        },
+        {
+          "word": "virus,",
+          "start": 1.724,
+          "end": 2.178,
+          "accent": "red"
+        },
+        {
+          "word": "the",
+          "start": 2.178,
+          "end": 2.316,
+          "accent": "white"
+        },
+        {
+          "word": "hospital",
+          "start": 2.316,
+          "end": 3.062,
+          "accent": "blue"
+        },
+        {
+          "word": "and",
+          "start": 3.062,
+          "end": 3.598,
+          "accent": "white"
+        },
+        {
+          "word": "a",
+          "start": 3.598,
+          "end": 3.676,
+          "accent": "white"
+        },
+        {
+          "word": "cruise",
+          "start": 3.676,
+          "end": 4.185,
+          "accent": "blue"
+        }
+      ],
+      "emojis": [
+        {
+          "char": "🦠",
+          "anim": "float",
+          "at": 1.724
+        },
+        {
+          "char": "🏥",
+          "anim": "pop",
+          "at": 2.316
+        },
+        {
+          "char": "🛳️",
+          "anim": "sail",
+          "at": 3.676
+        }
+      ],
+      "row": [
+        "🦠",
+        "🏥",
+        "🛳️"
+      ],
+      "rowShake": false,
+      "rowPunch": false,
+      "colour": {
+        "exposure": 0.9766,
+        "gain": [
+          1.0121,
+          0.9982,
+          0.9825
+        ],
+        "measuredRgb": [
+          0.5636,
+          0.5317,
+          0.5155
+        ]
+      }
+    },
+    {
+      "id": "edicion",
+      "label": "EDICIÓN & PRODUCCIÓN",
+      "srcIn": 32.73,
+      "srcOut": 38.457,
+      "durationInSeconds": 5.727,
+      "freezeInSeconds": 0.22,
+      "timelineStart": 31.905,
+      "captions": [
+        {
+          "word": "Edición",
+          "start": 0.22,
+          "end": 0.493,
+          "accent": "white"
+        },
+        {
+          "word": "y",
+          "start": 0.493,
+          "end": 0.578,
+          "accent": "white"
+        },
+        {
+          "word": "producción",
+          "start": 0.578,
+          "end": 1.073,
+          "accent": "white"
+        },
+        {
+          "word": "lo",
+          "start": 1.073,
+          "end": 1.146,
+          "accent": "white"
+        },
+        {
+          "word": "representa",
+          "start": 1.146,
+          "end": 1.751,
+          "accent": "white"
+        },
+        {
+          "word": "una",
+          "start": 1.751,
+          "end": 1.97,
+          "accent": "white"
+        },
+        {
+          "word": "claqueta",
+          "start": 1.97,
+          "end": 2.96,
+          "accent": "blue"
+        },
+        {
+          "word": "una",
+          "start": 3.13,
+          "end": 3.31,
+          "accent": "white"
+        },
+        {
+          "word": "paleta",
+          "start": 3.31,
+          "end": 3.617,
+          "accent": "blue"
+        },
+        {
+          "word": "de",
+          "start": 3.617,
+          "end": 3.702,
+          "accent": "white"
+        },
+        {
+          "word": "pinturas",
+          "start": 3.702,
+          "end": 4.259,
+          "accent": "white"
+        },
+        {
+          "word": "y",
+          "start": 4.259,
+          "end": 4.339,
+          "accent": "white"
+        },
+        {
+          "word": "un",
+          "start": 4.339,
+          "end": 4.666,
+          "accent": "white"
+        },
+        {
+          "word": "computador",
+          "start": 4.666,
+          "end": 5.427,
+          "accent": "blue"
+        }
+      ],
+      "emojis": [
+        {
+          "char": "🎬",
+          "anim": "clap",
+          "at": 1.97
+        },
+        {
+          "char": "🎨",
+          "anim": "splash",
+          "at": 3.31
+        },
+        {
+          "char": "💻",
+          "anim": "shine",
+          "at": 4.666
+        }
+      ],
+      "row": [
+        "🎬",
+        "🎨",
+        "💻"
+      ],
+      "rowShake": false,
+      "rowPunch": false,
+      "colour": {
+        "exposure": 1.0395,
+        "gain": [
+          1.0174,
+          0.9936,
+          1.0121
+        ],
+        "measuredRgb": [
+          0.4989,
+          0.4791,
+          0.4338
+        ]
+      }
+    },
+    {
+      "id": "muncas",
+      "label": "MUNCAS",
+      "srcIn": 39.102,
+      "srcOut": 43.665,
+      "durationInSeconds": 4.563,
+      "freezeInSeconds": 0.42,
+      "timelineStart": 37.852,
+      "captions": [
+        {
+          "word": "A",
+          "start": 0.22,
+          "end": 0.312,
+          "accent": "white"
+        },
+        {
+          "word": "MUNCAS",
+          "start": 0.312,
+          "end": 0.675,
+          "accent": "white"
+        },
+        {
+          "word": "lo",
+          "start": 0.675,
+          "end": 0.757,
+          "accent": "white"
+        },
+        {
+          "word": "representa",
+          "start": 0.757,
+          "end": 1.679,
+          "accent": "white"
+        },
+        {
+          "word": "cerebro",
+          "start": 1.949,
+          "end": 2.783,
+          "accent": "red"
+        },
+        {
+          "word": "rayo",
+          "start": 2.992,
+          "end": 3.206,
+          "accent": "red"
+        },
+        {
+          "word": "y",
+          "start": 3.206,
+          "end": 3.407,
+          "accent": "white"
+        },
+        {
+          "word": "alarma",
+          "start": 3.407,
+          "end": 4.263,
+          "accent": "red"
+        }
+      ],
+      "emojis": [
+        {
+          "char": "🧠",
+          "anim": "pop",
+          "at": 1.949
+        },
+        {
+          "char": "⚡️",
+          "anim": "impact",
+          "at": 2.992
+        },
+        {
+          "char": "🚨",
+          "anim": "siren",
+          "at": 3.407
+        }
+      ],
+      "row": [
+        "🧠",
+        "🚨",
+        "⚡️"
+      ],
+      "rowShake": false,
+      "rowPunch": true,
+      "colour": {
+        "exposure": 0.9125,
+        "gain": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "measuredRgb": [
+          0.6312,
+          0.6113,
+          0.559
+        ]
+      }
+    }
+  ]
+}

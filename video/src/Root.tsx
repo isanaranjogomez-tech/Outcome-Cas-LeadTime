@@ -14,6 +14,9 @@ import {
   type MontageProps,
 } from "./schemas";
 import montageExample from "../data/montage.json";
+import { Muncas, muncasDurationInFrames } from "./muncas/Muncas";
+import { muncasSchema, type MuncasProps } from "./muncas/schema";
+import muncasEdit from "../data/muncas-emojis.json";
 
 const FPS = 30;
 const WIDTH = 1920;
@@ -88,6 +91,27 @@ export const RemotionRoot: React.FC = () => {
           return {
             durationInFrames: totalDurationInFrames(resolved, FPS),
             props: resolved,
+          };
+        }}
+      />
+
+      <Composition
+        id="Muncas"
+        component={Muncas}
+        schema={muncasSchema}
+        fps={muncasEdit.fps}
+        width={muncasEdit.width}
+        height={muncasEdit.height}
+        durationInFrames={Math.round(muncasEdit.totalInSeconds * muncasEdit.fps)}
+        defaultProps={muncasSchema.parse(muncasEdit) as MuncasProps}
+        calculateMetadata={({ props }) => {
+          const parsed = muncasSchema.parse(props);
+          return {
+            durationInFrames: muncasDurationInFrames(parsed),
+            fps: parsed.fps,
+            width: parsed.width,
+            height: parsed.height,
+            props: parsed,
           };
         }}
       />

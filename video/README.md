@@ -83,6 +83,59 @@ length is measured before rendering — the whole clip is used.
 `assets/`, so every photograph and video on the website is already addressable:
 `media/video/testimonial.mp4`, `media/school/…`, `media/team/…`.
 
+## The MUNCAS reel
+
+`Muncas` is a second, self-contained piece: the vertical "Describe tu comité
+en 3 emojis" edit for TikTok/Reels. 1080×1920, 30 fps, 42.9 s.
+
+```bash
+npm run build:sfx        # synthesise the sound effects and the music bed
+npm run build:muncas     # re-derive the edit list from the source clip
+npm run render:muncas    # render, then master the audio to -14 LUFS / -1 dBTP
+```
+
+`npm run dev` opens it in the Studio like any other composition.
+
+### How the cut is derived
+
+`scripts/build-muncas.py` measures the source clip and writes
+`data/muncas-emojis.json`. Nothing about the timing is eyeballed:
+
+| What | How |
+|---|---|
+| shot boundaries | ffmpeg scene detection |
+| speech vs. pause | ffmpeg `silencedetect` at −38 dB / 0.14 s |
+| the transcript | Whisper (medium), corrected by hand — the one part a human should re-read |
+| word timings | each burst's words are spread across it in proportion to the audio energy underneath, so a word after a breath lands late |
+| emoji timing | each emoji is pinned to the word that names it |
+| colour | mean RGB per shot, matched part-way to the median shot |
+
+Every shot is trimmed to `first word − 0.22 s … last word + 0.30 s`, so the
+answers run straight into each other with no dead air.
+
+### Editing it
+
+`data/muncas-emojis.json` is the edit. The useful knobs:
+
+- `musicVolume` (0.15) — the bed sits about 18 dB under the voices. `0` mutes it.
+- `sfxVolume` (0.34) — master level for the effects.
+- `segments[].captions[].accent` — `white`, `red` or `blue` per word.
+- `segments[].emojis[].at` — nudge an emoji a few hundredths if it feels early.
+- `segments[].freezeInSeconds` — the held still before each hard cut.
+
+Changing the transcript or the emoji plan means editing the tables at the top
+of `scripts/build-muncas.py` and re-running `npm run build:muncas`; the JSON is
+generated, so hand-edits to it are lost on the next build.
+
+### Audio
+
+Every sound is synthesised in `scripts/build-sfx.py` — pop, click, whoosh,
+impact, cash, glitch, siren, clap, shine, splash, thump — so the project
+carries no licensed audio. The music bed is generated too, and is the weakest
+part of the piece by design: drop a real track at `public/sfx/music-bed.ogg`
+(Ogg/Opus — Chrome Headless Shell, which Remotion renders with, ships no
+proprietary codecs and will refuse an `.m4a`) and re-render.
+
 ## Compositions
 
 | id | What it is |
@@ -90,6 +143,7 @@ length is measured before rendering — the whole clip is used.
 | `Montage` | the edit itself — scenes joined by transitions, driven by `data/*.json` |
 | `TitleCard` | a standalone opening card |
 | `LowerThird` | name-and-role strap on a transparent background |
+| `Muncas` | the vertical MUNCAS reel — see above |
 
 Registered in `src/Root.tsx`. Add a `<Composition>` there to add another.
 
@@ -97,7 +151,10 @@ Registered in `src/Root.tsx`. Add a `<Composition>` there to add another.
 
 ```
 data/           edit lists — one JSON file per video
-public/fonts/   Fraunces + Inter, the same woff2 files the site uses
+public/fonts/   Fraunces + Inter (as on the site) + Noto Color Emoji
+public/source/  the MUNCAS source clip
+public/sfx/     generated sound effects and music bed
+public/freeze/  the held stills used for the freeze frames
 public/media    → symlink to ../../assets
 scripts/render.mjs  batch renderer used by `npm run render`
 src/Root.tsx    every composition, and how its duration is calculated
