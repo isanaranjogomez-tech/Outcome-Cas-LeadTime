@@ -28,20 +28,20 @@ CLIPS = [
     # Starts at the head of the file: there is no count, only 0.16s of silence
     # before WELCOME, and the phrase runs to 0.81. The tail carries his own
     # reaction to it.
-    dict(id="hook",   file="20c5663a-IMG_2278.mov", trim=(0.00, 1.22),
+    dict(id="hook",   file="20c5663a-IMG_2278.mov", trim=(0.00, 1.30),
          welcome=0.16, muncas=0.58, move="punch"),
     # 2 — a change of face and pace: open hand, calmer.
     dict(id="hand",   file="e7b1252f-IMG_2280.mov", trim=(0.33, 1.58),
          welcome=0.07, muncas=0.40, move="drift"),
-    # 3 — arms thrown up. Worth a freeze.
+    # 3 — arms thrown wide.
     dict(id="arms",   file="6fdd87dc-IMG_2276.mov", trim=(0.83, 2.60),
-         welcome=0.07, muncas=0.72, move="punch", freeze=0.26),
+         welcome=0.07, muncas=0.72, move="punch"),
     # 4 — the flex.
     dict(id="flex",   file="2d4ff6e5-IMG_2281.mov", trim=(0.48, 1.78),
          welcome=0.07, muncas=0.52, move="drift"),
-    # 5 — two of them at once. The other freeze.
+    # 5 — two of them at once.
     dict(id="duo",    file="77e01013-IMG_2284.mov", trim=(0.62, 2.86),
-         welcome=0.05, muncas=1.38, move="punch", freeze=0.26),
+         welcome=0.05, muncas=1.38, move="punch"),
     # 6 — the flags, and the close.
     dict(id="flags",  file="7a60c54c-IMG_2285.mov", trim=(0.18, 1.76),
          welcome=0.07, muncas=0.45, move="punch", hold=1.05),
@@ -97,8 +97,8 @@ def main():
             ["ffmpeg", "-y", "-hide_banner", "-loglevel", "error",
              "-i", str(c["_tmp"]),
              "-af", f"volume={gain:.2f}dB,"
-                    f"afade=t=in:st=0:d=0.025,"
-                    f"afade=t=out:st={max(0, dur - 0.045):.3f}:d=0.045",
+                    f"afade=t=in:st=0:d=0.006,"
+                    f"afade=t=out:st={max(0, dur - 0.012):.3f}:d=0.012",
              "-c:v", "copy", "-c:a", "aac", "-b:a", "256k", "-ar", "48000",
              str(out)], check=True)
         c["_tmp"].unlink()
@@ -138,7 +138,7 @@ def main():
     doc = {
         "fps": FPS, "width": 1080, "height": 1920,
         "totalInSeconds": round(timeline, 3),
-        "musicVolume": 0.085,
+        "musicVolume": 0.55,
         "sfxVolume": 0.26,
         "closing": {"line1": "WELCOME TO MUNCAS", "line2": "LET THE DEBATE BEGIN."},
         "segments": segments,

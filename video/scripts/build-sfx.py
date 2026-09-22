@@ -205,9 +205,21 @@ def music(bars=24, bpm=124):
     a, c, d, e, g = 110.0, 130.81, 146.83, 164.81, 196.0
     roots = [a, g, c, e]
 
+    def pad(freq, dur):
+        """A soft sustained layer so the bed never drops to nothing between
+        hits — it is what carries the cuts in a fast edit."""
+        x = t(dur)
+        sig = sum(np.sin(2 * np.pi * freq * m * x + i) / (m ** 1.6)
+                  for i, m in enumerate((2, 3, 4, 6), start=1))
+        sig = lowpass(sig, 700)
+        env_ = np.minimum(1, np.arange(len(x)) / (SR * 0.12))
+        env_ *= np.minimum(1, (len(x) - np.arange(len(x))) / (SR * 0.12))
+        return sig * env_ * 0.16
+
     for bar in range(bars):
         b0 = bar * 4 * beat
         root = roots[bar % 4]
+        place(pad(root * 2, beat * 4.05), b0)
         for i in range(4):
             place(kick() * (1.0 if i in (0, 2) else 0.0), b0 + i * beat)
         for i in range(8):

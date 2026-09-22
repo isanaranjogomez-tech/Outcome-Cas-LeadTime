@@ -1,17 +1,14 @@
 import React from "react";
-import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import {
+  AbsoluteFill,
+  Img,
+  interpolate,
+  spring,
+  staticFile,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
 import { captionFont, muncas } from "../muncas/theme";
-
-/** A drawn globe — thin lines, no sticker. */
-const Globe: React.FC<{ size: number; progress: number }> = ({ size, progress }) => (
-  <svg width={size} height={size} viewBox="0 0 100 100" fill="none" aria-hidden>
-    <circle cx="50" cy="50" r="42" stroke={muncas.blue} strokeWidth="3" opacity={progress} />
-    <ellipse cx="50" cy="50" rx="18" ry="42" stroke={muncas.blue} strokeWidth="2.4" opacity={progress * 0.85} />
-    <line x1="8" y1="50" x2="92" y2="50" stroke={muncas.blue} strokeWidth="2.4" opacity={progress * 0.85} />
-    <path d="M14 32 H86" stroke={muncas.blue} strokeWidth="2" opacity={progress * 0.6} />
-    <path d="M14 68 H86" stroke={muncas.blue} strokeWidth="2" opacity={progress * 0.6} />
-  </svg>
-);
 
 export const ClosingCard: React.FC<{ line1: string; line2: string }> = ({
   line1,
@@ -33,15 +30,29 @@ export const ClosingCard: React.FC<{ line1: string; line2: string }> = ({
         style={{
           background:
             "linear-gradient(to bottom, rgba(6,18,41,0) 0%, rgba(6,18,41,0.82) 38%, rgba(6,18,41,0.94) 100%)",
-          padding: "170px 70px 130px",
+          padding: "150px 70px 110px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: 18,
+          gap: 16,
           opacity: rise,
         }}
       >
-        <Globe size={76} progress={rise} />
+        <div
+          style={{
+            backgroundColor: muncas.white,
+            borderRadius: 22,
+            padding: "14px 22px",
+            opacity: rise,
+            transform: `scale(${interpolate(rise, [0, 1], [0.86, 1])})`,
+            boxShadow: "0 18px 44px rgba(6, 18, 41, 0.45)",
+          }}
+        >
+          <Img
+            src={staticFile("brand/muncas-logo.png")}
+            style={{ width: 240, height: "auto", display: "block" }}
+          />
+        </div>
         <h1
           style={{
             fontFamily: captionFont,
@@ -70,8 +81,8 @@ export const ClosingCard: React.FC<{ line1: string; line2: string }> = ({
           style={{
             fontFamily: captionFont,
             fontWeight: 700,
-            fontSize: 34,
-            letterSpacing: "0.22em",
+            fontSize: 32,
+            letterSpacing: "0.2em",
             color: muncas.blue,
             margin: 0,
             opacity: second,
@@ -79,6 +90,19 @@ export const ClosingCard: React.FC<{ line1: string; line2: string }> = ({
           }}
         >
           {line2}
+        </p>
+        <p
+          style={{
+            fontFamily: captionFont,
+            fontWeight: 900,
+            fontSize: 38,
+            letterSpacing: "0.01em",
+            color: muncas.white,
+            margin: "6px 0 0",
+            opacity: second,
+          }}
+        >
+          #ShapingTheFuture
         </p>
       </div>
     </AbsoluteFill>

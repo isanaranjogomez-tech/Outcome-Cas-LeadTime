@@ -84,8 +84,10 @@ const SegmentView: React.FC<{
     filter: "contrast(1.03) saturate(1.06)",
   };
 
-  const popVolume = sfxVolume * 0.85;
-  const impactVolume = sfxVolume * 0.7;
+  const popVolume = sfxVolume * 0.62;
+  // The impact used to land right on top of a short shout and swallow its
+  // last syllable. It punctuates now, it does not compete.
+  const impactVolume = sfxVolume * 0.38;
   const dingVolume = sfxVolume * 0.75;
   const shineVolume = sfxVolume * 0.5;
 
