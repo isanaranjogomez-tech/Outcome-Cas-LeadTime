@@ -51,7 +51,8 @@ EDIT = [
     dict(id="answer-c", src=(8.06, 9.46),   kind="punch", score=(1, 0),
          point=dict(side="right", at=0.62), banner=dict(text="EMPATE", at=0.95)),
 
-    dict(id="letter-f", src=(9.38, 10.96),  kind="push",  letter="F", score=(1, 1)),
+    dict(id="letter-f", src=(9.535, 10.86), kind="push",  letter="F", score=(1, 1),
+         letter_at=10.44, audio_fade_in=0.10),
     dict(id="answer-f", src=(10.96, 12.00), kind="punch", score=(1, 1),
          point=dict(side="right", at=0.34),
          banner=dict(text="POR MILISEGUNDOS", at=0.60)),
@@ -152,7 +153,7 @@ def main():
              "end": round(min(duration, w["end"] - src_in), 3),
              "accent": w["accent"]}
             for w in words
-            if w["end"] > src_in + 0.04 and w["start"] < src_out - 0.04
+            if w["end"] > src_in + 0.005 and w["start"] < src_out - 0.04
         ]
 
         seg = {
@@ -168,7 +169,10 @@ def main():
         if "letter" in spec:
             # The letter card lands on the letter itself, the last word spoken.
             seg["letter"] = spec["letter"]
-            seg["letterAt"] = round(captions[-1]["start"], 3) if captions else 0.5
+            if "letter_at" in spec:
+                seg["letterAt"] = round(spec["letter_at"] - src_in, 3)
+            else:
+                seg["letterAt"] = round(captions[-1]["start"], 3) if captions else 0.5
         if "point" in spec:
             seg["point"] = spec["point"]
         if "banner" in spec:
@@ -181,6 +185,8 @@ def main():
             seg["whoosh"] = True
         if spec.get("quiet"):
             seg["quiet"] = True
+        if "audio_fade_in" in spec:
+            seg["audioFadeIn"] = spec["audio_fade_in"]
         if "still" in spec:
             seg["still"] = spec["still"]
 

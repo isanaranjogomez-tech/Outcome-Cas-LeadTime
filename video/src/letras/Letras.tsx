@@ -97,6 +97,12 @@ const SegmentView: React.FC<{
   // room tone is funnier than a sound effect.
   const ticks = segment.kind === "creep" && !segment.quiet ? [0.18, 0.92] : [];
 
+  // A couple of frames of fade where a shot starts mid-sentence, so the
+  // join cannot be heard.
+  const fadeInFrames = segment.audioFadeIn
+    ? Math.round(segment.audioFadeIn * fps)
+    : 0;
+
   return (
     <AbsoluteFill style={{ backgroundColor: muncas.navyDeep }}>
       <AbsoluteFill style={{ overflow: "hidden" }}>
@@ -108,6 +114,15 @@ const SegmentView: React.FC<{
             trimBefore={Math.round(segment.srcIn * fps)}
             trimAfter={Math.round(segment.srcOut * fps)}
             style={plate}
+            volume={
+              fadeInFrames
+                ? (f) =>
+                    interpolate(f, [0, fadeInFrames], [0, 1], {
+                      extrapolateLeft: "clamp",
+                      extrapolateRight: "clamp",
+                    })
+                : 1
+            }
           />
         )}
       </AbsoluteFill>

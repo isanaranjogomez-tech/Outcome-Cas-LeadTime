@@ -32,6 +32,8 @@ export const letrasSegmentSchema = z.object({
   still: z.string().optional(),
   /** Suppresses the ticking, where the room tone is doing the work. */
   quiet: z.boolean().optional(),
+  /** Seconds of audio fade at the head, to hide a join mid-sentence. */
+  audioFadeIn: z.number().optional(),
 });
 
 export const letrasSchema = z.object({
