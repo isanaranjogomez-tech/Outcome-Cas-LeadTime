@@ -46,7 +46,9 @@
     "build:letras": "python3 scripts/build-letras.py",
     "render:welcome": "node scripts/render-welcome.mjs",
     "build:welcome": "python3 scripts/build-welcome.py",
-    "render:sponsors": "node scripts/render-sponsors.mjs"
+    "render:sponsors": "node scripts/render-sponsors.mjs",
+    "render:mitos": "node scripts/render-mitos.mjs",
+    "build:mitos": "python3 scripts/build-mitos.py"
   },
   "sideEffects": [
     "*.css"

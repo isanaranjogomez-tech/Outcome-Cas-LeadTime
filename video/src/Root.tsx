@@ -26,6 +26,9 @@ import welcomeEdit from "../data/muncas-welcome.json";
 import { Sponsors, sponsorsDurationInFrames } from "./sponsors/Sponsors";
 import { sponsorsSchema, type SponsorsProps } from "./sponsors/schema";
 import sponsorsEdit from "../data/muncas-sponsors.json";
+import { Mitos, mitosDurationInFrames } from "./mitos/Mitos";
+import { mitosSchema, type MitosProps } from "./mitos/schema";
+import mitosEdit from "../data/muncas-mitos.json";
 
 const FPS = 30;
 const WIDTH = 1920;
@@ -180,6 +183,27 @@ export const RemotionRoot: React.FC = () => {
           const parsed = sponsorsSchema.parse(props);
           return {
             durationInFrames: sponsorsDurationInFrames(parsed),
+            fps: parsed.fps,
+            width: parsed.width,
+            height: parsed.height,
+            props: parsed,
+          };
+        }}
+      />
+
+      <Composition
+        id="MuncasMitos"
+        component={Mitos}
+        schema={mitosSchema}
+        fps={mitosEdit.fps}
+        width={mitosEdit.width}
+        height={mitosEdit.height}
+        durationInFrames={Math.round(mitosEdit.totalInSeconds * mitosEdit.fps)}
+        defaultProps={mitosSchema.parse(mitosEdit) as MitosProps}
+        calculateMetadata={({ props }) => {
+          const parsed = mitosSchema.parse(props);
+          return {
+            durationInFrames: mitosDurationInFrames(parsed),
             fps: parsed.fps,
             width: parsed.width,
             height: parsed.height,

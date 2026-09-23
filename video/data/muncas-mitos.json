@@ -1,0 +1,631 @@
+{
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "source": "source/muncas-mitos.mp4",
+  "title": "MITOS DE MUNCAS XX",
+  "closingInSeconds": 1.6,
+  "musicVolume": 0.3,
+  "sfxVolume": 0.3,
+  "totalInSeconds": 31.64,
+  "segments": [
+    {
+      "id": "intro",
+      "kind": "intro",
+      "srcIn": 0.8,
+      "srcOut": 2.55,
+      "durationInSeconds": 1.75,
+      "holdInSeconds": 0.0,
+      "timelineStart": 0.0,
+      "still": null,
+      "captions": [
+        {
+          "word": "Mitos",
+          "start": 0.0,
+          "end": 0.7,
+          "accent": "white"
+        },
+        {
+          "word": "de",
+          "start": 0.7,
+          "end": 0.824,
+          "accent": "white"
+        },
+        {
+          "word": "MUNCAS",
+          "start": 0.824,
+          "end": 1.74,
+          "accent": "white"
+        }
+      ]
+    },
+    {
+      "id": "mito1",
+      "kind": "myth",
+      "srcIn": 3.2,
+      "srcOut": 5.25,
+      "durationInSeconds": 2.05,
+      "holdInSeconds": 0.5,
+      "timelineStart": 1.75,
+      "still": "freeze/mito-1.jpg",
+      "captions": [
+        {
+          "word": "Para",
+          "start": 0.0,
+          "end": 0.189,
+          "accent": "white"
+        },
+        {
+          "word": "ser",
+          "start": 0.189,
+          "end": 0.334,
+          "accent": "white"
+        },
+        {
+          "word": "el",
+          "start": 0.334,
+          "end": 0.4,
+          "accent": "white"
+        },
+        {
+          "word": "mejor",
+          "start": 0.4,
+          "end": 0.595,
+          "accent": "red"
+        },
+        {
+          "word": "delegado",
+          "start": 0.595,
+          "end": 0.939,
+          "accent": "red"
+        },
+        {
+          "word": "tienes",
+          "start": 0.939,
+          "end": 1.105,
+          "accent": "white"
+        },
+        {
+          "word": "que",
+          "start": 1.105,
+          "end": 1.312,
+          "accent": "white"
+        },
+        {
+          "word": "hablar",
+          "start": 1.312,
+          "end": 1.622,
+          "accent": "blue"
+        },
+        {
+          "word": "mucho",
+          "start": 1.622,
+          "end": 2.05,
+          "accent": "blue"
+        }
+      ]
+    },
+    {
+      "id": "mito2",
+      "kind": "myth",
+      "srcIn": 5.62,
+      "srcOut": 9.15,
+      "durationInSeconds": 3.53,
+      "holdInSeconds": 0.5,
+      "timelineStart": 4.3,
+      "still": "freeze/mito-2.jpg",
+      "captions": [
+        {
+          "word": "En",
+          "start": 0.0,
+          "end": 0.129,
+          "accent": "white"
+        },
+        {
+          "word": "el",
+          "start": 0.129,
+          "end": 0.184,
+          "accent": "white"
+        },
+        {
+          "word": "comité",
+          "start": 0.184,
+          "end": 0.506,
+          "accent": "white"
+        },
+        {
+          "word": "de",
+          "start": 0.506,
+          "end": 0.565,
+          "accent": "white"
+        },
+        {
+          "word": "fotografía",
+          "start": 0.565,
+          "end": 0.928,
+          "accent": "white"
+        },
+        {
+          "word": "los",
+          "start": 0.928,
+          "end": 1.029,
+          "accent": "white"
+        },
+        {
+          "word": "delegados",
+          "start": 1.029,
+          "end": 1.309,
+          "accent": "white"
+        },
+        {
+          "word": "que",
+          "start": 1.309,
+          "end": 1.435,
+          "accent": "white"
+        },
+        {
+          "word": "tienen",
+          "start": 1.435,
+          "end": 1.636,
+          "accent": "white"
+        },
+        {
+          "word": "la",
+          "start": 1.636,
+          "end": 1.693,
+          "accent": "white"
+        },
+        {
+          "word": "mejor",
+          "start": 1.693,
+          "end": 2.008,
+          "accent": "red"
+        },
+        {
+          "word": "cámara",
+          "start": 2.008,
+          "end": 2.245,
+          "accent": "red"
+        },
+        {
+          "word": "son",
+          "start": 2.245,
+          "end": 2.452,
+          "accent": "white"
+        },
+        {
+          "word": "los",
+          "start": 2.452,
+          "end": 2.55,
+          "accent": "white"
+        },
+        {
+          "word": "que",
+          "start": 2.55,
+          "end": 2.741,
+          "accent": "white"
+        },
+        {
+          "word": "destacan",
+          "start": 2.741,
+          "end": 3.53,
+          "accent": "white"
+        }
+      ]
+    },
+    {
+      "id": "mito3",
+      "kind": "myth",
+      "srcIn": 9.66,
+      "srcOut": 11.15,
+      "durationInSeconds": 1.49,
+      "holdInSeconds": 0.5,
+      "timelineStart": 8.33,
+      "still": "freeze/mito-3.jpg",
+      "captions": [
+        {
+          "word": "En",
+          "start": 0.0,
+          "end": 0.208,
+          "accent": "white"
+        },
+        {
+          "word": "prensa",
+          "start": 0.208,
+          "end": 0.584,
+          "accent": "blue"
+        },
+        {
+          "word": "no",
+          "start": 0.584,
+          "end": 0.655,
+          "accent": "red"
+        },
+        {
+          "word": "se",
+          "start": 0.655,
+          "end": 0.789,
+          "accent": "red"
+        },
+        {
+          "word": "hace",
+          "start": 0.789,
+          "end": 1.024,
+          "accent": "red"
+        },
+        {
+          "word": "nada",
+          "start": 1.024,
+          "end": 1.49,
+          "accent": "red"
+        }
+      ]
+    },
+    {
+      "id": "mito4",
+      "kind": "myth",
+      "srcIn": 11.34,
+      "srcOut": 13.65,
+      "durationInSeconds": 2.31,
+      "holdInSeconds": 0.5,
+      "timelineStart": 10.32,
+      "still": "freeze/mito-4.jpg",
+      "captions": [
+        {
+          "word": "Es",
+          "start": 0.0,
+          "end": 0.294,
+          "accent": "white"
+        },
+        {
+          "word": "súper",
+          "start": 0.294,
+          "end": 0.603,
+          "accent": "white"
+        },
+        {
+          "word": "recomendable",
+          "start": 0.603,
+          "end": 1.289,
+          "accent": "white"
+        },
+        {
+          "word": "usar",
+          "start": 1.289,
+          "end": 1.617,
+          "accent": "white"
+        },
+        {
+          "word": "tacones",
+          "start": 1.617,
+          "end": 2.31,
+          "accent": "red"
+        }
+      ]
+    },
+    {
+      "id": "mito5",
+      "kind": "myth",
+      "srcIn": 14.68,
+      "srcOut": 18.12,
+      "durationInSeconds": 3.44,
+      "holdInSeconds": 0.5,
+      "timelineStart": 13.13,
+      "still": "freeze/mito-5.jpg",
+      "captions": [
+        {
+          "word": "Que",
+          "start": 0.0,
+          "end": 0.176,
+          "accent": "white"
+        },
+        {
+          "word": "los",
+          "start": 0.176,
+          "end": 0.338,
+          "accent": "white"
+        },
+        {
+          "word": "delegados",
+          "start": 0.338,
+          "end": 0.795,
+          "accent": "white"
+        },
+        {
+          "word": "de",
+          "start": 0.795,
+          "end": 0.902,
+          "accent": "white"
+        },
+        {
+          "word": "logística",
+          "start": 0.902,
+          "end": 1.339,
+          "accent": "blue"
+        },
+        {
+          "word": "no",
+          "start": 1.339,
+          "end": 1.482,
+          "accent": "white"
+        },
+        {
+          "word": "se",
+          "start": 1.482,
+          "end": 1.568,
+          "accent": "white"
+        },
+        {
+          "word": "pueden",
+          "start": 1.568,
+          "end": 1.906,
+          "accent": "white"
+        },
+        {
+          "word": "vestir",
+          "start": 1.906,
+          "end": 2.163,
+          "accent": "red"
+        },
+        {
+          "word": "lindos",
+          "start": 2.163,
+          "end": 2.4,
+          "accent": "red"
+        },
+        {
+          "word": "durante",
+          "start": 2.4,
+          "end": 2.736,
+          "accent": "white"
+        },
+        {
+          "word": "el",
+          "start": 2.736,
+          "end": 2.885,
+          "accent": "white"
+        },
+        {
+          "word": "modelo",
+          "start": 2.885,
+          "end": 3.44,
+          "accent": "white"
+        }
+      ]
+    },
+    {
+      "id": "mito6",
+      "kind": "myth",
+      "srcIn": 18.18,
+      "srcOut": 21.55,
+      "durationInSeconds": 3.37,
+      "holdInSeconds": 0.5,
+      "timelineStart": 17.07,
+      "still": "freeze/mito-6.jpg",
+      "captions": [
+        {
+          "word": "Que",
+          "start": 0.0,
+          "end": 0.235,
+          "accent": "white"
+        },
+        {
+          "word": "los",
+          "start": 0.235,
+          "end": 0.39,
+          "accent": "white"
+        },
+        {
+          "word": "delegados",
+          "start": 0.39,
+          "end": 0.842,
+          "accent": "white"
+        },
+        {
+          "word": "de",
+          "start": 0.842,
+          "end": 0.936,
+          "accent": "white"
+        },
+        {
+          "word": "logística",
+          "start": 0.936,
+          "end": 1.497,
+          "accent": "blue"
+        },
+        {
+          "word": "solo",
+          "start": 1.497,
+          "end": 1.707,
+          "accent": "red"
+        },
+        {
+          "word": "trabajan",
+          "start": 1.707,
+          "end": 2.05,
+          "accent": "red"
+        },
+        {
+          "word": "durante",
+          "start": 2.05,
+          "end": 2.475,
+          "accent": "white"
+        },
+        {
+          "word": "el",
+          "start": 2.475,
+          "end": 2.659,
+          "accent": "white"
+        },
+        {
+          "word": "modelo",
+          "start": 2.659,
+          "end": 3.37,
+          "accent": "white"
+        }
+      ]
+    },
+    {
+      "id": "mito7",
+      "kind": "myth",
+      "srcIn": 22.02,
+      "srcOut": 25.74,
+      "durationInSeconds": 3.72,
+      "holdInSeconds": 0.5,
+      "timelineStart": 20.94,
+      "still": "freeze/mito-7.jpg",
+      "captions": [
+        {
+          "word": "Una",
+          "start": 0.0,
+          "end": 0.185,
+          "accent": "white"
+        },
+        {
+          "word": "buena",
+          "start": 0.185,
+          "end": 0.383,
+          "accent": "white"
+        },
+        {
+          "word": "investigación",
+          "start": 0.383,
+          "end": 1.359,
+          "accent": "white"
+        },
+        {
+          "word": "consiste",
+          "start": 1.359,
+          "end": 1.91,
+          "accent": "white"
+        },
+        {
+          "word": "solo",
+          "start": 1.91,
+          "end": 2.135,
+          "accent": "white"
+        },
+        {
+          "word": "en",
+          "start": 2.135,
+          "end": 2.239,
+          "accent": "white"
+        },
+        {
+          "word": "buscar",
+          "start": 2.239,
+          "end": 2.658,
+          "accent": "white"
+        },
+        {
+          "word": "estadísticas",
+          "start": 2.658,
+          "end": 3.72,
+          "accent": "red"
+        }
+      ]
+    },
+    {
+      "id": "mito8",
+      "kind": "myth",
+      "srcIn": 25.82,
+      "srcOut": 30.2,
+      "durationInSeconds": 4.38,
+      "holdInSeconds": 0.5,
+      "timelineStart": 25.16,
+      "still": "freeze/mito-8.jpg",
+      "captions": [
+        {
+          "word": "Para",
+          "start": 0.0,
+          "end": 0.275,
+          "accent": "white"
+        },
+        {
+          "word": "ser",
+          "start": 0.275,
+          "end": 0.471,
+          "accent": "white"
+        },
+        {
+          "word": "el",
+          "start": 0.471,
+          "end": 0.631,
+          "accent": "white"
+        },
+        {
+          "word": "mejor",
+          "start": 0.631,
+          "end": 0.953,
+          "accent": "blue"
+        },
+        {
+          "word": "delegado",
+          "start": 0.953,
+          "end": 1.413,
+          "accent": "blue"
+        },
+        {
+          "word": "debes",
+          "start": 1.413,
+          "end": 1.755,
+          "accent": "white"
+        },
+        {
+          "word": "imponer",
+          "start": 1.755,
+          "end": 2.251,
+          "accent": "red"
+        },
+        {
+          "word": "toda",
+          "start": 2.251,
+          "end": 2.362,
+          "accent": "white"
+        },
+        {
+          "word": "tu",
+          "start": 2.362,
+          "end": 2.517,
+          "accent": "white"
+        },
+        {
+          "word": "perspectiva",
+          "start": 2.517,
+          "end": 3.194,
+          "accent": "white"
+        },
+        {
+          "word": "a",
+          "start": 3.194,
+          "end": 3.324,
+          "accent": "white"
+        },
+        {
+          "word": "lo",
+          "start": 3.324,
+          "end": 3.419,
+          "accent": "white"
+        },
+        {
+          "word": "largo",
+          "start": 3.419,
+          "end": 3.645,
+          "accent": "white"
+        },
+        {
+          "word": "del",
+          "start": 3.645,
+          "end": 3.804,
+          "accent": "white"
+        },
+        {
+          "word": "comité",
+          "start": 3.804,
+          "end": 4.38,
+          "accent": "white"
+        }
+      ]
+    }
+  ]
+}
