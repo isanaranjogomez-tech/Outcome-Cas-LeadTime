@@ -111,37 +111,28 @@
       "id": "a1a",
       "kind": "answer",
       "srcIn": 9.8,
-      "srcOut": 14.05,
+      "srcOut": 18.7,
       "who": "Esperanza Guerrero",
-      "durationInSeconds": 4.25,
+      "durationInSeconds": 8.9,
       "timelineStart": 27.37
     },
     {
       "id": "a1b",
       "kind": "answer",
       "srcIn": 121.25,
-      "srcOut": 126.85,
-      "who": "Yamile Pinto",
-      "durationInSeconds": 5.6,
-      "timelineStart": 31.62
-    },
-    {
-      "id": "a1c",
-      "kind": "answer",
-      "srcIn": 127.4,
       "srcOut": 128.45,
       "who": "Yamile Pinto",
-      "durationInSeconds": 1.05,
-      "timelineStart": 37.22
+      "durationInSeconds": 7.2,
+      "timelineStart": 36.27
     },
     {
       "id": "a1d",
       "kind": "answer",
       "srcIn": 134.3,
-      "srcOut": 138.45,
+      "srcOut": 138.55,
       "who": "Miguel Bermúdez",
-      "durationInSeconds": 4.15,
-      "timelineStart": 38.27
+      "durationInSeconds": 4.25,
+      "timelineStart": 43.47
     },
     {
       "id": "q2",
@@ -150,25 +141,25 @@
       "srcOut": 31.45,
       "question": "¿CUÁL FUE TU PRIMERA\nIMPRESIÓN DEL MODELO?",
       "durationInSeconds": 1.85,
-      "timelineStart": 42.42
+      "timelineStart": 47.72
     },
     {
       "id": "a2a",
       "kind": "answer",
       "srcIn": 31.85,
-      "srcOut": 37.28,
+      "srcOut": 41.05,
       "who": "Edwin Bolaños",
-      "durationInSeconds": 5.43,
-      "timelineStart": 44.27
+      "durationInSeconds": 9.2,
+      "timelineStart": 49.57
     },
     {
       "id": "a2b",
       "kind": "answer",
       "srcIn": 47.95,
-      "srcOut": 52.08,
+      "srcOut": 57.15,
       "who": "Luis Orjuela",
-      "durationInSeconds": 4.13,
-      "timelineStart": 49.7
+      "durationInSeconds": 9.2,
+      "timelineStart": 58.77
     },
     {
       "id": "a2c",
@@ -177,16 +168,16 @@
       "srcOut": 83.3,
       "who": "Óscar Rodríguez",
       "durationInSeconds": 5.1,
-      "timelineStart": 53.83
+      "timelineStart": 67.97
     },
     {
       "id": "a2d",
       "kind": "answer",
       "srcIn": 104.75,
-      "srcOut": 109.22,
+      "srcOut": 112.6,
       "who": "Paula Núñez",
-      "durationInSeconds": 4.47,
-      "timelineStart": 58.93
+      "durationInSeconds": 7.85,
+      "timelineStart": 73.07
     },
     {
       "id": "q3",
@@ -195,7 +186,7 @@
       "srcOut": 63.55,
       "question": "¿QUÉ EXPECTATIVAS\nTIENES?",
       "durationInSeconds": 2.25,
-      "timelineStart": 63.4
+      "timelineStart": 80.92
     },
     {
       "id": "a3a",
@@ -204,8 +195,8 @@
       "srcOut": 68.4,
       "who": "Jefferson Vásquez",
       "durationInSeconds": 4.35,
-      "timelineStart": 65.65
+      "timelineStart": 83.17
     }
   ],
-  "totalInSeconds": 70.0
+  "totalInSeconds": 87.52
 }
