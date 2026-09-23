@@ -23,6 +23,9 @@ import letrasEdit from "../data/muncas-letras.json";
 import { Welcome, welcomeDurationInFrames } from "./welcome/Welcome";
 import { welcomeSchema, type WelcomeProps } from "./welcome/schema";
 import welcomeEdit from "../data/muncas-welcome.json";
+import { Sponsors, sponsorsDurationInFrames } from "./sponsors/Sponsors";
+import { sponsorsSchema, type SponsorsProps } from "./sponsors/schema";
+import sponsorsEdit from "../data/muncas-sponsors.json";
 
 const FPS = 30;
 const WIDTH = 1920;
@@ -156,6 +159,27 @@ export const RemotionRoot: React.FC = () => {
           const parsed = welcomeSchema.parse(props);
           return {
             durationInFrames: welcomeDurationInFrames(parsed),
+            fps: parsed.fps,
+            width: parsed.width,
+            height: parsed.height,
+            props: parsed,
+          };
+        }}
+      />
+
+      <Composition
+        id="MuncasSponsors"
+        component={Sponsors}
+        schema={sponsorsSchema}
+        fps={sponsorsEdit.fps}
+        width={sponsorsEdit.width}
+        height={sponsorsEdit.height}
+        durationInFrames={Math.round(sponsorsEdit.totalInSeconds * sponsorsEdit.fps)}
+        defaultProps={sponsorsSchema.parse(sponsorsEdit) as SponsorsProps}
+        calculateMetadata={({ props }) => {
+          const parsed = sponsorsSchema.parse(props);
+          return {
+            durationInFrames: sponsorsDurationInFrames(parsed),
             fps: parsed.fps,
             width: parsed.width,
             height: parsed.height,

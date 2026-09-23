@@ -1,0 +1,248 @@
+{
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "source": "source/muncas-sponsors.mp4",
+  "title": {
+    "line1": "SPONSORS",
+    "line2": "MUNCAS XX"
+  },
+  "musicVolume": 0.28,
+  "sfxVolume": 0.22,
+  "segments": [
+    {
+      "id": "intro",
+      "kind": "intro",
+      "srcIn": 0.3,
+      "srcOut": 4.25,
+      "durationInSeconds": 3.95,
+      "timelineStart": 0
+    },
+    {
+      "id": "n1",
+      "kind": "name",
+      "srcIn": 4.9,
+      "srcOut": 7.7,
+      "name": "Esperanza Guerrero",
+      "role": "Logística",
+      "durationInSeconds": 2.8,
+      "timelineStart": 3.95
+    },
+    {
+      "id": "n2",
+      "kind": "name",
+      "srcIn": 25.05,
+      "srcOut": 29.1,
+      "name": "Edwin Bolaños",
+      "role": "Gimnasio Colombo Británico",
+      "durationInSeconds": 4.05,
+      "timelineStart": 6.75
+    },
+    {
+      "id": "n3",
+      "kind": "name",
+      "srcIn": 42.45,
+      "srcOut": 45.2,
+      "name": "Luis Orjuela",
+      "role": "Colegio Anglo Americano",
+      "durationInSeconds": 2.75,
+      "timelineStart": 10.8
+    },
+    {
+      "id": "n4",
+      "kind": "name",
+      "srcIn": 58.35,
+      "srcOut": 60.6,
+      "name": "Jefferson Vásquez",
+      "role": "Colegio Nueva York",
+      "durationInSeconds": 2.25,
+      "timelineStart": 13.55
+    },
+    {
+      "id": "n5",
+      "kind": "name",
+      "srcIn": 69.8,
+      "srcOut": 73.95,
+      "name": "Óscar Rodríguez",
+      "role": "Colegio Bilingüe Hispanoamericano",
+      "durationInSeconds": 4.15,
+      "timelineStart": 15.8
+    },
+    {
+      "id": "n6",
+      "kind": "name",
+      "srcIn": 99.35,
+      "srcOut": 101.95,
+      "name": "Paula Núñez",
+      "role": "Gimnasio Lontanar",
+      "durationInSeconds": 2.6,
+      "timelineStart": 19.95
+    },
+    {
+      "id": "n7",
+      "kind": "name",
+      "srcIn": 115.75,
+      "srcOut": 118.7,
+      "name": "Yamile Pinto",
+      "role": "Prensa · Colombo Americano",
+      "durationInSeconds": 2.95,
+      "timelineStart": 22.55
+    },
+    {
+      "id": "n8",
+      "kind": "name",
+      "srcIn": 129.25,
+      "srcOut": 132.25,
+      "name": "Miguel Bermúdez",
+      "role": "Área Académica · CAS",
+      "durationInSeconds": 3.0,
+      "timelineStart": 25.5
+    },
+    {
+      "id": "n9",
+      "kind": "name",
+      "srcIn": 140.25,
+      "srcOut": 142.95,
+      "name": "Camilo Pérez",
+      "role": "Prensa",
+      "durationInSeconds": 2.7,
+      "timelineStart": 28.5
+    },
+    {
+      "id": "q1",
+      "kind": "question",
+      "srcIn": 7.95,
+      "srcOut": 9.4,
+      "question": "¿QUÉ SIGNIFICA\nMUNCAS PARA TI?",
+      "durationInSeconds": 1.45,
+      "timelineStart": 31.2
+    },
+    {
+      "id": "a1a",
+      "kind": "answer",
+      "srcIn": 9.8,
+      "srcOut": 14.2,
+      "who": "Esperanza Guerrero",
+      "durationInSeconds": 4.4,
+      "timelineStart": 32.65
+    },
+    {
+      "id": "a1b",
+      "kind": "answer",
+      "srcIn": 17.3,
+      "srcOut": 23.5,
+      "who": "Esperanza Guerrero",
+      "durationInSeconds": 6.2,
+      "timelineStart": 37.05
+    },
+    {
+      "id": "a1c",
+      "kind": "answer",
+      "srcIn": 121.25,
+      "srcOut": 128.45,
+      "who": "Yamile Pinto",
+      "durationInSeconds": 7.2,
+      "timelineStart": 43.25
+    },
+    {
+      "id": "a1d",
+      "kind": "answer",
+      "srcIn": 134.3,
+      "srcOut": 138.55,
+      "who": "Miguel Bermúdez",
+      "durationInSeconds": 4.25,
+      "timelineStart": 50.45
+    },
+    {
+      "id": "q2",
+      "kind": "question",
+      "srcIn": 29.6,
+      "srcOut": 31.45,
+      "question": "¿CUÁL FUE TU PRIMERA\nIMPRESIÓN DEL MODELO?",
+      "durationInSeconds": 1.85,
+      "timelineStart": 54.7
+    },
+    {
+      "id": "a2a",
+      "kind": "answer",
+      "srcIn": 31.85,
+      "srcOut": 41.05,
+      "who": "Edwin Bolaños",
+      "durationInSeconds": 9.2,
+      "timelineStart": 56.55
+    },
+    {
+      "id": "a2b",
+      "kind": "answer",
+      "srcIn": 47.95,
+      "srcOut": 57.15,
+      "who": "Luis Orjuela",
+      "durationInSeconds": 9.2,
+      "timelineStart": 65.75
+    },
+    {
+      "id": "a2c",
+      "kind": "answer",
+      "srcIn": 78.2,
+      "srcOut": 83.3,
+      "who": "Óscar Rodríguez",
+      "durationInSeconds": 5.1,
+      "timelineStart": 74.95
+    },
+    {
+      "id": "a2d",
+      "kind": "answer",
+      "srcIn": 83.95,
+      "srcOut": 89.05,
+      "who": "Óscar Rodríguez",
+      "durationInSeconds": 5.1,
+      "timelineStart": 80.05
+    },
+    {
+      "id": "a2e",
+      "kind": "answer",
+      "srcIn": 104.75,
+      "srcOut": 114.4,
+      "who": "Paula Núñez",
+      "durationInSeconds": 9.65,
+      "timelineStart": 85.15
+    },
+    {
+      "id": "q3",
+      "kind": "question",
+      "srcIn": 61.3,
+      "srcOut": 63.55,
+      "question": "¿QUÉ EXPECTATIVAS\nTIENES?",
+      "durationInSeconds": 2.25,
+      "timelineStart": 94.8
+    },
+    {
+      "id": "a3a",
+      "kind": "answer",
+      "srcIn": 64.05,
+      "srcOut": 68.4,
+      "who": "Jefferson Vásquez",
+      "durationInSeconds": 4.35,
+      "timelineStart": 97.05
+    },
+    {
+      "id": "a3b",
+      "kind": "answer",
+      "srcIn": 146.45,
+      "srcOut": 153.2,
+      "who": "Camilo Pérez",
+      "durationInSeconds": 6.75,
+      "timelineStart": 101.4
+    },
+    {
+      "id": "a3c",
+      "kind": "answer",
+      "srcIn": 153.4,
+      "srcOut": 158.85,
+      "who": "Camilo Pérez",
+      "durationInSeconds": 5.45,
+      "timelineStart": 108.15
+    }
+  ],
+  "totalInSeconds": 113.6
+}
