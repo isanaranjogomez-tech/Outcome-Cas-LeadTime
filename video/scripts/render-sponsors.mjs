@@ -27,7 +27,7 @@ const TARGET_LRA = 9;
 
 const args = process.argv.slice(2);
 // crf 22 keeps the whole reel inside a single encode at a shareable size.
-const crf = args.includes("--quality") ? "16" : "23";
+const crf = args.includes("--quality") ? "16" : "21";
 
 const run = (cmd, argv, opts = {}) =>
   spawnSync(cmd, argv, { cwd: root, encoding: "utf8", ...opts });

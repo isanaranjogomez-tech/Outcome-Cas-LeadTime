@@ -13,100 +13,90 @@
     {
       "id": "intro",
       "kind": "intro",
-      "srcIn": 0.3,
-      "srcOut": 4.25,
-      "durationInSeconds": 3.95,
+      "srcIn": 0.4,
+      "srcOut": 3.2,
+      "durationInSeconds": 2.8,
       "timelineStart": 0
     },
     {
       "id": "n1",
       "kind": "name",
-      "srcIn": 4.9,
-      "srcOut": 7.7,
+      "srcIn": 4.95,
+      "srcOut": 7.6,
       "name": "Esperanza Guerrero",
       "role": "Logística",
-      "durationInSeconds": 2.8,
-      "timelineStart": 3.95
+      "durationInSeconds": 2.65,
+      "timelineStart": 2.8
     },
     {
       "id": "n2",
       "kind": "name",
-      "srcIn": 25.05,
-      "srcOut": 29.1,
+      "srcIn": 25.1,
+      "srcOut": 28.9,
       "name": "Edwin Bolaños",
       "role": "Gimnasio Colombo Británico",
-      "durationInSeconds": 4.05,
-      "timelineStart": 6.75
+      "durationInSeconds": 3.8,
+      "timelineStart": 5.45
     },
     {
       "id": "n3",
       "kind": "name",
-      "srcIn": 42.45,
-      "srcOut": 45.2,
+      "srcIn": 42.5,
+      "srcOut": 45.1,
       "name": "Luis Orjuela",
       "role": "Colegio Anglo Americano",
-      "durationInSeconds": 2.75,
-      "timelineStart": 10.8
+      "durationInSeconds": 2.6,
+      "timelineStart": 9.25
     },
     {
       "id": "n4",
       "kind": "name",
       "srcIn": 58.35,
-      "srcOut": 60.6,
+      "srcOut": 60.55,
       "name": "Jefferson Vásquez",
       "role": "Colegio Nueva York",
-      "durationInSeconds": 2.25,
-      "timelineStart": 13.55
+      "durationInSeconds": 2.2,
+      "timelineStart": 11.85
     },
     {
       "id": "n5",
       "kind": "name",
-      "srcIn": 69.8,
-      "srcOut": 73.95,
+      "srcIn": 69.85,
+      "srcOut": 73.4,
       "name": "Óscar Rodríguez",
       "role": "Colegio Bilingüe Hispanoamericano",
-      "durationInSeconds": 4.15,
-      "timelineStart": 15.8
+      "durationInSeconds": 3.55,
+      "timelineStart": 14.05
     },
     {
       "id": "n6",
       "kind": "name",
-      "srcIn": 99.35,
-      "srcOut": 101.95,
+      "srcIn": 99.4,
+      "srcOut": 101.9,
       "name": "Paula Núñez",
-      "role": "Gimnasio Lontanar",
-      "durationInSeconds": 2.6,
-      "timelineStart": 19.95
+      "role": "Gimnasio El Hontanar",
+      "durationInSeconds": 2.5,
+      "timelineStart": 17.6
     },
     {
       "id": "n7",
       "kind": "name",
-      "srcIn": 115.75,
-      "srcOut": 118.7,
+      "srcIn": 115.76,
+      "srcOut": 118.62,
       "name": "Yamile Pinto",
       "role": "Prensa · Colombo Americano",
-      "durationInSeconds": 2.95,
-      "timelineStart": 22.55
+      "durationInSeconds": 2.86,
+      "timelineStart": 20.1
     },
     {
       "id": "n8",
       "kind": "name",
-      "srcIn": 129.25,
-      "srcOut": 132.25,
+      "srcIn": 129.22,
+      "srcOut": 132.18,
       "name": "Miguel Bermúdez",
       "role": "Área Académica · CAS",
-      "durationInSeconds": 3.0,
-      "timelineStart": 25.5
-    },
-    {
-      "id": "n9",
-      "kind": "name",
-      "srcIn": 140.25,
-      "srcOut": 142.95,
-      "name": "Camilo Pérez",
-      "role": "Prensa",
-      "durationInSeconds": 2.7,
-      "timelineStart": 28.5
+      "durationInSeconds": 2.96,
+      "timelineStart": 22.96
     },
     {
       "id": "q1",
@@ -115,43 +105,43 @@
       "srcOut": 9.4,
       "question": "¿QUÉ SIGNIFICA\nMUNCAS PARA TI?",
       "durationInSeconds": 1.45,
-      "timelineStart": 31.2
+      "timelineStart": 25.92
     },
     {
       "id": "a1a",
       "kind": "answer",
       "srcIn": 9.8,
-      "srcOut": 14.2,
+      "srcOut": 14.05,
       "who": "Esperanza Guerrero",
-      "durationInSeconds": 4.4,
-      "timelineStart": 32.65
+      "durationInSeconds": 4.25,
+      "timelineStart": 27.37
     },
     {
       "id": "a1b",
       "kind": "answer",
-      "srcIn": 17.3,
-      "srcOut": 23.5,
-      "who": "Esperanza Guerrero",
-      "durationInSeconds": 6.2,
-      "timelineStart": 37.05
+      "srcIn": 121.25,
+      "srcOut": 126.85,
+      "who": "Yamile Pinto",
+      "durationInSeconds": 5.6,
+      "timelineStart": 31.62
     },
     {
       "id": "a1c",
       "kind": "answer",
-      "srcIn": 121.25,
+      "srcIn": 127.4,
       "srcOut": 128.45,
       "who": "Yamile Pinto",
-      "durationInSeconds": 7.2,
-      "timelineStart": 43.25
+      "durationInSeconds": 1.05,
+      "timelineStart": 37.22
     },
     {
       "id": "a1d",
       "kind": "answer",
       "srcIn": 134.3,
-      "srcOut": 138.55,
+      "srcOut": 138.45,
       "who": "Miguel Bermúdez",
-      "durationInSeconds": 4.25,
-      "timelineStart": 50.45
+      "durationInSeconds": 4.15,
+      "timelineStart": 38.27
     },
     {
       "id": "q2",
@@ -160,25 +150,25 @@
       "srcOut": 31.45,
       "question": "¿CUÁL FUE TU PRIMERA\nIMPRESIÓN DEL MODELO?",
       "durationInSeconds": 1.85,
-      "timelineStart": 54.7
+      "timelineStart": 42.42
     },
     {
       "id": "a2a",
       "kind": "answer",
       "srcIn": 31.85,
-      "srcOut": 41.05,
+      "srcOut": 37.28,
       "who": "Edwin Bolaños",
-      "durationInSeconds": 9.2,
-      "timelineStart": 56.55
+      "durationInSeconds": 5.43,
+      "timelineStart": 44.27
     },
     {
       "id": "a2b",
       "kind": "answer",
       "srcIn": 47.95,
-      "srcOut": 57.15,
+      "srcOut": 52.08,
       "who": "Luis Orjuela",
-      "durationInSeconds": 9.2,
-      "timelineStart": 65.75
+      "durationInSeconds": 4.13,
+      "timelineStart": 49.7
     },
     {
       "id": "a2c",
@@ -187,25 +177,16 @@
       "srcOut": 83.3,
       "who": "Óscar Rodríguez",
       "durationInSeconds": 5.1,
-      "timelineStart": 74.95
+      "timelineStart": 53.83
     },
     {
       "id": "a2d",
       "kind": "answer",
-      "srcIn": 83.95,
-      "srcOut": 89.05,
-      "who": "Óscar Rodríguez",
-      "durationInSeconds": 5.1,
-      "timelineStart": 80.05
-    },
-    {
-      "id": "a2e",
-      "kind": "answer",
       "srcIn": 104.75,
-      "srcOut": 114.4,
+      "srcOut": 109.22,
       "who": "Paula Núñez",
-      "durationInSeconds": 9.65,
-      "timelineStart": 85.15
+      "durationInSeconds": 4.47,
+      "timelineStart": 58.93
     },
     {
       "id": "q3",
@@ -214,7 +195,7 @@
       "srcOut": 63.55,
       "question": "¿QUÉ EXPECTATIVAS\nTIENES?",
       "durationInSeconds": 2.25,
-      "timelineStart": 94.8
+      "timelineStart": 63.4
     },
     {
       "id": "a3a",
@@ -223,26 +204,8 @@
       "srcOut": 68.4,
       "who": "Jefferson Vásquez",
       "durationInSeconds": 4.35,
-      "timelineStart": 97.05
-    },
-    {
-      "id": "a3b",
-      "kind": "answer",
-      "srcIn": 146.45,
-      "srcOut": 153.2,
-      "who": "Camilo Pérez",
-      "durationInSeconds": 6.75,
-      "timelineStart": 101.4
-    },
-    {
-      "id": "a3c",
-      "kind": "answer",
-      "srcIn": 153.4,
-      "srcOut": 158.85,
-      "who": "Camilo Pérez",
-      "durationInSeconds": 5.45,
-      "timelineStart": 108.15
+      "timelineStart": 65.65
     }
   ],
-  "totalInSeconds": 113.6
+  "totalInSeconds": 70.0
 }
