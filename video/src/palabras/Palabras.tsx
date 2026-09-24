@@ -11,6 +11,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import { LowerThird } from "./LowerThird";
 import { SAFE, font, pal } from "./theme";
 import type { PalabraCaption, PalabraSegment, PalabrasProps } from "./schema";
 
@@ -156,7 +157,7 @@ const Caption: React.FC<{ caption: PalabraCaption }> = ({ caption }) => {
         position: "absolute",
         left: BOX.left,
         right: BOX.right,
-        bottom: SAFE.bottom + 36,
+        bottom: SAFE.bottom + 105,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -237,7 +238,7 @@ const SolvedBadge: React.FC<{ word: string }> = ({ word }) => {
         justifyContent: "flex-end",
         paddingLeft: BOX.left,
         paddingRight: BOX.right,
-        paddingBottom: 640,
+        paddingBottom: 690,
         pointerEvents: "none",
         opacity: out,
       }}
@@ -633,6 +634,8 @@ export const Palabras: React.FC<PalabrasProps> = ({
   fps,
   source,
   words,
+  lowerThird,
+  lowerThirdAccent,
   attemptLimit,
   segments,
   attempts,
@@ -701,6 +704,7 @@ export const Palabras: React.FC<PalabrasProps> = ({
           words={words}
           limit={attemptLimit}
         />
+        {lowerThird ? <LowerThird text={lowerThird} accent={lowerThirdAccent} /> : null}
       </Sequence>
 
       {/* a checkmark on every word that falls */}

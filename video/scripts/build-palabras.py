@@ -154,6 +154,8 @@ def main() -> None:
         "height": 1920,
         "source": SOURCE,
         "words": WORDS,
+        "lowerThird": "DELEGADOS EXTERNOS",
+        "lowerThirdAccent": "GCB",
         "attemptLimit": 20,
         "segments": segments,
         "attempts": attempts,

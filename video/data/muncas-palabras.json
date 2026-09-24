@@ -12,6 +12,8 @@
   "PLAQUETA",
   "REGLA"
  ],
+ "lowerThird": "DELEGADOS EXTERNOS",
+ "lowerThirdAccent": "GCB",
  "attemptLimit": 20,
  "segments": [
   {

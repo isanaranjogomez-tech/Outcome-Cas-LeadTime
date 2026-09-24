@@ -44,6 +44,9 @@ export const palabrasSchema = z.object({
   height: z.number(),
   source: z.string(),
   words: z.array(z.string()),
+  /** Institutional identification held through the game. */
+  lowerThird: z.string().default(""),
+  lowerThirdAccent: z.string().default(""),
   attemptLimit: z.number().default(20),
   segments: z.array(palabraSegmentSchema),
   attempts: z.array(attemptSchema),
