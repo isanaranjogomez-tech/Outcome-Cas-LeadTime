@@ -36,6 +36,9 @@ import { Plata, plataDurationInFrames } from "./plata/Plata";
 import { plataSchema, type PlataProps } from "./plata/schema";
 import { Cover } from "./plata/Cover";
 import plataEdit from "../data/muncas-plata.json";
+import { Directiva, directivaDurationInFrames } from "./directiva/Directiva";
+import { directivaSchema, type DirectivaProps } from "./directiva/schema";
+import directivaEdit from "../data/muncas-directiva.json";
 
 const FPS = 30;
 const WIDTH = 1920;
@@ -253,6 +256,28 @@ export const RemotionRoot: React.FC = () => {
           const parsed = plataSchema.parse(props);
           return {
             durationInFrames: plataDurationInFrames(parsed),
+            fps: parsed.fps,
+            width: parsed.width,
+            height: parsed.height,
+            props: parsed,
+          };
+        }}
+      />
+
+      {/* The directiva montage: horizontal, 16:9. */}
+      <Composition
+        id="MuncasDirectiva"
+        component={Directiva}
+        schema={directivaSchema}
+        fps={directivaEdit.fps}
+        width={directivaEdit.width}
+        height={directivaEdit.height}
+        durationInFrames={directivaEdit.totalFrames}
+        defaultProps={directivaSchema.parse(directivaEdit) as DirectivaProps}
+        calculateMetadata={({ props }) => {
+          const parsed = directivaSchema.parse(props);
+          return {
+            durationInFrames: directivaDurationInFrames(parsed),
             fps: parsed.fps,
             width: parsed.width,
             height: parsed.height,

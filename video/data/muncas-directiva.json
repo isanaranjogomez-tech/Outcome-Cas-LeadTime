@@ -1,0 +1,101 @@
+{
+ "fps": 30,
+ "width": 1920,
+ "height": 1080,
+ "bar": 60,
+ "introFrames": 120,
+ "outroFrames": 120,
+ "members": [
+  {
+   "id": "sg",
+   "roleLine1": "SECRETARIA",
+   "roleLine2": "GENERAL",
+   "names": [
+    "María Angélica Hoyos"
+   ],
+   "side": "left",
+   "textX": 170,
+   "textY": 246,
+   "from": 120,
+   "moveFrames": 60,
+   "holdFrames": 120,
+   "video": "source/directiva/sg.mp4",
+   "plate": "freeze/directiva/sg.jpg",
+   "cutout": "freeze/directiva/sg-cut.png"
+  },
+  {
+   "id": "sga",
+   "roleLine1": "SECRETARIO",
+   "roleLine2": "GENERAL ADJUNTO",
+   "names": [
+    "Jerónimo Padilla"
+   ],
+   "side": "right",
+   "textX": 0,
+   "textY": 246,
+   "from": 300,
+   "moveFrames": 60,
+   "holdFrames": 120,
+   "video": "source/directiva/sga.mp4",
+   "plate": "freeze/directiva/sga.jpg",
+   "cutout": "freeze/directiva/sga-cut.png"
+  },
+  {
+   "id": "academico",
+   "roleLine1": "DIRECTOR",
+   "roleLine2": "ACADÉMICO",
+   "names": [
+    "José Alejandro Reyes"
+   ],
+   "side": "left",
+   "textX": 300,
+   "textY": 246,
+   "from": 480,
+   "moveFrames": 60,
+   "holdFrames": 120,
+   "video": "source/directiva/academico.mp4",
+   "plate": "freeze/directiva/academico.jpg",
+   "cutout": "freeze/directiva/academico-cut.png"
+  },
+  {
+   "id": "prensa",
+   "roleLine1": "DIRECTORAS",
+   "roleLine2": "DE PRENSA",
+   "names": [
+    "Gabriela Valbuena",
+    "Juana Pineda"
+   ],
+   "side": "right",
+   "textX": 0,
+   "textY": 250,
+   "from": 660,
+   "moveFrames": 60,
+   "holdFrames": 120,
+   "video": "source/directiva/prensa.mp4",
+   "plate": "freeze/directiva/prensa.jpg",
+   "cutout": "freeze/directiva/prensa-cut.png"
+  },
+  {
+   "id": "logistica",
+   "roleLine1": "DIRECTORAS",
+   "roleLine2": "DE LOGÍSTICA",
+   "names": [
+    "Sara Mora",
+    "María José Cujar"
+   ],
+   "side": "left",
+   "textX": 150,
+   "textY": 246,
+   "from": 840,
+   "moveFrames": 60,
+   "holdFrames": 120,
+   "video": "source/directiva/logistica.mp4",
+   "plate": "freeze/directiva/logistica.jpg",
+   "cutout": "freeze/directiva/logistica-cut.png"
+  }
+ ],
+ "music": "audio/directiva.ogg",
+ "musicVolume": 0.82,
+ "sfxVolume": 0.55,
+ "totalFrames": 1140
+}
