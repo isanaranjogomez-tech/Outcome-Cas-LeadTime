@@ -3,7 +3,8 @@
  "width": 1080,
  "height": 1920,
  "source": "source/muncas-plata.mp4",
- "title": "ADIVINA LA PLATA",
+ "title": "ADIVINA EL DINERO",
+ "lowerThird": "Delegados externos",
  "leftAmount": "$100K",
  "rightAmount": "$50K",
  "segments": [
@@ -496,6 +497,11 @@
    "at": 2.62,
    "name": "pop",
    "gain": 0.8
+  },
+  {
+   "at": 2.45,
+   "name": "click",
+   "gain": 0.7
   },
   {
    "at": 6.62,

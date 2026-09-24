@@ -97,6 +97,7 @@ SFX = [
     ("intro", 0.00, "cash", 0.9),
     ("setup", 0.45, "pop", 0.8),
     ("setup", 0.62, "pop", 0.8),
+    ("setup", 0.45, "click", 0.7),   # the institutional label slides in
     ("q-avion", 9.02 - 6.10, "buzzer", 0.32),
     ("q-disney", 14.12 - 10.25, "buzzer", 0.32),
     ("q-zara", 23.68 - 19.40, "ding", 0.45),
@@ -146,7 +147,8 @@ def main() -> None:
     data = {
         "fps": FPS, "width": 1080, "height": 1920,
         "source": SOURCE,
-        "title": "ADIVINA LA PLATA",
+        "title": "ADIVINA EL DINERO",
+        "lowerThird": "Delegados externos",
         "leftAmount": "$100K", "rightAmount": "$50K",
         "segments": segments,
         "sfx": sfx,

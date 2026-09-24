@@ -43,6 +43,7 @@ export const plataSchema = z.object({
   height: z.number(),
   source: z.string(),
   title: z.string(),
+  lowerThird: z.string().default(""),
   leftAmount: z.string(),
   rightAmount: z.string(),
   segments: z.array(plataSegmentSchema),

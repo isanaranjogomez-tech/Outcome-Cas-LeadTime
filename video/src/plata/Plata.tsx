@@ -169,7 +169,7 @@ const Caption: React.FC<{ caption: PlataCaption }> = ({ caption }) => {
         position: "absolute",
         left: BOX.left,
         right: BOX.right,
-        bottom: SAFE.bottom + 30,
+        bottom: SAFE.bottom + 130,
         textAlign: "center",
         opacity: interpolate(age, [0, fps * 0.07], [0, 1], {
           extrapolateLeft: "clamp",
@@ -338,14 +338,75 @@ const MarkView: React.FC<{ mark: Mark }> = ({ mark }) => {
   }
 };
 
-/* ------------------------------------------------------------- the shots */
+/**
+ * The institutional label. It enters once, softly, and then holds — it only
+ * leaves when a full-screen graphic takes the frame.
+ */
+const LowerThird: React.FC<{ text: string }> = ({ text }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const enter = spring({
+    frame: frame - 0.45 * fps,
+    fps,
+    config: { damping: 20, mass: 0.5, stiffness: 120 },
+  });
 
-const VideoSegment: React.FC<{
-  segment: PlataSegment;
-  source: string;
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: SAFE.left,
+        bottom: SAFE.bottom + 15,
+        display: "flex",
+        alignItems: "center",
+        backgroundColor: "rgba(11, 21, 40, 0.88)",
+        borderLeft: `7px solid ${pal.red}`,
+        borderRadius: 10,
+        padding: "12px 24px 12px 20px",
+        opacity: enter,
+        transform: `translateX(${interpolate(enter, [0, 1], [-26, 0])}px)`,
+        boxShadow: "0 10px 26px rgba(6, 12, 26, 0.45)",
+        pointerEvents: "none",
+      }}
+    >
+      <span
+        style={{
+          fontFamily: font,
+          fontWeight: 600,
+          fontSize: 36,
+          letterSpacing: "0.04em",
+          color: pal.white,
+          whiteSpace: "nowrap",
+        }}
+      >
+        {text}
+      </span>
+    </div>
+  );
+};
+
+/**
+ * What each player holds, plus the label. Mounted once for the whole game, so
+ * the marks never re-animate, never move and never blink on a cut.
+ */
+const Hud: React.FC<{
   leftAmount: string;
   rightAmount: string;
-}> = ({ segment, source, leftAmount, rightAmount }) => {
+  lowerThird: string;
+}> = ({ leftAmount, rightAmount, lowerThird }) => (
+  <AbsoluteFill style={{ pointerEvents: "none" }}>
+    <MoneyChip amount={leftAmount} centerX={250} delay={0} />
+    <MoneyChip amount={rightAmount} centerX={700} delay={0.14} />
+    {lowerThird ? <LowerThird text={lowerThird} /> : null}
+  </AbsoluteFill>
+);
+
+/* ------------------------------------------------------------- the shots */
+
+const VideoSegment: React.FC<{ segment: PlataSegment; source: string }> = ({
+  segment,
+  source,
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const videoFrames = Math.round(segment.durationInSeconds * fps);
@@ -370,13 +431,6 @@ const VideoSegment: React.FC<{
           filter: "contrast(1.05) saturate(1.04) brightness(0.98)",
         }}
       />
-
-      {segment.chips ? (
-        <>
-          <MoneyChip amount={leftAmount} centerX={250} delay={0} />
-          <MoneyChip amount={rightAmount} centerX={700} delay={0.16} />
-        </>
-      ) : null}
 
       {segment.captions.map((c, i) => (
         <Sequence
@@ -456,11 +510,19 @@ export const Plata: React.FC<PlataProps> = ({
   title,
   leftAmount,
   rightAmount,
+  lowerThird,
   segments,
   sfx,
   sfxVolume,
 }) => {
   const closing = segments.find((s) => s.kind === "closing");
+  // The HUD runs from the first shot of the game to the last one.
+  const game = segments.filter((s) => s.chips);
+  const hudFrom = Math.round(game[0].timelineStart * fps);
+  const hudFrames =
+    Math.round(
+      (game[game.length - 1].timelineStart + game[game.length - 1].durationInSeconds) * fps,
+    ) - hudFrom;
   const closingFrames = closing ? Math.round(closing.durationInSeconds * fps) : 0;
   const roomFade: [number, number, number] = [
     0,
@@ -478,12 +540,7 @@ export const Plata: React.FC<PlataProps> = ({
           durationInFrames={Math.round(segment.durationInSeconds * fps)}
         >
           {segment.kind === "video" ? (
-            <VideoSegment
-              segment={segment}
-              source={source}
-              leftAmount={leftAmount}
-              rightAmount={rightAmount}
-            />
+            <VideoSegment segment={segment} source={source} />
           ) : (
             <ClosingCard />
           )}
@@ -492,6 +549,10 @@ export const Plata: React.FC<PlataProps> = ({
 
       <Sequence durationInFrames={Math.round(segments[0].durationInSeconds * fps)}>
         <Title text={title} />
+      </Sequence>
+
+      <Sequence from={hudFrom} durationInFrames={hudFrames}>
+        <Hud leftAmount={leftAmount} rightAmount={rightAmount} lowerThird={lowerThird} />
       </Sequence>
 
       {/* The closing card keeps the location's ambience under it, fading out,

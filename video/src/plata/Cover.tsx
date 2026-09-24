@@ -99,7 +99,7 @@ export const Cover: React.FC<{
             textShadow: "0 16px 44px rgba(6, 12, 26, 0.85)",
           }}
         >
-          ¿CUÁNTA PLATA<br />TIENE? <span style={{ color: pal.money }}>💸</span>
+          ADIVINA<br />EL DINERO <span style={{ color: pal.money }}>💸</span>
         </span>
         <div style={{ width: 240, height: 9, backgroundColor: pal.red, borderRadius: 5 }} />
         <span
