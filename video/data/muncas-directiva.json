@@ -12,6 +12,7 @@
    "id": "sg",
    "roleLine1": "SECRETARIA",
    "roleLine2": "GENERAL",
+   "roleLine3": "",
    "names": [
     "María Angélica Hoyos"
    ],
@@ -29,14 +30,15 @@
   {
    "id": "sga",
    "roleLine1": "SECRETARIO",
-   "roleLine2": "GENERAL ADJUNTO",
+   "roleLine2": "GENERAL",
+   "roleLine3": "ADJUNTO",
    "names": [
     "Jerónimo Padilla"
    ],
-   "side": "right",
-   "textX": 260,
-   "textY": 236,
-   "fontSize": 176,
+   "side": "left",
+   "textX": 184,
+   "textY": 214,
+   "fontSize": 142,
    "from": 320,
    "moveFrames": 40,
    "holdFrames": 120,
@@ -48,6 +50,7 @@
    "id": "academico",
    "roleLine1": "DIRECTOR",
    "roleLine2": "ACADÉMICO",
+   "roleLine3": "",
    "names": [
     "José Alejandro Reyes"
    ],
@@ -66,6 +69,7 @@
    "id": "prensa",
    "roleLine1": "DIRECTORAS",
    "roleLine2": "DE PRENSA",
+   "roleLine3": "",
    "names": [
     "Gabriela Valbuena",
     "Juana Pineda"
@@ -85,6 +89,7 @@
    "id": "logistica",
    "roleLine1": "DIRECTORAS",
    "roleLine2": "DE LOGÍSTICA",
+   "roleLine3": "",
    "names": [
     "Sara Mora",
     "María José Cujar"

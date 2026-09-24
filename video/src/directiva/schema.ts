@@ -4,6 +4,7 @@ export const memberSchema = z.object({
   id: z.string(),
   roleLine1: z.string(),
   roleLine2: z.string(),
+  roleLine3: z.string().default(""),
   names: z.array(z.string()),
   side: z.enum(["left", "right"]),
   textX: z.number().default(0),

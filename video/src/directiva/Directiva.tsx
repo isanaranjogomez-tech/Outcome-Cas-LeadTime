@@ -57,6 +57,9 @@ const Role: React.FC<{ member: Member; hold: number }> = ({ member, hold }) => {
       >
         <div style={line}>{member.roleLine1}</div>
         <div style={{ ...line, opacity: 0.96 }}>{member.roleLine2}</div>
+        {member.roleLine3 ? (
+          <div style={{ ...line, opacity: 0.94 }}>{member.roleLine3}</div>
+        ) : null}
       </div>
     </AbsoluteFill>
   );

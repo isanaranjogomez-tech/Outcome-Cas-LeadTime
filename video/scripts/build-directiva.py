@@ -28,7 +28,9 @@ OUTRO = 2 * BAR
 # on five different beats — three on the pulse, two syncopated.
 MEMBERS = [
     ("sg", "SECRETARIA", "GENERAL", ["María Angélica Hoyos"], "left", 170, 246, 196, 60),
-    ("sga", "SECRETARIO", "GENERAL ADJUNTO", ["Jerónimo Padilla"], "right", 260, 236, 176, 40),
+    # Three lines for the adjunto: his shoulders sat right across the middle
+    # of a two-line block, so only the tail of the first line hides now.
+    ("sga", "SECRETARIO", "GENERAL", ["Jerónimo Padilla"], "left", 184, 214, 142, 40, "ADJUNTO"),
     ("academico", "DIRECTOR", "ACADÉMICO", ["José Alejandro Reyes"], "left", 300, 140, 196, 80),
     ("prensa", "DIRECTORAS", "DE PRENSA", ["Gabriela Valbuena", "Juana Pineda"], "right", 210, 140, 196, 70),
     ("logistica", "DIRECTORAS", "DE LOGÍSTICA", ["Sara Mora", "María José Cujar"], "left", 150, 140, 196, 50),
@@ -37,11 +39,14 @@ MEMBERS = [
 
 def main() -> None:
     members, cursor = [], INTRO
-    for mid, l1, l2, names, side, tx, ty, size, move in MEMBERS:
+    for entry in MEMBERS:
+        mid, l1, l2, names, side, tx, ty, size, move = entry[:9]
+        l3 = entry[9] if len(entry) > 9 else ""
         members.append({
             "id": mid,
             "roleLine1": l1,
             "roleLine2": l2,
+            "roleLine3": l3,
             "names": names,
             "side": side,
             "textX": tx,
