@@ -13,47 +13,104 @@ import {
 } from "remotion";
 import { captionFont, muncas } from "../muncas/theme";
 import { MitoCaptions } from "./Captions";
-import { MITOS_RED, SAFE } from "./theme";
+import { MITOS_BLUE, MITOS_RED, SAFE } from "./theme";
 import type { MitosProps, MitoSegment } from "./schema";
 
-/** The title never leaves, and never touches TikTok's chrome. */
-const Title: React.FC<{ text: string }> = ({ text }) => (
-  <div
-    style={{
-      position: "absolute",
-      top: SAFE.top + 10,
-      left: SAFE.left,
-      right: SAFE.right,
-      textAlign: "center",
-      fontFamily: captionFont,
-      fontWeight: 800,
-      fontSize: 56,
-      letterSpacing: "-0.01em",
-      color: muncas.white,
-      textShadow: "0 6px 20px rgba(6,18,41,0.75)",
-      WebkitTextStroke: `3px ${muncas.navyDeep}`,
-      pointerEvents: "none",
-    }}
-  >
-    {text}
-  </div>
-);
+/**
+ * The title never leaves, and never touches TikTok's chrome. It reads as a
+ * badge rather than a caption: navy plate, red rule under it, and the name
+ * itself in the light blue so the lockup carries at thumbnail size.
+ */
+const Title: React.FC<{ text: string }> = ({ text }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const enter = spring({ frame, fps, config: { damping: 14, mass: 0.45, stiffness: 160 } });
+
+  const [lead, ...rest] = text.split(" MUNCAS ");
+  const tail = rest.length ? `MUNCAS ${rest.join(" MUNCAS ")}` : "";
+
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: SAFE.top + 4,
+        left: SAFE.left,
+        right: SAFE.right,
+        display: "flex",
+        justifyContent: "center",
+        pointerEvents: "none",
+        transform: `translateY(${interpolate(enter, [0, 1], [-46, 0])}px) scale(${interpolate(
+          enter,
+          [0, 1],
+          [0.88, 1],
+        )})`,
+        opacity: enter,
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: muncas.navy,
+          borderBottom: `7px solid ${MITOS_RED}`,
+          borderRadius: 18,
+          padding: "16px 34px 12px",
+          boxShadow: "0 18px 46px rgba(6, 18, 41, 0.6)",
+          display: "flex",
+          alignItems: "baseline",
+          gap: 14,
+          whiteSpace: "nowrap",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: captionFont,
+            fontWeight: 900,
+            fontSize: 62,
+            letterSpacing: "-0.02em",
+            color: muncas.white,
+          }}
+        >
+          {lead}
+        </span>
+        {tail ? (
+          <span
+            style={{
+              fontFamily: captionFont,
+              fontWeight: 900,
+              fontSize: 62,
+              letterSpacing: "-0.02em",
+              color: MITOS_BLUE,
+            }}
+          >
+            {tail}
+          </span>
+        ) : null}
+      </div>
+    </div>
+  );
+};
 
 /** The punchline: it lands on the frozen last frame, with a buzzer. */
-const FalsoStamp: React.FC = () => {
+const FalsoStamp: React.FC<{ reason: string | null }> = ({ reason }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const pop = spring({ frame, fps, config: { damping: 9, mass: 0.34, stiffness: 240 } });
   const shake = frame < 6 ? Math.sin(frame * 2.1) * (6 - frame) : 0;
+  const reasonIn = spring({
+    frame: frame - 0.18 * fps,
+    fps,
+    config: { damping: 18, mass: 0.4 },
+  });
 
   return (
     <AbsoluteFill
       style={{
         alignItems: "center",
         justifyContent: "center",
+        flexDirection: "column",
+        gap: 40,
         paddingLeft: SAFE.left,
         paddingRight: SAFE.right,
-        paddingBottom: SAFE.bottom,
+        paddingBottom: SAFE.bottom * 0.6,
         pointerEvents: "none",
       }}
     >
@@ -73,6 +130,27 @@ const FalsoStamp: React.FC = () => {
       >
         ¡FALSO!
       </span>
+
+      {reason ? (
+        <span
+          style={{
+            fontFamily: captionFont,
+            fontWeight: 700,
+            fontSize: 50,
+            lineHeight: 1.26,
+            textAlign: "center",
+            color: muncas.white,
+            backgroundColor: "rgba(6, 18, 41, 0.86)",
+            borderRadius: 16,
+            padding: "22px 30px",
+            maxWidth: 760,
+            opacity: reasonIn,
+            transform: `translateY(${interpolate(reasonIn, [0, 1], [26, 0])}px)`,
+          }}
+        >
+          {reason}
+        </span>
+      ) : null}
     </AbsoluteFill>
   );
 };
@@ -184,11 +262,13 @@ const SegmentView: React.FC<{
         ) : null}
       </AbsoluteFill>
 
-      <MitoCaptions captions={segment.captions} />
+      <Sequence durationInFrames={videoFrames}>
+        <MitoCaptions captions={segment.captions} />
+      </Sequence>
 
       {holdFrames > 0 ? (
         <Sequence from={videoFrames} durationInFrames={holdFrames}>
-          <FalsoStamp />
+          <FalsoStamp reason={segment.reason} />
           <Audio src={staticFile("sfx/buzzer.wav")} volume={buzzVolume} />
         </Sequence>
       ) : null}

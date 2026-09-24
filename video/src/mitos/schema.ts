@@ -16,6 +16,7 @@ export const mitoSegmentSchema = z.object({
   holdInSeconds: z.number(),
   timelineStart: z.number(),
   still: z.string().nullable(),
+  reason: z.string().nullable(),
   captions: z.array(mitoCaptionSchema),
 });
 

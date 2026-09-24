@@ -15,28 +15,38 @@ SOURCE = ROOT / "public" / "source" / "muncas-mitos.mp4"
 FREEZE = ROOT / "public" / "freeze"
 OUT = ROOT / "data" / "muncas-mitos.json"
 FPS = 30
-STAMP_HOLD = 0.50  # the frozen beat the FALSO stamp lands on
+STAMP_HOLD = 1.25  # long enough to read the reason under the stamp
 
 INTRO = (0.80, 2.55, "Mitos de MUNCAS")
 
-# start, end, the sentence, and the phrases to lift out of the white.
+# start, end, the sentence, the phrases to lift out of the white, and the
+# one-line reason the claim is false. The reasons are written here, not
+# spoken in the source — edit this table to change them.
 MITOS = [
     (3.20, 5.25, "Para ser el mejor delegado tienes que hablar mucho",
-     {"mejor delegado": "red", "hablar mucho": "blue"}),
+     {"mejor delegado": "red", "hablar mucho": "blue"},
+     "Pesa la calidad del argumento, no el número de intervenciones."),
     (5.62, 9.15, "En el comité de fotografía los delegados que tienen la mejor cámara son los que destacan",
-     {"mejor cámara": "red"}),
+     {"mejor cámara": "red"},
+     "Destaca el ojo y el encuadre, no el equipo."),
     (9.66, 11.15, "En prensa no se hace nada",
-     {"prensa": "blue", "no se hace nada": "red"}),
+     {"prensa": "blue", "no se hace nada": "red"},
+     "Prensa cubre todos los comités y produce el material del modelo."),
     (11.34, 13.65, "Es súper recomendable usar tacones",
-     {"tacones": "red"}),
+     {"tacones": "red"},
+     "Son jornadas de pie: el dress code no los exige."),
     (14.68, 18.12, "Que los delegados de logística no se pueden vestir lindos durante el modelo",
-     {"logística": "blue", "vestir lindos": "red"}),
+     {"logística": "blue", "vestir lindos": "red"},
+     "Logística también va de gala, solo con zapatos cómodos."),
     (18.18, 21.55, "Que los delegados de logística solo trabajan durante el modelo",
-     {"logística": "blue", "solo trabajan": "red"}),
+     {"logística": "blue", "solo trabajan": "red"},
+     "Llevan meses montándolo antes de que empiece."),
     (22.02, 25.74, "Una buena investigación consiste solo en buscar estadísticas",
-     {"estadísticas": "red"}),
+     {"estadísticas": "red"},
+     "Hacen falta contexto, postura del país y precedentes."),
     (25.82, 30.20, "Para ser el mejor delegado debes imponer toda tu perspectiva a lo largo del comité",
-     {"mejor delegado": "blue", "imponer": "red"}),
+     {"mejor delegado": "blue", "imponer": "red"},
+     "La diplomacia construye consensos; imponer resta."),
 ]
 
 
@@ -96,13 +106,13 @@ def main():
     segments.append({
         "id": "intro", "kind": "intro", "srcIn": round(a, 3), "srcOut": round(b, 3),
         "durationInSeconds": round(b - a, 3), "holdInSeconds": 0.0,
-        "timelineStart": 0.0, "still": None,
+        "timelineStart": 0.0, "still": None, "reason": None,
         "captions": [{"word": w["word"], "start": round(w["start"] - a, 3),
                       "end": round(w["end"] - a, 3), "accent": "white"} for w in words],
     })
     timeline += b - a
 
-    for n, (a, b, text, phrases) in enumerate(MITOS, start=1):
+    for n, (a, b, text, phrases, reason) in enumerate(MITOS, start=1):
         words = align(text, a, b, env, hop)
         colours = accents(words, phrases)
         still = f"freeze/mito-{n}.jpg"
@@ -116,6 +126,7 @@ def main():
             "holdInSeconds": STAMP_HOLD,
             "timelineStart": round(timeline, 3),
             "still": still,
+            "reason": reason,
             "captions": [{"word": w["word"], "start": round(w["start"] - a, 3),
                           "end": round(w["end"] - a, 3), "accent": c}
                          for w, c in zip(words, colours)],
