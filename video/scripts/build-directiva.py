@@ -25,17 +25,17 @@ OUTRO = 2 * BAR
 # The nudge is what pushes the type across each subject, so the body always
 # cuts into the words instead of sitting beside them.
 MEMBERS = [
-    ("sg", "SECRETARIA", "GENERAL", ["María Angélica Hoyos"], "left", 170, 246),
-    ("sga", "SECRETARIO", "GENERAL ADJUNTO", ["Jerónimo Padilla"], "right", 0, 246),
-    ("academico", "DIRECTOR", "ACADÉMICO", ["José Alejandro Reyes"], "left", 300, 246),
-    ("prensa", "DIRECTORAS", "DE PRENSA", ["Gabriela Valbuena", "Juana Pineda"], "right", 0, 250),
-    ("logistica", "DIRECTORAS", "DE LOGÍSTICA", ["Sara Mora", "María José Cujar"], "left", 150, 246),
+    ("sg", "SECRETARIA", "GENERAL", ["María Angélica Hoyos"], "left", 170, 246, 196),
+    ("sga", "SECRETARIO", "GENERAL ADJUNTO", ["Jerónimo Padilla"], "right", 260, 236, 176),
+    ("academico", "DIRECTOR", "ACADÉMICO", ["José Alejandro Reyes"], "left", 300, 140, 196),
+    ("prensa", "DIRECTORAS", "DE PRENSA", ["Gabriela Valbuena", "Juana Pineda"], "right", 210, 140, 196),
+    ("logistica", "DIRECTORAS", "DE LOGÍSTICA", ["Sara Mora", "María José Cujar"], "left", 150, 140, 196),
 ]
 
 
 def main() -> None:
     members, cursor = [], INTRO
-    for mid, l1, l2, names, side, tx, ty in MEMBERS:
+    for mid, l1, l2, names, side, tx, ty, size in MEMBERS:
         members.append({
             "id": mid,
             "roleLine1": l1,
@@ -44,6 +44,7 @@ def main() -> None:
             "side": side,
             "textX": tx,
             "textY": ty,
+            "fontSize": size,
             "from": cursor,
             "moveFrames": MOVE,
             "holdFrames": HOLD,
@@ -59,6 +60,8 @@ def main() -> None:
         "width": 1920,
         "height": 1080,
         "bar": BAR,
+        "title": "MUNCAS XX",
+        "subtitle": "MESA DIRECTIVA",
         "introFrames": INTRO,
         "outroFrames": OUTRO,
         "members": members,

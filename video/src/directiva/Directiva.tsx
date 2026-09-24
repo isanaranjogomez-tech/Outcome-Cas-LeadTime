@@ -32,7 +32,7 @@ const Role: React.FC<{ member: Member; hold: number }> = ({ member, hold }) => {
   const line: React.CSSProperties = {
     fontFamily: font,
     fontWeight: 900,
-    fontSize: 196,
+    fontSize: member.fontSize,
     lineHeight: 0.88,
     letterSpacing: "-0.035em",
     color: pal.redBright,
@@ -221,7 +221,11 @@ const Hold: React.FC<{ member: Member; frames: number }> = ({ member, frames }) 
 
 /* ----------------------------------------------------------- open & close */
 
-const Intro: React.FC<{ frames: number }> = ({ frames }) => {
+const Intro: React.FC<{ frames: number; title: string; subtitle: string }> = ({
+  frames,
+  title,
+  subtitle,
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const one = spring({ frame, fps, config: { damping: 200, mass: 0.6, stiffness: 150 } });
@@ -273,7 +277,7 @@ const Intro: React.FC<{ frames: number }> = ({ frames }) => {
             opacity: one,
           }}
         >
-          MUNCAS XX
+          {title}
         </span>
         <div
           style={{
@@ -287,15 +291,16 @@ const Intro: React.FC<{ frames: number }> = ({ frames }) => {
           style={{
             fontFamily: font,
             fontWeight: 600,
-            fontSize: 72,
-            letterSpacing: "0.34em",
+            fontSize: 66,
+            letterSpacing: "0.26em",
+            whiteSpace: "nowrap",
             color: pal.blue,
             opacity: two,
             transform: `translateY(${interpolate(two, [0, 1], [26, 0])}px)`,
-            paddingLeft: "0.34em",
+            paddingLeft: "0.26em",
           }}
         >
-          DIRECTIVA
+          {subtitle}
         </span>
       </div>
       <AbsoluteFill style={{ backgroundColor: pal.white, opacity: flash }} />
@@ -369,6 +374,8 @@ const Shot: React.FC<{ name: string; at: number; volume: number }> = ({ name, at
 
 export const Directiva: React.FC<DirectivaProps> = ({
   members,
+  title,
+  subtitle,
   introFrames,
   music,
   musicVolume,
@@ -382,11 +389,12 @@ export const Directiva: React.FC<DirectivaProps> = ({
   const vSnap = sfxVolume * 0.5;
   const vPop = sfxVolume * 0.45;
   const vShine = sfxVolume * 0.4;
+  const vGlitch = sfxVolume * 0.42;
 
   return (
     <AbsoluteFill style={{ backgroundColor: pal.navyDeep }}>
       <Sequence durationInFrames={introFrames}>
-        <Intro frames={introFrames} />
+        <Intro frames={introFrames} title={title} subtitle={subtitle} />
       </Sequence>
 
       {members.map((m) => (
@@ -408,16 +416,23 @@ export const Directiva: React.FC<DirectivaProps> = ({
       <Shot name="riser" at={introFrames - 22} volume={vRiser} />
       <Shot name="swish" at={introFrames - 4} volume={vSwish} />
 
-      {members.map((m) => {
+      {/* One small arc per member, and a different accent each time: the
+          shutter and the glitch alternate, and only two transitions get a
+          swish at all. */}
+      {members.map((m, i) => {
         const freeze = m.from + m.moveFrames;
+        const end = freeze + m.holdFrames;
         return (
           <React.Fragment key={`s-${m.id}`}>
-            <Shot name="riser" at={freeze - 22} volume={vRiser} />
+            <Shot name="riser" at={freeze - 20} volume={vRiser} />
             <Shot name="sub" at={freeze} volume={vSub} />
-            <Shot name="shutter" at={freeze} volume={vShutter} />
+            {i % 2 === 0 ? <Shot name="shutter" at={freeze} volume={vShutter} /> : null}
+            {i === 1 || i === 3 ? (
+              <Shot name="glitch" at={freeze - 3} volume={vGlitch} />
+            ) : null}
             <Shot name="snap" at={freeze + 15} volume={vSnap} />
             <Shot name="pop" at={freeze + 15} volume={vPop} />
-            <Shot name="swish" at={m.from + m.moveFrames + m.holdFrames - 6} volume={vSwish} />
+            {i === 2 || i === 4 ? <Shot name="swish" at={end - 6} volume={vSwish} /> : null}
           </React.Fragment>
         );
       })}
