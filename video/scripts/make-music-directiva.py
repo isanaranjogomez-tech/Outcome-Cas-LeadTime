@@ -1,22 +1,18 @@
 #!/usr/bin/env python3
 """
-Writes public/audio/directiva.ogg — an original 120 BPM electro-pop / funky
-electronic bed, written around this edit rather than looped under it.
+Writes public/audio/directiva.ogg — an original instrumental for the directiva
+montage: 90 BPM, hypnotic, minimal, built on a pulsing synth bass rather than
+on a drop.
 
-Nothing is sampled. Every bar is built from the section it belongs to, so no
-two members arrive over the same pattern:
+Nothing is sampled, there are no vocals and no borrowed melody: the riff, the
+chords and the motif are written here. The reference was a feeling — a steady
+eighth-note bass pulse, sparse snappy drums, a small figure that keeps coming
+back — not a song.
 
-  bar 0-1    intro, filter opening
-  bar 2-4    Secretaria General          four-on-the-floor, funky 16th bass
-  bar 5-7    Secretario General Adjunto  half-time kick, shaker, off-beat stabs
-  bar 8-10   Director Académico          syncopated kick, vocal chop hook
-  bar 11-13  Directoras de Prensa        broken beat, toms, open hats
-  bar 14-16  Directoras de Logística     driving kick, double-time hats, chop
-  bar 17-18  outro
-
-Each section is: a held-back run-up bar, a bar that lands full on the freeze,
-and a bar that grooves and ends on a fill with a beat of silence before the
-next downbeat.
+The grid is the edit: one bar is exactly 80 frames at 30 fps, every member
+enters on a downbeat, and the five poses land on five different beats, two of
+them syncopated. The accents are placed at those exact times, so the hits and
+the freezes are the same instant.
 
 Run: python3 scripts/make-music-directiva.py
 """
@@ -27,22 +23,26 @@ from pathlib import Path
 import numpy as np
 
 SR = 48_000
-BPM = 120.0
-BEAT = 60.0 / BPM
-BAR = 4 * BEAT
-STEP = BEAT / 4                     # a sixteenth
-BARS = 19
-DUR = BARS * BAR
+BPM = 90.0
+BEAT = 60.0 / BPM               # 0.6667 s
+BAR = 4 * BEAT                  # 2.6667 s = 80 frames
+STEP = BEAT / 4
+BARS = 14
+DUR = BARS * BAR                # 37.333 s
 N = int(DUR * SR)
 
 OUT = Path(__file__).resolve().parent.parent / "public" / "audio" / "directiva.ogg"
-rng = np.random.default_rng(514)
+rng = np.random.default_rng(9021)
+
+# Where the picture cuts and where it freezes, in seconds.
+ENTRIES = [5.3333, 10.6667, 16.0, 21.3333, 26.6667, 32.0]
+FREEZES = [7.3333, 12.0, 18.6667, 23.6667, 28.3333]
 
 
 # ---------------------------------------------------------------- helpers ---
 def place(buf, sig, at, gain=1.0):
     i = int(at * SR)
-    if i >= len(buf):
+    if i >= len(buf) or i < 0:
         return
     j = min(len(buf), i + len(sig))
     buf[i:j] += sig[: j - i] * gain
@@ -68,21 +68,6 @@ def hp(x, cutoff):
     return np.asarray(x, dtype=np.float64) - lp(x, cutoff)
 
 
-def bp(x, f0, q=6.0):
-    """Two-pole resonator — used for the formants of the vocal chop."""
-    w = 2 * np.pi * f0 / SR
-    r = np.exp(-w / (2 * q))
-    a1, a2 = -2 * r * np.cos(w), r * r
-    b0 = (1 - r * r) * 0.5
-    y = np.zeros(len(x))
-    z1 = z2 = 0.0
-    for i in range(len(x)):
-        v = b0 * x[i] - a1 * z1 - a2 * z2
-        y[i] = v - z2 * 0.0
-        z2, z1 = z1, v
-    return y
-
-
 def saw(freq, n, phase=0.0):
     f = np.full(n, freq, dtype=np.float64) if np.isscalar(freq) else freq
     return 2 * ((np.cumsum(f) / SR + phase) % 1.0) - 1
@@ -94,118 +79,79 @@ def square(freq, n, duty=0.5):
 
 # ------------------------------------------------------------------ voices ---
 def kick():
-    n = int(0.42 * SR)
+    n = int(0.44 * SR)
     x = np.arange(n) / SR
-    f = 46 + (132 - 46) * np.exp(-x / 0.026)
-    body = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-x / 0.125)
-    click = rng.normal(0, 1, n) * np.exp(-x / 0.0018) * 0.4
-    return np.tanh((body + click) * 1.6) * 0.95
-
-
-def clap():
-    n = int(0.36 * SR)
-    x = np.arange(n) / SR
-    body = lp(hp(rng.normal(0, 1, n), 1100), 4200)
-    out = np.zeros(n)
-    for k, d in enumerate((0.0, 0.008, 0.017, 0.026)):
-        i = int(d * SR)
-        out[i:] += body[: n - i] * np.exp(-np.arange(n - i) / SR / 0.010) * (1.0 - 0.18 * k)
-    out += body * np.exp(-x / 0.10) * 0.45
-    return out * 0.5
+    f = 44 + (120 - 44) * np.exp(-x / 0.030)
+    body = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-x / 0.140)
+    click = rng.normal(0, 1, n) * np.exp(-x / 0.0016) * 0.32
+    return np.tanh((body + click) * 1.5) * 0.95
 
 
 def snap():
-    n = int(0.13 * SR)
+    n = int(0.22 * SR)
     x = np.arange(n) / SR
-    return (lp(hp(rng.normal(0, 1, n), 2200), 8000) * np.exp(-x / 0.009)
-            + np.sin(2 * np.pi * 2450 * x) * np.exp(-x / 0.016) * 0.35) * 0.55
+    noise = lp(hp(rng.normal(0, 1, n), 1500), 6500)
+    out = noise * np.exp(-x / 0.013)
+    out += noise * np.exp(-x / 0.055) * 0.35
+    out += np.sin(2 * np.pi * 2100 * x) * np.exp(-x / 0.012) * 0.25
+    return out * 0.6
 
 
-def hat(dur=0.05, tone=7000):
+def hat(dur=0.045, tone=7800):
     n = int(dur * SR)
     x = np.arange(n) / SR
-    return hp(rng.normal(0, 1, n), tone) * np.exp(-x / (dur / 3.6)) * 0.28
-
-
-def shaker():
-    n = int(0.09 * SR)
-    x = np.arange(n) / SR
-    return lp(hp(rng.normal(0, 1, n), 4200), 11000) * (x / 0.012) * np.exp(-x / 0.022) * 0.30
-
-
-def tom(f0):
-    n = int(0.26 * SR)
-    x = np.arange(n) / SR
-    f = f0 * (1 + 0.6 * np.exp(-x / 0.05))
-    return np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-x / 0.10) * 0.55
+    return hp(rng.normal(0, 1, n), tone) * np.exp(-x / (dur / 4.0)) * 0.26
 
 
 def rim():
-    n = int(0.08 * SR)
+    n = int(0.07 * SR)
     x = np.arange(n) / SR
-    return (np.sin(2 * np.pi * 1700 * x) + np.sin(2 * np.pi * 2600 * x) * 0.6) * np.exp(-x / 0.008) * 0.4
+    return (np.sin(2 * np.pi * 1550 * x) + np.sin(2 * np.pi * 2350 * x) * 0.5) * np.exp(-x / 0.007) * 0.38
 
 
-def chop(freq, dur=0.22, vowel="ah"):
-    """An abstract vocal-ish blip: saw through three formants. No words."""
-    n = int(dur * SR)
-    src = saw(freq, n) * 0.6 + square(freq * 0.5, n, 0.45) * 0.2
-    fs = (700, 1220, 2600) if vowel == "ah" else (430, 830, 2760)
-    out = bp(src, fs[0], 9) * 1.0 + bp(src, fs[1], 11) * 0.6 + bp(src, fs[2], 13) * 0.3
-    out *= env_exp(n, dur / 3.2, 0.012)
-    return out / (np.abs(out).max() + 1e-9) * 0.5
+def air():
+    n = int(0.55 * SR)
+    x = np.arange(n) / SR
+    r = x / x[-1]
+    return lp(hp(rng.normal(0, 1, n), 2500), 3000 + 7000 * r) * np.sin(np.pi * r) ** 2 * 0.22
 
 
-KICK, CLAP, SNAP, RIM = kick(), clap(), snap(), rim()
-HAT, HATO, SHK = hat(), hat(0.20, 6200), shaker()
+KICK, SNAP, HAT, RIM, AIR = kick(), snap(), hat(), rim(), air()
 
 # --------------------------------------------------------------- harmony ----
-# A rotating progression: no bar repeats its predecessor's chord.
-NAMED = {
-    "Am": (110.00, [220.00, 261.63, 329.63]),
-    "F":  (87.31, [174.61, 220.00, 261.63]),
-    "C":  (130.81, [261.63, 329.63, 392.00]),
-    "G":  (98.00, [196.00, 246.94, 293.66]),
-    "Dm": (73.42, [146.83, 174.61, 220.00]),
-    "Bb": (116.54, [233.08, 293.66, 349.23]),
+# F# minor. The bass holds the pulse; the chord moves underneath it, slowly.
+F_SHARP = 46.25
+ROOTS = {"F#m": 46.25, "D": 36.71, "A": 55.00, "E": 41.20, "Bm": 61.74}
+TRIADS = {
+    "F#m": [369.99, 440.00, 554.37],
+    "D": [293.66, 369.99, 440.00],
+    "A": [329.63, 440.00, 554.37],
+    "E": [329.63, 415.30, 493.88],
+    "Bm": [369.99, 493.88, 587.33],
 }
-PROG = ["Am", "Am",            # intro
-        "Am", "F", "C",        # 1 Secretaria General
-        "G", "Am", "F",        # 2 Secretario General Adjunto
-        "C", "G", "Am",        # 3 Director Académico
-        "F", "C", "G",         # 4 Directoras de Prensa
-        "Dm", "Bb", "F",       # 5 Directoras de Logística
-        "C", "Am"]             # outro
+PROG = ["F#m", "F#m",          # intro
+        "F#m", "D",            # 1 Secretaria General
+        "A", "E",              # 2 Secretario General Adjunto
+        "F#m", "D",            # 3 Director Académico
+        "Bm", "A",             # 4 Directoras de Prensa
+        "F#m", "E",            # 5 Directoras de Logística
+        "D", "F#m"]            # outro
 
-# Per member: kick steps, hat plan, bass steps, stab steps, extras.
-GROOVES = [
-    dict(kick=[0, 4, 8, 12], hats="8", bass=[0, 3, 6, 8, 11, 14],
-         stabs=[6, 14], extra=None),
-    dict(kick=[0, 6, 8, 14], hats="shaker", bass=[0, 2, 6, 8, 10, 14],
-         stabs=[2, 6, 10, 14], extra="rim"),
-    dict(kick=[0, 4, 7, 8, 12, 15], hats="16", bass=[0, 3, 4, 7, 8, 11, 12, 15],
-         stabs=[0, 8], extra="chop"),
-    dict(kick=[0, 6, 10, 12], hats="open", bass=[0, 4, 6, 10, 12],
-         stabs=[3, 7, 11], extra="toms"),
-    dict(kick=[0, 4, 8, 12, 14], hats="16fast", bass=[0, 2, 3, 6, 8, 10, 11, 14],
-         stabs=[0, 4, 8, 12], extra="chop"),
+# Per member: which 16ths the bass pulses on, hat plan, extras.
+VOICINGS = [
+    dict(bass=[0, 2, 4, 6, 8, 10, 12, 14], hats="off", extra=None),
+    dict(bass=[0, 2, 4, 6, 8, 10, 12, 13, 14], hats="off16", extra="rim"),
+    dict(bass=[0, 2, 3, 6, 8, 10, 12, 14], hats="8", extra="motif"),
+    dict(bass=[0, 4, 6, 8, 12, 14], hats="off", extra="break"),
+    dict(bass=[0, 2, 4, 6, 8, 10, 11, 12, 14], hats="16", extra="motif2"),
 ]
 
-SECTIONS = [(2 + 3 * i, 4 + 3 * i) for i in range(5)]
-FREEZE_BARS = [s[0] + 1 for s in SECTIONS]
-RUNUP_BARS = {s[0] for s in SECTIONS}
-LAST_BARS = {s[1] for s in SECTIONS}
-
-
-def bar_time(b):
-    return b * BAR
-
+SECTIONS = [(2 + 2 * i, 3 + 2 * i) for i in range(5)]
 
 drums = np.zeros(N)
 bass = np.zeros(N)
-stabs = np.zeros(N)
+motif = np.zeros(N)
 pad = np.zeros(N)
-chops = np.zeros(N)
 fx = np.zeros(N)
 kicks: list[float] = []
 
@@ -218,162 +164,134 @@ def section_of(b):
 
 
 for b in range(BARS):
-    root, triad = NAMED[PROG[b]]
-    t0 = bar_time(b)
+    chord = PROG[b]
+    root, triad = ROOTS[chord], TRIADS[chord]
+    t0 = b * BAR
     sec = section_of(b)
-    g = GROOVES[sec] if sec is not None else GROOVES[0]
-    runup = b in RUNUP_BARS
-    last = b in LAST_BARS
-    playing = sec is not None or b in (1, 17)
+    v = VOICINGS[sec] if sec is not None else VOICINGS[0]
+    intro = b < 2
+    outro = b >= 12
+    # Member 4 drops the low end for its first bar: the break that makes its
+    # syncopated pose hit harder.
+    hole = v["extra"] == "break" and b == SECTIONS[3][0]
 
-    # --- kick -------------------------------------------------------------
-    if playing:
-        for s in g["kick"]:
-            # the run-up keeps only the strong beats: it has to feel held back
-            if runup and s % 4:
+    # --- kick: on 1 and 3, the hypnotic half-time pulse ---------------------
+    if not (intro and b == 0):
+        for s in (0, 8):
+            if hole and s == 8:
                 continue
-            at = t0 + s * STEP
-            if last and s >= 14:            # a beat of air before the next hit
-                continue
-            place(drums, KICK, at, 1.0)
-            kicks.append(at)
+            place(drums, KICK, t0 + s * STEP, 1.0)
+            kicks.append(t0 + s * STEP)
+        if sec in (2, 4) and not hole:
+            place(drums, KICK, t0 + 14 * STEP, 0.7)
+            kicks.append(t0 + 14 * STEP)
 
-    # --- clap / snap ------------------------------------------------------
-    if playing and not runup:
+    # --- snap on 2 and 4 ---------------------------------------------------
+    if sec is not None or outro:
         for s in (4, 12):
-            place(drums, CLAP, t0 + s * STEP, 0.95)
-        if sec in (1, 4):
-            place(drums, SNAP, t0 + 6 * STEP, 0.5)
-        if sec == 3:
-            place(drums, SNAP, t0 + 14 * STEP, 0.45)
+            place(drums, SNAP, t0 + s * STEP, 0.95)
+        if v["extra"] == "rim":
+            for s in (7, 15):
+                place(drums, RIM, t0 + s * STEP, 0.6)
 
-    # --- hats / shaker ----------------------------------------------------
-    if playing:
-        plan = g["hats"]
-        steps = {"8": range(0, 16, 2), "16": range(16), "16fast": range(16),
-                 "open": range(0, 16, 2), "shaker": range(0, 16, 2)}[plan]
+    # --- hats: the off-beat push -------------------------------------------
+    if not intro or b == 1:
+        plan = v["hats"]
+        if plan == "off":
+            steps = range(2, 16, 4)
+        elif plan == "off16":
+            steps = list(range(2, 16, 4)) + [6, 14]
+        elif plan == "8":
+            steps = range(0, 16, 2)
+        else:
+            steps = range(16)
         for s in steps:
-            at = t0 + s * STEP
-            if last and s >= 14:
-                continue
-            if plan == "shaker":
-                place(drums, SHK, at, 0.9 if s % 4 == 2 else 0.5)
-            elif plan == "open" and s % 8 == 6:
-                place(drums, HATO, at, 0.55)
-            else:
-                acc = 0.95 if s % 4 == 2 else 0.5
-                place(drums, HAT, at, acc * (0.7 if runup else 1.0))
-        if plan == "16fast" and not runup:
-            for s in range(1, 16, 2):
-                place(drums, HAT, t0 + s * STEP, 0.3)
+            place(drums, HAT, t0 + s * STEP, 0.95 if s % 4 == 2 else 0.5)
 
-    # --- extras -----------------------------------------------------------
-    if playing and not runup:
-        if g["extra"] == "rim":
-            for s in (3, 11):
-                place(drums, RIM, t0 + s * STEP, 0.55)
-        if g["extra"] == "toms":
-            for s, f in ((7, 150), (13, 118)):
-                place(drums, tom(f), t0 + s * STEP, 0.7)
-
-    # --- bass -------------------------------------------------------------
-    if playing:
-        for s in g["bass"]:
-            if runup and s % 4:
-                continue
-            if last and s >= 14:
+    # --- the pulsing bass: this is the hook --------------------------------
+    if not (intro and b == 0):
+        for k, s in enumerate(v["bass"]):
+            if hole and s >= 8:
                 continue
             at = t0 + s * STEP
-            n = int(0.19 * SR)
-            f = root / 2
-            e = env_exp(n, 0.075, 0.004)
-            cut = 170 + 1100 * np.exp(-np.arange(n) / SR / 0.045)
-            v = lp(saw(f, n) * 0.55 + np.sin(2 * np.pi * f * np.arange(n) / SR) * 0.7, cut)
-            place(bass, np.tanh(v * 1.7) * e, at, 0.52 if not runup else 0.4)
+            n = int(0.22 * SR)
+            # a small melodic lift on the last eighth of every second bar
+            f = root * (1.5 if (b % 2 == 1 and s >= 14) else 1.0)
+            e = env_exp(n, 0.085, 0.003)
+            cut = 150 + 1250 * np.exp(-np.arange(n) / SR / 0.05)
+            sig = lp(saw(f, n) * 0.5 + np.sin(2 * np.pi * f * np.arange(n) / SR) * 0.85, cut)
+            place(bass, np.tanh(sig * 1.8) * e, at, 0.55)
 
-    # --- synth stabs ------------------------------------------------------
-    if playing and not runup:
-        for s in g["stabs"]:
-            at = t0 + s * STEP
+    # --- the little figure that keeps coming back --------------------------
+    if v["extra"] in ("motif", "motif2") and not intro:
+        oct_ = 2 if v["extra"] == "motif2" else 1
+        seq = [triad[0], triad[2], triad[1], triad[0]]
+        for k, s in enumerate((0, 3, 6, 10)):
+            f = seq[k] * oct_
             n = int(0.30 * SR)
-            e = env_exp(n, 0.07, 0.004)
-            v = np.zeros(n)
-            for f in triad:
-                v += saw(f * 2, n, rng.random()) + saw(f * 2 * 1.006, n, rng.random())
-            v /= 6
-            cut = 1600 + 6000 * np.exp(-np.arange(n) / SR / 0.035)
-            place(stabs, lp(v, cut) * e, at, 0.34)
+            e = env_exp(n, 0.055, 0.003)
+            cut = 1500 + 5500 * np.exp(-np.arange(n) / SR / 0.028)
+            sig = lp(saw(f, n) * 0.45 + square(f * 1.004, n, 0.4) * 0.3, cut) * e * 0.34
+            place(motif, sig, t0 + s * STEP, 1.0)
+            place(motif, sig, t0 + s * STEP + 3 * STEP, 0.26)
+            place(motif, sig, t0 + s * STEP + 6 * STEP, 0.11)
 
-    # --- vocal chop -------------------------------------------------------
-    if playing and not runup and g["extra"] == "chop":
-        seq = [0, 2, 1, 2] if sec == 2 else [2, 1, 0, 1]
-        for k, s in enumerate((2, 6, 10, 14)):
-            f = triad[seq[k]] * 2
-            sig = chop(f, 0.20, "ah" if k % 2 == 0 else "oh")
-            place(chops, sig, t0 + s * STEP, 0.34)
-            place(chops, sig, t0 + s * STEP + 3 * STEP, 0.14)
-
-    # --- pad --------------------------------------------------------------
+    # --- pad: a thin bed, never a wall -------------------------------------
     n = int(BAR * SR)
     x = np.arange(n) / SR
-    chord = np.zeros(n)
+    c = np.zeros(n)
     for f in triad:
-        for det in (-8, 0, 8):
-            chord += saw(f * (1 + det / 10000.0), n, rng.random())
-    chord /= 9
-    swell = np.clip(x / 0.10, 0, 1) * (1 - 0.22 * x / BAR)
-    cut = 3000 if (playing and not runup) else 800
-    level = 0.17 if (playing and not runup) else 0.10
-    place(pad, lp(chord, cut) * swell, t0, level)
+        for det in (-9, 0, 9):
+            c += saw(f * (1 + det / 10000.0) / 2, n, rng.random())
+    c /= 9
+    swell = np.clip(x / 0.15, 0, 1) * (1 - 0.2 * x / BAR)
+    place(pad, lp(c, 1700 if not intro else 600) * swell, t0, 0.13 if not intro else 0.08)
 
-    # --- fills: the last beat of every section, and one before each freeze --
-    if last:
-        for k, s in enumerate((12, 13, 14, 15)):
-            at = t0 + s * STEP
-            if k < 2:
-                place(fx, SNAP, at, 0.5 + 0.15 * k)
-            else:
-                place(fx, tom(190 - 30 * k), at, 0.55)
-        n = int(BEAT * SR)
-        xr = np.arange(n) / SR
-        r = xr / xr[-1]
-        up = lp(hp(rng.normal(0, 1, n), 500), 900 + 11000 * r ** 2) * r ** 2
-        place(fx, up, t0 + 12 * STEP, 0.45)
+    # --- air on the last beat of every other bar ---------------------------
+    if b % 2 == 1 and not intro:
+        place(fx, AIR, t0 + 13 * STEP, 0.5)
 
-# --- risers into each freeze, and the impact that lands on it --------------
-for b in FREEZE_BARS:
-    at = bar_time(b) - BEAT * 2
-    n = int(BEAT * 2 * SR)
+# --- the accents, placed on the picture, not on the grid -------------------
+for at in ENTRIES:
+    n = int(0.45 * SR)
     x = np.arange(n) / SR
-    r = x / x[-1]
-    sweep = lp(hp(rng.normal(0, 1, n), 400), 500 + 10000 * r ** 2) * r ** 2.2
-    tone = np.sin(2 * np.pi * np.cumsum(240 * 2 ** (r * 1.4)) / SR) * r ** 3
-    place(fx, sweep * 0.55 + tone * 0.22, at, 0.6)
+    stab = np.zeros(n)
+    for f in TRIADS["F#m"]:
+        stab += saw(f, n, rng.random())
+    stab = lp(stab / 3, 2200 + 5000 * np.exp(-x / 0.03)) * env_exp(n, 0.07, 0.003)
+    place(fx, stab, at, 0.42)
+    place(fx, KICK, at, 0.85)
 
+for at in FREEZES:
     n = int(1.0 * SR)
     x = np.arange(n) / SR
-    sub = np.sin(2 * np.pi * np.cumsum(58 * np.exp(-x / 0.22) + 33) / SR) * np.exp(-x / 0.32)
-    crack = lp(hp(rng.normal(0, 1, n), 1600), 10000) * np.exp(-x / 0.09)
-    place(fx, sub * 0.9 + crack * 0.32, bar_time(b), 0.95)
+    sub = np.sin(2 * np.pi * np.cumsum(56 * np.exp(-x / 0.20) + 34) / SR) * np.exp(-x / 0.30)
+    crack = lp(hp(rng.normal(0, 1, n), 1500), 9500) * np.exp(-x / 0.085)
+    place(fx, sub * 0.95 + crack * 0.30, at, 0.95)
+    # a short lift into it, so the pose is heard coming
+    m = int(0.55 * SR)
+    r = np.arange(m) / m
+    up = lp(hp(rng.normal(0, 1, m), 500), 700 + 9000 * r ** 2) * r ** 2.4
+    place(fx, up, at - 0.55, 0.5)
 
 # ------------------------------------------------------------- sidechain ----
 duck = np.ones(N)
 for at in kicks:
     i = int(at * SR)
-    n = int(0.28 * SR)
-    shape = 0.32 + 0.68 * (1 - np.exp(-np.arange(n) / SR / 0.070))
+    n = int(0.30 * SR)
+    shape = 0.36 + 0.64 * (1 - np.exp(-np.arange(n) / SR / 0.080))
     j = min(N, i + n)
     duck[i:j] = np.minimum(duck[i:j], shape[: j - i])
 
-mix = drums + (bass + pad + stabs + chops) * duck + fx
+mix = drums + (bass + pad + motif) * duck + fx
 
-open_n = int(BAR * 2 * SR)
-mix[:open_n] = lp(mix[:open_n], 260 + 10000 * (np.arange(open_n) / open_n) ** 2)
+open_n = int(BAR * 1.5 * SR)
+mix[:open_n] = lp(mix[:open_n], 280 + 9000 * (np.arange(open_n) / open_n) ** 2)
 
-tail = int(BAR * SR)
-mix[-tail:] *= np.linspace(1, 0.0, tail) ** 0.7
+tail = int(BAR * 0.9 * SR)
+mix[-tail:] *= np.linspace(1, 0.0, tail) ** 0.8
 
-mix = np.tanh(mix * 1.18)
+mix = np.tanh(mix * 1.20)
 mix *= 0.90 / np.abs(mix).max()
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
@@ -386,4 +304,4 @@ with wave.open(str(raw), "w") as w:
 subprocess.run(["ffmpeg", "-nostdin", "-y", "-hide_banner", "-loglevel", "error",
                 "-i", str(raw), "-c:a", "libopus", "-b:a", "160k", str(OUT)], check=True)
 raw.unlink()
-print(f"✓ {OUT.name}  {DUR:.1f} s  {BPM:.0f} BPM  {BARS} compases, 5 grooves distintos")
+print(f"✓ {OUT.name}  {DUR:.2f} s  {BPM:.0f} BPM  {BARS} compases, instrumental")

@@ -128,14 +128,41 @@ const Vignette: React.FC = () => (
   />
 );
 
+/**
+ * A camera flash, three frames long: white, then gone. Never a dissolve, and
+ * never a white screen — the frame underneath is over-exposed for a moment and
+ * punched in, the way a shutter firing actually looks.
+ */
+const Flash: React.FC = () => {
+  const frame = useCurrentFrame();
+  const opacity = interpolate(frame, [0, 1, 2, 3], [1, 0.85, 0.38, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  if (opacity <= 0) return null;
+  return <AbsoluteFill style={{ backgroundColor: "#FFFFFF", opacity, pointerEvents: "none" }} />;
+};
+
+/** How long the shot stays over-exposed and punched in after the flash. */
+const useFlashResidue = () => {
+  const frame = useCurrentFrame();
+  return {
+    exposure: interpolate(frame, [0, 7], [1.55, 1], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    }),
+    punch: interpolate(frame, [0, 6], [1.06, 1], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    }),
+  };
+};
+
 /** The run-up: the clip itself, speed-ramped in the source, with a slow push. */
 const Movement: React.FC<{ member: Member; frames: number }> = ({ member, frames }) => {
   const frame = useCurrentFrame();
   const push = interpolate(frame, [0, frames], [1.02, 1.09]);
-  const flash = interpolate(frame, [0, 3], [0.5, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  const { exposure, punch } = useFlashResidue();
 
   return (
     <AbsoluteFill style={{ backgroundColor: pal.navyDeep, overflow: "hidden" }}>
@@ -145,13 +172,13 @@ const Movement: React.FC<{ member: Member; frames: number }> = ({ member, frames
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          transform: `scale(${push})`,
+          transform: `scale(${push * punch})`,
           transformOrigin: "50% 42%",
-          filter: "contrast(1.06) saturate(1.02)",
+          filter: `contrast(1.06) saturate(1.02) brightness(${exposure})`,
         }}
       />
       <Vignette />
-      <AbsoluteFill style={{ backgroundColor: pal.white, opacity: flash }} />
+      <Flash />
     </AbsoluteFill>
   );
 };
@@ -235,10 +262,6 @@ const Intro: React.FC<{ frames: number; title: string; subtitle: string }> = ({
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const flash = interpolate(frame, [frames - 4, frames - 1], [0, 0.55], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
 
   return (
     <AbsoluteFill
@@ -303,7 +326,6 @@ const Intro: React.FC<{ frames: number; title: string; subtitle: string }> = ({
           {subtitle}
         </span>
       </div>
-      <AbsoluteFill style={{ backgroundColor: pal.white, opacity: flash }} />
     </AbsoluteFill>
   );
 };
@@ -311,6 +333,10 @@ const Intro: React.FC<{ frames: number; title: string; subtitle: string }> = ({
 const Outro: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const flash = interpolate(frame, [0, 1, 2, 3], [1, 0.8, 0.35, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
   const one = spring({ frame, fps, config: { damping: 200, mass: 0.6, stiffness: 140 } });
   const two = spring({ frame: frame - 18, fps, config: { damping: 200, mass: 0.55 } });
 
@@ -360,6 +386,9 @@ const Outro: React.FC = () => {
       >
         #ShapingTheFuture
       </span>
+      {flash > 0 ? (
+        <AbsoluteFill style={{ backgroundColor: "#FFFFFF", opacity: flash, pointerEvents: "none" }} />
+      ) : null}
     </AbsoluteFill>
   );
 };
@@ -377,19 +406,19 @@ export const Directiva: React.FC<DirectivaProps> = ({
   title,
   subtitle,
   introFrames,
+  outroFrames,
   music,
   musicVolume,
   sfxVolume,
   totalFrames,
 }) => {
-  const vSwish = sfxVolume * 0.5;
-  const vRiser = sfxVolume * 0.55;
+  const vRiser = sfxVolume * 0.5;
   const vSub = sfxVolume * 0.9;
-  const vShutter = sfxVolume * 0.62;
+  const vShutter = sfxVolume * 0.78;
+  const vClick = sfxVolume * 0.55;
   const vSnap = sfxVolume * 0.5;
   const vPop = sfxVolume * 0.45;
   const vShine = sfxVolume * 0.4;
-  const vGlitch = sfxVolume * 0.42;
 
   return (
     <AbsoluteFill style={{ backgroundColor: pal.navyDeep }}>
@@ -408,36 +437,30 @@ export const Directiva: React.FC<DirectivaProps> = ({
         </React.Fragment>
       ))}
 
-      <Sequence from={totalFrames - 120} durationInFrames={120}>
+      <Sequence from={totalFrames - outroFrames} durationInFrames={outroFrames}>
         <Outro />
       </Sequence>
 
-      {/* --- sound design: one small arc per member ------------------------ */}
-      <Shot name="riser" at={introFrames - 22} volume={vRiser} />
-      <Shot name="swish" at={introFrames - 4} volume={vSwish} />
+      {/* --- sound design: the shutter is the transition -------------------- */}
 
-      {/* One small arc per member, and a different accent each time: the
-          shutter and the glitch alternate, and only two transitions get a
-          swish at all. */}
-      {members.map((m, i) => {
+      {/* Every change of member is a flash: shutter and click on the frame the
+          white lands, then the pose lifts and drops on its own beat. */}
+      {members.map((m) => {
         const freeze = m.from + m.moveFrames;
-        const end = freeze + m.holdFrames;
         return (
           <React.Fragment key={`s-${m.id}`}>
-            <Shot name="riser" at={freeze - 20} volume={vRiser} />
+            <Shot name="shutter" at={m.from} volume={vShutter} />
+            <Shot name="click" at={m.from} volume={vClick} />
+            <Shot name="riser" at={freeze - 16} volume={vRiser} />
             <Shot name="sub" at={freeze} volume={vSub} />
-            {i % 2 === 0 ? <Shot name="shutter" at={freeze} volume={vShutter} /> : null}
-            {i === 1 || i === 3 ? (
-              <Shot name="glitch" at={freeze - 3} volume={vGlitch} />
-            ) : null}
-            <Shot name="snap" at={freeze + 15} volume={vSnap} />
-            <Shot name="pop" at={freeze + 15} volume={vPop} />
-            {i === 2 || i === 4 ? <Shot name="swish" at={end - 6} volume={vSwish} /> : null}
+            <Shot name="snap" at={freeze + 12} volume={vSnap} />
+            <Shot name="pop" at={freeze + 12} volume={vPop} />
           </React.Fragment>
         );
       })}
 
-      <Shot name="shine" at={totalFrames - 120} volume={vShine} />
+      <Shot name="shutter" at={totalFrames - outroFrames} volume={vShutter} />
+      <Shot name="shine" at={totalFrames - outroFrames} volume={vShine} />
 
       <Audio src={staticFile(music)} volume={musicVolume} />
     </AbsoluteFill>
