@@ -356,7 +356,12 @@ const MarkView: React.FC<{ mark: Mark }> = ({ mark }) => {
  * The institutional label. It enters once, softly, and then holds — it only
  * leaves when a full-screen graphic takes the frame.
  */
-const LowerThird: React.FC<{ text: string }> = ({ text }) => {
+const LowerThird: React.FC<{
+  text: string;
+  accent: string;
+  hideAt: number;
+  from: number;
+}> = ({ text, accent, hideAt, from }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const enter = spring({
@@ -364,6 +369,15 @@ const LowerThird: React.FC<{ text: string }> = ({ text }) => {
     fps,
     config: { damping: 20, mass: 0.5, stiffness: 120 },
   });
+  // It steps aside for the winner payoff and does not come back: the closing
+  // card follows straight after.
+  const leave =
+    hideAt > 0
+      ? interpolate(frame / fps + from, [hideAt, hideAt + 0.28], [1, 0], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        })
+      : 1;
 
   return (
     <div
@@ -377,8 +391,10 @@ const LowerThird: React.FC<{ text: string }> = ({ text }) => {
         borderLeft: `7px solid ${pal.red}`,
         borderRadius: 10,
         padding: "12px 24px 12px 20px",
-        opacity: enter,
+        opacity: enter * leave,
         transform: `translateX(${interpolate(enter, [0, 1], [-26, 0])}px)`,
+        borderTop: `1px solid rgba(114, 197, 229, 0.35)`,
+        borderBottom: `1px solid rgba(114, 197, 229, 0.35)`,
         boxShadow: "0 10px 26px rgba(6, 12, 26, 0.45)",
         pointerEvents: "none",
       }}
@@ -387,13 +403,19 @@ const LowerThird: React.FC<{ text: string }> = ({ text }) => {
         style={{
           fontFamily: font,
           fontWeight: 600,
-          fontSize: 36,
-          letterSpacing: "0.04em",
+          fontSize: 34,
+          letterSpacing: "0.09em",
           color: pal.white,
           whiteSpace: "nowrap",
         }}
       >
         {text}
+        {accent ? (
+          <>
+            <span style={{ color: pal.red, padding: "0 10px" }}>·</span>
+            <span style={{ fontWeight: 700, color: pal.blue }}>{accent}</span>
+          </>
+        ) : null}
       </span>
     </div>
   );
@@ -407,12 +429,21 @@ const Hud: React.FC<{
   chips: Chip[];
   from: number;
   lowerThird: string;
-}> = ({ chips, from, lowerThird }) => (
+  lowerThirdAccent: string;
+  lowerThirdHideAt: number;
+}> = ({ chips, from, lowerThird, lowerThirdAccent, lowerThirdHideAt }) => (
   <AbsoluteFill style={{ pointerEvents: "none" }}>
     {chips.map((chip) => (
       <MoneyChip key={chip.amount} chip={chip} from={from} />
     ))}
-    {lowerThird ? <LowerThird text={lowerThird} /> : null}
+    {lowerThird ? (
+      <LowerThird
+        text={lowerThird}
+        accent={lowerThirdAccent}
+        hideAt={lowerThirdHideAt}
+        from={from}
+      />
+    ) : null}
   </AbsoluteFill>
 );
 
@@ -525,6 +556,8 @@ export const Plata: React.FC<PlataProps> = ({
   title,
   chips,
   lowerThird,
+  lowerThirdAccent,
+  lowerThirdHideAt,
   segments,
   sfx,
   sfxVolume,
@@ -566,7 +599,13 @@ export const Plata: React.FC<PlataProps> = ({
       </Sequence>
 
       <Sequence from={hudFrom} durationInFrames={hudFrames}>
-        <Hud chips={chips} from={hudFrom / fps} lowerThird={lowerThird} />
+        <Hud
+          chips={chips}
+          from={hudFrom / fps}
+          lowerThird={lowerThird}
+          lowerThirdAccent={lowerThirdAccent}
+          lowerThirdHideAt={lowerThirdHideAt}
+        />
       </Sequence>
 
       {/* The closing card keeps the location's ambience under it, fading out,

@@ -4,7 +4,9 @@
  "height": 1920,
  "source": "source/muncas-plata.mp4",
  "title": "ADIVINA EL DINERO",
- "lowerThird": "Delegados externos",
+ "lowerThird": "DELEGADOS EXTERNOS",
+ "lowerThirdAccent": "GCB",
+ "lowerThirdHideAt": 49.03,
  "leftAmount": "$100K",
  "rightAmount": "$50K",
  "chips": [

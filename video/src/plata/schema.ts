@@ -59,6 +59,9 @@ export const plataSchema = z.object({
   source: z.string(),
   title: z.string(),
   lowerThird: z.string().default(""),
+  lowerThirdAccent: z.string().default(""),
+  /** Timeline second where the label fades out for the closing payoff. */
+  lowerThirdHideAt: z.number().default(0),
   leftAmount: z.string(),
   rightAmount: z.string(),
   chips: z.array(chipSchema).default([]),
