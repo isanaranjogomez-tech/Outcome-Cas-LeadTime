@@ -13,7 +13,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { SAFE, font, pal } from "./theme";
-import type { Mark, PlataCaption, PlataProps, PlataSegment } from "./schema";
+import type { Chip, Mark, PlataCaption, PlataProps, PlataSegment } from "./schema";
 
 const BOX = { left: SAFE.left, right: SAFE.right } as const;
 const CONTENT = 1080 - SAFE.left - SAFE.right;
@@ -28,27 +28,41 @@ const colorOf = (c: PlataCaption["runs"][number]["color"]) =>
  * above both heads: clear of the faces, clear of TikTok's top chrome, and —
  * for the right-hand chip — pulled well inside the button column.
  */
-const MoneyChip: React.FC<{ amount: string; centerX: number; delay: number }> = ({
-  amount,
-  centerX,
-  delay,
-}) => {
+/**
+ * A money marker. It is born over the fingertip of the player pointing at it,
+ * holds there while she points, then glides once into the slot it keeps for
+ * the rest of the video. After that it never moves again.
+ */
+const MoneyChip: React.FC<{ chip: Chip; from: number }> = ({ chip, from }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const enter = spring({
-    frame: frame - delay * fps,
+  const t = frame / fps + from;
+
+  const pop = spring({
+    frame: (t - chip.popAt) * fps,
     fps,
     config: { damping: 11, mass: 0.32, stiffness: 220 },
   });
+  // One move, eased, and then it is done.
+  const settle = spring({
+    frame: (t - chip.settleAt) * fps,
+    fps,
+    config: { damping: 22, mass: 0.7, stiffness: 90 },
+  });
+
+  if (t < chip.popAt - 0.05) return null;
+
+  const x = interpolate(settle, [0, 1], [chip.anchorX, chip.restX]);
+  const y = interpolate(settle, [0, 1], [chip.anchorY, chip.restY]);
 
   return (
     <div
       style={{
         position: "absolute",
-        top: SAFE.top + 42,
-        left: centerX,
-        transform: `translateX(-50%) scale(${interpolate(enter, [0, 1], [0.5, 1])})`,
-        opacity: enter,
+        left: x,
+        top: y,
+        transform: `translate(-50%, -50%) scale(${interpolate(pop, [0, 1], [0.5, 1])})`,
+        opacity: pop,
         display: "flex",
         alignItems: "center",
         gap: 12,
@@ -70,7 +84,7 @@ const MoneyChip: React.FC<{ amount: string; centerX: number; delay: number }> = 
           color: pal.money,
         }}
       >
-        {amount}
+        {chip.amount}
       </span>
       <span style={{ fontSize: 40, lineHeight: 1 }}>💵</span>
     </div>
@@ -390,13 +404,14 @@ const LowerThird: React.FC<{ text: string }> = ({ text }) => {
  * the marks never re-animate, never move and never blink on a cut.
  */
 const Hud: React.FC<{
-  leftAmount: string;
-  rightAmount: string;
+  chips: Chip[];
+  from: number;
   lowerThird: string;
-}> = ({ leftAmount, rightAmount, lowerThird }) => (
+}> = ({ chips, from, lowerThird }) => (
   <AbsoluteFill style={{ pointerEvents: "none" }}>
-    <MoneyChip amount={leftAmount} centerX={250} delay={0} />
-    <MoneyChip amount={rightAmount} centerX={700} delay={0.14} />
+    {chips.map((chip) => (
+      <MoneyChip key={chip.amount} chip={chip} from={from} />
+    ))}
     {lowerThird ? <LowerThird text={lowerThird} /> : null}
   </AbsoluteFill>
 );
@@ -508,8 +523,7 @@ export const Plata: React.FC<PlataProps> = ({
   fps,
   source,
   title,
-  leftAmount,
-  rightAmount,
+  chips,
   lowerThird,
   segments,
   sfx,
@@ -552,7 +566,7 @@ export const Plata: React.FC<PlataProps> = ({
       </Sequence>
 
       <Sequence from={hudFrom} durationInFrames={hudFrames}>
-        <Hud leftAmount={leftAmount} rightAmount={rightAmount} lowerThird={lowerThird} />
+        <Hud chips={chips} from={hudFrom / fps} lowerThird={lowerThird} />
       </Sequence>
 
       {/* The closing card keeps the location's ambience under it, fading out,

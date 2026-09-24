@@ -37,6 +37,21 @@ export const plataSegmentSchema = z.object({
   marks: z.array(markSchema).default([]),
 });
 
+/**
+ * A money marker. It pops where its owner is pointing, holds there, then
+ * settles once into the resting slot it keeps for the rest of the video.
+ * All times are timeline seconds; all positions are screen pixels (centres).
+ */
+export const chipSchema = z.object({
+  amount: z.string(),
+  popAt: z.number(),
+  anchorX: z.number(),
+  anchorY: z.number(),
+  settleAt: z.number(),
+  restX: z.number(),
+  restY: z.number(),
+});
+
 export const plataSchema = z.object({
   fps: z.number(),
   width: z.number(),
@@ -46,6 +61,7 @@ export const plataSchema = z.object({
   lowerThird: z.string().default(""),
   leftAmount: z.string(),
   rightAmount: z.string(),
+  chips: z.array(chipSchema).default([]),
   segments: z.array(plataSegmentSchema),
   /** Absolute timeline seconds for each effect. */
   sfx: z.array(z.object({ at: z.number(), name: z.string(), gain: z.number().default(1) })).default([]),
@@ -58,3 +74,4 @@ export type PlataProps = z.infer<typeof plataSchema>;
 export type PlataSegment = z.infer<typeof plataSegmentSchema>;
 export type PlataCaption = z.infer<typeof plataCaptionSchema>;
 export type Mark = z.infer<typeof markSchema>;
+export type Chip = z.infer<typeof chipSchema>;
