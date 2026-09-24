@@ -32,6 +32,10 @@ import mitosEdit from "../data/muncas-mitos.json";
 import { Palabras, palabrasDurationInFrames } from "./palabras/Palabras";
 import { palabrasSchema, type PalabrasProps } from "./palabras/schema";
 import palabrasEdit from "../data/muncas-palabras.json";
+import { Plata, plataDurationInFrames } from "./plata/Plata";
+import { plataSchema, type PlataProps } from "./plata/schema";
+import { Cover } from "./plata/Cover";
+import plataEdit from "../data/muncas-plata.json";
 
 const FPS = 30;
 const WIDTH = 1920;
@@ -233,6 +237,43 @@ export const RemotionRoot: React.FC = () => {
             height: parsed.height,
             props: parsed,
           };
+        }}
+      />
+
+      <Composition
+        id="MuncasPlata"
+        component={Plata}
+        schema={plataSchema}
+        fps={plataEdit.fps}
+        width={plataEdit.width}
+        height={plataEdit.height}
+        durationInFrames={Math.round(plataEdit.totalInSeconds * plataEdit.fps)}
+        defaultProps={plataSchema.parse(plataEdit) as PlataProps}
+        calculateMetadata={({ props }) => {
+          const parsed = plataSchema.parse(props);
+          return {
+            durationInFrames: plataDurationInFrames(parsed),
+            fps: parsed.fps,
+            width: parsed.width,
+            height: parsed.height,
+            props: parsed,
+          };
+        }}
+      />
+
+      {/* The TikTok cover. A still, never part of the edit. */}
+      <Composition
+        id="MuncasPlataCover"
+        component={Cover}
+        fps={30}
+        width={1080}
+        height={1920}
+        durationInFrames={1}
+        defaultProps={{
+          source: plataEdit.source,
+          frameSeconds: 5.0,
+          leftAmount: plataEdit.leftAmount,
+          rightAmount: plataEdit.rightAmount,
         }}
       />
     </>

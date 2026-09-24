@@ -1,0 +1,574 @@
+{
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "source": "source/muncas-plata.mp4",
+ "title": "ADIVINA LA PLATA",
+ "leftAmount": "$100K",
+ "rightAmount": "$50K",
+ "segments": [
+  {
+   "id": "intro",
+   "kind": "video",
+   "srcIn": 0.05,
+   "durationInSeconds": 2.0,
+   "timelineStart": 0.0,
+   "zoomFrom": 1.08,
+   "zoomTo": 1.16,
+   "originX": 0.5,
+   "originY": 0.4,
+   "chips": false,
+   "captions": [],
+   "marks": []
+  },
+  {
+   "id": "setup",
+   "kind": "video",
+   "srcIn": 3.6,
+   "durationInSeconds": 1.7,
+   "timelineStart": 2.0,
+   "zoomFrom": 1.06,
+   "zoomTo": 1.1,
+   "originX": 0.5,
+   "originY": 0.45,
+   "chips": true,
+   "captions": [
+    {
+     "start": 0.26,
+     "end": 1.2,
+     "runs": [
+      {
+       "text": "Y MI PLATA ES…",
+       "color": "white"
+      }
+     ]
+    }
+   ],
+   "marks": []
+  },
+  {
+   "id": "q-avion",
+   "kind": "video",
+   "srcIn": 6.1,
+   "durationInSeconds": 3.5,
+   "timelineStart": 3.7,
+   "zoomFrom": 1.06,
+   "zoomTo": 1.12,
+   "originX": 0.5,
+   "originY": 0.45,
+   "chips": true,
+   "captions": [
+    {
+     "start": 0.2,
+     "end": 2.65,
+     "runs": [
+      {
+       "text": "¿UN ",
+       "color": "white"
+      },
+      {
+       "text": "TIQUETE DE AVIÓN",
+       "color": "blue"
+      },
+      {
+       "text": "?",
+       "color": "white"
+      }
+     ]
+    }
+   ],
+   "marks": [
+    {
+     "kind": "no",
+     "text": "",
+     "start": 2.92,
+     "end": 3.5
+    }
+   ]
+  },
+  {
+   "id": "q-disney",
+   "kind": "video",
+   "srcIn": 10.25,
+   "durationInSeconds": 4.3,
+   "timelineStart": 7.2,
+   "zoomFrom": 1.08,
+   "zoomTo": 1.14,
+   "originX": 0.5,
+   "originY": 0.45,
+   "chips": true,
+   "captions": [
+    {
+     "start": 0.19,
+     "end": 3.55,
+     "runs": [
+      {
+       "text": "¿PUEDO IR A ",
+       "color": "white"
+      },
+      {
+       "text": "DISNEY",
+       "color": "blue"
+      },
+      {
+       "text": "?",
+       "color": "white"
+      }
+     ]
+    }
+   ],
+   "marks": [
+    {
+     "kind": "no",
+     "text": "",
+     "start": 3.87,
+     "end": 4.3
+    }
+   ]
+  },
+  {
+   "id": "q-zara",
+   "kind": "video",
+   "srcIn": 19.4,
+   "durationInSeconds": 4.7333,
+   "timelineStart": 11.5,
+   "zoomFrom": 1.06,
+   "zoomTo": 1.14,
+   "originX": 0.5,
+   "originY": 0.45,
+   "chips": true,
+   "captions": [
+    {
+     "start": 0.18,
+     "end": 2.8,
+     "runs": [
+      {
+       "text": "¿",
+       "color": "white"
+      },
+      {
+       "text": "ROPA EN ZARA",
+       "color": "blue"
+      },
+      {
+       "text": "?",
+       "color": "white"
+      }
+     ]
+    }
+   ],
+   "marks": [
+    {
+     "kind": "si",
+     "text": "",
+     "start": 4.28,
+     "end": 4.75
+    }
+   ]
+  },
+  {
+   "id": "q-helado-a",
+   "kind": "video",
+   "srcIn": 32.8,
+   "durationInSeconds": 2.2667,
+   "timelineStart": 16.2333,
+   "zoomFrom": 1.06,
+   "zoomTo": 1.12,
+   "originX": 0.5,
+   "originY": 0.45,
+   "chips": true,
+   "captions": [
+    {
+     "start": 0.06,
+     "end": 2.15,
+     "runs": [
+      {
+       "text": "¿CON TU PLATA PUEDO…?",
+       "color": "white"
+      }
+     ]
+    }
+   ],
+   "marks": []
+  },
+  {
+   "id": "q-helado-b",
+   "kind": "video",
+   "srcIn": 39.05,
+   "durationInSeconds": 5.6667,
+   "timelineStart": 18.5,
+   "zoomFrom": 1.14,
+   "zoomTo": 1.22,
+   "originX": 0.5,
+   "originY": 0.42,
+   "chips": true,
+   "captions": [
+    {
+     "start": 0.07,
+     "end": 1.45,
+     "runs": [
+      {
+       "text": "¿UN ",
+       "color": "white"
+      },
+      {
+       "text": "HELADO",
+       "color": "blue"
+      },
+      {
+       "text": "? 🍦",
+       "color": "white"
+      }
+     ]
+    },
+    {
+     "start": 3.67,
+     "end": 5.65,
+     "runs": [
+      {
+       "text": "NO… O SEA, ",
+       "color": "white"
+      },
+      {
+       "text": "SÍ",
+       "color": "blue"
+      }
+     ]
+    }
+   ],
+   "marks": [
+    {
+     "kind": "thinking",
+     "text": "",
+     "start": 1.65,
+     "end": 3.35
+    }
+   ]
+  },
+  {
+   "id": "q-viaje-a",
+   "kind": "video",
+   "srcIn": 50.75,
+   "durationInSeconds": 2.3,
+   "timelineStart": 24.1667,
+   "zoomFrom": 1.06,
+   "zoomTo": 1.12,
+   "originX": 0.5,
+   "originY": 0.45,
+   "chips": true,
+   "captions": [
+    {
+     "start": 0.11,
+     "end": 2.25,
+     "runs": [
+      {
+       "text": "¿CON TU PLATA PUEDO…?",
+       "color": "white"
+      }
+     ]
+    }
+   ],
+   "marks": []
+  },
+  {
+   "id": "q-viaje-b",
+   "kind": "video",
+   "srcIn": 53.8,
+   "durationInSeconds": 4.3667,
+   "timelineStart": 26.4667,
+   "zoomFrom": 1.1,
+   "zoomTo": 1.18,
+   "originX": 0.5,
+   "originY": 0.44,
+   "chips": true,
+   "captions": [
+    {
+     "start": 0.14,
+     "end": 1.8,
+     "runs": [
+      {
+       "text": "¿IRME DE VIAJE ",
+       "color": "white"
+      },
+      {
+       "text": "CÓMODAMENTE",
+       "color": "blue"
+      },
+      {
+       "text": "?",
+       "color": "white"
+      }
+     ]
+    },
+    {
+     "start": 2.62,
+     "end": 4.35,
+     "runs": [
+      {
+       "text": "DEPENDE DE DÓNDE VAYAS",
+       "color": "red"
+      }
+     ]
+    }
+   ],
+   "marks": []
+  },
+  {
+   "id": "q-accesorios",
+   "kind": "video",
+   "srcIn": 59.75,
+   "durationInSeconds": 3.7333,
+   "timelineStart": 30.8333,
+   "zoomFrom": 1.06,
+   "zoomTo": 1.14,
+   "originX": 0.5,
+   "originY": 0.45,
+   "chips": true,
+   "captions": [
+    {
+     "start": 0.07,
+     "end": 2.7,
+     "runs": [
+      {
+       "text": "¿",
+       "color": "white"
+      },
+      {
+       "text": "ACCESORIOS",
+       "color": "blue"
+      },
+      {
+       "text": "?",
+       "color": "white"
+      }
+     ]
+    }
+   ],
+   "marks": [
+    {
+     "kind": "si",
+     "text": "",
+     "start": 3.35,
+     "end": 3.75
+    }
+   ]
+  },
+  {
+   "id": "q-pantalones",
+   "kind": "video",
+   "srcIn": 75.4,
+   "durationInSeconds": 4.6,
+   "timelineStart": 34.5667,
+   "zoomFrom": 1.08,
+   "zoomTo": 1.16,
+   "originX": 0.5,
+   "originY": 0.44,
+   "chips": true,
+   "captions": [
+    {
+     "start": 0.16,
+     "end": 2.3,
+     "runs": [
+      {
+       "text": "¿CUATRO ",
+       "color": "white"
+      },
+      {
+       "text": "PANTALONES",
+       "color": "blue"
+      },
+      {
+       "text": "? ¿DOS?",
+       "color": "white"
+      }
+     ]
+    },
+    {
+     "start": 3.14,
+     "end": 4.6,
+     "runs": [
+      {
+       "text": "SÍ, PUES",
+       "color": "blue"
+      }
+     ]
+    }
+   ],
+   "marks": []
+  },
+  {
+   "id": "guess-85",
+   "kind": "video",
+   "srcIn": 85.5,
+   "durationInSeconds": 2.9,
+   "timelineStart": 39.1667,
+   "zoomFrom": 1.12,
+   "zoomTo": 1.2,
+   "originX": 0.5,
+   "originY": 0.44,
+   "chips": true,
+   "captions": [
+    {
+     "start": 2.42,
+     "end": 2.9,
+     "runs": [
+      {
+       "text": "NO",
+       "color": "red"
+      }
+     ]
+    }
+   ],
+   "marks": [
+    {
+     "kind": "amount",
+     "text": "¿$85K?",
+     "start": 0.16,
+     "end": 2.3
+    }
+   ]
+  },
+  {
+   "id": "winner",
+   "kind": "video",
+   "srcIn": 88.5,
+   "durationInSeconds": 5.2,
+   "timelineStart": 42.0667,
+   "zoomFrom": 1.1,
+   "zoomTo": 1.22,
+   "originX": 0.4,
+   "originY": 0.44,
+   "chips": true,
+   "captions": [
+    {
+     "start": 0.14,
+     "end": 2.2,
+     "runs": [
+      {
+       "text": "TU PLATA ES…",
+       "color": "white"
+      }
+     ]
+    }
+   ],
+   "marks": [
+    {
+     "kind": "amount-win",
+     "text": "¡$50K!",
+     "start": 2.38,
+     "end": 4.1
+    },
+    {
+     "kind": "winner",
+     "text": "",
+     "start": 3.6,
+     "end": 5.2
+    }
+   ]
+  },
+  {
+   "id": "closing",
+   "kind": "closing",
+   "srcIn": null,
+   "durationInSeconds": 1.6,
+   "timelineStart": 47.2667,
+   "zoomFrom": 1.0,
+   "zoomTo": 1.0,
+   "originX": 0.5,
+   "originY": 0.5,
+   "chips": false,
+   "captions": [],
+   "marks": []
+  }
+ ],
+ "sfx": [
+  {
+   "at": 0.0,
+   "name": "cash",
+   "gain": 0.9
+  },
+  {
+   "at": 2.45,
+   "name": "pop",
+   "gain": 0.8
+  },
+  {
+   "at": 2.62,
+   "name": "pop",
+   "gain": 0.8
+  },
+  {
+   "at": 6.62,
+   "name": "buzzer",
+   "gain": 0.32
+  },
+  {
+   "at": 11.07,
+   "name": "buzzer",
+   "gain": 0.32
+  },
+  {
+   "at": 15.78,
+   "name": "ding",
+   "gain": 0.45
+  },
+  {
+   "at": 20.15,
+   "name": "tick",
+   "gain": 0.5
+  },
+  {
+   "at": 20.75,
+   "name": "tick",
+   "gain": 0.5
+  },
+  {
+   "at": 21.35,
+   "name": "tick",
+   "gain": 0.5
+  },
+  {
+   "at": 34.1833,
+   "name": "ding",
+   "gain": 0.45
+  },
+  {
+   "at": 39.3267,
+   "name": "pop",
+   "gain": 0.9
+  },
+  {
+   "at": 41.5867,
+   "name": "buzzer",
+   "gain": 0.5
+  },
+  {
+   "at": 44.4467,
+   "name": "ding",
+   "gain": 1.0
+  },
+  {
+   "at": 44.5467,
+   "name": "shine",
+   "gain": 0.6
+  },
+  {
+   "at": 45.6667,
+   "name": "clap",
+   "gain": 0.8
+  },
+  {
+   "at": 45.7467,
+   "name": "cash",
+   "gain": 0.7
+  },
+  {
+   "at": 47.2667,
+   "name": "whoosh",
+   "gain": 0.5
+  }
+ ],
+ "sfxVolume": 0.5,
+ "musicVolume": 0.0,
+ "totalInSeconds": 48.8667
+}
