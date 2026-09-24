@@ -15,7 +15,7 @@ SOURCE = ROOT / "public" / "source" / "muncas-mitos.mp4"
 FREEZE = ROOT / "public" / "freeze"
 OUT = ROOT / "data" / "muncas-mitos.json"
 FPS = 30
-STAMP_HOLD = 1.25  # long enough to read the reason under the stamp
+STAMP_HOLD = 1.85  # long enough to read the reason under the stamp
 
 INTRO = (0.80, 2.55, "Mitos de MUNCAS")
 
