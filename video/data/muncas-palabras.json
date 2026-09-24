@@ -1,0 +1,444 @@
+{
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "source": "source/muncas-palabras.mp4",
+ "words": [
+  "DEBATE",
+  "PAÍS",
+  "PAZ",
+  "MESA",
+  "VOTO",
+  "PLAQUETA",
+  "REGLA"
+ ],
+ "attemptLimit": 20,
+ "segments": [
+  {
+   "id": "intro",
+   "kind": "video",
+   "srcIn": 0.3,
+   "durationInSeconds": 3.0,
+   "timelineStart": 0.0,
+   "zoomFrom": 1.16,
+   "zoomTo": 1.24,
+   "originX": 0.46,
+   "originY": 0.34,
+   "captions": []
+  },
+  {
+   "id": "setup",
+   "kind": "video",
+   "srcIn": 3.44,
+   "durationInSeconds": 1.2667,
+   "timelineStart": 3.0,
+   "zoomFrom": 1.14,
+   "zoomTo": 1.2,
+   "originX": 0.5,
+   "originY": 0.38,
+   "captions": [
+    {
+     "text": "LAS PALABRAS SON…",
+     "role": "ok",
+     "start": 0.18,
+     "end": 1.08
+    }
+   ]
+  },
+  {
+   "id": "list",
+   "kind": "list",
+   "srcIn": null,
+   "durationInSeconds": 3.0,
+   "timelineStart": 4.2667,
+   "zoomFrom": 1.0,
+   "zoomTo": 1.0,
+   "originX": 0.5,
+   "originY": 0.5,
+   "captions": []
+  },
+  {
+   "id": "r-debate",
+   "kind": "video",
+   "srcIn": 5.4,
+   "durationInSeconds": 4.3333,
+   "timelineStart": 7.2667,
+   "zoomFrom": 1.16,
+   "zoomTo": 1.26,
+   "originX": 0.5,
+   "originY": 0.38,
+   "captions": [
+    {
+     "text": "DISCUSIÓN",
+     "role": "hint",
+     "start": 0.5,
+     "end": 1.58
+    },
+    {
+     "text": "¿DEBATE?",
+     "role": "guess",
+     "start": 2.68,
+     "end": 3.32
+    },
+    {
+     "text": "MUY BIEN",
+     "role": "ok",
+     "start": 3.56,
+     "end": 4.16
+    }
+   ]
+  },
+  {
+   "id": "r-pais",
+   "kind": "video",
+   "srcIn": 10.1,
+   "durationInSeconds": 4.2,
+   "timelineStart": 11.6,
+   "zoomFrom": 1.15,
+   "zoomTo": 1.25,
+   "originX": 0.5,
+   "originY": 0.38,
+   "captions": [
+    {
+     "text": "NACIÓN",
+     "role": "hint",
+     "start": 1.12,
+     "end": 1.84
+    },
+    {
+     "text": "¿PAÍS?",
+     "role": "guess",
+     "start": 2.3,
+     "end": 3.48
+    },
+    {
+     "text": "SÍ",
+     "role": "ok",
+     "start": 3.58,
+     "end": 4.0
+    }
+   ]
+  },
+  {
+   "id": "r-paz-a",
+   "kind": "video",
+   "srcIn": 25.05,
+   "durationInSeconds": 1.9,
+   "timelineStart": 15.8,
+   "zoomFrom": 1.14,
+   "zoomTo": 1.2,
+   "originX": 0.5,
+   "originY": 0.38,
+   "captions": [
+    {
+     "text": "GUERRA",
+     "role": "hint",
+     "start": 0.17,
+     "end": 1.61
+    }
+   ]
+  },
+  {
+   "id": "r-paz-b",
+   "kind": "video",
+   "srcIn": 27.75,
+   "durationInSeconds": 7.3,
+   "timelineStart": 17.7,
+   "zoomFrom": 1.2,
+   "zoomTo": 1.3,
+   "originX": 0.5,
+   "originY": 0.38,
+   "captions": [
+    {
+     "text": "¿CONFLICTO?",
+     "role": "guess",
+     "start": 0.71,
+     "end": 1.35
+    },
+    {
+     "text": "NO",
+     "role": "no",
+     "start": 1.53,
+     "end": 1.97
+    },
+    {
+     "text": "PALOMA",
+     "role": "hint",
+     "start": 3.95,
+     "end": 5.11
+    },
+    {
+     "text": "¡PAZ!",
+     "role": "guess",
+     "start": 5.53,
+     "end": 6.17
+    },
+    {
+     "text": "¡BIEN!",
+     "role": "ok",
+     "start": 6.53,
+     "end": 7.15
+    }
+   ]
+  },
+  {
+   "id": "r-mesa",
+   "kind": "video",
+   "srcIn": 35.05,
+   "durationInSeconds": 6.3,
+   "timelineStart": 25.0,
+   "zoomFrom": 1.15,
+   "zoomTo": 1.26,
+   "originX": 0.5,
+   "originY": 0.38,
+   "captions": [
+    {
+     "text": "DIRECTIVA",
+     "role": "hint",
+     "start": 1.55,
+     "end": 3.09
+    },
+    {
+     "text": "MESA",
+     "role": "guess",
+     "start": 4.47,
+     "end": 5.17
+    },
+    {
+     "text": "MUY BIEN",
+     "role": "ok",
+     "start": 5.21,
+     "end": 6.25
+    }
+   ]
+  },
+  {
+   "id": "r-voto",
+   "kind": "video",
+   "srcIn": 41.35,
+   "durationInSeconds": 7.2667,
+   "timelineStart": 31.3,
+   "zoomFrom": 1.16,
+   "zoomTo": 1.28,
+   "originX": 0.5,
+   "originY": 0.38,
+   "captions": [
+    {
+     "text": "ELEGIR",
+     "role": "hint",
+     "start": 0.61,
+     "end": 1.83
+    },
+    {
+     "text": "¿VOTAR?",
+     "role": "guess",
+     "start": 3.35,
+     "end": 4.47
+    },
+    {
+     "text": "CASI",
+     "role": "no",
+     "start": 4.67,
+     "end": 5.63
+    },
+    {
+     "text": "¡VOTO!",
+     "role": "guess",
+     "start": 5.97,
+     "end": 6.51
+    },
+    {
+     "text": "SÍ",
+     "role": "ok",
+     "start": 6.55,
+     "end": 7.05
+    }
+   ]
+  },
+  {
+   "id": "r-plaqueta",
+   "kind": "video",
+   "srcIn": 48.75,
+   "durationInSeconds": 8.1,
+   "timelineStart": 38.5667,
+   "zoomFrom": 1.16,
+   "zoomTo": 1.28,
+   "originX": 0.5,
+   "originY": 0.38,
+   "captions": [
+    {
+     "text": "CARTEL",
+     "role": "hint",
+     "start": 1.55,
+     "end": 2.29
+    },
+    {
+     "text": "ANUNCIO",
+     "role": "hint",
+     "start": 4.37,
+     "end": 5.11
+    },
+    {
+     "text": "LEVANTAR",
+     "role": "hint",
+     "start": 5.25,
+     "end": 6.29
+    },
+    {
+     "text": "PLAQUETA",
+     "role": "guess",
+     "start": 6.81,
+     "end": 7.51
+    },
+    {
+     "text": "MUY BIEN",
+     "role": "ok",
+     "start": 7.53,
+     "end": 8.13
+    }
+   ]
+  },
+  {
+   "id": "r-regla",
+   "kind": "video",
+   "srcIn": 169.2,
+   "durationInSeconds": 4.0,
+   "timelineStart": 46.6667,
+   "zoomFrom": 1.16,
+   "zoomTo": 1.28,
+   "originX": 0.5,
+   "originY": 0.38,
+   "captions": [
+    {
+     "text": "NORMA",
+     "role": "hint",
+     "start": 1.28,
+     "end": 1.96
+    },
+    {
+     "text": "REGLA",
+     "role": "guess",
+     "start": 2.56,
+     "end": 3.06
+    },
+    {
+     "text": "MUY BIEN",
+     "role": "ok",
+     "start": 3.26,
+     "end": 3.8
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "kind": "recap",
+   "srcIn": null,
+   "durationInSeconds": 2.8,
+   "timelineStart": 50.6667,
+   "zoomFrom": 1.0,
+   "zoomTo": 1.0,
+   "originX": 0.5,
+   "originY": 0.5,
+   "captions": []
+  },
+  {
+   "id": "closing",
+   "kind": "closing",
+   "srcIn": null,
+   "durationInSeconds": 3.0,
+   "timelineStart": 53.4667,
+   "zoomFrom": 1.0,
+   "zoomTo": 1.0,
+   "originX": 0.5,
+   "originY": 0.5,
+   "captions": []
+  }
+ ],
+ "attempts": [
+  {
+   "at": 9.9667,
+   "word": "DEBATE",
+   "correct": true
+  },
+  {
+   "at": 13.92,
+   "word": "PAÍS",
+   "correct": true
+  },
+  {
+   "at": 18.45,
+   "word": "CONFLICTO",
+   "correct": false
+  },
+  {
+   "at": 23.25,
+   "word": "PAZ",
+   "correct": true
+  },
+  {
+   "at": 29.49,
+   "word": "MESA",
+   "correct": true
+  },
+  {
+   "at": 34.67,
+   "word": "VOTAR",
+   "correct": false
+  },
+  {
+   "at": 37.29,
+   "word": "VOTO",
+   "correct": true
+  },
+  {
+   "at": 45.3967,
+   "word": "PLAQUETA",
+   "correct": true
+  },
+  {
+   "at": 49.2467,
+   "word": "REGLA",
+   "correct": true
+  }
+ ],
+ "solved": [
+  {
+   "at": 9.9667,
+   "word": "DEBATE"
+  },
+  {
+   "at": 13.92,
+   "word": "PAÍS"
+  },
+  {
+   "at": 23.25,
+   "word": "PAZ"
+  },
+  {
+   "at": 29.49,
+   "word": "MESA"
+  },
+  {
+   "at": 37.29,
+   "word": "VOTO"
+  },
+  {
+   "at": 45.3967,
+   "word": "PLAQUETA"
+  },
+  {
+   "at": 49.2467,
+   "word": "REGLA"
+  }
+ ],
+ "ticks": [
+  8.9167,
+  9.4167,
+  20.1,
+  20.6,
+  28.5
+ ],
+ "sfxVolume": 0.5,
+ "musicVolume": 0.0,
+ "totalInSeconds": 56.4667
+}

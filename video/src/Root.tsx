@@ -29,6 +29,9 @@ import sponsorsEdit from "../data/muncas-sponsors.json";
 import { Mitos, mitosDurationInFrames } from "./mitos/Mitos";
 import { mitosSchema, type MitosProps } from "./mitos/schema";
 import mitosEdit from "../data/muncas-mitos.json";
+import { Palabras, palabrasDurationInFrames } from "./palabras/Palabras";
+import { palabrasSchema, type PalabrasProps } from "./palabras/schema";
+import palabrasEdit from "../data/muncas-palabras.json";
 
 const FPS = 30;
 const WIDTH = 1920;
@@ -204,6 +207,27 @@ export const RemotionRoot: React.FC = () => {
           const parsed = mitosSchema.parse(props);
           return {
             durationInFrames: mitosDurationInFrames(parsed),
+            fps: parsed.fps,
+            width: parsed.width,
+            height: parsed.height,
+            props: parsed,
+          };
+        }}
+      />
+
+      <Composition
+        id="MuncasPalabras"
+        component={Palabras}
+        schema={palabrasSchema}
+        fps={palabrasEdit.fps}
+        width={palabrasEdit.width}
+        height={palabrasEdit.height}
+        durationInFrames={Math.round(palabrasEdit.totalInSeconds * palabrasEdit.fps)}
+        defaultProps={palabrasSchema.parse(palabrasEdit) as PalabrasProps}
+        calculateMetadata={({ props }) => {
+          const parsed = palabrasSchema.parse(props);
+          return {
+            durationInFrames: palabrasDurationInFrames(parsed),
             fps: parsed.fps,
             width: parsed.width,
             height: parsed.height,
