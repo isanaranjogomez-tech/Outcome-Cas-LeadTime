@@ -39,6 +39,9 @@ import plataEdit from "../data/muncas-plata.json";
 import { Directiva, directivaDurationInFrames } from "./directiva/Directiva";
 import { directivaSchema, type DirectivaProps } from "./directiva/schema";
 import directivaEdit from "../data/muncas-directiva.json";
+import { Tier, tierDurationInFrames } from "./tier/Tier";
+import { tierSchema, type TierProps } from "./tier/schema";
+import tierEdit from "../data/muncas-tier.json";
 
 const FPS = 30;
 const WIDTH = 1920;
@@ -278,6 +281,27 @@ export const RemotionRoot: React.FC = () => {
           const parsed = directivaSchema.parse(props);
           return {
             durationInFrames: directivaDurationInFrames(parsed),
+            fps: parsed.fps,
+            width: parsed.width,
+            height: parsed.height,
+            props: parsed,
+          };
+        }}
+      />
+
+      <Composition
+        id="MuncasTier"
+        component={Tier}
+        schema={tierSchema}
+        fps={tierEdit.fps}
+        width={tierEdit.width}
+        height={tierEdit.height}
+        durationInFrames={tierEdit.totalFrames}
+        defaultProps={tierSchema.parse(tierEdit) as TierProps}
+        calculateMetadata={({ props }) => {
+          const parsed = tierSchema.parse(props);
+          return {
+            durationInFrames: tierDurationInFrames(parsed),
             fps: parsed.fps,
             width: parsed.width,
             height: parsed.height,

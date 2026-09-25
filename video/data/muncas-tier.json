@@ -1,0 +1,247 @@
+{
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "source": "source/muncas-tier.mp4",
+ "music": "audio/tier.ogg",
+ "introFrames": 58,
+ "segments": [
+  {
+   "srcIn": 0.2,
+   "frames": 168,
+   "from": 0
+  },
+  {
+   "srcIn": 6.88,
+   "frames": 320,
+   "from": 168
+  },
+  {
+   "srcIn": 18.3,
+   "frames": 357,
+   "from": 488
+  },
+  {
+   "srcIn": 31.85,
+   "frames": 105,
+   "from": 845
+  },
+  {
+   "srcIn": 36.0,
+   "frames": 129,
+   "from": 950
+  },
+  {
+   "srcIn": 40.9,
+   "frames": 123,
+   "from": 1079
+  },
+  {
+   "srcIn": 46.3,
+   "frames": 36,
+   "from": 1202
+  },
+  {
+   "srcIn": 48.25,
+   "frames": 96,
+   "from": 1238
+  },
+  {
+   "srcIn": 52.1,
+   "frames": 177,
+   "from": 1334
+  }
+ ],
+ "tiers": [
+  "S",
+  "A",
+  "B",
+  "C",
+  "D",
+  "F"
+ ],
+ "items": [
+  {
+   "label": "CITE UN RESOLUTIONS",
+   "tier": "S",
+   "showAt": 79,
+   "placeAt": 192
+  },
+  {
+   "label": "NAVIGATE POINTS & MOTIONS",
+   "tier": "A",
+   "showAt": 218,
+   "placeAt": 347
+  },
+  {
+   "label": "20-MIN UNMOD CAUCUS",
+   "tier": "C",
+   "showAt": 365,
+   "placeAt": 478
+  },
+  {
+   "label": "SPEECH FROM YOUR PHONE",
+   "tier": "D",
+   "showAt": 496,
+   "placeAt": 627
+  },
+  {
+   "label": "INSULT THE PRESIDENT",
+   "tier": "F",
+   "showAt": 653,
+   "placeAt": 799
+  },
+  {
+   "label": "YOUR BLOC SIGNS FIRST",
+   "tier": "B",
+   "showAt": 856,
+   "placeAt": 970
+  },
+  {
+   "label": "DRESS SO WELL",
+   "tier": "B",
+   "showAt": 1001,
+   "placeAt": 1100
+  },
+  {
+   "label": "A RESOLUTION THAT SURVIVES",
+   "tier": "C",
+   "showAt": 1120,
+   "placeAt": 1228
+  },
+  {
+   "label": "CAUCUS, FORGOT THE TOPIC",
+   "tier": "D",
+   "showAt": 1249,
+   "placeAt": 1361
+  },
+  {
+   "label": "FORGET YOUR COMMITTEE NAME",
+   "tier": "F",
+   "showAt": 1376,
+   "placeAt": 1494
+  }
+ ],
+ "captions": [
+  {
+   "text": "Citing specific UN resolutions|by number in your speech",
+   "from": 79,
+   "to": 159
+  },
+  {
+   "text": "S tier",
+   "from": 174,
+   "to": 192
+  },
+  {
+   "text": "Perfectly navigating points|and motions to control the floor",
+   "from": 218,
+   "to": 298
+  },
+  {
+   "text": "A tier",
+   "from": 325,
+   "to": 347
+  },
+  {
+   "text": "Passing a 20-minute|unmoderated caucus",
+   "from": 365,
+   "to": 432
+  },
+  {
+   "text": "C tier",
+   "from": 464,
+   "to": 478
+  },
+  {
+   "text": "Reading your entire opening|speech directly from your phone",
+   "from": 496,
+   "to": 602
+  },
+  {
+   "text": "D tier",
+   "from": 614,
+   "to": 627
+  },
+  {
+   "text": "Accidentally insulting your|president during your speech",
+   "from": 653,
+   "to": 740
+  },
+  {
+   "text": "F tier",
+   "from": 785,
+   "to": 799
+  },
+  {
+   "text": "Making everyone in your bloc|sign your resolution first",
+   "from": 856,
+   "to": 940
+  },
+  {
+   "text": "B tier",
+   "from": 958,
+   "to": 970
+  },
+  {
+   "text": "Dressing so well|that the president notices",
+   "from": 1001,
+   "to": 1065
+  },
+  {
+   "text": "B tier",
+   "from": 1088,
+   "to": 1100
+  },
+  {
+   "text": "Writing a good resolution|that doesn't get deleted",
+   "from": 1120,
+   "to": 1189
+  },
+  {
+   "text": "C tier",
+   "from": 1214,
+   "to": 1228
+  },
+  {
+   "text": "Asking for a caucus|and forgetting the topic",
+   "from": 1249,
+   "to": 1324
+  },
+  {
+   "text": "D tier",
+   "from": 1346,
+   "to": 1361
+  },
+  {
+   "text": "Forgetting the real name|for your own committee",
+   "from": 1376,
+   "to": 1456
+  },
+  {
+   "text": "F tier",
+   "from": 1478,
+   "to": 1494
+  }
+ ],
+ "zooms": [
+  {
+   "from": 740,
+   "to": 806
+  },
+  {
+   "from": 1065,
+   "to": 1082
+  },
+  {
+   "from": 1456,
+   "to": 1499
+  }
+ ],
+ "bodyFrames": 1511,
+ "finalCardFrames": 45,
+ "closingFrames": 45,
+ "totalFrames": 1601,
+ "musicVolume": 0.12,
+ "sfxVolume": 0.5
+}
