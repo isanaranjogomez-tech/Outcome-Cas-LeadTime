@@ -64,39 +64,19 @@
  ],
  "captions": [
   {
-   "text": "Describe MUNCAS XX en|una sola palabra",
-   "from": 87,
-   "to": 146
-  },
-  {
-   "text": "Innovador. ¿Cuál es el|tema de agenda más",
+   "text": "Innovador",
    "from": 168,
-   "to": 227
-  },
-  {
-   "text": "desafiante que has visto|en tu carrera MUN?",
-   "from": 227,
    "to": 290
   },
   {
-   "text": "Yo diría que el|uso de lethal autonomous",
+   "text": "Yo diría que|el uso de lethal",
    "from": 299,
-   "to": 381
+   "to": 359
   },
   {
-   "text": "weapon systems",
-   "from": 381,
+   "text": "autonomous weapon|systems",
+   "from": 359,
    "to": 411
-  },
-  {
-   "text": "Si pudieras darle 30|segundos de consejo al",
-   "from": 434,
-   "to": 490
-  },
-  {
-   "text": "verdadero Secretario General|de la ONU, ¿qué le dirías?",
-   "from": 490,
-   "to": 561
   },
   {
    "text": "Que nosotros somos el futuro|del mundo y que debería",
@@ -109,38 +89,28 @@
    "to": 738
   },
   {
-   "text": "Yo diría que es diplomacia,|sin embargo un poquito",
+   "text": "Yo diría que es|diplomacia, sin",
    "from": 805,
-   "to": 923
+   "to": 879
   },
   {
-   "text": "agresiva, pero asertiva",
-   "from": 923,
+   "text": "embargo un poquito|agresiva, pero asertiva",
+   "from": 879,
    "to": 980
   },
   {
-   "text": "¿Cuál es el error|táctico más común",
-   "from": 999,
-   "to": 1056
-  },
-  {
-   "text": "de un delegado novato?",
-   "from": 1056,
-   "to": 1094
-  },
-  {
    "text": "Tener miedo a equivocarse|o a participar",
-   "from": 1094,
-   "to": 1159
+   "from": 999,
+   "to": 1099
   },
   {
    "text": "¿Cuál es tu ritual|académico obligatorio",
-   "from": 1159,
-   "to": 1224
+   "from": 1099,
+   "to": 1199
   },
   {
    "text": "antes de una crisis|de comité?",
-   "from": 1224,
+   "from": 1199,
    "to": 1274
   },
   {
@@ -149,23 +119,23 @@
    "to": 1376
   },
   {
-   "text": "en el debate, como tener|en cuenta todos los puntos",
+   "text": "en el debate, como tener|en cuenta todos los",
    "from": 1376,
-   "to": 1465
+   "to": 1453
   },
   {
-   "text": "de vista para poder negociar|desde los intereses que",
-   "from": 1465,
-   "to": 1555
+   "text": "puntos de vista para|poder negociar desde",
+   "from": 1453,
+   "to": 1525
   },
   {
-   "text": "me pueden servir",
-   "from": 1555,
-   "to": 1585
+   "text": "los intereses que me|pueden servir",
+   "from": 1525,
+   "to": 1584
   },
   {
    "text": "¿Cuál es tu ritual|académico obligatorio",
-   "from": 1585,
+   "from": 1584,
    "to": 1654
   },
   {
@@ -179,16 +149,6 @@
    "to": 1742
   },
   {
-   "text": "¿Cuál es tu moción|favorita para pedir",
-   "from": 1751,
-   "to": 1797
-  },
-  {
-   "text": "en pleno debate",
-   "from": 1797,
-   "to": 1816
-  },
-  {
    "text": "Pues una moción sería debate|informal aunque yo prefiero",
    "from": 1826,
    "to": 1911
@@ -199,88 +159,63 @@
    "to": 1982
   },
   {
-   "text": "¿Cuál es la habilidad|clave que un delegado",
-   "from": 1991,
-   "to": 2055
-  },
-  {
-   "text": "de MUNCAS XX debe",
-   "from": 2055,
-   "to": 2082
-  },
-  {
-   "text": "Debe dominar el escuchar|las opiniones de los",
+   "text": "Debe dominar el|escuchar las opiniones",
    "from": 2091,
-   "to": 2167
+   "to": 2156
   },
   {
-   "text": "demás y las posturas|de los demás sin convertir",
-   "from": 2167,
-   "to": 2247
+   "text": "de los demás y|las posturas de",
+   "from": 2156,
+   "to": 2207
   },
   {
-   "text": "al otro en un enemigo",
-   "from": 2247,
+   "text": "los demás sin|convertir al otro",
+   "from": 2207,
+   "to": 2260
+  },
+  {
+   "text": "en un enemigo",
+   "from": 2260,
    "to": 2284
-  },
-  {
-   "text": "¿Cuál es la mayor diferencia|de MUNCAS XX y las",
-   "from": 2298,
-   "to": 2377
-  },
-  {
-   "text": "19 ediciones anteriores?",
-   "from": 2377,
-   "to": 2419
   },
   {
    "text": "Que MUNCAS XX se enfoca|mucho en un discernimiento",
    "from": 2428,
-   "to": 2517
+   "to": 2518
   },
   {
-   "text": "asertivo, en escuchar al|otro y en realmente que",
-   "from": 2517,
-   "to": 2603
+   "text": "asertivo, en escuchar|al otro y en realmente",
+   "from": 2518,
+   "to": 2597
   },
   {
-   "text": "no se convierta en un lugar|de enemistad sino en un",
-   "from": 2603,
-   "to": 2693
+   "text": "que no se convierta|en un lugar de enemistad",
+   "from": 2597,
+   "to": 2675
   },
   {
-   "text": "lugar de consenso",
-   "from": 2693,
+   "text": "sino en un lugar de|consenso",
+   "from": 2675,
    "to": 2726
   },
   {
-   "text": "Y finalmente cómo|ha sido tu experiencia",
-   "from": 2741,
-   "to": 2789
-  },
-  {
-   "text": "como Secretaria General",
-   "from": 2789,
-   "to": 2817
-  },
-  {
-   "text": "Ay no, me ha encantado, yo|la verdad super feliz y",
+   "text": "Ay no, me ha encantado,|yo la verdad super",
    "from": 2831,
-   "to": 2913
+   "to": 2900
   },
   {
-   "text": "siempre dispuesta para todo|lo que ustedes necesiten,",
-   "from": 2913,
-   "to": 3001
+   "text": "feliz y siempre|dispuesta para todo",
+   "from": 2900,
+   "to": 2959
   },
   {
-   "text": "desafiante pero|definitivamente valió la",
-   "from": 3001,
-   "to": 3067
+   "text": "lo que ustedes necesiten,|desafiante pero",
+   "from": 2959,
+   "to": 3027
   },
   {
-   "text": "pena",
-   "from": 3067,
+   "text": "definitivamente|valió la pena",
+   "from": 3027,
    "to": 3075
   }
  ],

@@ -29,24 +29,26 @@ def fix(text, rules):
 def chunk(text, limit=30):
     """Break a line into balanced pieces so the last card is never a stub."""
     words = text.split()
-    n = max(1, -(-len(text) // limit))
-    # Cards hold two lines, so an odd count would leave a one-word card at the
-    # end of the sentence; one extra line splits it evenly instead.
-    if n > 1 and n % 2:
-        n += 1
-    target = len(text) / n
-    # The cap has to stretch to whatever those n lines actually need, or a long
-    # word pushes a third line out and the card count goes odd again.
-    width = max(limit, -(-len(text) // n)) + 2
-    lines, cur = [], ""
-    for w in words:
-        if cur and (len(cur) + 1 + len(w) > width or
-                    (len(lines) < n - 1 and len(cur) >= target)):
-            lines.append(cur); cur = w
-        else:
-            cur = f"{cur} {w}".strip()
-    if cur:
-        lines.append(cur)
+    base = max(1, -(-len(text) // limit))
+    lines = []
+    # Cards hold two lines, so an odd count leaves a one-word card at the end of
+    # the sentence. Widening the split until it comes out even fixes that.
+    for n in (base if base == 1 else base + base % 2, base + 2, base + 4):
+        target = len(text) / n
+        # The cap has to stretch to whatever those n lines actually need, or a
+        # long word pushes an extra line out and the count goes odd again.
+        width = max(limit, -(-len(text) // n)) + 2
+        lines, cur = [], ""
+        for w in words:
+            if cur and (len(cur) + 1 + len(w) > width or
+                        (len(lines) < n - 1 and len(cur) >= target)):
+                lines.append(cur); cur = w
+            else:
+                cur = f"{cur} {w}".strip()
+        if cur:
+            lines.append(cur)
+        if len(lines) <= 1 or len(lines) % 2 == 0:
+            break
     return lines
 
 
@@ -55,12 +57,12 @@ def sentences(text):
     same breath belong to different people, so they never share a card."""
     # A question running straight into its answer has no full stop in the
     # transcript; the opening ¿ is the real boundary.
-    text = re.sub(r"([a-záéíóúñ])\s+¿", r"\1. ¿", text)
+    text = re.sub(r"([0-9a-záéíóúñA-ZÁÉÍÓÚÑ])\s+¿", r"\1. ¿", text)
     parts = [x.strip() for x in re.split(r"(?<=[.?!…])\s+", text) if x.strip()]
     out = []
     for x in parts:
         # "¿Sí? No." is one breath, not two cards.
-        if out and (len(x) < 16 or len(out[-1]) < 16):
+        if out and len(x) < 16 and len(out[-1]) < 16:
             out[-1] = f"{out[-1]} {x}"
         else:
             out.append(x)
@@ -118,6 +120,20 @@ def main() -> None:
         cur += f
     body = cur
 
+    def keys(t):
+        return {w for w in re.findall(r"[0-9a-záéíóúñü]{3,}", t.lower())}
+
+    def in_card(t, at):
+        """The chapter card already carries the question, in bigger type: the
+        interviewer asking it does not need a caption under it as well."""
+        for i, (a, txt) in enumerate(ch_src):
+            b = ch_src[i + 1][0] if i + 1 < len(ch_src) else src_out
+            if a <= at < b and txt:
+                k = keys(t)
+                return bool(k) and len(k & keys(txt)) / len(k) >= 0.45
+        return False
+
+    ch_src = c.get("chapters", [])
     rules = [tuple(r) for r in c.get("dict", [])]
     drop = float(c.get("captionsFromSrc", 0.0))
     captions = []
@@ -131,7 +147,14 @@ def main() -> None:
             continue
         limit = c.get("charsPerLine", 30)
         pairs = []
-        for sent in sentences(fix(s["text"].strip(), rules)):
+        sents = sentences(fix(s["text"].strip(), rules))
+        span_len = max(1e-6, sum(len(x) for x in sents))
+        acc_c = 0.0
+        for sent in sents:
+            at = s["start"] + (s["end"] - s["start"]) * (acc_c + len(sent) / 2) / span_len
+            acc_c += len(sent)
+            if in_card(sent, at):
+                continue
             lines = chunk(cap(sent.rstrip(".")), limit)
             # at most two lines on screen: a long sentence becomes two cards
             pairs += [lines[i:i + 2] for i in range(0, len(lines), 2)]
@@ -151,7 +174,6 @@ def main() -> None:
 
     # A chapter card stays up, shrunken, until the next question replaces it, so
     # the question is still readable while she answers it.
-    ch_src = c.get("chapters", [])
     chapters = []
     for i, (at, t) in enumerate(ch_src):
         a = round(tl(at) * FPS)

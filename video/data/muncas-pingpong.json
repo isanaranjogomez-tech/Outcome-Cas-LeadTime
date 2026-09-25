@@ -59,28 +59,28 @@
    "to": 213
   },
   {
-   "text": "¿Quién te parece|la niña más bonita",
+   "text": "¿Quién te parece|la niña más",
    "from": 229,
-   "to": 281
+   "to": 271
   },
   {
-   "text": "de todo el modelo?",
-   "from": 281,
-   "to": 309
+   "text": "bonita de todo|el modelo?",
+   "from": 271,
+   "to": 308
   },
   {
    "text": "La Agente Dinamizadora|de Senado y Cámara",
-   "from": 309,
+   "from": 308,
    "to": 369
   },
   {
-   "text": "Estamos con Agente|Dinamizadora de Senado y",
+   "text": "Estamos con|Agente Dinamizadora",
    "from": 383,
-   "to": 459
+   "to": 439
   },
   {
-   "text": "Cámara",
-   "from": 459,
+   "text": "de Senado|y Cámara",
+   "from": 439,
    "to": 471
   },
   {
@@ -109,13 +109,13 @@
    "to": 776
   },
   {
-   "text": "¿Quién te parece|la niña más linda",
+   "text": "¿Quién te parece|la niña más",
    "from": 795,
-   "to": 859
+   "to": 849
   },
   {
-   "text": "de todo el modelo?",
-   "from": 859,
+   "text": "linda de todo|el modelo?",
+   "from": 849,
    "to": 895
   },
   {
@@ -129,23 +129,28 @@
    "to": 971
   },
   {
-   "text": "Presidenta de CSSDS ¿Qué|opinas de que el delegado",
+   "text": "Presidenta de CSSDS",
    "from": 981,
-   "to": 1089
+   "to": 1024
   },
   {
-   "text": "de GAC — Bando Norte, haya|dicho que eres la niña",
-   "from": 1089,
-   "to": 1194
+   "text": "¿Qué opinas de que|el delegado de GAC",
+   "from": 1024,
+   "to": 1104
   },
   {
-   "text": "más linda de todo el modelo?",
-   "from": 1194,
-   "to": 1257
+   "text": "— Bando Norte, haya|dicho que eres la",
+   "from": 1104,
+   "to": 1185
+  },
+  {
+   "text": "niña más linda de|todo el modelo?",
+   "from": 1185,
+   "to": 1256
   },
   {
    "text": "Que pienso en lo mismo",
-   "from": 1257,
+   "from": 1256,
    "to": 1306
   },
   {
@@ -191,41 +196,46 @@
   {
    "text": "Estamos con Presidente de|Comisión de la Verdad",
    "from": 1837,
-   "to": 1918
+   "to": 1919
   },
   {
-   "text": "¿Quién te parece|la niña más linda",
-   "from": 1918,
-   "to": 1976
+   "text": "¿Quién te parece|la niña más",
+   "from": 1919,
+   "to": 1967
   },
   {
-   "text": "de todo el modelo?",
-   "from": 1976,
+   "text": "linda de todo|el modelo?",
+   "from": 1967,
    "to": 2009
   },
   {
-   "text": "La Subsecretaría GAC,|que también preside",
+   "text": "La Subsecretaría|GAC, que también",
    "from": 2009,
-   "to": 2079
+   "to": 2066
   },
   {
-   "text": "el Bando Latinoamericano",
-   "from": 2079,
+   "text": "preside el Bando|Latinoamericano",
+   "from": 2066,
    "to": 2122
   },
   {
-   "text": "Estamos con Subsecretaría|GAC ¿Qué opinas de que el",
+   "text": "Estamos con Subsecretaría|GAC",
    "from": 2149,
-   "to": 2218
+   "to": 2188
   },
   {
-   "text": "presidente de Comisión de|la Verdad haya dicho que",
-   "from": 2218,
-   "to": 2286
+   "text": "¿Qué opinas de que el|presidente de Comisión",
+   "from": 2188,
+   "to": 2248
   },
   {
-   "text": "eres la delegada más bonita|de todo el modelo?",
-   "from": 2286,
+   "text": "de la Verdad haya dicho|que eres la delegada",
+   "from": 2248,
+   "to": 2308
+  },
+  {
+   "text": "más bonita de todo el|modelo?",
+   "from": 2308,
    "to": 2348
   },
   {
@@ -249,13 +259,13 @@
    "to": 2534
   },
   {
-   "text": "de Diálogo haya dicho|que eres el niño más",
+   "text": "de Diálogo haya dicho|que eres el niño",
    "from": 2534,
-   "to": 2590
+   "to": 2586
   },
   {
-   "text": "lindo de todo el modelo?",
-   "from": 2590,
+   "text": "más lindo de todo|el modelo?",
+   "from": 2586,
    "to": 2624
   },
   {
@@ -324,13 +334,13 @@
    "to": 3264
   },
   {
-   "text": "Gremial haya dicho|que eres la niña más",
+   "text": "Gremial haya dicho|que eres la niña",
    "from": 3264,
-   "to": 3312
+   "to": 3308
   },
   {
-   "text": "linda de todo el modelo?",
-   "from": 3312,
+   "text": "más linda de todo|el modelo?",
+   "from": 3308,
    "to": 3343
   },
   {
@@ -369,18 +379,18 @@
    "to": 3700
   },
   {
-   "text": "¿Qué opinas de que el|presidente de Mesa de",
+   "text": "¿Qué opinas de que|el presidente de",
    "from": 3718,
-   "to": 3771
+   "to": 3761
   },
   {
-   "text": "Diálogo haya dicho que|eres la delegada más",
-   "from": 3771,
-   "to": 3824
+   "text": "Mesa de Diálogo haya|dicho que eres la",
+   "from": 3761,
+   "to": 3808
   },
   {
-   "text": "bonita de todo el modelo",
-   "from": 3824,
+   "text": "delegada más bonita|de todo el modelo",
+   "from": 3808,
    "to": 3854
   },
   {
