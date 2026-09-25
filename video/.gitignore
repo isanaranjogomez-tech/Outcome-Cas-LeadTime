@@ -5,3 +5,4 @@ dist
 
 # Rendered videos: regenerate them with `npm run render`, don't commit them.
 out
+ffmpeg2pass-*
