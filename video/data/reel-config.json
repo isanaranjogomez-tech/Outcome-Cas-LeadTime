@@ -83,57 +83,57 @@
   ],
   "chapters": [
    [
-    5.22,
+    5.02,
     "Describe MUNCAS XX en una sola palabra"
    ],
    [
-    8.3,
+    8.52,
     "El tema de agenda más desafiante de tu carrera MUN"
    ],
    [
-    17.4,
+    17.2,
     "30 segundos de consejo al Secretario General de la ONU"
    ],
    [
-    28.66,
+    28.46,
     ""
    ],
    [
-    37.52,
+    37.32,
     "El error táctico más común de un delegado novato"
    ],
    [
-    59.8,
+    42.75,
     "Tu ritual académico antes de una crisis de comité"
    ],
    [
-    64.04,
+    63.84,
     "Tu moción favorita para pedir en pleno debate"
    ],
    [
-    74.54,
+    74.34,
     "La habilidad clave que debe dominar un delegado"
    ],
    [
-    86.04,
+    85.84,
     "La mayor diferencia con las 19 ediciones anteriores"
    ],
    [
-    100.78,
+    100.58,
     "Cómo ha sido tu experiencia como Secretaria General"
    ]
   ],
   "beats": [
-   5.22,
-   8.3,
-   17.4,
-   28.66,
-   37.52,
-   59.8,
-   64.04,
-   74.54,
-   86.04,
-   100.78
+   5.02,
+   8.52,
+   17.2,
+   28.46,
+   37.32,
+   42.75,
+   63.84,
+   74.34,
+   85.84,
+   100.58
   ],
   "zooms": [
    [
@@ -186,7 +186,7 @@
    ],
    [
     "la coca ?-? ?cola se ha hecho",
-    "La Coca-Cola sabe peor"
+    "La Coca-Cola sabe fea"
    ],
    [
     "\\bes delicioso\\b",
@@ -330,7 +330,7 @@
    ],
    [
     "el secretario general de la [a-zñáéíóú]{1,7}$",
-    "el Secretario General"
+    "el Secretario General Adjunto"
    ],
    [
     "^delegado,? isd$|^delegad[ao],? logística$",
@@ -366,7 +366,7 @@
    ],
    [
     "el secretario general, punto",
-    "El Secretario General, punto"
+    "El Secretario General Adjunto"
    ],
    [
     "me parece súper\\.*$",

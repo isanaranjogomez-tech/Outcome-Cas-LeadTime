@@ -23,38 +23,38 @@
   },
   {
    "srcIn": 23.62,
-   "frames": 197,
+   "frames": 163,
    "from": 630
   },
   {
-   "srcIn": 31.85,
-   "frames": 105,
-   "from": 827
+   "srcIn": 31.8,
+   "frames": 107,
+   "from": 793
   },
   {
    "srcIn": 36.0,
    "frames": 129,
-   "from": 932
+   "from": 900
   },
   {
    "srcIn": 40.9,
    "frames": 123,
-   "from": 1061
+   "from": 1029
   },
   {
    "srcIn": 46.3,
    "frames": 36,
-   "from": 1184
+   "from": 1152
   },
   {
    "srcIn": 48.25,
    "frames": 96,
-   "from": 1220
+   "from": 1188
   },
   {
    "srcIn": 52.1,
    "frames": 177,
-   "from": 1316
+   "from": 1284
   }
  ],
  "tiers": [
@@ -99,32 +99,32 @@
   {
    "label": "YOUR BLOC SIGNS FIRST",
    "tier": "B",
-   "showAt": 839,
-   "placeAt": 953
+   "showAt": 806,
+   "placeAt": 920
   },
   {
    "label": "DRESS SO WELL",
    "tier": "B",
-   "showAt": 984,
-   "placeAt": 1082
+   "showAt": 951,
+   "placeAt": 1049
   },
   {
    "label": "A RESOLUTION THAT SURVIVES",
    "tier": "C",
-   "showAt": 1103,
-   "placeAt": 1211
+   "showAt": 1070,
+   "placeAt": 1178
   },
   {
    "label": "CAUCUS, FORGOT THE TOPIC",
    "tier": "D",
-   "showAt": 1232,
-   "placeAt": 1344
+   "showAt": 1198,
+   "placeAt": 1311
   },
   {
    "label": "FORGET YOUR COMMITTEE NAME",
    "tier": "F",
-   "showAt": 1358,
-   "placeAt": 1477
+   "showAt": 1325,
+   "placeAt": 1444
   }
  ],
  "captions": [
@@ -180,53 +180,53 @@
   },
   {
    "text": "Making everyone in your bloc|sign your resolution first",
-   "from": 839,
-   "to": 923
+   "from": 806,
+   "to": 890
   },
   {
    "text": "B tier",
-   "from": 941,
-   "to": 953
+   "from": 908,
+   "to": 920
   },
   {
    "text": "Dressing so well|that the president notices",
-   "from": 984,
-   "to": 1048
+   "from": 951,
+   "to": 1015
   },
   {
    "text": "B tier",
-   "from": 1070,
-   "to": 1082
+   "from": 1037,
+   "to": 1049
   },
   {
    "text": "Writing a good resolution|that doesn't get deleted",
-   "from": 1103,
-   "to": 1172
+   "from": 1070,
+   "to": 1139
   },
   {
    "text": "C tier",
-   "from": 1197,
-   "to": 1211
+   "from": 1164,
+   "to": 1178
   },
   {
    "text": "Asking for a caucus|and forgetting the topic",
-   "from": 1232,
-   "to": 1306
+   "from": 1198,
+   "to": 1274
   },
   {
    "text": "D tier",
-   "from": 1328,
-   "to": 1344
+   "from": 1295,
+   "to": 1311
   },
   {
    "text": "Forgetting the real name|for your own committee",
-   "from": 1358,
-   "to": 1439
+   "from": 1325,
+   "to": 1406
   },
   {
    "text": "F tier",
-   "from": 1460,
-   "to": 1477
+   "from": 1427,
+   "to": 1444
   }
  ],
  "zooms": [
@@ -239,18 +239,22 @@
    "to": 789
   },
   {
-   "from": 1048,
-   "to": 1065
+   "from": 794,
+   "to": 832
   },
   {
-   "from": 1439,
-   "to": 1482
+   "from": 1015,
+   "to": 1032
+  },
+  {
+   "from": 1406,
+   "to": 1449
   }
  ],
- "bodyFrames": 1493,
+ "bodyFrames": 1461,
  "finalCardFrames": 45,
  "closingFrames": 45,
- "totalFrames": 1583,
+ "totalFrames": 1551,
  "musicVolume": 0.12,
  "sfxVolume": 0.5
 }

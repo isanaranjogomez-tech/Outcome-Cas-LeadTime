@@ -101,46 +101,26 @@
   {
    "text": "Tener miedo a equivocarse|o a participar",
    "from": 999,
-   "to": 1099
-  },
-  {
-   "text": "¿Cuál es tu ritual|académico obligatorio",
-   "from": 1099,
-   "to": 1199
-  },
-  {
-   "text": "antes de una crisis|de comité?",
-   "from": 1199,
    "to": 1274
   },
   {
    "text": "Pues realmente conocer|todo lo que ha ocurrido",
    "from": 1296,
-   "to": 1376
+   "to": 1410
   },
   {
    "text": "en el debate, como tener|en cuenta todos los",
-   "from": 1376,
-   "to": 1453
+   "from": 1410,
+   "to": 1520
   },
   {
    "text": "puntos de vista para|poder negociar desde",
-   "from": 1453,
-   "to": 1525
+   "from": 1520,
+   "to": 1622
   },
   {
    "text": "los intereses que me|pueden servir",
-   "from": 1525,
-   "to": 1584
-  },
-  {
-   "text": "¿Cuál es tu ritual|académico obligatorio",
-   "from": 1584,
-   "to": 1654
-  },
-  {
-   "text": "antes de una crisis|de comité?",
-   "from": 1654,
+   "from": 1622,
    "to": 1707
   },
   {
@@ -224,71 +204,71 @@
    "index": 1,
    "total": 10,
    "text": "Describe MUNCAS XX en una sola palabra",
-   "at": 87,
-   "frames": 92
+   "at": 82,
+   "frames": 104
   },
   {
    "index": 2,
    "total": 10,
    "text": "El tema de agenda más desafiante de tu carrera MUN",
-   "at": 179,
-   "frames": 255
+   "at": 186,
+   "frames": 242
   },
   {
    "index": 3,
    "total": 10,
    "text": "30 segundos de consejo al Secretario General de la ONU",
-   "at": 434,
+   "at": 428,
    "frames": 323
   },
   {
    "index": 4,
    "total": 10,
    "text": "",
-   "at": 757,
+   "at": 751,
    "frames": 242
   },
   {
    "index": 5,
    "total": 10,
    "text": "El error táctico más común de un delegado novato",
-   "at": 999,
-   "frames": 668
+   "at": 993,
+   "frames": 163
   },
   {
    "index": 6,
    "total": 10,
    "text": "Tu ritual académico antes de una crisis de comité",
-   "at": 1667,
-   "frames": 84
+   "at": 1156,
+   "frames": 590
   },
   {
    "index": 7,
    "total": 10,
    "text": "Tu moción favorita para pedir en pleno debate",
-   "at": 1751,
-   "frames": 240
+   "at": 1746,
+   "frames": 241
   },
   {
    "index": 8,
    "total": 10,
    "text": "La habilidad clave que debe dominar un delegado",
-   "at": 1991,
-   "frames": 307
+   "at": 1987,
+   "frames": 305
   },
   {
    "index": 9,
    "total": 10,
    "text": "La mayor diferencia con las 19 ediciones anteriores",
-   "at": 2298,
-   "frames": 443
+   "at": 2292,
+   "frames": 442
   },
   {
    "index": 10,
    "total": 10,
    "text": "Cómo ha sido tu experiencia como Secretaria General",
-   "at": 2741,
-   "frames": 351
+   "at": 2734,
+   "frames": 358
   }
  ],
  "lowerThird": {
@@ -313,16 +293,16 @@
   }
  ],
  "beats": [
-  87,
-  179,
-  434,
-  757,
-  999,
-  1667,
-  1751,
-  1991,
-  2298,
-  2741
+  82,
+  186,
+  428,
+  751,
+  993,
+  1156,
+  1746,
+  1987,
+  2292,
+  2734
  ],
  "bodyFrames": 3092,
  "closingFrames": 45,

@@ -19,7 +19,11 @@ FPS = 30
 # Dead air removed, in source seconds. Each one falls inside a measured silence.
 # 23.05-23.62 removes the hand-over beat around the 23rd second — the signal
 # that the turn was changing — without touching a word on either side.
-CUTS = [(5.80, 6.88), (17.55, 18.30), (23.05, 23.62), (30.20, 31.85),
+# 29.05-31.80 is the changeover itself: the first pair's last words end at
+# 28.66 and the next speaker starts at 32.22, so everything between them is
+# the two of them swapping places. Four tenths of reaction is kept on each
+# side; the rest of the handover goes.
+CUTS = [(5.80, 6.88), (17.55, 18.30), (23.05, 23.62), (29.05, 31.80),
         (35.35, 36.00), (40.30, 40.90), (45.00, 46.30), (47.50, 48.25),
         (51.45, 52.10)]
 SRC_IN, SRC_OUT = 0.20, 58.00
@@ -64,7 +68,10 @@ LINES = [
 ]
 
 # Punch-ins: the reactions worth leaning into (source seconds).
-ZOOMS = [(22.94, 23.90), (26.70, 28.90), (39.84, 41.00), (56.16, 57.60)]
+# 31.80-33.10 is a very light lean-in on the incoming pair, so the join at the
+# changeover reads as a chosen cut rather than a jump.
+ZOOMS = [(22.94, 23.90), (26.70, 28.90), (31.80, 33.10), (39.84, 41.00),
+         (56.16, 57.60)]
 
 
 def keeps():
