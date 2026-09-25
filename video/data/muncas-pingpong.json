@@ -1,0 +1,396 @@
+{
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "source": "source/muncas-pingpong.mp4",
+ "music": "audio/tier.ogg",
+ "titleTop": "PING",
+ "titleBottom": "PONG",
+ "titleTag": "MUNCAS XX",
+ "introFrames": 30,
+ "segments": [
+  {
+   "srcIn": 0.87,
+   "frames": 374,
+   "from": 0
+  },
+  {
+   "srcIn": 14.61,
+   "frames": 331,
+   "from": 374
+  },
+  {
+   "srcIn": 26.65,
+   "frames": 224,
+   "from": 705
+  },
+  {
+   "srcIn": 35.13,
+   "frames": 437,
+   "from": 929
+  },
+  {
+   "srcIn": 50.19,
+   "frames": 142,
+   "from": 1366
+  },
+  {
+   "srcIn": 55.57,
+   "frames": 586,
+   "from": 1508
+  },
+  {
+   "srcIn": 75.71,
+   "frames": 521,
+   "from": 2094
+  },
+  {
+   "srcIn": 93.67,
+   "frames": 331,
+   "from": 2615
+  },
+  {
+   "srcIn": 105.51,
+   "frames": 109,
+   "from": 2946
+  },
+  {
+   "srcIn": 110.19,
+   "frames": 58,
+   "from": 3055
+  },
+  {
+   "srcIn": 112.75,
+   "frames": 203,
+   "from": 3113
+  },
+  {
+   "srcIn": 120.73,
+   "frames": 473,
+   "from": 3316
+  }
+ ],
+ "captions": [
+  {
+   "text": "Esto es PIPONK con MUNCAS",
+   "from": 8,
+   "to": 102
+  },
+  {
+   "text": "Estamos con Presidente de|Cámara de Representantes",
+   "from": 119,
+   "to": 213
+  },
+  {
+   "text": "¿Quién te parece la niña más|bonita de todo el modelo? La",
+   "from": 229,
+   "to": 299
+  },
+  {
+   "text": "gente inamizabra de cenar y de",
+   "from": 299,
+   "to": 369
+  },
+  {
+   "text": "Estamos con Agente Inamizador|de Senado y Cámara",
+   "from": 378,
+   "to": 466
+  },
+  {
+   "text": "¿Qué opinas que el presidente|de Cámara de Representantes",
+   "from": 478,
+   "to": 548
+  },
+  {
+   "text": "haya dicho que eres la niña|más linda de todo el modelo?",
+   "from": 548,
+   "to": 619
+  },
+  {
+   "text": "que opina lo mismo y que lo|quiero mucho",
+   "from": 633,
+   "to": 700
+  },
+  {
+   "text": "Estamos con Delegado de GAC|Norte",
+   "from": 709,
+   "to": 767
+  },
+  {
+   "text": "¿Quién te parece la niña más|linda de todo el modelo?",
+   "from": 786,
+   "to": 855
+  },
+  {
+   "text": "Presidenta de CCSDS",
+   "from": 855,
+   "to": 924
+  },
+  {
+   "text": "estamos con",
+   "from": 933,
+   "to": 958
+  },
+  {
+   "text": "Presidenta de CSSDS ¿Qué|opinas de que el delegado de",
+   "from": 968,
+   "to": 1066
+  },
+  {
+   "text": "GAC, Bando Norte, haya dicho|que eres la niña más linda de",
+   "from": 1066,
+   "to": 1165
+  },
+  {
+   "text": "todo el modelo? Que pienso en|lo mismo. Estamos con",
+   "from": 1165,
+   "to": 1263
+  },
+  {
+   "text": "Presidenta de Judoos",
+   "from": 1263,
+   "to": 1362
+  },
+  {
+   "text": "¿Quién te parece el niño más|lindo de todo el modelo",
+   "from": 1371,
+   "to": 1434
+  },
+  {
+   "text": "el secretario general, punto",
+   "from": 1444,
+   "to": 1503
+  },
+  {
+   "text": "estamos con",
+   "from": 1512,
+   "to": 1536
+  },
+  {
+   "text": "el secretario general de la T",
+   "from": 1557,
+   "to": 1583
+  },
+  {
+   "text": "¿Qué te parece que la|presidenta de Judos haya dicho",
+   "from": 1604,
+   "to": 1672
+  },
+  {
+   "text": "que eres el niño más lindo de|todo el modelo?",
+   "from": 1672,
+   "to": 1739
+  },
+  {
+   "text": "que ella también me parece muy|linda",
+   "from": 1753,
+   "to": 1787
+  },
+  {
+   "text": "Estamos con Presidente de|Comisión de la Garrada ¿Quién",
+   "from": 1804,
+   "to": 1876
+  },
+  {
+   "text": "te parece la niña más linda de|todo el modelo? La",
+   "from": 1876,
+   "to": 1947
+  },
+  {
+   "text": "subsecretaria que también|preside el Black Band de",
+   "from": 1947,
+   "to": 2018
+  },
+  {
+   "text": "Latinoamericana",
+   "from": 2018,
+   "to": 2090
+  },
+  {
+   "text": "Estamos con Subsecretaria|Kacko ¿Qué opinas de que el",
+   "from": 2099,
+   "to": 2159
+  },
+  {
+   "text": "presidente de Comisión de la|Verdad haya dicho que eres la",
+   "from": 2159,
+   "to": 2219
+  },
+  {
+   "text": "delegada más bonita de todo el|modelo? Que gracias y que lo",
+   "from": 2219,
+   "to": 2279
+  },
+  {
+   "text": "amo mucho",
+   "from": 2279,
+   "to": 2339
+  },
+  {
+   "text": "estamos con",
+   "from": 2349,
+   "to": 2373
+  },
+  {
+   "text": "Delegado, Isd",
+   "from": 2386,
+   "to": 2411
+  },
+  {
+   "text": "¿Qué te parece que la delegada|de Mesa de Diálogo haya dicho",
+   "from": 2433,
+   "to": 2503
+  },
+  {
+   "text": "que eres el niño más lindo de|todo el modelo?",
+   "from": 2503,
+   "to": 2573
+  },
+  {
+   "text": "Me parece muy linda",
+   "from": 2588,
+   "to": 2611
+  },
+  {
+   "text": "estamos con Delegada de Mesa|de Dialogo ¿Qué opinas de que",
+   "from": 2620,
+   "to": 2702
+  },
+  {
+   "text": "el delegado de logística dijo|que es la delegada más bonita",
+   "from": 2702,
+   "to": 2784
+  },
+  {
+   "text": "de todo el modelo? Que él es|muy lindo también",
+   "from": 2784,
+   "to": 2865
+  },
+  {
+   "text": "Estamos con",
+   "from": 2880,
+   "to": 2906
+  },
+  {
+   "text": "Presidente del Consejo G",
+   "from": 2916,
+   "to": 2942
+  },
+  {
+   "text": "¿Quién te parece la delegada|más linda de todo el modelo?",
+   "from": 2951,
+   "to": 3001
+  },
+  {
+   "text": "La directora del",
+   "from": 3001,
+   "to": 3051
+  },
+  {
+   "text": "estamos con",
+   "from": 3060,
+   "to": 3086
+  },
+  {
+   "text": "Directora de C",
+   "from": 3095,
+   "to": 3108
+  },
+  {
+   "text": "¿Qué opinas que el presidente|del Consejo Gremial Nacional",
+   "from": 3117,
+   "to": 3182
+  },
+  {
+   "text": "haya dicho que eres la niña|más linda de todo el modelo?",
+   "from": 3182,
+   "to": 3247
+  },
+  {
+   "text": "Muchas gracias y que él|también me parece súper",
+   "from": 3247,
+   "to": 3312
+  },
+  {
+   "text": "Estamos con Presidente de Mesa|de Dialoco",
+   "from": 3321,
+   "to": 3378
+  },
+  {
+   "text": "¿Qué niña te parece la más|bonita de todo el modelo? La",
+   "from": 3391,
+   "to": 3447
+  },
+  {
+   "text": "delegada de mesa de diálogo",
+   "from": 3447,
+   "to": 3503
+  },
+  {
+   "text": "Estamos con",
+   "from": 3522,
+   "to": 3553
+  },
+  {
+   "text": "de liga de misedialog",
+   "from": 3566,
+   "to": 3600
+  },
+  {
+   "text": "¿Qué opinas de que el|presidente de Mesa de Diálogo",
+   "from": 3617,
+   "to": 3663
+  },
+  {
+   "text": "haya dicho que eres la|delegada más bonita de todo el",
+   "from": 3663,
+   "to": 3708
+  },
+  {
+   "text": "modelo",
+   "from": 3708,
+   "to": 3754
+  },
+  {
+   "text": "que es muy bonito",
+   "from": 3773,
+   "to": 3789
+  }
+ ],
+ "chapters": [],
+ "lowerThird": null,
+ "tags": [],
+ "zooms": [
+  {
+   "from": 633,
+   "to": 698
+  },
+  {
+   "from": 1444,
+   "to": 1499
+  },
+  {
+   "from": 2588,
+   "to": 2615
+  }
+ ],
+ "beats": [
+  119,
+  378,
+  709,
+  933,
+  1512,
+  1804,
+  2099,
+  2349,
+  2620,
+  2880,
+  3060,
+  3321
+ ],
+ "bodyFrames": 3789,
+ "closingFrames": 45,
+ "totalFrames": 3834,
+ "musicVolume": 0.11,
+ "sfxVolume": 0.45
+}

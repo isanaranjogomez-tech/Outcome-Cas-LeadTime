@@ -1,0 +1,145 @@
+{
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "source": "source/muncas-unpopular.mp4",
+ "music": "audio/tier.ogg",
+ "titleTop": "UNPOPULAR",
+ "titleBottom": "OPINIONS",
+ "titleTag": "MUNCAS XX",
+ "introFrames": 28,
+ "segments": [
+  {
+   "srcIn": 0.23,
+   "frames": 256,
+   "from": 0
+  },
+  {
+   "srcIn": 9.26,
+   "frames": 111,
+   "from": 256
+  },
+  {
+   "srcIn": 13.44,
+   "frames": 366,
+   "from": 367
+  },
+  {
+   "srcIn": 27.02,
+   "frames": 49,
+   "from": 733
+  },
+  {
+   "srcIn": 29.48,
+   "frames": 55,
+   "from": 782
+  }
+ ],
+ "captions": [
+  {
+   "text": "Esto es Unpopular Opinions|con Munkas. La chango es",
+   "from": 8,
+   "to": 65
+  },
+  {
+   "text": "deliciosa",
+   "from": 65,
+   "to": 122
+  },
+  {
+   "text": "a través del equipo más|grande de Colombia",
+   "from": 134,
+   "to": 183
+  },
+  {
+   "text": "Quitarse las cosas es muy|satisfactorio",
+   "from": 202,
+   "to": 252
+  },
+  {
+   "text": "El buñuelo no es tan rico",
+   "from": 260,
+   "to": 305
+  },
+  {
+   "text": "La coca cola se ha hecho",
+   "from": 322,
+   "to": 363
+  },
+  {
+   "text": "La pizza con piña es|delicioso",
+   "from": 371,
+   "to": 411
+  },
+  {
+   "text": "Los romcoms de los 2000 son|mil veces mejor que las",
+   "from": 427,
+   "to": 485
+  },
+  {
+   "text": "películas ganadoras de|Oscars",
+   "from": 485,
+   "to": 544
+  },
+  {
+   "text": "Las aves dan miedo. El|helado con papas es horrible",
+   "from": 558,
+   "to": 670
+  },
+  {
+   "text": "La salchipapa es mejor con|lech",
+   "from": 687,
+   "to": 729
+  },
+  {
+   "text": "Y esta es la mejor batería|de todas",
+   "from": 737,
+   "to": 778
+  },
+  {
+   "text": "el sushi nos es una buena|comida",
+   "from": 786,
+   "to": 823
+  }
+ ],
+ "chapters": [],
+ "lowerThird": null,
+ "tags": [
+  {
+   "text": "HOT TAKE 👀",
+   "at": 260,
+   "frames": 40
+  },
+  {
+   "text": "HOT TAKE 👀",
+   "at": 558,
+   "frames": 40
+  }
+ ],
+ "zooms": [
+  {
+   "from": 371,
+   "to": 420
+  },
+  {
+   "from": 786,
+   "to": 825
+  }
+ ],
+ "beats": [
+  202,
+  260,
+  322,
+  371,
+  427,
+  558,
+  687,
+  737,
+  786
+ ],
+ "bodyFrames": 837,
+ "closingFrames": 45,
+ "totalFrames": 882,
+ "musicVolume": 0.12,
+ "sfxVolume": 0.45
+}

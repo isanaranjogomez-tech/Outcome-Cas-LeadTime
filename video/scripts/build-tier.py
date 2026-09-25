@@ -17,8 +17,11 @@ OUT = ROOT / "data" / "muncas-tier.json"
 FPS = 30
 
 # Dead air removed, in source seconds. Each one falls inside a measured silence.
-CUTS = [(5.80, 6.88), (17.55, 18.30), (30.20, 31.85), (35.35, 36.00),
-        (40.30, 40.90), (45.00, 46.30), (47.50, 48.25), (51.45, 52.10)]
+# 23.05-23.62 removes the hand-over beat around the 23rd second — the signal
+# that the turn was changing — without touching a word on either side.
+CUTS = [(5.80, 6.88), (17.55, 18.30), (23.05, 23.62), (30.20, 31.85),
+        (35.35, 36.00), (40.30, 40.90), (45.00, 46.30), (47.50, 48.25),
+        (51.45, 52.10)]
 SRC_IN, SRC_OUT = 0.20, 58.00
 INTRO_END = 2.15          # the hook shot ends here
 
@@ -61,7 +64,7 @@ LINES = [
 ]
 
 # Punch-ins: the reactions worth leaning into (source seconds).
-ZOOMS = [(26.70, 28.90), (39.84, 41.00), (56.16, 57.60)]
+ZOOMS = [(22.94, 23.90), (26.70, 28.90), (39.84, 41.00), (56.16, 57.60)]
 
 
 def keeps():

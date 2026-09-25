@@ -350,8 +350,10 @@ const Body: React.FC<{
   const frame = useCurrentFrame();
   const abs = frame + from;
   const z = zooms.find((w) => abs >= w.from && abs < w.to);
+  // Short windows (a punch-in over a join) must not invert the ramp.
+  const rise = z ? Math.min(8, Math.max(1, Math.floor((z.to - z.from) / 3))) : 0;
   const punch = z
-    ? interpolate(abs, [z.from, z.from + 8, z.to - 6, z.to], [1, 1.09, 1.09, 1], {
+    ? interpolate(abs, [z.from, z.from + rise, z.to - rise, z.to], [1, 1.09, 1.09, 1], {
         extrapolateLeft: "clamp", extrapolateRight: "clamp",
       })
     : 1;

@@ -42,6 +42,11 @@ import directivaEdit from "../data/muncas-directiva.json";
 import { Tier, tierDurationInFrames } from "./tier/Tier";
 import { tierSchema, type TierProps } from "./tier/schema";
 import tierEdit from "../data/muncas-tier.json";
+import { Reel, reelDurationInFrames } from "./reel/Reel";
+import { reelSchema, type ReelProps } from "./reel/schema";
+import q10Edit from "../data/muncas-q10.json";
+import uoEdit from "../data/muncas-unpopular.json";
+import ppEdit from "../data/muncas-pingpong.json";
 
 const FPS = 30;
 const WIDTH = 1920;
@@ -309,6 +314,29 @@ export const RemotionRoot: React.FC = () => {
           };
         }}
       />
+
+      {([["MuncasQ10", q10Edit], ["MuncasUnpopular", uoEdit], ["MuncasPingPong", ppEdit]] as const).map(
+        ([id, edit]) => (
+          <Composition
+            key={id}
+            id={id}
+            component={Reel}
+            schema={reelSchema}
+            fps={30}
+            width={1080}
+            height={1920}
+            durationInFrames={(edit as { totalFrames: number }).totalFrames}
+            defaultProps={reelSchema.parse(edit) as ReelProps}
+            calculateMetadata={({ props }) => {
+              const parsed = reelSchema.parse(props);
+              return {
+                durationInFrames: reelDurationInFrames(parsed),
+                fps: parsed.fps, width: parsed.width, height: parsed.height, props: parsed,
+              };
+            }}
+          />
+        ),
+      )}
 
       {/* The TikTok cover. A still, never part of the edit. */}
       <Composition

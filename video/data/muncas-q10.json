@@ -1,0 +1,365 @@
+{
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "source": "source/muncas-q10.mp4",
+ "music": "audio/tier.ogg",
+ "titleTop": "10 PREGUNTAS",
+ "titleBottom": "CON SG",
+ "titleTag": "MUNCAS XX",
+ "introFrames": 33,
+ "segments": [
+  {
+   "srcIn": 0.81,
+   "frames": 82,
+   "from": 0
+  },
+  {
+   "srcIn": 5.07,
+   "frames": 212,
+   "from": 82
+  },
+  {
+   "srcIn": 12.75,
+   "frames": 272,
+   "from": 294
+  },
+  {
+   "srcIn": 22.29,
+   "frames": 235,
+   "from": 566
+  },
+  {
+   "srcIn": 30.91,
+   "frames": 911,
+   "from": 801
+  },
+  {
+   "srcIn": 61.95,
+   "frames": 35,
+   "from": 1712
+  },
+  {
+   "srcIn": 63.89,
+   "frames": 75,
+   "from": 1747
+  },
+  {
+   "srcIn": 67.35,
+   "frames": 166,
+   "from": 1822
+  },
+  {
+   "srcIn": 74.39,
+   "frames": 100,
+   "from": 1988
+  },
+  {
+   "srcIn": 78.97,
+   "frames": 991,
+   "from": 2088
+  }
+ ],
+ "captions": [
+  {
+   "text": "10 preguntas con nuestra|secretaria general",
+   "from": 8,
+   "to": 78
+  },
+  {
+   "text": "Describemuncas20 en una sola|palabra",
+   "from": 87,
+   "to": 146
+  },
+  {
+   "text": "Inovador ¿Cuál es el tema de|agenda más desafiante que has",
+   "from": 168,
+   "to": 229
+  },
+  {
+   "text": "visto en tu carrera Moon?",
+   "from": 229,
+   "to": 290
+  },
+  {
+   "text": "Yo diría que el uso de lethal|autonomous weapon systems",
+   "from": 299,
+   "to": 411
+  },
+  {
+   "text": "Si pudieras darle 30 segundos|de consejo al verdadero",
+   "from": 434,
+   "to": 497
+  },
+  {
+   "text": "secretario general de la UNO,|¿qué le dirías?",
+   "from": 497,
+   "to": 561
+  },
+  {
+   "text": "que nosotros somos el futuro|del mundo y que debería tener",
+   "from": 570,
+   "to": 654
+  },
+  {
+   "text": "en cuenta la opinión de los|jóvenes",
+   "from": 654,
+   "to": 738
+  },
+  {
+   "text": "Te vine a llevar a tu favorita",
+   "from": 757,
+   "to": 796
+  },
+  {
+   "text": "Yo diría que es diplomacia,|sin embargo un poquito",
+   "from": 805,
+   "to": 892
+  },
+  {
+   "text": "agresiva, pero asertiva",
+   "from": 892,
+   "to": 980
+  },
+  {
+   "text": "¿Cuál es el error táctico más|común de un delegado novato?",
+   "from": 999,
+   "to": 1090
+  },
+  {
+   "text": "Tener miedo a equivocarse o a|participar. ¿Cuál es tu rito",
+   "from": 1090,
+   "to": 1182
+  },
+  {
+   "text": "al académico obligatorio antes|de una crisis de comité?",
+   "from": 1182,
+   "to": 1274
+  },
+  {
+   "text": "Pues realmente conocer todo lo|que ha ocurrido en el debate,",
+   "from": 1296,
+   "to": 1378
+  },
+  {
+   "text": "como tener en cuenta todos los|puntos de vista para poder",
+   "from": 1378,
+   "to": 1460
+  },
+  {
+   "text": "negociar desde los intereses|que me pueden servir. ¿Cuál es",
+   "from": 1460,
+   "to": 1542
+  },
+  {
+   "text": "tu ritual académico|obligatorio antes de una",
+   "from": 1542,
+   "to": 1624
+  },
+  {
+   "text": "crisis de comité?",
+   "from": 1624,
+   "to": 1707
+  },
+  {
+   "text": "¿Sí? No",
+   "from": 1716,
+   "to": 1742
+  },
+  {
+   "text": "¿Cuál es tu emoción favorita|para pedir en pleno debate",
+   "from": 1751,
+   "to": 1816
+  },
+  {
+   "text": "pues una moción sería debate|informal aunque yo prefiero",
+   "from": 1826,
+   "to": 1904
+  },
+  {
+   "text": "más como trabajar desde los|derechos a réplica",
+   "from": 1904,
+   "to": 1982
+  },
+  {
+   "text": "¿Cuál es la habilidad clave|que un delegado de Munkas 20",
+   "from": 1991,
+   "to": 2036
+  },
+  {
+   "text": "debe",
+   "from": 2036,
+   "to": 2082
+  },
+  {
+   "text": "Debe dominar el escuchar las|opiniones de los demás y las",
+   "from": 2091,
+   "to": 2155
+  },
+  {
+   "text": "posturas de los demás sin|convertir al otro en un",
+   "from": 2155,
+   "to": 2220
+  },
+  {
+   "text": "enemigo",
+   "from": 2220,
+   "to": 2284
+  },
+  {
+   "text": "¿Cuál es la mayor diferencia|de Munkas 20 y las 19",
+   "from": 2298,
+   "to": 2359
+  },
+  {
+   "text": "ediciones anteriores?",
+   "from": 2359,
+   "to": 2419
+  },
+  {
+   "text": "Que Amongcast 20 se enfoca|mucho en un discernimiento",
+   "from": 2428,
+   "to": 2503
+  },
+  {
+   "text": "asertivo, en escuchar al otro|y en realmente que no se",
+   "from": 2503,
+   "to": 2577
+  },
+  {
+   "text": "convierta en un lugar de|enemistad sino en un lugar de",
+   "from": 2577,
+   "to": 2651
+  },
+  {
+   "text": "consenso",
+   "from": 2651,
+   "to": 2726
+  },
+  {
+   "text": "y finalmente cómo ha sido tu|experiencia como secretaria",
+   "from": 2741,
+   "to": 2779
+  },
+  {
+   "text": "general",
+   "from": 2779,
+   "to": 2817
+  },
+  {
+   "text": "Ay no, me ha encantado, yo la|verdad super feliz y siempre",
+   "from": 2831,
+   "to": 2912
+  },
+  {
+   "text": "dispuesta para todo lo que|ustedes necesiten, desafiante",
+   "from": 2912,
+   "to": 2994
+  },
+  {
+   "text": "pero definitivamente valió la|pena",
+   "from": 2994,
+   "to": 3075
+  }
+ ],
+ "chapters": [
+  {
+   "index": 1,
+   "total": 10,
+   "text": "Describe MUNCAS XX en una palabra",
+   "at": 87
+  },
+  {
+   "index": 2,
+   "total": 10,
+   "text": "El tema de agenda más desafiante",
+   "at": 179
+  },
+  {
+   "index": 3,
+   "total": 10,
+   "text": "30 segundos de consejo al SG de la ONU",
+   "at": 434
+  },
+  {
+   "index": 4,
+   "total": 10,
+   "text": "",
+   "at": 757
+  },
+  {
+   "index": 5,
+   "total": 10,
+   "text": "El error táctico más común de un novato",
+   "at": 999
+  },
+  {
+   "index": 6,
+   "total": 10,
+   "text": "Tu ritual antes de una crisis de comité",
+   "at": 1667
+  },
+  {
+   "index": 7,
+   "total": 10,
+   "text": "Tu moción favorita en pleno debate",
+   "at": 1751
+  },
+  {
+   "index": 8,
+   "total": 10,
+   "text": "La habilidad clave de un delegado",
+   "at": 1991
+  },
+  {
+   "index": 9,
+   "total": 10,
+   "text": "La diferencia con las 19 ediciones",
+   "at": 2298
+  },
+  {
+   "index": 10,
+   "total": 10,
+   "text": "Tu experiencia como Secretaria General",
+   "at": 2741
+  }
+ ],
+ "lowerThird": {
+  "name": "MARÍA ANGÉLICA HOYOS",
+  "role": "SECRETARIA GENERAL",
+  "at": 82,
+  "frames": 90
+ },
+ "tags": [],
+ "zooms": [
+  {
+   "from": 570,
+   "to": 635
+  },
+  {
+   "from": 805,
+   "to": 869
+  },
+  {
+   "from": 2831,
+   "to": 2897
+  }
+ ],
+ "beats": [
+  87,
+  179,
+  434,
+  757,
+  999,
+  1667,
+  1751,
+  1991,
+  2298,
+  2741
+ ],
+ "bodyFrames": 3079,
+ "closingFrames": 45,
+ "totalFrames": 3124,
+ "musicVolume": 0.14,
+ "sfxVolume": 0.45
+}
