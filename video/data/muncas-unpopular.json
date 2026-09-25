@@ -7,7 +7,9 @@
  "titleTop": "UNPOPULAR",
  "titleBottom": "OPINIONS",
  "titleTag": "MUNCAS XX",
- "introFrames": 28,
+ "introAt": 22,
+ "introFrames": 60,
+ "captionsFrom": 82,
  "segments": [
   {
    "srcIn": 0.23,
@@ -15,91 +17,91 @@
    "from": 0
   },
   {
-   "srcIn": 9.26,
-   "frames": 111,
+   "srcIn": 9.25,
+   "frames": 112,
    "from": 256
   },
   {
-   "srcIn": 13.44,
-   "frames": 366,
-   "from": 367
+   "srcIn": 13.43,
+   "frames": 367,
+   "from": 368
   },
   {
-   "srcIn": 27.02,
-   "frames": 49,
-   "from": 733
+   "srcIn": 27.01,
+   "frames": 50,
+   "from": 735
   },
   {
-   "srcIn": 29.48,
-   "frames": 55,
-   "from": 782
+   "srcIn": 29.47,
+   "frames": 58,
+   "from": 785
   }
  ],
  "captions": [
   {
-   "text": "Esto es Unpopular Opinions|con Munkas. La chango es",
+   "text": "La changua es deliciosa",
    "from": 8,
-   "to": 65
-  },
-  {
-   "text": "deliciosa",
-   "from": 65,
    "to": 122
   },
   {
-   "text": "a través del equipo más|grande de Colombia",
+   "text": "Santa Fe es el equipo más|grande de Colombia",
    "from": 134,
    "to": 183
   },
   {
-   "text": "Quitarse las cosas es muy|satisfactorio",
+   "text": "Quitarse las costras es|muy satisfactorio",
    "from": 202,
    "to": 252
   },
   {
-   "text": "El buñuelo no es tan rico",
-   "from": 260,
-   "to": 305
+   "text": "El buñuelo no|es tan rico",
+   "from": 261,
+   "to": 306
   },
   {
-   "text": "La coca cola se ha hecho",
+   "text": "La Coca-Cola sabe peor",
    "from": 322,
    "to": 363
   },
   {
-   "text": "La pizza con piña es|delicioso",
-   "from": 371,
-   "to": 411
+   "text": "La pizza con piña|es deliciosa",
+   "from": 372,
+   "to": 412
   },
   {
-   "text": "Los romcoms de los 2000 son|mil veces mejor que las",
-   "from": 427,
-   "to": 485
+   "text": "Los romcoms de los 2000|son mil veces mejor que",
+   "from": 428,
+   "to": 497
   },
   {
-   "text": "películas ganadoras de|Oscars",
-   "from": 485,
-   "to": 544
+   "text": "las películas ganadoras|del Oscar",
+   "from": 497,
+   "to": 545
   },
   {
-   "text": "Las aves dan miedo. El|helado con papas es horrible",
-   "from": 558,
-   "to": 670
+   "text": "Las aves dan miedo",
+   "from": 559,
+   "to": 602
   },
   {
-   "text": "La salchipapa es mejor con|lech",
-   "from": 687,
-   "to": 729
+   "text": "El helado con papas|es horrible",
+   "from": 602,
+   "to": 671
   },
   {
-   "text": "Y esta es la mejor batería|de todas",
-   "from": 737,
-   "to": 778
+   "text": "La salchipapa es mejor|con lechuga",
+   "from": 688,
+   "to": 730
   },
   {
-   "text": "el sushi nos es una buena|comida",
-   "from": 786,
-   "to": 823
+   "text": "Y esta es la mejor|batería de todas",
+   "from": 739,
+   "to": 780
+  },
+  {
+   "text": "El sushi no es una|buena comida",
+   "from": 789,
+   "to": 825
   }
  ],
  "chapters": [],
@@ -107,39 +109,39 @@
  "tags": [
   {
    "text": "HOT TAKE 👀",
-   "at": 260,
+   "at": 261,
    "frames": 40
   },
   {
    "text": "HOT TAKE 👀",
-   "at": 558,
+   "at": 559,
    "frames": 40
   }
  ],
  "zooms": [
   {
-   "from": 371,
-   "to": 420
+   "from": 372,
+   "to": 421
   },
   {
-   "from": 786,
-   "to": 825
+   "from": 789,
+   "to": 827
   }
  ],
  "beats": [
   202,
-  260,
+  261,
   322,
-  371,
-  427,
-  558,
-  687,
-  737,
-  786
+  372,
+  428,
+  559,
+  688,
+  739,
+  789
  ],
- "bodyFrames": 837,
+ "bodyFrames": 843,
  "closingFrames": 45,
- "totalFrames": 882,
+ "totalFrames": 888,
  "musicVolume": 0.12,
  "sfxVolume": 0.45
 }

@@ -23,8 +23,8 @@ const Captions: React.FC<{ captions: ReelProps["captions"] }> = ({ captions }) =
         <div key={i}>
           <span
             style={{
-              fontFamily: font, fontWeight: 700,
-              fontSize: l.length > 28 ? 44 : 52, lineHeight: 1.22,
+              // One base size for every caption in the piece.
+              fontFamily: font, fontWeight: 700, fontSize: 48, lineHeight: 1.24,
               color: WHITE, backgroundColor: "rgba(11, 21, 40, 0.84)",
               borderRadius: 12, padding: "6px 16px", display: "inline-block",
             }}
@@ -65,10 +65,16 @@ const Hook: React.FC<{ top: string; bottom: string; tag: string; frames: number 
 };
 
 /** "03 / 10" plus the question, held briefly then out of the way. */
+/**
+ * The question lands big, then settles into a smaller bar at the top and stays
+ * there for the whole answer — it only leaves when the next question arrives.
+ */
 const Chapter: React.FC<{ index: number; total: number; text: string; frames: number }> = ({ index, total, text, frames }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const inn = spring({ frame, fps, config: { damping: 13, mass: 0.34, stiffness: 220 } });
+  const settle = spring({ frame: frame - 54, fps, config: { damping: 200, mass: 0.6, stiffness: 110 } });
+  const scale = interpolate(settle, [0, 1], [1, 0.74]);
   const out = interpolate(frame, [frames - 8, frames], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const pad = (n: number) => String(n).padStart(2, "0");
   return (
@@ -76,20 +82,22 @@ const Chapter: React.FC<{ index: number; total: number; text: string; frames: nu
       style={{
         position: "absolute", top: SAFE.top + 20, left: SAFE.left, right: SAFE.right,
         display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 12,
-        opacity: inn * out, transform: `translateY(${interpolate(inn, [0, 1], [-24, 0])}px)`,
+        opacity: inn * out,
+        transform: `translateY(${interpolate(inn, [0, 1], [-24, 0])}px) scale(${scale})`,
+        transformOrigin: "0% 0%",
         pointerEvents: "none",
       }}
     >
       <div style={{ display: "flex", alignItems: "baseline", gap: 10, backgroundColor: RED, borderRadius: 12, padding: "8px 20px" }}>
-        <span style={{ fontFamily: font, fontWeight: 900, fontSize: 52, color: WHITE }}>{pad(index)}</span>
-        <span style={{ fontFamily: font, fontWeight: 700, fontSize: 30, color: WHITE, opacity: 0.85 }}>/ {pad(total)}</span>
+        <span style={{ fontFamily: font, fontWeight: 900, fontSize: 56, color: WHITE }}>{pad(index)}</span>
+        <span style={{ fontFamily: font, fontWeight: 700, fontSize: 32, color: WHITE, opacity: 0.85 }}>/ {pad(total)}</span>
       </div>
       {text ? (
       <span
         style={{
-          fontFamily: font, fontWeight: 800, fontSize: text.length > 34 ? 46 : 54, lineHeight: 1.16,
+          fontFamily: font, fontWeight: 800, fontSize: 64, lineHeight: 1.14,
           color: WHITE, backgroundColor: "rgba(11, 21, 40, 0.88)", borderLeft: `6px solid ${BLUE}`,
-          borderRadius: 10, padding: "12px 20px", textAlign: "left", maxWidth: 730,
+          borderRadius: 10, padding: "14px 22px", textAlign: "left", maxWidth: 740,
         }}
       >
         {text}
@@ -107,7 +115,9 @@ const Plate: React.FC<{ name: string; role: string; frames: number }> = ({ name,
   return (
     <div
       style={{
-        position: "absolute", left: SAFE.left, bottom: SAFE.bottom + 10,
+        // Above the caption block: the name plate and a two-line caption both
+        // live in the lower third, and the caption was covering the name.
+        position: "absolute", left: SAFE.left, bottom: 620,
         backgroundColor: "rgba(11, 21, 40, 0.90)", borderLeft: `6px solid ${RED}`,
         borderRadius: 10, padding: "12px 22px 12px 18px",
         opacity: inn * out, transform: `translateX(${interpolate(inn, [0, 1], [-24, 0])}px)`,
@@ -179,7 +189,7 @@ const Shot: React.FC<{ name: string; at: number; volume: number }> = ({ name, at
 );
 
 export const Reel: React.FC<ReelProps> = ({
-  source, music, titleTop, titleBottom, titleTag, introFrames, segments, captions,
+  source, music, titleTop, titleBottom, titleTag, introAt, introFrames, captionsFrom, segments, captions,
   chapters, lowerThird, tags, zooms, beats, bodyFrames, closingFrames, musicVolume, sfxVolume,
 }) => {
   const vPop = sfxVolume * 0.45;
@@ -193,13 +203,13 @@ export const Reel: React.FC<ReelProps> = ({
         </Sequence>
       ))}
 
-      <Sequence durationInFrames={introFrames}>
+      <Sequence from={introAt} durationInFrames={introFrames}>
         <Hook top={titleTop} bottom={titleBottom} tag={titleTag} frames={introFrames} />
       </Sequence>
 
       {chapters.map((c) => (
-        <Sequence key={`c${c.index}`} from={c.at} durationInFrames={58}>
-          <Chapter index={c.index} total={c.total} text={c.text} frames={58} />
+        <Sequence key={`c${c.index}`} from={c.at} durationInFrames={c.frames}>
+          <Chapter index={c.index} total={c.total} text={c.text} frames={c.frames} />
         </Sequence>
       ))}
 
@@ -215,8 +225,8 @@ export const Reel: React.FC<ReelProps> = ({
         </Sequence>
       ))}
 
-      <Sequence durationInFrames={bodyFrames}>
-        <Captions captions={captions} />
+      <Sequence from={captionsFrom} durationInFrames={bodyFrames - captionsFrom}>
+        <CaptionsShifted captions={captions} offset={captionsFrom} />
       </Sequence>
 
       <Sequence from={bodyFrames} durationInFrames={closingFrames}>
@@ -235,5 +245,9 @@ export const Reel: React.FC<ReelProps> = ({
     </AbsoluteFill>
   );
 };
+
+const CaptionsShifted: React.FC<{ captions: ReelProps["captions"]; offset: number }> = ({ captions, offset }) => (
+  <Captions captions={captions.map((c) => ({ ...c, from: c.from - offset, to: c.to - offset }))} />
+);
 
 export const reelDurationInFrames = ({ totalFrames }: ReelProps) => totalFrames;

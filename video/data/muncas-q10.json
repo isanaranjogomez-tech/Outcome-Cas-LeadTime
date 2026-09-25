@@ -7,7 +7,9 @@
  "titleTop": "10 PREGUNTAS",
  "titleBottom": "CON SG",
  "titleTag": "MUNCAS XX",
- "introFrames": 33,
+ "introAt": 8,
+ "introFrames": 60,
+ "captionsFrom": 78,
  "segments": [
   {
    "srcIn": 0.81,
@@ -56,109 +58,119 @@
   },
   {
    "srcIn": 78.97,
-   "frames": 991,
+   "frames": 1004,
    "from": 2088
   }
  ],
  "captions": [
   {
-   "text": "10 preguntas con nuestra|secretaria general",
-   "from": 8,
-   "to": 78
-  },
-  {
-   "text": "Describemuncas20 en una sola|palabra",
+   "text": "Describe MUNCAS XX en|una sola palabra",
    "from": 87,
    "to": 146
   },
   {
-   "text": "Inovador ¿Cuál es el tema de|agenda más desafiante que has",
+   "text": "Innovador. ¿Cuál es el|tema de agenda más",
    "from": 168,
-   "to": 229
+   "to": 227
   },
   {
-   "text": "visto en tu carrera Moon?",
-   "from": 229,
+   "text": "desafiante que has visto|en tu carrera MUN?",
+   "from": 227,
    "to": 290
   },
   {
-   "text": "Yo diría que el uso de lethal|autonomous weapon systems",
+   "text": "Yo diría que el|uso de lethal autonomous",
    "from": 299,
+   "to": 381
+  },
+  {
+   "text": "weapon systems",
+   "from": 381,
    "to": 411
   },
   {
-   "text": "Si pudieras darle 30 segundos|de consejo al verdadero",
+   "text": "Si pudieras darle 30|segundos de consejo al",
    "from": 434,
-   "to": 497
+   "to": 490
   },
   {
-   "text": "secretario general de la UNO,|¿qué le dirías?",
-   "from": 497,
+   "text": "verdadero Secretario General|de la ONU, ¿qué le dirías?",
+   "from": 490,
    "to": 561
   },
   {
-   "text": "que nosotros somos el futuro|del mundo y que debería tener",
+   "text": "Que nosotros somos el futuro|del mundo y que debería",
    "from": 570,
-   "to": 654
+   "to": 664
   },
   {
-   "text": "en cuenta la opinión de los|jóvenes",
-   "from": 654,
+   "text": "tener en cuenta la opinión|de los jóvenes",
+   "from": 664,
    "to": 738
-  },
-  {
-   "text": "Te vine a llevar a tu favorita",
-   "from": 757,
-   "to": 796
   },
   {
    "text": "Yo diría que es diplomacia,|sin embargo un poquito",
    "from": 805,
-   "to": 892
+   "to": 923
   },
   {
    "text": "agresiva, pero asertiva",
-   "from": 892,
+   "from": 923,
    "to": 980
   },
   {
-   "text": "¿Cuál es el error táctico más|común de un delegado novato?",
+   "text": "¿Cuál es el error|táctico más común",
    "from": 999,
-   "to": 1090
+   "to": 1056
   },
   {
-   "text": "Tener miedo a equivocarse o a|participar. ¿Cuál es tu rito",
-   "from": 1090,
-   "to": 1182
+   "text": "de un delegado novato?",
+   "from": 1056,
+   "to": 1094
   },
   {
-   "text": "al académico obligatorio antes|de una crisis de comité?",
-   "from": 1182,
+   "text": "Tener miedo a equivocarse|o a participar",
+   "from": 1094,
+   "to": 1159
+  },
+  {
+   "text": "¿Cuál es tu ritual|académico obligatorio",
+   "from": 1159,
+   "to": 1224
+  },
+  {
+   "text": "antes de una crisis|de comité?",
+   "from": 1224,
    "to": 1274
   },
   {
-   "text": "Pues realmente conocer todo lo|que ha ocurrido en el debate,",
+   "text": "Pues realmente conocer|todo lo que ha ocurrido",
    "from": 1296,
-   "to": 1378
+   "to": 1376
   },
   {
-   "text": "como tener en cuenta todos los|puntos de vista para poder",
-   "from": 1378,
-   "to": 1460
+   "text": "en el debate, como tener|en cuenta todos los puntos",
+   "from": 1376,
+   "to": 1465
   },
   {
-   "text": "negociar desde los intereses|que me pueden servir. ¿Cuál es",
-   "from": 1460,
-   "to": 1542
+   "text": "de vista para poder negociar|desde los intereses que",
+   "from": 1465,
+   "to": 1555
   },
   {
-   "text": "tu ritual académico|obligatorio antes de una",
-   "from": 1542,
-   "to": 1624
+   "text": "me pueden servir",
+   "from": 1555,
+   "to": 1585
   },
   {
-   "text": "crisis de comité?",
-   "from": 1624,
+   "text": "¿Cuál es tu ritual|académico obligatorio",
+   "from": 1585,
+   "to": 1654
+  },
+  {
+   "text": "antes de una crisis|de comité?",
+   "from": 1654,
    "to": 1707
   },
   {
@@ -167,98 +179,108 @@
    "to": 1742
   },
   {
-   "text": "¿Cuál es tu emoción favorita|para pedir en pleno debate",
+   "text": "¿Cuál es tu moción|favorita para pedir",
    "from": 1751,
+   "to": 1797
+  },
+  {
+   "text": "en pleno debate",
+   "from": 1797,
    "to": 1816
   },
   {
-   "text": "pues una moción sería debate|informal aunque yo prefiero",
+   "text": "Pues una moción sería debate|informal aunque yo prefiero",
    "from": 1826,
-   "to": 1904
+   "to": 1911
   },
   {
    "text": "más como trabajar desde los|derechos a réplica",
-   "from": 1904,
+   "from": 1911,
    "to": 1982
   },
   {
-   "text": "¿Cuál es la habilidad clave|que un delegado de Munkas 20",
+   "text": "¿Cuál es la habilidad|clave que un delegado",
    "from": 1991,
-   "to": 2036
+   "to": 2055
   },
   {
-   "text": "debe",
-   "from": 2036,
+   "text": "de MUNCAS XX debe",
+   "from": 2055,
    "to": 2082
   },
   {
-   "text": "Debe dominar el escuchar las|opiniones de los demás y las",
+   "text": "Debe dominar el escuchar|las opiniones de los",
    "from": 2091,
-   "to": 2155
+   "to": 2167
   },
   {
-   "text": "posturas de los demás sin|convertir al otro en un",
-   "from": 2155,
-   "to": 2220
+   "text": "demás y las posturas|de los demás sin convertir",
+   "from": 2167,
+   "to": 2247
   },
   {
-   "text": "enemigo",
-   "from": 2220,
+   "text": "al otro en un enemigo",
+   "from": 2247,
    "to": 2284
   },
   {
-   "text": "¿Cuál es la mayor diferencia|de Munkas 20 y las 19",
+   "text": "¿Cuál es la mayor diferencia|de MUNCAS XX y las",
    "from": 2298,
-   "to": 2359
+   "to": 2377
   },
   {
-   "text": "ediciones anteriores?",
-   "from": 2359,
+   "text": "19 ediciones anteriores?",
+   "from": 2377,
    "to": 2419
   },
   {
-   "text": "Que Amongcast 20 se enfoca|mucho en un discernimiento",
+   "text": "Que MUNCAS XX se enfoca|mucho en un discernimiento",
    "from": 2428,
-   "to": 2503
+   "to": 2517
   },
   {
-   "text": "asertivo, en escuchar al otro|y en realmente que no se",
-   "from": 2503,
-   "to": 2577
+   "text": "asertivo, en escuchar al|otro y en realmente que",
+   "from": 2517,
+   "to": 2603
   },
   {
-   "text": "convierta en un lugar de|enemistad sino en un lugar de",
-   "from": 2577,
-   "to": 2651
+   "text": "no se convierta en un lugar|de enemistad sino en un",
+   "from": 2603,
+   "to": 2693
   },
   {
-   "text": "consenso",
-   "from": 2651,
+   "text": "lugar de consenso",
+   "from": 2693,
    "to": 2726
   },
   {
-   "text": "y finalmente cómo ha sido tu|experiencia como secretaria",
+   "text": "Y finalmente cómo|ha sido tu experiencia",
    "from": 2741,
-   "to": 2779
+   "to": 2789
   },
   {
-   "text": "general",
-   "from": 2779,
+   "text": "como Secretaria General",
+   "from": 2789,
    "to": 2817
   },
   {
-   "text": "Ay no, me ha encantado, yo la|verdad super feliz y siempre",
+   "text": "Ay no, me ha encantado, yo|la verdad super feliz y",
    "from": 2831,
-   "to": 2912
+   "to": 2913
   },
   {
-   "text": "dispuesta para todo lo que|ustedes necesiten, desafiante",
-   "from": 2912,
-   "to": 2994
+   "text": "siempre dispuesta para todo|lo que ustedes necesiten,",
+   "from": 2913,
+   "to": 3001
   },
   {
-   "text": "pero definitivamente valió la|pena",
-   "from": 2994,
+   "text": "desafiante pero|definitivamente valió la",
+   "from": 3001,
+   "to": 3067
+  },
+  {
+   "text": "pena",
+   "from": 3067,
    "to": 3075
   }
  ],
@@ -266,68 +288,78 @@
   {
    "index": 1,
    "total": 10,
-   "text": "Describe MUNCAS XX en una palabra",
-   "at": 87
+   "text": "Describe MUNCAS XX en una sola palabra",
+   "at": 87,
+   "frames": 92
   },
   {
    "index": 2,
    "total": 10,
-   "text": "El tema de agenda más desafiante",
-   "at": 179
+   "text": "El tema de agenda más desafiante de tu carrera MUN",
+   "at": 179,
+   "frames": 255
   },
   {
    "index": 3,
    "total": 10,
-   "text": "30 segundos de consejo al SG de la ONU",
-   "at": 434
+   "text": "30 segundos de consejo al Secretario General de la ONU",
+   "at": 434,
+   "frames": 323
   },
   {
    "index": 4,
    "total": 10,
    "text": "",
-   "at": 757
+   "at": 757,
+   "frames": 242
   },
   {
    "index": 5,
    "total": 10,
-   "text": "El error táctico más común de un novato",
-   "at": 999
+   "text": "El error táctico más común de un delegado novato",
+   "at": 999,
+   "frames": 668
   },
   {
    "index": 6,
    "total": 10,
-   "text": "Tu ritual antes de una crisis de comité",
-   "at": 1667
+   "text": "Tu ritual académico antes de una crisis de comité",
+   "at": 1667,
+   "frames": 84
   },
   {
    "index": 7,
    "total": 10,
-   "text": "Tu moción favorita en pleno debate",
-   "at": 1751
+   "text": "Tu moción favorita para pedir en pleno debate",
+   "at": 1751,
+   "frames": 240
   },
   {
    "index": 8,
    "total": 10,
-   "text": "La habilidad clave de un delegado",
-   "at": 1991
+   "text": "La habilidad clave que debe dominar un delegado",
+   "at": 1991,
+   "frames": 307
   },
   {
    "index": 9,
    "total": 10,
-   "text": "La diferencia con las 19 ediciones",
-   "at": 2298
+   "text": "La mayor diferencia con las 19 ediciones anteriores",
+   "at": 2298,
+   "frames": 443
   },
   {
    "index": 10,
    "total": 10,
-   "text": "Tu experiencia como Secretaria General",
-   "at": 2741
+   "text": "Cómo ha sido tu experiencia como Secretaria General",
+   "at": 2741,
+   "frames": 351
   }
  ],
  "lowerThird": {
   "name": "MARÍA ANGÉLICA HOYOS",
   "role": "SECRETARIA GENERAL",
-  "at": 82,
+  "at": 98,
   "frames": 90
  },
  "tags": [],
@@ -357,9 +389,9 @@
   2298,
   2741
  ],
- "bodyFrames": 3079,
+ "bodyFrames": 3092,
  "closingFrames": 45,
- "totalFrames": 3124,
+ "totalFrames": 3137,
  "musicVolume": 0.14,
  "sfxVolume": 0.45
 }

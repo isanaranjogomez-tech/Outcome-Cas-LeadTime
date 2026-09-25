@@ -7,7 +7,7 @@ format has them, a name plate, tags and beat marks.
 
   python3 scripts/build-reel.py <key>
 """
-import json, sys, subprocess
+import json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -18,16 +18,60 @@ NOISE = ("[AUDIO", "[MÚ", "[SIL", "[BLANK", "(RES", "(sonido", "[ Audio")
 CFG = json.loads((ROOT / "data" / "reel-config.json").read_text())
 
 
+def fix(text, rules):
+    """Spelling the school owns beats whatever the recogniser heard: committee
+    names, the acronyms and MUNCAS itself are spelled the official way."""
+    for pat, rep in rules:
+        text = re.sub(pat, rep, text, flags=re.IGNORECASE)
+    return re.sub(r"\s+", " ", text).strip()
+
+
 def chunk(text, limit=30):
-    words, lines, cur = text.split(), [], ""
+    """Break a line into balanced pieces so the last card is never a stub."""
+    words = text.split()
+    n = max(1, -(-len(text) // limit))
+    # Cards hold two lines, so an odd count would leave a one-word card at the
+    # end of the sentence; one extra line splits it evenly instead.
+    if n > 1 and n % 2:
+        n += 1
+    target = len(text) / n
+    # The cap has to stretch to whatever those n lines actually need, or a long
+    # word pushes a third line out and the card count goes odd again.
+    width = max(limit, -(-len(text) // n)) + 2
+    lines, cur = [], ""
     for w in words:
-        if cur and len(cur) + 1 + len(w) > limit:
+        if cur and (len(cur) + 1 + len(w) > width or
+                    (len(lines) < n - 1 and len(cur) >= target)):
             lines.append(cur); cur = w
         else:
             cur = f"{cur} {w}".strip()
     if cur:
         lines.append(cur)
     return lines
+
+
+def sentences(text):
+    """One card per sentence: a question and the answer that follows it in the
+    same breath belong to different people, so they never share a card."""
+    # A question running straight into its answer has no full stop in the
+    # transcript; the opening ¿ is the real boundary.
+    text = re.sub(r"([a-záéíóúñ])\s+¿", r"\1. ¿", text)
+    parts = [x.strip() for x in re.split(r"(?<=[.?!…])\s+", text) if x.strip()]
+    out = []
+    for x in parts:
+        # "¿Sí? No." is one breath, not two cards.
+        if out and (len(x) < 16 or len(out[-1]) < 16):
+            out[-1] = f"{out[-1]} {x}"
+        else:
+            out.append(x)
+    return out
+
+
+def cap(text):
+    for i, ch in enumerate(text):
+        if ch.isalpha():
+            return text[:i] + ch.upper() + text[i + 1:]
+    return text
 
 
 def main() -> None:
@@ -74,20 +118,46 @@ def main() -> None:
         cur += f
     body = cur
 
+    rules = [tuple(r) for r in c.get("dict", [])]
+    drop = float(c.get("captionsFromSrc", 0.0))
     captions = []
+    # Windows the recogniser could not resolve: better no caption than a wrong
+    # one, so they are left to the audio.
+    omit = [tuple(x) for x in c.get("omit", [])]
     for s in spans:
-        lines = chunk(s["text"].strip().rstrip("."), c.get("charsPerLine", 30))
-        # at most two lines on screen: long spans split into consecutive cards
-        pairs = [lines[i:i + 2] for i in range(0, len(lines), 2)]
+        if s["end"] <= drop:
+            continue
+        if any(a <= s["start"] and s["end"] <= b for a, b in omit):
+            continue
+        limit = c.get("charsPerLine", 30)
+        pairs = []
+        for sent in sentences(fix(s["text"].strip(), rules)):
+            lines = chunk(cap(sent.rstrip(".")), limit)
+            # at most two lines on screen: a long sentence becomes two cards
+            pairs += [lines[i:i + 2] for i in range(0, len(lines), 2)]
+        if not pairs:
+            continue
         f0, f1 = tl(s["start"]), tl(s["end"])
-        step = (f1 - f0) / max(1, len(pairs))
+        # Share the span between its cards by how much there is to read, not by
+        # card count: a two-word card and a full sentence do not take the same
+        # time to say, and an even split drifts out of sync inside long answers.
+        w = [sum(len(x) for x in pr) + 1 for pr in pairs]
+        acc, tot, t = 0, sum(w), f0
         for k, pr in enumerate(pairs):
-            captions.append({"text": "|".join(pr),
-                             "from": round((f0 + k * step) * FPS),
-                             "to": round((f0 + (k + 1) * step) * FPS)})
+            acc += w[k]
+            nxt = f0 + (f1 - f0) * acc / tot
+            captions.append({"text": "|".join(pr), "from": round(t * FPS), "to": round(nxt * FPS)})
+            t = nxt
 
-    chapters = [{"index": i + 1, "total": len(c.get("chapters", [])), "text": t,
-                 "at": round(tl(at) * FPS)} for i, (at, t) in enumerate(c.get("chapters", []))]
+    # A chapter card stays up, shrunken, until the next question replaces it, so
+    # the question is still readable while she answers it.
+    ch_src = c.get("chapters", [])
+    chapters = []
+    for i, (at, t) in enumerate(ch_src):
+        a = round(tl(at) * FPS)
+        nxt = round(tl(ch_src[i + 1][0]) * FPS) if i + 1 < len(ch_src) else body
+        chapters.append({"index": i + 1, "total": len(ch_src), "text": fix(t, rules),
+                         "at": a, "frames": max(FPS, nxt - a)})
     tags = [{"text": t, "at": round(tl(at) * FPS), "frames": 40} for at, t in c.get("tags", [])]
     zooms = [{"from": round(tl(a) * FPS), "to": round(tl(b) * FPS)} for a, b in c.get("zooms", [])]
     beats = [round(tl(a) * FPS) for a in c.get("beats", [])]
@@ -100,7 +170,9 @@ def main() -> None:
         "fps": FPS, "width": 1080, "height": 1920,
         "source": c["source"], "music": c["music"],
         "titleTop": c["titleTop"], "titleBottom": c["titleBottom"], "titleTag": c.get("titleTag", ""),
+        "introAt": round(tl(c.get("introAtSrc", 0.0)) * FPS),
         "introFrames": round(c.get("intro", 1.0) * FPS),
+        "captionsFrom": round(tl(drop) * FPS),
         "segments": segments, "captions": captions, "chapters": chapters,
         "lowerThird": lower, "tags": tags, "zooms": zooms, "beats": beats,
         "bodyFrames": body, "closingFrames": closing, "totalFrames": body + closing,

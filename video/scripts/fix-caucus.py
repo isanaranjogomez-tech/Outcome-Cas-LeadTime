@@ -56,13 +56,15 @@ for patch_path, wa, wb, ta, tb in JOBS:
     if psr != SR:
         idx = (np.arange(int(len(patch) * SR / psr)) * psr / SR).astype(int)
         patch = patch[np.clip(idx, 0, len(patch) - 1)]
-    word = band(patch[int(wa * SR):int(wb * SR)])
+    # No filtering: the recording goes in as it was made, only levelled.
+    word = patch[int(wa * SR):int(wb * SR)].copy()
 
     i, j = int(ta * SR), int(tb * SR)
     window = j - i
-    # Match the level of the word being replaced.
-    target_rms = np.sqrt((take[i:j] ** 2).mean() + 1e-12)
-    word *= target_rms / (np.sqrt((word ** 2).mean()) + 1e-12)
+    # Match the peak of the word being replaced — loud enough to sit in the
+    # sentence, never loud enough to clip.
+    target_peak = float(np.abs(take[i:j]).max())
+    word *= min(target_peak, 0.82) / (np.abs(word).max() + 1e-12)
 
     # Keep the take's own room tone under the whole window, then lay the word
     # in the middle of it so the join never lands on a hard edge.
@@ -76,12 +78,14 @@ for patch_path, wa, wb, ta, tb in JOBS:
     env[-XF:] = np.linspace(1, 0, XF)
     slot[off:off + len(word)] += word * env
 
-    # Crossfade the whole slot against what was there.
+    # Crossfade: the original only survives in the 15 ms at each edge, the new
+    # word owns everything in between. (Getting this the wrong way round is
+    # what made the first attempt a no-op.)
     out = take[i:j].copy()
-    blend = np.ones(window)
-    blend[:XF] = np.linspace(1, 0, XF)
-    blend[-XF:] = np.linspace(0, 1, XF)
-    take[i:j] = out * blend + slot * (1 - blend)
+    keep_old = np.zeros(window)
+    keep_old[:XF] = np.linspace(1, 0, XF)
+    keep_old[-XF:] = np.linspace(0, 1, XF)
+    take[i:j] = out * keep_old + slot * (1 - keep_old)
     print(f"✓ {patch_path.name} → {ta:.2f}-{tb:.2f}s  ({len(word)/SR:.2f}s de palabra)")
 
 take = np.clip(take, -0.99, 0.99)

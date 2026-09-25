@@ -1,44 +1,418 @@
 {
  "q10": {
-  "dir": "q10", "source": "source/muncas-q10.mp4", "music": "audio/tier.ogg",
-  "out": "muncas-q10.json", "srcOut": 112.0,
-  "titleTop": "10 PREGUNTAS", "titleBottom": "CON SG", "titleTag": "MUNCAS XX",
-  "intro": 1.1, "maxGap": 0.75, "keepGap": 0.30, "musicVolume": 0.14, "charsPerLine": 30,
-  "lowerThird": ["MARÍA ANGÉLICA HOYOS", "SECRETARIA GENERAL", 4.2, 3.0],
-  "chapters": [
-   [5.22, "Describe MUNCAS XX en una palabra"],
-   [8.30, "El tema de agenda más desafiante"],
-   [17.40, "30 segundos de consejo al SG de la ONU"],
-   [28.66, ""],
-   [37.52, "El error táctico más común de un novato"],
-   [59.80, "Tu ritual antes de una crisis de comité"],
-   [64.04, "Tu moción favorita en pleno debate"],
-   [74.54, "La habilidad clave de un delegado"],
-   [86.04, "La diferencia con las 19 ediciones"],
-   [100.78, "Tu experiencia como Secretaria General"]
+  "dir": "q10",
+  "source": "source/muncas-q10.mp4",
+  "music": "audio/tier.ogg",
+  "out": "muncas-q10.json",
+  "srcOut": 112.45,
+  "titleTop": "10 PREGUNTAS",
+  "titleBottom": "CON SG",
+  "titleTag": "MUNCAS XX",
+  "intro": 2.0,
+  "introAtSrc": 1.06,
+  "captionsFromSrc": 3.4,
+  "maxGap": 0.75,
+  "keepGap": 0.3,
+  "musicVolume": 0.14,
+  "charsPerLine": 26,
+  "lowerThird": [
+   "MARÍA ANGÉLICA HOYOS",
+   "SECRETARIA GENERAL",
+   5.6,
+   3.0
   ],
-  "beats": [5.22, 8.30, 17.40, 28.66, 37.52, 59.80, 64.04, 74.54, 86.04, 100.78],
-  "zooms": [[22.44, 24.60], [31.06, 33.20], [103.78, 106.00]]
+  "omit": [
+   [
+    28.5,
+    30.1
+   ]
+  ],
+  "dict": [
+   [
+    "^describe\\w*\\s*(20|xx)",
+    "Describe MUNCAS XX"
+   ],
+   [
+    "\\b(muncas|munkas|munkaz|amongcast|moncas)\\s*(20|xx)\\b",
+    "MUNCAS XX"
+   ],
+   [
+    "\\b(muncas|munkas|munkaz|amongcast|moncas)\\b",
+    "MUNCAS"
+   ],
+   [
+    "\\bmoon\\b",
+    "MUN"
+   ],
+   [
+    "\\bla\\s+UNO\\b",
+    "la ONU"
+   ],
+   [
+    "\\binovador\\b",
+    "Innovador"
+   ],
+   [
+    "\\brito al académico\\b",
+    "ritual académico"
+   ],
+   [
+    "\\b(e|E)moción favorita\\b",
+    "moción favorita"
+   ],
+   [
+    "\\bpues una emoción sería\\b",
+    "pues una moción sería"
+   ],
+   [
+    "\\bderechos a réplica\\b",
+    "derechos a réplica"
+   ],
+   [
+    "secretario general de la ONU",
+    "Secretario General de la ONU"
+   ],
+   [
+    "\\bsecretaria general\\b",
+    "Secretaria General"
+   ],
+   [
+    "^innovador\\s+¿",
+    "Innovador. ¿"
+   ]
+  ],
+  "chapters": [
+   [
+    5.22,
+    "Describe MUNCAS XX en una sola palabra"
+   ],
+   [
+    8.3,
+    "El tema de agenda más desafiante de tu carrera MUN"
+   ],
+   [
+    17.4,
+    "30 segundos de consejo al Secretario General de la ONU"
+   ],
+   [
+    28.66,
+    ""
+   ],
+   [
+    37.52,
+    "El error táctico más común de un delegado novato"
+   ],
+   [
+    59.8,
+    "Tu ritual académico antes de una crisis de comité"
+   ],
+   [
+    64.04,
+    "Tu moción favorita para pedir en pleno debate"
+   ],
+   [
+    74.54,
+    "La habilidad clave que debe dominar un delegado"
+   ],
+   [
+    86.04,
+    "La mayor diferencia con las 19 ediciones anteriores"
+   ],
+   [
+    100.78,
+    "Cómo ha sido tu experiencia como Secretaria General"
+   ]
+  ],
+  "beats": [
+   5.22,
+   8.3,
+   17.4,
+   28.66,
+   37.52,
+   59.8,
+   64.04,
+   74.54,
+   86.04,
+   100.78
+  ],
+  "zooms": [
+   [
+    22.44,
+    24.6
+   ],
+   [
+    31.06,
+    33.2
+   ],
+   [
+    103.78,
+    106.0
+   ]
+  ]
  },
  "uo": {
-  "dir": "uo", "source": "source/muncas-unpopular.mp4", "music": "audio/tier.ogg",
-  "out": "muncas-unpopular.json", "srcOut": 31.3,
-  "titleTop": "UNPOPULAR", "titleBottom": "OPINIONS", "titleTag": "MUNCAS XX",
-  "intro": 0.95, "maxGap": 0.70, "keepGap": 0.28, "musicVolume": 0.12, "charsPerLine": 28,
+  "dir": "uo",
+  "source": "source/muncas-unpopular.mp4",
+  "music": "audio/tier.ogg",
+  "out": "muncas-unpopular.json",
+  "srcOut": 31.4,
+  "titleTop": "UNPOPULAR",
+  "titleBottom": "OPINIONS",
+  "titleTag": "MUNCAS XX",
+  "intro": 2.0,
+  "introAtSrc": 0.95,
+  "captionsFromSrc": 2.95,
+  "maxGap": 0.7,
+  "keepGap": 0.3,
+  "musicVolume": 0.12,
+  "charsPerLine": 24,
   "lowerThird": null,
+  "dict": [
+   [
+    "esto es unpopular opinions con [a-zñáéíóú]+\\.?",
+    ""
+   ],
+   [
+    "\\bla chango\\b",
+    "La changua"
+   ],
+   [
+    "^a través del equipo",
+    "Santa Fe es el equipo"
+   ],
+   [
+    "\\bquitarse las (cosas|coserces|costras)\\b",
+    "Quitarse las costras"
+   ],
+   [
+    "la coca ?-? ?cola se ha hecho",
+    "La Coca-Cola sabe peor"
+   ],
+   [
+    "\\bes delicioso\\b",
+    "es deliciosa"
+   ],
+   [
+    "\\bganadoras de oscars?\\b",
+    "ganadoras del Oscar"
+   ],
+   [
+    "el helado con papas",
+    "El helado con papas"
+   ],
+   [
+    "con lech$",
+    "con lechuga"
+   ],
+   [
+    "^y esta es la mejor",
+    "Y esta es la mejor"
+   ],
+   [
+    "el sushi nos es una buena comida",
+    "El sushi no es una buena comida"
+   ],
+   [
+    "\\b(munkas|muncas|amongcast)\\b",
+    "MUNCAS"
+   ]
+  ],
   "chapters": [],
-  "tags": [[9.40, "HOT TAKE 👀"], [19.80, "HOT TAKE 👀"]],
-  "beats": [6.96, 9.40, 11.46, 13.58, 15.44, 19.80, 24.10, 27.16, 29.62],
-  "zooms": [[13.58, 15.20], [29.62, 30.90]]
+  "tags": [
+   [
+    9.4,
+    "HOT TAKE 👀"
+   ],
+   [
+    19.8,
+    "HOT TAKE 👀"
+   ]
+  ],
+  "beats": [
+   6.96,
+   9.4,
+   11.46,
+   13.58,
+   15.44,
+   19.8,
+   24.1,
+   27.16,
+   29.62
+  ],
+  "zooms": [
+   [
+    13.58,
+    15.2
+   ],
+   [
+    29.62,
+    30.9
+   ]
+  ]
  },
  "pp": {
-  "dir": "pp", "source": "source/muncas-pingpong.mp4", "music": "audio/tier.ogg",
-  "out": "muncas-pingpong.json", "srcOut": 136.5,
-  "titleTop": "PING", "titleBottom": "PONG", "titleTag": "MUNCAS XX",
-  "intro": 1.0, "maxGap": 0.75, "keepGap": 0.30, "musicVolume": 0.11, "charsPerLine": 30,
+  "dir": "pp",
+  "source": "source/muncas-pingpong.mp4",
+  "music": "audio/tier.ogg",
+  "out": "muncas-pingpong.json",
+  "srcOut": 137.28,
+  "titleTop": "PING",
+  "titleBottom": "PONG",
+  "titleTag": "MUNCAS XX",
+  "intro": 2.0,
+  "introAtSrc": 1.12,
+  "captionsFromSrc": 4.26,
+  "maxGap": 0.95,
+  "keepGap": 0.45,
+  "musicVolume": 0.11,
+  "charsPerLine": 26,
   "lowerThird": null,
+  "dict": [
+   [
+    "esto es [^.]*con (munkas|muncas)\\.?",
+    "Esto es PING PONG con MUNCAS."
+   ],
+   [
+    "\\bpiponk\\b|\\bpic-?pong\\b|\\bping ?pong\\b",
+    "PING PONG"
+   ],
+   [
+    "la gente inamiza(bra|ra|dora)? de (cenar|ese lado de)? ?y? ?de?",
+    "La agente dinamizadora de Senado y Cámara"
+   ],
+   [
+    "agente (inamizador|dinamizador)(a|as)?\\b",
+    "Agente Dinamizadora"
+   ],
+   [
+    "\\bc+s+d?s?d?s\\b|\\bcssds\\b|\\bccsds\\b|\\bccsd\\b",
+    "CSSDS"
+   ],
+   [
+    "presidenta de (judoos|judos|judo's|judo)",
+    "Presidenta de WHO II"
+   ],
+   [
+    "la presidenta de (judoos|judos|judo's|judo)",
+    "la Presidenta de WHO II"
+   ],
+   [
+    "\\b(judoos|judos|judo's)\\b",
+    "WHO II"
+   ],
+   [
+    "comisión de la (garrada|harda|jarra|verdad)",
+    "Comisión de la Verdad"
+   ],
+   [
+    "la subsecretaria que también preside el black band (de )?latinoamericana?",
+    "La Subsecretaría GAC, que también preside el Bando Latinoamericano"
+   ],
+   [
+    "black band (de )?latinoamericana?",
+    "Bando Latinoamericano"
+   ],
+   [
+    "subsecretari[ao] (kacko|kako|gacko)",
+    "Subsecretaría GAC"
+   ],
+   [
+    "consejo gremial nacional",
+    "Consejo Gremial"
+   ],
+   [
+    "presidente del consejo g$",
+    "Presidente del Consejo Gremial"
+   ],
+   [
+    "\\bgac,? bando norte\\b|\\bgac norte\\b",
+    "GAC — Bando Norte"
+   ],
+   [
+    "el secretario general de la [a-zñáéíóú]{1,7}$",
+    "el Secretario General"
+   ],
+   [
+    "^delegado,? isd$|^delegad[ao],? logística$",
+    "Delegado de Logística"
+   ],
+   [
+    "^directora de c$",
+    "Directora de Crisis"
+   ],
+   [
+    "la directora del? ?(centro x)?$",
+    "La Directora de Crisis"
+   ],
+   [
+    "^de liga de misedialog$|^de legad[ao] de mesa de diálogo$",
+    "Delegada de Mesa de Diálogo"
+   ],
+   [
+    "mesa de dialoco|mesa de dialogo",
+    "Mesa de Diálogo"
+   ],
+   [
+    "^estamos con\\.{0,3}$",
+    "Estamos con…"
+   ],
+   [
+    "\\b(munkas|muncas|amongcast)\\b",
+    "MUNCAS"
+   ],
+   [
+    "delegad([ao]) de mesa de diálogo",
+    "Delegad\\1 de Mesa de Diálogo"
+   ],
+   [
+    "el secretario general, punto",
+    "El Secretario General, punto"
+   ],
+   [
+    "me parece súper\\.*$",
+    "me parece súper linda"
+   ],
+   [
+    "\\bdelegado de logística\\b",
+    "Delegado de Logística"
+   ],
+   [
+    "\\bpresidente de cámara de representantes\\b",
+    "Presidente de Cámara de Representantes"
+   ],
+   [
+    "\\bpresidenta de whoii\\b",
+    "Presidenta de WHO II"
+   ]
+  ],
   "chapters": [],
-  "beats": [4.84, 14.76, 26.80, 35.28, 55.72, 65.46, 75.86, 84.22, 93.82, 102.50, 110.34, 120.88],
-  "zooms": [[23.26, 25.40], [52.78, 54.60], [92.16, 93.60]]
+  "beats": [
+   4.84,
+   14.76,
+   26.8,
+   35.28,
+   55.72,
+   65.46,
+   75.86,
+   84.22,
+   93.82,
+   102.5,
+   110.34,
+   120.88
+  ],
+  "zooms": [
+   [
+    23.26,
+    25.4
+   ],
+   [
+    52.78,
+    54.6
+   ],
+   [
+    92.16,
+    93.6
+   ]
+  ]
  }
 }
